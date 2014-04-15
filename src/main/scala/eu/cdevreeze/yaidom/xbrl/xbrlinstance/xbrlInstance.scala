@@ -15,7 +15,8 @@
  */
 
 package eu.cdevreeze.yaidom
-package xbrl.xbrlinstance
+package xbrl
+package xbrlinstance
 
 import scala.collection.immutable
 import ElemApi.withEName

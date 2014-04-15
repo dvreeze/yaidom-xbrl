@@ -23,41 +23,4 @@ import eu.cdevreeze.yaidom.EName
  *
  * @author Chris de Vreeze
  */
-package object xbrlinstance {
-
-  val XbrliNs = "http://www.xbrl.org/2003/instance"
-  val LinkNs = "http://www.xbrl.org/2003/linkbase"
-  val XmlNs = "http://www.w3.org/XML/1998/namespace"
-  val XsiNs = "http://www.w3.org/2001/XMLSchema-instance"
-
-  val XbrliXbrlEName = EName(XbrliNs, "xbrl")
-  val XbrliContextEName = EName(XbrliNs, "context")
-  val XbrliUnitEName = EName(XbrliNs, "unit")
-  val XbrliEntityEName = EName(XbrliNs, "entity")
-  val XbrliPeriodEName = EName(XbrliNs, "period")
-  val XbrliScenarioEName = EName(XbrliNs, "scenario")
-  val XbrliIdentifierEName = EName(XbrliNs, "identifier")
-  val XbrliSegmentEName = EName(XbrliNs, "segment")
-  val XbrliInstantEName = EName(XbrliNs, "instant")
-  val XbrliStartDateEName = EName(XbrliNs, "startDate")
-  val XbrliEndDateEName = EName(XbrliNs, "endDate")
-  val XbrliForeverEName = EName(XbrliNs, "forever")
-  val XbrliMeasureEName = EName(XbrliNs, "measure")
-  val XbrliDivideEName = EName(XbrliNs, "divide")
-  val XbrliUnitNominatorEName = EName(XbrliNs, "unitNominator")
-  val XbrliUnitDenominatorEName = EName(XbrliNs, "unitDenominator")
-
-  val LinkSchemaRefEName = EName(LinkNs, "schemaRef")
-  val LinkLinkbaseRefEName = EName(LinkNs, "linkbaseRef")
-  val LinkRoleRefEName = EName(LinkNs, "roleRef")
-  val LinkArcroleRefEName = EName(LinkNs, "arcroleRef")
-  val LinkFootnoteLinkEName = EName(LinkNs, "footnoteLink")
-
-  val XmlLangEName = EName(XmlNs, "lang")
-
-  val XsiNilEName = EName(XsiNs, "nil")
-
-  val IdEName = EName("id")
-  val ContextRefEName = EName("contextRef")
-  val UnitRefEName = EName("unitRef")
-}
+package object xbrlinstance
