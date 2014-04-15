@@ -17,3 +17,29 @@ XPath, like XML Schema, has been replaced by yaidom queries. XBRL formulas are a
 
 Of course, all of this is not yet the case, but the idea is that it will become reality.
 
+XBRL instances
+==============
+
+XBRL instances in yaidom-xbrl are "XBRL" views on immutable "indexed elements".
+
+Links and arcs
+==============
+
+Yaidom-XBRL replaces linkbases with XLink by concise "linkbases" without XLink. Two kinds of arcs are supported:
+
+* Locator-locator arcs
+* Locator-resource arcs
+
+These arcs are represented as XML elements that contain the locators and resources, if any, as attributes and child
+elements. Examples of locator-locator arcs are the representations of parent-child relationships in presentation linkbases,
+for example. Examples of locator-resource arcs are the representations of label and reference arcs, for example. In the latter
+representations, references and labels shared by multiple elements are repeated per yaidom-XBRL arc.
+
+Yaidom-XBRL arcs are "indexed elements" with a root element containing an ELR (extended link role), and where the arc element
+is the child of that root element. Resources become children of the arc element, and locators are represented as arc element
+attributes.
+
+The locator attributes, if referring to element declarations, have a QName as value (so need no traversal to another document
+to get semantics). Of course the QName must be resolvable using the in-scope namespaces.
+
+The element name of the arc is determined by a mapping from pairs of original element name and arcrole to yaidom-XBRL element names.

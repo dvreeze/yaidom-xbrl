@@ -9,17 +9,17 @@ organization := "eu.cdevreeze.yaidom"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.10.3")
+crossScalaVersions := Seq("2.10.4")
 
-scalacOptions ++= Seq("-unchecked", "-deprecation")
-
-scalacOptions <++= scalaBinaryVersion map { version =>
-  if (version.contains("2.10")) Seq("-feature") else Seq()
-}
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
 libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "0.8.0"
+
+libraryDependencies += ("joda-time" % "joda-time" % "2.3").intransitive()
+
+libraryDependencies += ("org.joda" % "joda-convert" % "1.2").intransitive()
 
 libraryDependencies += "junit" % "junit" % "4.11" % "test"
 
