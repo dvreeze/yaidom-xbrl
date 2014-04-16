@@ -15,6 +15,8 @@ XML elements with @parent and @child attributes containing QNames of concepts.
 
 XPath, like XML Schema, has been replaced by yaidom queries. XBRL formulas are also written as yaidom queries.
 
+Use of XML Base, XPointer etc. is also pushed to the "boundaries" as much as possible.
+
 Of course, all of this is not yet the case, but the idea is that it will become reality.
 
 XBRL instances

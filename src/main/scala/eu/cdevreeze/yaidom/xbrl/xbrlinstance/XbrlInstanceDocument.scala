@@ -20,12 +20,12 @@ package xbrl.xbrlinstance
 import java.net.URI
 
 /**
- * Immutable XML document. Its main value in addition to its document element is its optional URI.
+ * Immutable XBRL instance document. Its main value in addition to its document element is its optional URI.
  * Expensive to create, because of the cached XBRL instance element.
  *
  * @author Chris de Vreeze
  */
-final class XbrlDocument(val wrappedDoc: indexed.Document) {
+final class XbrlInstanceDocument(val wrappedDoc: indexed.Document) {
 
   /** The document element, as XbrlInstance */
   val xbrlInstance: XbrlInstance = XbrliElem(wrappedDoc.documentElement).asInstanceOf[XbrlInstance]

@@ -60,32 +60,32 @@ final class XbrlInstance private[xbrlinstance] (
 
   assert(wrappedElem.resolvedName == XbrliXbrlEName)
 
+  val contexts: immutable.IndexedSeq[XbrliContext] =
+    filterChildElems(withEName(XbrliContextEName)) collect { case e: XbrliContext => e }
+
   val contextsById: Map[String, XbrliContext] = {
-    val contextsGrouped =
-      filterChildElems(withEName(XbrliContextEName)).groupBy(_.attribute(IdEName))
+    val contextsGrouped = contexts.groupBy(_.attribute(IdEName))
     require(contextsGrouped.values.forall(_.size == 1), s"All context @id attributes must be unique inside the XBRL instance")
 
     contextsGrouped.mapValues(e => e.head.asInstanceOf[XbrliContext])
   }
 
-  def contexts: immutable.IndexedSeq[XbrliContext] = contextsById.values.toVector
+  val units: immutable.IndexedSeq[XbrliUnit] =
+    filterChildElems(withEName(XbrliUnitEName)) collect { case e: XbrliUnit => e }
 
   val unitsById: Map[String, XbrliUnit] = {
-    val unitsGrouped =
-      filterChildElems(withEName(XbrliUnitEName)).groupBy(_.attribute(IdEName))
+    val unitsGrouped = units.groupBy(_.attribute(IdEName))
     require(unitsGrouped.values.forall(_.size == 1), s"All unit @id attributes must be unique inside the XBRL instance")
 
     unitsGrouped.mapValues(e => e.head.asInstanceOf[XbrliUnit])
   }
 
-  def units: immutable.IndexedSeq[XbrliUnit] = unitsById.values.toVector
+  val facts: immutable.IndexedSeq[Fact] =
+    filterElems(e => canBeFact(e.wrappedElem)) collect { case e: Fact => e }
 
   val factsByEName: Map[EName, immutable.IndexedSeq[Fact]] = {
-    val result = filterElems(e => canBeFact(e.wrappedElem)) collect { case e: Fact => e }
-    result.groupBy(_.resolvedName)
+    facts.groupBy(_.resolvedName)
   }
-
-  def facts: immutable.IndexedSeq[Fact] = factsByEName.values.toVector.flatten
 
   def items: immutable.IndexedSeq[ItemFact] =
     facts collect { case e: ItemFact => e }
