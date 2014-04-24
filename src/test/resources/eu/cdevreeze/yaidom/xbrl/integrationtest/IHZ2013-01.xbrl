@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--XBRL instance based on taxonomy report namespace http://www.nltaxonomie.nl/8.0/report/bd/entrypoints/bd-rpt-ihz-aangifte-2013.xsd
+Intellectual Property State of the Netherlands
+Created on: 01-12-2013 08:00:00
+-->
+<xbrli:xbrl xml:lang="nl" xmlns:bd-burg="http://www.nltaxonomie.nl/8.0/basis/bd/items/bd-burgers" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:bd-dim-dim="http://www.nltaxonomie.nl/8.0/domein/bd/axes/bd-axes" xmlns:bd-alg="http://www.nltaxonomie.nl/8.0/basis/bd/items/bd-algemeen" xmlns:bd-bedr="http://www.nltaxonomie.nl/8.0/basis/bd/items/bd-bedrijven" xmlns:bd-dim-dom="http://www.nltaxonomie.nl/8.0/basis/bd/domains/bd-domains" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:schemaRef xlink:type="simple" xlink:href="http://www.nltaxonomie.nl/8.0/report/bd/entrypoints/bd-rpt-ihz-aangifte-2013.xsd" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="www.belastingdienst.nl/identificatie">111055684</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2013-01-01</xbrli:startDate>
+      <xbrli:endDate>2013-12-31</xbrli:endDate>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="bd-dim-dim:PartyDimension">bd-dim-dom:Declarant</xbrldi:explicitMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c2">
+    <xbrli:entity>
+      <xbrli:identifier scheme="www.belastingdienst.nl/identificatie">111055684</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2013-01-01</xbrli:startDate>
+      <xbrli:endDate>2013-12-31</xbrli:endDate>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="bd-dim-dim:PartyDimension">bd-dim-dom:Company</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="bd-dim-dim:CompanySerialNumberDimension">
+				<bd-dim-dom:CompanySerialNumberDomain>1</bd-dim-dom:CompanySerialNumberDomain>
+			</xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c3">
+    <xbrli:entity>
+      <xbrli:identifier scheme="www.belastingdienst.nl/identificatie">111055684</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2013-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="bd-dim-dim:TimeDimension">bd-dim-dom:End</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="bd-dim-dim:PartyDimension">bd-dim-dom:Company</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="bd-dim-dim:CompanySerialNumberDimension">
+				<bd-dim-dom:CompanySerialNumberDomain>1</bd-dim-dom:CompanySerialNumberDomain>
+			</xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:unit id="u1">
+    <xbrli:measure>iso4217:EUR</xbrli:measure>
+  </xbrli:unit>
+  <bd-alg:DateOfBirth contextRef="c1">1958-01-25</bd-alg:DateOfBirth>
+  <bd-alg:Initials contextRef="c1">M</bd-alg:Initials>
+  <bd-alg:Prefix contextRef="c1">van den</bd-alg:Prefix>
+  <bd-alg:SoftwarePackageName contextRef="c1">SoftwareNaam30</bd-alg:SoftwarePackageName>
+  <bd-alg:SoftwarePackageVersion contextRef="c1">B2</bd-alg:SoftwarePackageVersion>
+  <bd-alg:SoftwareSupplierCode contextRef="c1">DIGW</bd-alg:SoftwareSupplierCode>
+  <bd-alg:SoftwareVendorAccountNumber contextRef="c1">swo99999</bd-alg:SoftwareVendorAccountNumber>
+  <bd-alg:Surname contextRef="c1">Enden</bd-alg:Surname>
+  <bd-alg:TaxReturnMessageType contextRef="c1">64</bd-alg:TaxReturnMessageType>
+  <bd-alg:TelephoneNumber contextRef="c1">030-1254460</bd-alg:TelephoneNumber>
+  <bd-bedr:BalanceProfitComparisonMethod decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:BalanceProfitComparisonMethod>
+  <bd-bedr:BusinessCapitalTotalEndFinancialYearForComparisonMethod decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:BusinessCapitalTotalEndFinancialYearForComparisonMethod>
+  <bd-bedr:BusinessCapitalTotalStartFinancialYearForComparisonMethod decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:BusinessCapitalTotalStartFinancialYearForComparisonMethod>
+  <bd-bedr:BusinessIncome decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:BusinessIncome>
+  <bd-bedr:CapitalComparisonDifferenceOfCapitalTotal decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:CapitalComparisonDifferenceOfCapitalTotal>
+  <bd-bedr:FinalAssetsAndCapitalWithdrawalsTotal decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:FinalAssetsAndCapitalWithdrawalsTotal>
+  <bd-bedr:InitialCapitalAndCapitalContributionsTotal decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:InitialCapitalAndCapitalContributionsTotal>
+  <bd-bedr:RequestExplicitDecisionTaxAdministrationExists contextRef="c1">false</bd-bedr:RequestExplicitDecisionTaxAdministrationExists>
+  <bd-bedr:TaxableProfit decimals="INF" contextRef="c1" unitRef="u1">0</bd-bedr:TaxableProfit>
+  <bd-burg:LivingTogetherSpousesExists contextRef="c1">false</bd-burg:LivingTogetherSpousesExists>
+  <bd-burg:WagesHealthInsuranceLawMaximumContribution contextRef="c1">false</bd-burg:WagesHealthInsuranceLawMaximumContribution>
+  <bd-bedr:AssetsAndOrLiabilitiesValuationSystemChangeIncomeTaxExists contextRef="c2">false</bd-bedr:AssetsAndOrLiabilitiesValuationSystemChangeIncomeTaxExists>
+  <bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal decimals="INF" contextRef="c2" unitRef="u1">0</bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal>
+  <bd-bedr:BusinessActivitiesDescription contextRef="c2">geen activiteiten</bd-bedr:BusinessActivitiesDescription>
+  <bd-bedr:BusinessAssetsOtherWithdrawalOrContributionExists contextRef="c2">false</bd-bedr:BusinessAssetsOtherWithdrawalOrContributionExists>
+  <bd-bedr:BusinessAssetsRandomDepreciationNetherlandsIncometaxExists contextRef="c2">false</bd-bedr:BusinessAssetsRandomDepreciationNetherlandsIncometaxExists>
+  <bd-bedr:BusinessKeepAtOwnExpenseRisk contextRef="c2">true</bd-bedr:BusinessKeepAtOwnExpenseRisk>
+  <bd-bedr:BusinessName contextRef="c2">De Lege Firma</bd-bedr:BusinessName>
+  <bd-bedr:BusinessRevenuesFiscalTotal decimals="INF" contextRef="c2" unitRef="u1">0</bd-bedr:BusinessRevenuesFiscalTotal>
+  <bd-bedr:CompensationExcludedFromTaxableProfitExists contextRef="c2">false</bd-bedr:CompensationExcludedFromTaxableProfitExists>
+  <bd-bedr:ImmovablePropertyContribution contextRef="c2">false</bd-bedr:ImmovablePropertyContribution>
+  <bd-bedr:ImmovablePropertyWithdrawal contextRef="c2">false</bd-bedr:ImmovablePropertyWithdrawal>
+  <bd-bedr:LiabilitiesTotalFiscal decimals="INF" contextRef="c3" unitRef="u1">0</bd-bedr:LiabilitiesTotalFiscal>
+  <bd-bedr:NormalBusinessActivitiesBusinessResultTotalFiscal decimals="INF" contextRef="c2" unitRef="u1">0</bd-bedr:NormalBusinessActivitiesBusinessResultTotalFiscal>
+  <bd-bedr:TurnoverNetFiscal decimals="INF" contextRef="c2" unitRef="u1">0</bd-bedr:TurnoverNetFiscal>
+</xbrli:xbrl>
