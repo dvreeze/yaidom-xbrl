@@ -16,11 +16,10 @@
 
 package eu.cdevreeze.yaidom.xbrl
 
-import eu.cdevreeze.yaidom.EName
-
 /**
- * This package contains the model for XBRL instances. These XBRL instances wrap the XML, and offer the ElemApi query API.
+ * This package contains the model for XBRL instances as purely abstract API. Typical implementations of this API are entirely
+ * immutable.
  *
  * @author Chris de Vreeze
  */
-package object xbrlinstance
+package object xbrli

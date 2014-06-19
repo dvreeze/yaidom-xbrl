@@ -25,9 +25,9 @@ import org.junit.runner.RunWith
 import org.scalatest.Suite
 import ElemApi.withEName
 import eu.cdevreeze.yaidom.Document
-import eu.cdevreeze.yaidom.xbrl.xbrlinstance.ItemFact
-import eu.cdevreeze.yaidom.xbrl.xbrlinstance.XbrlInstanceDocument
 import org.scalatest.junit.JUnitRunner
+import eu.cdevreeze.yaidom.xbrl.xbrli.yaidomimpl
+import eu.cdevreeze.yaidom.xbrl.xbrli.yaidomimpl.defaultimpl.XbrlInstanceDocument
 
 /**
  * BD formula test.
@@ -66,7 +66,7 @@ class BdFormulaTest extends Suite {
     import ElemApi._
 
     require {
-      xbrlInstanceDoc.xbrlInstance.topLevelItems.size >= 20
+      xbrlInstanceDoc.xbrlInstance.allTopLevelItems.size >= 20
     }
 
     require(xbrlInstanceDoc.wrappedDoc.documentElement.findAllElemsOrSelf.map(_.scope).toSet.size == 1)
@@ -76,28 +76,28 @@ class BdFormulaTest extends Suite {
 
     // The "value assertion" itself
 
-    val saldoVolgensVermogensVergelijkingFacts: immutable.IndexedSeq[ItemFact] = {
+    val saldoVolgensVermogensVergelijkingFacts: immutable.IndexedSeq[yaidomimpl.ItemFact] = {
       val factsFilteredOnName =
-        xbrlInstanceDoc.xbrlInstance.filterItems(QName("bd-bedr:BalanceProfitComparisonMethod").res)
+        xbrlInstanceDoc.xbrlInstance.filterItems(e => e.wrappedElem.resolvedName == QName("bd-bedr:BalanceProfitComparisonMethod").res)
 
       factsFilteredOnName filter { fact =>
-        val context = xbrlInstanceDoc.xbrlInstance.contextsById(fact.contextRef)
+        val context = xbrlInstanceDoc.xbrlInstance.allContextsById(fact.contextRef)
         context.filterElems(withEName(QName("xbrldi:explicitMember").res)) exists { elem =>
-          (elem.wrappedElem.elem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
-            (elem.wrappedElem.elem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
+          (elem.toElem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
+            (elem.toElem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
         }
       }
     }
 
-    val saldoFacts: immutable.IndexedSeq[ItemFact] = {
+    val saldoFacts: immutable.IndexedSeq[yaidomimpl.ItemFact] = {
       val factsFilteredOnName =
-        xbrlInstanceDoc.xbrlInstance.filterItems(QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal").res)
+        xbrlInstanceDoc.xbrlInstance.filterItems(e => e.wrappedElem.resolvedName == QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal").res)
 
       factsFilteredOnName filter { fact =>
-        val context = xbrlInstanceDoc.xbrlInstance.contextsById(fact.contextRef)
+        val context = xbrlInstanceDoc.xbrlInstance.allContextsById(fact.contextRef)
         context.filterElems(withEName(QName("xbrldi:explicitMember").res)) exists { elem =>
-          (elem.wrappedElem.elem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
-            (elem.wrappedElem.elem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
+          (elem.toElem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
+            (elem.toElem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
         }
       }
     }

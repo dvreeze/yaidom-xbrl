@@ -29,8 +29,7 @@ import org.junit.{ Test, Before, Ignore }
 import org.junit.runner.RunWith
 import org.scalatest.{ Suite, BeforeAndAfterAll }
 import org.scalatest.junit.JUnitRunner
-import eu.cdevreeze.yaidom.xbrl.xbrlinstance.XbrlInstanceDocument
-import eu.cdevreeze.yaidom.xbrl.xbrlinstance.XbrliContext
+import eu.cdevreeze.yaidom.xbrl.xbrli.yaidomimpl.defaultimpl.XbrlInstanceDocument
 
 /**
  * NL-FRIS validation test. It shows how yaidom's extensibility and yaidom-XBRL can help in precise and clear validation
@@ -77,16 +76,17 @@ class NlFrisTest extends Suite {
     import ElemApi._
 
     require {
-      xbrlInstanceDoc.xbrlInstance.topLevelItems.size >= 20
+      xbrlInstanceDoc.xbrlInstance.allTopLevelItems.size >= 20
     }
 
-    val bw2iNs = xbrlInstanceDoc.xbrlInstance.wrappedElem.elem.scope.prefixNamespaceMap("bw2-i")
+    val bw2iNs =
+      xbrlInstanceDoc.xbrlInstance.toElem.scope.prefixNamespaceMap("bw2-i")
 
-    val entityFacts = xbrlInstanceDoc.xbrlInstance.filterFacts(EName(bw2iNs, "EntityName"))
+    val entityFacts = xbrlInstanceDoc.xbrlInstance.filterFacts(e => e.wrappedElem.resolvedName == EName(bw2iNs, "EntityName"))
     require(entityFacts.forall(e => !e.isTopLevel))
 
     val entityFactsInTuples =
-      xbrlInstanceDoc.xbrlInstance.topLevelTuples.flatMap(e => e.filterFacts(EName(bw2iNs, "EntityName")))
+      xbrlInstanceDoc.xbrlInstance.allTopLevelTuples.flatMap(e => e.filterFacts(e => e.wrappedElem.resolvedName == EName(bw2iNs, "EntityName")))
 
     assertResult(entityFacts) {
       entityFactsInTuples
@@ -160,13 +160,13 @@ class NlFrisTest extends Suite {
     xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf forall { e =>
       val expectedPrefixOption = e.resolvedName.namespaceUriOption.flatMap(ns => namespacePrefixMap.get(ns))
 
-      (expectedPrefixOption.isEmpty) || (e.wrappedElem.elem.qname.prefixOption == expectedPrefixOption)
+      (expectedPrefixOption.isEmpty) || (e.toElem.qname.prefixOption == expectedPrefixOption)
     }
   }
 
   /** Checks NL-FRIS 8.0, rule 2.1.4. */
   private def hasNoCData(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf.forall(e => !e.wrappedElem.elem.textChildren.exists(_.isCData))
+    xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf.forall(e => !e.toElem.textChildren.exists(_.isCData))
   }
 
   /** Checks NL-FRIS 8.0, rule 2.1.5. */
@@ -176,19 +176,19 @@ class NlFrisTest extends Suite {
 
   /** Checks NL-FRIS 8.0, rule 2.2.1. */
   private def hasAtMostOneSchemaRef(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.schemaRefs.size <= 1
+    xbrlInstanceDoc.xbrlInstance.findAllSchemaRefs.size <= 1
   }
 
   /** Checks NL-FRIS 8.0, rule 2.2.1. */
   private def hasNoLinkbaseRef(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.linkbaseRefs.isEmpty
+    xbrlInstanceDoc.xbrlInstance.findAllLinkbaseRefs.isEmpty
   }
 
   /** Checks NL-FRIS 8.0, rule 2.4.1. */
   private def hasNoUnusedContexts(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    val usedContextIds = xbrlInstanceDoc.xbrlInstance.items.map(_.contextRef).toSet
+    val usedContextIds = xbrlInstanceDoc.xbrlInstance.findAllItems.map(_.contextRef).toSet
 
-    val allContextIds = xbrlInstanceDoc.xbrlInstance.contextsById.keySet
+    val allContextIds = xbrlInstanceDoc.xbrlInstance.allContextsById.keySet
 
     val unusedContextIds = allContextIds diff usedContextIds
     unusedContextIds.isEmpty
@@ -199,13 +199,13 @@ class NlFrisTest extends Suite {
     val dateFormatter = ISODateTimeFormat.date()
 
     val startDatesByContextId: Map[String, LocalDate] =
-      xbrlInstanceDoc.xbrlInstance.contextsById filter { case (id, ctx) => ctx.period.isFiniteDuration } mapValues { ctx =>
+      xbrlInstanceDoc.xbrlInstance.allContextsById filter { case (id, ctx) => ctx.period.isFiniteDuration } mapValues { ctx =>
         val s = ctx.period.getChildElem(XbrliStartDateEName).wrappedElem.text
         dateFormatter.parseLocalDate(s)
       }
 
     val endDatesByContextId: Map[String, LocalDate] =
-      xbrlInstanceDoc.xbrlInstance.contextsById filter { case (id, ctx) => ctx.period.isFiniteDuration } mapValues { ctx =>
+      xbrlInstanceDoc.xbrlInstance.allContextsById filter { case (id, ctx) => ctx.period.isFiniteDuration } mapValues { ctx =>
         val s = ctx.period.getChildElem(XbrliEndDateEName).wrappedElem.text
         dateFormatter.parseLocalDate(s)
       }
@@ -225,11 +225,11 @@ class NlFrisTest extends Suite {
 
   /** Checks NL-FRIS 8.0, rule 2.5.2. */
   private def hasNoPeriodWithTime(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.contexts.filter(e => !e.period.isForever) forall {
-      case e: XbrliContext if e.period.isInstant =>
+    xbrlInstanceDoc.xbrlInstance.allContexts.filter(e => !e.period.isForever) forall {
+      case e: xbrli.XbrliContext if e.period.isInstant =>
         val instant = e.period.getChildElem(XbrliInstantEName).wrappedElem.text
         !instant.contains("T")
-      case e: XbrliContext if e.period.isFiniteDuration =>
+      case e: xbrli.XbrliContext if e.period.isFiniteDuration =>
         val startDate = e.period.getChildElem(XbrliStartDateEName).wrappedElem.text
         val endDate = e.period.getChildElem(XbrliEndDateEName).wrappedElem.text
         !startDate.contains("T") && !endDate.contains("T")
@@ -240,11 +240,11 @@ class NlFrisTest extends Suite {
 
   /** Checks NL-FRIS 8.0, rule 2.5.3. */
   private def hasNoPeriodForever(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.contexts.filter(_.period.isForever).isEmpty
+    xbrlInstanceDoc.xbrlInstance.allContexts.filter(_.period.isForever).isEmpty
   }
 
   /** Checks NL-FRIS 8.0, rule 2.9. */
   private def hasNoFootnotes(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.footnoteLinks.isEmpty
+    xbrlInstanceDoc.xbrlInstance.findAllFootnoteLinks.isEmpty
   }
 }

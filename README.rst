@@ -45,3 +45,34 @@ The locator attributes, if referring to element declarations, have a QName as va
 to get semantics). Of course the QName must be resolvable using the in-scope namespaces.
 
 The element name of the arc is determined by a mapping from pairs of original element name and arcrole to yaidom-XBRL element names.
+
+At a lower level, replace XLink by a lighter variant without locators. For example:
+
+<link:presentationArc
+  xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+  xlink:from="kvk-abstr_IntangibleAssetsTitle_loc"
+  xlink:to="bw2-i_CostsIncorporationShareIssue_loc"
+  xlink:type="arc"
+  order="1004"/>
+
+becomes:
+
+<yx-link:presentationArc
+  yx-xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+  yx-xlink:fromQName="kvk-abstr:IntangibleAssetsTitle"
+  yx-xlink:toQName="bw2-i:CostsIncorporationShareIssue"
+  yx-xlink:type="qname-qname-arc"
+  order="1004"/>
+
+Alternatively, augment linkbases with extra attributes:
+
+<link:presentationArc
+  xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+  xlink:from="kvk-abstr_IntangibleAssetsTitle_loc"
+  xlink:to="bw2-i_CostsIncorporationShareIssue_loc"
+  xlink:type="arc"
+  yx-xlink:fromQName="kvk-abstr:IntangibleAssetsTitle"
+  yx-xlink:toQName="bw2-i:CostsIncorporationShareIssue"
+  yx-xlink:type="qname-qname-arc"
+  order="1004"/>
+

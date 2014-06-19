@@ -11,11 +11,11 @@ version := "0.1.0-SNAPSHOT"
 
 scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.10.4")
+crossScalaVersions := Seq("2.10.4", "2.11.0")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
-libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "0.8.0"
+libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "0.8.1"
 
 libraryDependencies += ("joda-time" % "joda-time" % "2.3").intransitive()
 
@@ -23,7 +23,7 @@ libraryDependencies += ("org.joda" % "joda-convert" % "1.2").intransitive()
 
 libraryDependencies += "junit" % "junit" % "4.11" % "test"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.0" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.3" % "test"
 
 publishMavenStyle := true
 

@@ -42,7 +42,9 @@ package object xbrl {
   val XbrliForeverEName = EName(XbrliNs, "forever")
   val XbrliMeasureEName = EName(XbrliNs, "measure")
   val XbrliDivideEName = EName(XbrliNs, "divide")
-  val XbrliUnitNominatorEName = EName(XbrliNs, "unitNominator")
+  val XbrliNumeratorEName = EName(XbrliNs, "numerator")
+  val XbrliDenominatorEName = EName(XbrliNs, "denominator")
+  val XbrliUnitNumeratorEName = EName(XbrliNs, "unitNumerator")
   val XbrliUnitDenominatorEName = EName(XbrliNs, "unitDenominator")
 
   val LinkSchemaRefEName = EName(LinkNs, "schemaRef")
@@ -58,4 +60,6 @@ package object xbrl {
   val IdEName = EName("id")
   val ContextRefEName = EName("contextRef")
   val UnitRefEName = EName("unitRef")
+  val PrecisionEName = EName("precision")
+  val DecimalsEName = EName("decimals")
 }
