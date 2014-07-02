@@ -29,6 +29,7 @@ import org.junit.{ Test, Before, Ignore }
 import org.junit.runner.RunWith
 import org.scalatest.{ Suite, BeforeAndAfterAll }
 import org.scalatest.junit.JUnitRunner
+import eu.cdevreeze.yaidom.ElemApi._
 import eu.cdevreeze.yaidom.xbrl.xbrli.yaidomimpl.defaultimpl.XbrlInstanceDocument
 
 /**
@@ -82,11 +83,11 @@ class NlFrisTest extends Suite {
     val bw2iNs =
       xbrlInstanceDoc.xbrlInstance.toElem.scope.prefixNamespaceMap("bw2-i")
 
-    val entityFacts = xbrlInstanceDoc.xbrlInstance.filterFacts(e => e.wrappedElem.resolvedName == EName(bw2iNs, "EntityName"))
+    val entityFacts = xbrlInstanceDoc.xbrlInstance.filterFacts(withEName(EName(bw2iNs, "EntityName")))
     require(entityFacts.forall(e => !e.isTopLevel))
 
     val entityFactsInTuples =
-      xbrlInstanceDoc.xbrlInstance.allTopLevelTuples.flatMap(e => e.filterFacts(e => e.wrappedElem.resolvedName == EName(bw2iNs, "EntityName")))
+      xbrlInstanceDoc.xbrlInstance.allTopLevelTuples.flatMap(e => e.filterFacts(withEName(EName(bw2iNs, "EntityName"))))
 
     assertResult(entityFacts) {
       entityFactsInTuples

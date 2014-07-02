@@ -78,7 +78,7 @@ class BdFormulaTest extends Suite {
 
     val saldoVolgensVermogensVergelijkingFacts: immutable.IndexedSeq[yaidomimpl.ItemFact] = {
       val factsFilteredOnName =
-        xbrlInstanceDoc.xbrlInstance.filterItems(e => e.wrappedElem.resolvedName == QName("bd-bedr:BalanceProfitComparisonMethod").res)
+        xbrlInstanceDoc.xbrlInstance.filterItems(withEName(QName("bd-bedr:BalanceProfitComparisonMethod").res))
 
       factsFilteredOnName filter { fact =>
         val context = xbrlInstanceDoc.xbrlInstance.allContextsById(fact.contextRef)
@@ -91,7 +91,7 @@ class BdFormulaTest extends Suite {
 
     val saldoFacts: immutable.IndexedSeq[yaidomimpl.ItemFact] = {
       val factsFilteredOnName =
-        xbrlInstanceDoc.xbrlInstance.filterItems(e => e.wrappedElem.resolvedName == QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal").res)
+        xbrlInstanceDoc.xbrlInstance.filterItems(withEName(QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal").res))
 
       factsFilteredOnName filter { fact =>
         val context = xbrlInstanceDoc.xbrlInstance.allContextsById(fact.contextRef)
@@ -110,7 +110,7 @@ class BdFormulaTest extends Suite {
         if saldoVolgensVermogensVergelijking.contextRef == saldo.contextRef
       } yield {
         // The value assertion test
-        BigDecimal(saldoVolgensVermogensVergelijking.wrappedElem.text.trim) == BigDecimal(saldo.wrappedElem.text.trim)
+        BigDecimal(saldoVolgensVermogensVergelijking.text.trim) == BigDecimal(saldo.text.trim)
       }
 
     assertResult(1) {
