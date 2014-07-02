@@ -23,16 +23,18 @@ import scala.collection.immutable
  * XML element inside XBRL instance (or the entire XBRL instance itself). Typical implementations of this API are entirely
  * immutable.
  *
+ * This API is not detailed enough to program against in API client code. For example, it does not know about the wrapped elements.
+ * Yet this API enforces a contract that implementations must adhere to.
+ *
  * @author Chris de Vreeze
  */
 trait XbrliElem {
 
-  /**
-   * The underlying DOM tree type, offering the ElemApi query API itself
-   */
-  type E <: ElemApi[E] with HasText
+  type FactType <: Fact
 
-  def wrappedElem: E
+  type ItemFactType <: ItemFact
+
+  type TupleFactType <: TupleFact
 }
 
 /**
@@ -75,17 +77,17 @@ trait XbrlInstance extends XbrliElem {
 
   def findAllTopLevelTuplesByEName: Map[EName, immutable.IndexedSeq[TupleFact]]
 
-  def filterFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact]
+  def filterFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
 
-  def filterItems(p: ItemFact => Boolean): immutable.IndexedSeq[ItemFact]
+  def filterItems(p: ItemFactType => Boolean): immutable.IndexedSeq[ItemFact]
 
-  def filterTuples(p: TupleFact => Boolean): immutable.IndexedSeq[TupleFact]
+  def filterTuples(p: TupleFactType => Boolean): immutable.IndexedSeq[TupleFact]
 
-  def filterTopLevelFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact]
+  def filterTopLevelFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
 
-  def filterTopLevelItems(p: ItemFact => Boolean): immutable.IndexedSeq[ItemFact]
+  def filterTopLevelItems(p: ItemFactType => Boolean): immutable.IndexedSeq[ItemFact]
 
-  def filterTopLevelTuples(p: TupleFact => Boolean): immutable.IndexedSeq[TupleFact]
+  def filterTopLevelTuples(p: TupleFactType => Boolean): immutable.IndexedSeq[TupleFact]
 
   def findAllSchemaRefs: immutable.IndexedSeq[SchemaRef]
 
@@ -228,9 +230,9 @@ trait TupleFact extends Fact {
 
   def findAllFacts: immutable.IndexedSeq[Fact]
 
-  def filterChildFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact]
+  def filterChildFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
 
-  def filterFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact]
+  def filterFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
 }
 
 /**

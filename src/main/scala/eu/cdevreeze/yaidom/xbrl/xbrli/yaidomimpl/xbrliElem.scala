@@ -31,6 +31,19 @@ import ElemApi._
  */
 trait XbrliElem extends xbrli.XbrliElem with ElemLike[XbrliElem] with HasText {
 
+  type FactType = Fact
+
+  type ItemFactType = ItemFact
+
+  type TupleFactType = TupleFact
+
+  /**
+   * The underlying DOM tree type, offering the ElemApi query API itself
+   */
+  type E <: ElemApi[E] with HasText
+
+  def wrappedElem: E
+
   def toElem: Elem
 
   def findAllChildElems: immutable.IndexedSeq[XbrliElem]
@@ -105,27 +118,27 @@ trait XbrlInstance extends XbrliElem with xbrli.XbrlInstance {
     findAllTopLevelTuples groupBy (e => e.resolvedName)
   }
 
-  final def filterFacts(p: xbrli.Fact => Boolean): immutable.IndexedSeq[Fact] = {
+  final def filterFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact] = {
     findAllFacts filter (e => p(e))
   }
 
-  final def filterItems(p: xbrli.ItemFact => Boolean): immutable.IndexedSeq[ItemFact] = {
+  final def filterItems(p: ItemFactType => Boolean): immutable.IndexedSeq[ItemFact] = {
     findAllItems filter (e => p(e))
   }
 
-  final def filterTuples(p: xbrli.TupleFact => Boolean): immutable.IndexedSeq[TupleFact] = {
+  final def filterTuples(p: TupleFactType => Boolean): immutable.IndexedSeq[TupleFact] = {
     findAllTuples filter (e => p(e))
   }
 
-  final def filterTopLevelFacts(p: xbrli.Fact => Boolean): immutable.IndexedSeq[Fact] = {
+  final def filterTopLevelFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact] = {
     findAllTopLevelFacts filter (e => p(e))
   }
 
-  final def filterTopLevelItems(p: xbrli.ItemFact => Boolean): immutable.IndexedSeq[ItemFact] = {
+  final def filterTopLevelItems(p: ItemFactType => Boolean): immutable.IndexedSeq[ItemFact] = {
     findAllTopLevelItems filter (e => p(e))
   }
 
-  final def filterTopLevelTuples(p: xbrli.TupleFact => Boolean): immutable.IndexedSeq[TupleFact] = {
+  final def filterTopLevelTuples(p: TupleFactType => Boolean): immutable.IndexedSeq[TupleFact] = {
     findAllTopLevelTuples filter (e => p(e))
   }
 
@@ -232,11 +245,11 @@ trait TupleFact extends Fact with xbrli.TupleFact {
     findAllElems collect { case e: Fact => e }
   }
 
-  final def filterChildFacts(p: xbrli.Fact => Boolean): immutable.IndexedSeq[Fact] = {
+  final def filterChildFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact] = {
     findAllChildFacts filter (e => p(e))
   }
 
-  final def filterFacts(p: xbrli.Fact => Boolean): immutable.IndexedSeq[Fact] = {
+  final def filterFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact] = {
     findAllFacts filter (e => p(e))
   }
 }
