@@ -18,19 +18,23 @@ package eu.cdevreeze.yaidom
 package xbrl
 package integrationtest
 
-import java.net.URI
-import java.util.Properties
 import java.io.File
-import javax.xml.parsers._
+import java.util.Properties
+
+import scala.collection.JavaConverters.propertiesAsScalaMapConverter
 import scala.collection.immutable
+
 import org.joda.time.LocalDate
 import org.joda.time.format.ISODateTimeFormat
-import org.junit.{ Test, Before, Ignore }
+import org.junit.Test
 import org.junit.runner.RunWith
-import org.scalatest.{ Suite, BeforeAndAfterAll }
 import org.scalatest.junit.JUnitRunner
-import eu.cdevreeze.yaidom.ElemApi._
-import eu.cdevreeze.yaidom.xbrl.xbrli.yaidomimpl.defaultimpl.XbrlInstanceDocument
+import org.scalatest.Suite
+
+import ElemApi.withEName
+import eu.cdevreeze.yaidom.Document
+import eu.cdevreeze.yaidom.xbrl.xbrli.DomElem.IndexedDomElem
+import eu.cdevreeze.yaidom.xbrl.xbrli.XbrlInstanceDocument
 
 /**
  * NL-FRIS validation test. It shows how yaidom's extensibility and yaidom-XBRL can help in precise and clear validation
@@ -72,7 +76,7 @@ class NlFrisTest extends Suite {
     val doc: Document =
       docParser.parse(new File(parentDir, "kvk-rpt-grote-rechtspersoon-geconsolideerd-model-b-e-indirect-2013.xbrl"))
 
-    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(indexed.Document(doc))
+    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(doc.uriOption, indexed.Elem(doc.documentElement))
 
     import ElemApi._
 
@@ -81,7 +85,7 @@ class NlFrisTest extends Suite {
     }
 
     val bw2iNs =
-      xbrlInstanceDoc.xbrlInstance.toElem.scope.prefixNamespaceMap("bw2-i")
+      xbrlInstanceDoc.xbrlInstance.wrappedElem.scope.prefixNamespaceMap("bw2-i")
 
     val entityFacts = xbrlInstanceDoc.xbrlInstance.filterFacts(withEName(EName(bw2iNs, "EntityName")))
     require(entityFacts.forall(e => !e.isTopLevel))
@@ -161,13 +165,13 @@ class NlFrisTest extends Suite {
     xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf forall { e =>
       val expectedPrefixOption = e.resolvedName.namespaceUriOption.flatMap(ns => namespacePrefixMap.get(ns))
 
-      (expectedPrefixOption.isEmpty) || (e.toElem.qname.prefixOption == expectedPrefixOption)
+      (expectedPrefixOption.isEmpty) || (e.wrappedElem.toElem.qname.prefixOption == expectedPrefixOption)
     }
   }
 
   /** Checks NL-FRIS 8.0, rule 2.1.4. */
   private def hasNoCData(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
-    xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf.forall(e => !e.toElem.textChildren.exists(_.isCData))
+    xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf.forall(e => !e.wrappedElem.toElem.textChildren.exists(_.isCData))
   }
 
   /** Checks NL-FRIS 8.0, rule 2.1.5. */
@@ -201,13 +205,13 @@ class NlFrisTest extends Suite {
 
     val startDatesByContextId: Map[String, LocalDate] =
       xbrlInstanceDoc.xbrlInstance.allContextsById filter { case (id, ctx) => ctx.period.isFiniteDuration } mapValues { ctx =>
-        val s = ctx.period.getChildElem(XbrliStartDateEName).wrappedElem.text
+        val s = ctx.period.getChildElem(XbrliStartDateEName).wrappedElem.elem.text
         dateFormatter.parseLocalDate(s)
       }
 
     val endDatesByContextId: Map[String, LocalDate] =
       xbrlInstanceDoc.xbrlInstance.allContextsById filter { case (id, ctx) => ctx.period.isFiniteDuration } mapValues { ctx =>
-        val s = ctx.period.getChildElem(XbrliEndDateEName).wrappedElem.text
+        val s = ctx.period.getChildElem(XbrliEndDateEName).wrappedElem.elem.text
         dateFormatter.parseLocalDate(s)
       }
 
@@ -228,11 +232,11 @@ class NlFrisTest extends Suite {
   private def hasNoPeriodWithTime(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
     xbrlInstanceDoc.xbrlInstance.allContexts.filter(e => !e.period.isForever) forall {
       case e: xbrli.XbrliContext if e.period.isInstant =>
-        val instant = e.period.getChildElem(XbrliInstantEName).wrappedElem.text
+        val instant = e.period.getChildElem(XbrliInstantEName).wrappedElem.elem.text
         !instant.contains("T")
       case e: xbrli.XbrliContext if e.period.isFiniteDuration =>
-        val startDate = e.period.getChildElem(XbrliStartDateEName).wrappedElem.text
-        val endDate = e.period.getChildElem(XbrliEndDateEName).wrappedElem.text
+        val startDate = e.period.getChildElem(XbrliStartDateEName).wrappedElem.elem.text
+        val endDate = e.period.getChildElem(XbrliEndDateEName).wrappedElem.elem.text
         !startDate.contains("T") && !endDate.contains("T")
       case _ =>
         true

@@ -15,89 +15,186 @@
  */
 
 package eu.cdevreeze.yaidom
-package xbrl.xbrli
+package xbrl
+package xbrli
 
 import scala.collection.immutable
 
+import ElemApi.withEName
+import eu.cdevreeze.yaidom.EName
+import eu.cdevreeze.yaidom.ElemLike
+import eu.cdevreeze.yaidom.HasText
+import eu.cdevreeze.yaidom.Path
+
 /**
- * XML element inside XBRL instance (or the entire XBRL instance itself). Typical implementations of this API are entirely
- * immutable.
+ * XML element inside XBRL instance (or the entire XBRL instance itself). This API is immutable if the wrapped element is
+ * immutable, which should be the case.
  *
- * This API is not detailed enough to program against in API client code. For example, it does not know about the wrapped elements.
- * Yet this API enforces a contract that implementations must adhere to.
+ * Implementation notes: This trait and its sub-traits form a type hierarchy. That would not go well together with type parameters
+ * for underlying DOM trees. To prevent these type parameters, non-generic class DomElem is used for the wrapped DOM elements.
+ *
+ * Also note that the package-private constructor contains redundant data, in order to speed up (yaidom-based) querying.
  *
  * @author Chris de Vreeze
  */
-trait XbrliElem {
+sealed class XbrliElem private[xbrli] (
+  val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends ElemLike[XbrliElem] with HasText {
 
-  type FactType <: Fact
+  require(childElems.map(_.wrappedElem.elem) == wrappedElem.elem.findAllChildElems)
 
-  type ItemFactType <: ItemFact
+  /**
+   * Very fast implementation of findAllChildElems, for fast querying
+   */
+  final def findAllChildElems: immutable.IndexedSeq[XbrliElem] = childElems
 
-  type TupleFactType <: TupleFact
+  final def resolvedName: EName = wrappedElem.elem.resolvedName
+
+  final def resolvedAttributes: immutable.Iterable[(EName, String)] = wrappedElem.elem.resolvedAttributes
+
+  final def text: String = wrappedElem.elem.text
+
+  final def getTextAsEName: EName = wrappedElem.textAsResolvedQName
 }
 
 /**
  * XBRL instance.
  *
- * Implementations typically do not check validity of the XBRL instance. Neither do they know about the DTS describing the XBRL instance.
- * They do, however, contain the entrypoint URI(s) to the DTS.
+ * It does not check validity of the XBRL instance. Neither does it know about the DTS describing the XBRL instance.
+ * It does, however, contain the entrypoint URI(s) to the DTS.
  *
- * Without any knowledge about the DTS, implementations only recognize (item and tuple) facts by looking at the
+ * Without any knowledge about the DTS, this class only recognizes (item and tuple) facts by looking at the
  * structure of the element and its ancestry. Attribute @contextRef is only allowed for item facts, and tuple facts can be
  * recognized by looking at the "path" of the element.
  *
  * @author Chris de Vreeze
  */
-trait XbrlInstance extends XbrliElem {
+final class XbrlInstance private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def findAllContexts: immutable.IndexedSeq[XbrliContext]
+  require(resolvedName == XbrliXbrlEName, s"Expected EName $XbrliXbrlEName but found $resolvedName")
 
-  def findAllContextsById: Map[String, XbrliContext]
+  val allContexts: immutable.IndexedSeq[XbrliContext] = findAllContexts
 
-  def findAllUnits: immutable.IndexedSeq[XbrliUnit]
+  val allContextsById: Map[String, XbrliContext] = findAllContextsById
 
-  def findAllUnitsById: Map[String, XbrliUnit]
+  val allUnits: immutable.IndexedSeq[XbrliUnit] = findAllUnits
 
-  def findAllFacts: immutable.IndexedSeq[Fact]
+  val allUnitsById: Map[String, XbrliUnit] = findAllUnitsById
 
-  def findAllItems: immutable.IndexedSeq[ItemFact]
+  val allTopLevelFacts: immutable.IndexedSeq[Fact] = findAllTopLevelFacts
 
-  def findAllTuples: immutable.IndexedSeq[TupleFact]
+  val allTopLevelItems: immutable.IndexedSeq[ItemFact] = findAllTopLevelItems
 
-  def findAllTopLevelFacts: immutable.IndexedSeq[Fact]
+  val allTopLevelTuples: immutable.IndexedSeq[TupleFact] = findAllTopLevelTuples
 
-  def findAllTopLevelItems: immutable.IndexedSeq[ItemFact]
+  val allTopLevelFactsByEName: Map[EName, immutable.IndexedSeq[Fact]] =
+    findAllTopLevelFactsByEName
 
-  def findAllTopLevelTuples: immutable.IndexedSeq[TupleFact]
+  val allTopLevelItemsByEName: Map[EName, immutable.IndexedSeq[ItemFact]] =
+    findAllTopLevelItemsByEName
 
-  def findAllTopLevelFactsByEName: Map[EName, immutable.IndexedSeq[Fact]]
+  val allTopLevelTuplesByEName: Map[EName, immutable.IndexedSeq[TupleFact]] =
+    findAllTopLevelTuplesByEName
 
-  def findAllTopLevelItemsByEName: Map[EName, immutable.IndexedSeq[ItemFact]]
+  def findAllFacts: immutable.IndexedSeq[Fact] = {
+    findAllTopLevelFacts flatMap (e => e.findAllElemsOrSelf) collect { case e: Fact => e }
+  }
 
-  def findAllTopLevelTuplesByEName: Map[EName, immutable.IndexedSeq[TupleFact]]
+  def findAllItems: immutable.IndexedSeq[ItemFact] = {
+    findAllFacts collect { case e: ItemFact => e }
+  }
 
-  def filterFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
+  def findAllTuples: immutable.IndexedSeq[TupleFact] = {
+    findAllFacts collect { case e: TupleFact => e }
+  }
 
-  def filterItems(p: ItemFactType => Boolean): immutable.IndexedSeq[ItemFact]
+  def filterFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact] = {
+    findAllFacts filter (e => p(e))
+  }
 
-  def filterTuples(p: TupleFactType => Boolean): immutable.IndexedSeq[TupleFact]
+  def filterItems(p: ItemFact => Boolean): immutable.IndexedSeq[ItemFact] = {
+    findAllItems filter (e => p(e))
+  }
 
-  def filterTopLevelFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
+  def filterTuples(p: TupleFact => Boolean): immutable.IndexedSeq[TupleFact] = {
+    findAllTuples filter (e => p(e))
+  }
 
-  def filterTopLevelItems(p: ItemFactType => Boolean): immutable.IndexedSeq[ItemFact]
+  def filterTopLevelFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact] = {
+    findAllTopLevelFacts filter (e => p(e))
+  }
 
-  def filterTopLevelTuples(p: TupleFactType => Boolean): immutable.IndexedSeq[TupleFact]
+  def filterTopLevelItems(p: ItemFact => Boolean): immutable.IndexedSeq[ItemFact] = {
+    findAllTopLevelItems filter (e => p(e))
+  }
 
-  def findAllSchemaRefs: immutable.IndexedSeq[SchemaRef]
+  def filterTopLevelTuples(p: TupleFact => Boolean): immutable.IndexedSeq[TupleFact] = {
+    findAllTopLevelTuples filter (e => p(e))
+  }
 
-  def findAllLinkbaseRefs: immutable.IndexedSeq[LinkbaseRef]
+  def findAllSchemaRefs: immutable.IndexedSeq[SchemaRef] = {
+    filterChildElems(LinkSchemaRefEName) collect { case e: SchemaRef => e }
+  }
 
-  def findAllRoleRefs: immutable.IndexedSeq[RoleRef]
+  def findAllLinkbaseRefs: immutable.IndexedSeq[LinkbaseRef] = {
+    filterChildElems(LinkLinkbaseRefEName) collect { case e: LinkbaseRef => e }
+  }
 
-  def findAllArcroleRefs: immutable.IndexedSeq[ArcroleRef]
+  def findAllRoleRefs: immutable.IndexedSeq[RoleRef] = {
+    filterChildElems(LinkRoleRefEName) collect { case e: RoleRef => e }
+  }
 
-  def findAllFootnoteLinks: immutable.IndexedSeq[FootnoteLink]
+  def findAllArcroleRefs: immutable.IndexedSeq[ArcroleRef] = {
+    filterChildElems(LinkArcroleRefEName) collect { case e: ArcroleRef => e }
+  }
+
+  def findAllFootnoteLinks: immutable.IndexedSeq[FootnoteLink] = {
+    filterChildElems(LinkFootnoteLinkEName) collect { case e: FootnoteLink => e }
+  }
+
+  private def findAllContexts: immutable.IndexedSeq[XbrliContext] = {
+    filterChildElems(XbrliContextEName) collect { case e: XbrliContext => e }
+  }
+
+  private def findAllContextsById: Map[String, XbrliContext] = {
+    findAllContexts.groupBy(_.id) mapValues (contexts => contexts.head)
+  }
+
+  private def findAllUnits: immutable.IndexedSeq[XbrliUnit] = {
+    filterChildElems(XbrliUnitEName) collect { case e: XbrliUnit => e }
+  }
+
+  private def findAllUnitsById: Map[String, XbrliUnit] = {
+    findAllUnits.groupBy(_.id) mapValues (units => units.head)
+  }
+
+  private def findAllTopLevelFacts: immutable.IndexedSeq[Fact] = {
+    val childFacts =
+      filterChildElems(e => !Set(Option(LinkNs), Option(XbrliNs)).contains(e.resolvedName.namespaceUriOption))
+    childFacts collect { case e: Fact => e }
+  }
+
+  private def findAllTopLevelItems: immutable.IndexedSeq[ItemFact] = {
+    findAllTopLevelFacts collect { case e: ItemFact => e }
+  }
+
+  private def findAllTopLevelTuples: immutable.IndexedSeq[TupleFact] = {
+    findAllTopLevelFacts collect { case e: TupleFact => e }
+  }
+
+  private def findAllTopLevelFactsByEName: Map[EName, immutable.IndexedSeq[Fact]] = {
+    findAllTopLevelFacts groupBy (e => e.resolvedName)
+  }
+
+  private def findAllTopLevelItemsByEName: Map[EName, immutable.IndexedSeq[ItemFact]] = {
+    findAllTopLevelItems groupBy (e => e.resolvedName)
+  }
+
+  private def findAllTopLevelTuplesByEName: Map[EName, immutable.IndexedSeq[TupleFact]] = {
+    findAllTopLevelTuples groupBy (e => e.resolvedName)
+  }
 }
 
 /**
@@ -105,43 +202,73 @@ trait XbrlInstance extends XbrliElem {
  *
  * @author Chris de Vreeze
  */
-trait SchemaRef extends XbrliElem
+final class SchemaRef private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == LinkSchemaRefEName, s"Expected EName $LinkSchemaRefEName but found $resolvedName")
+}
 
 /**
  * LinkbaseRef in an XBRL instance
  *
  * @author Chris de Vreeze
  */
-trait LinkbaseRef extends XbrliElem
+final class LinkbaseRef private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == LinkLinkbaseRefEName, s"Expected EName $LinkLinkbaseRefEName but found $resolvedName")
+}
 
 /**
  * RoleRef in an XBRL instance
  *
  * @author Chris de Vreeze
  */
-trait RoleRef extends XbrliElem
+final class RoleRef private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == LinkRoleRefEName, s"Expected EName $LinkRoleRefEName but found $resolvedName")
+}
 
 /**
  * ArcroleRef in an XBRL instance
  *
  * @author Chris de Vreeze
  */
-trait ArcroleRef extends XbrliElem
+final class ArcroleRef private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == LinkArcroleRefEName, s"Expected EName $LinkArcroleRefEName but found $resolvedName")
+}
 
 /**
  * Context in an XBRL instance
  *
  * @author Chris de Vreeze
  */
-trait XbrliContext extends XbrliElem {
+final class XbrliContext private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def id: String
+  require(resolvedName == XbrliContextEName, s"Expected EName $XbrliContextEName but found $resolvedName")
 
-  def entity: Entity
+  def id: String = attribute(IdEName)
 
-  def period: Period
+  def entity: Entity = {
+    getChildElem(XbrliEntityEName).asInstanceOf[Entity]
+  }
 
-  def scenarioOption: Option[Scenario]
+  def period: Period = {
+    getChildElem(XbrliPeriodEName).asInstanceOf[Period]
+  }
+
+  def scenarioOption: Option[Scenario] = {
+    findChildElem(XbrliScenarioEName) collect { case e: Scenario => e }
+  }
 }
 
 /**
@@ -149,13 +276,21 @@ trait XbrliContext extends XbrliElem {
  *
  * @author Chris de Vreeze
  */
-trait XbrliUnit extends XbrliElem {
+final class XbrliUnit private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def id: String
+  require(resolvedName == XbrliUnitEName, s"Expected EName $XbrliUnitEName but found $resolvedName")
 
-  def measures: immutable.IndexedSeq[EName]
+  def id: String = attribute(IdEName)
 
-  def divide: Divide
+  def measures: immutable.IndexedSeq[EName] = {
+    filterChildElems(XbrliMeasureEName) map (e => e.getTextAsEName)
+  }
+
+  def divide: Divide = {
+    getChildElem(XbrliDivideEName).asInstanceOf[Divide]
+  }
 }
 
 /**
@@ -163,9 +298,11 @@ trait XbrliUnit extends XbrliElem {
  *
  * @author Chris de Vreeze
  */
-trait Fact extends XbrliElem {
+abstract class Fact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def isTopLevel: Boolean
+  def isTopLevel: Boolean = wrappedElem.path.entries.size == 1
 }
 
 /**
@@ -173,9 +310,13 @@ trait Fact extends XbrliElem {
  *
  * @author Chris de Vreeze
  */
-trait ItemFact extends Fact {
+abstract class ItemFact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends Fact(wrappedElem, childElems) {
 
-  def contextRef: String
+  require(attributeOption(ContextRefEName).isDefined, s"Expected attribute $ContextRefEName")
+
+  def contextRef: String = attribute(ContextRefEName)
 }
 
 /**
@@ -183,16 +324,23 @@ trait ItemFact extends Fact {
  *
  * @author Chris de Vreeze
  */
-trait NonNumericItemFact extends ItemFact
+final class NonNumericItemFact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends ItemFact(wrappedElem, childElems) {
+}
 
 /**
  * Numeric item fact in an XBRL instance, either top-level or nested
  *
  * @author Chris de Vreeze
  */
-trait NumericItemFact extends ItemFact {
+abstract class NumericItemFact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends ItemFact(wrappedElem, childElems) {
 
-  def unitRef: String
+  require(attributeOption(UnitRefEName).isDefined, s"Expected attribute $UnitRefEName")
+
+  def unitRef: String = attribute(UnitRefEName)
 }
 
 /**
@@ -200,11 +348,13 @@ trait NumericItemFact extends ItemFact {
  *
  * @author Chris de Vreeze
  */
-trait NonFractionNumericItemFact extends NumericItemFact {
+final class NonFractionNumericItemFact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(wrappedElem, childElems) {
 
-  def precisionOption: Option[String]
+  def precisionOption: Option[String] = attributeOption(PrecisionEName)
 
-  def decimalsOption: Option[String]
+  def decimalsOption: Option[String] = attributeOption(DecimalsEName)
 }
 
 /**
@@ -212,11 +362,21 @@ trait NonFractionNumericItemFact extends NumericItemFact {
  *
  * @author Chris de Vreeze
  */
-trait FractionItemFact extends NumericItemFact {
+final class FractionItemFact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(wrappedElem, childElems) {
 
-  def numerator: BigDecimal
+  require(findAllChildElems.map(_.resolvedName).toSet == Set(XbrliNumeratorEName, XbrliDenominatorEName))
 
-  def denominator: BigDecimal
+  def numerator: BigDecimal = {
+    val s = getChildElem(XbrliNumeratorEName).text
+    BigDecimal(s)
+  }
+
+  def denominator: BigDecimal = {
+    val s = getChildElem(XbrliDenominatorEName).text
+    BigDecimal(s)
+  }
 }
 
 /**
@@ -224,15 +384,25 @@ trait FractionItemFact extends NumericItemFact {
  *
  * @author Chris de Vreeze
  */
-trait TupleFact extends Fact {
+final class TupleFact private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends Fact(wrappedElem, childElems) {
 
-  def findAllChildFacts: immutable.IndexedSeq[Fact]
+  def findAllChildFacts: immutable.IndexedSeq[Fact] = {
+    findAllChildElems collect { case e: Fact => e }
+  }
 
-  def findAllFacts: immutable.IndexedSeq[Fact]
+  def findAllFacts: immutable.IndexedSeq[Fact] = {
+    findAllElems collect { case e: Fact => e }
+  }
 
-  def filterChildFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
+  def filterChildFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact] = {
+    findAllChildFacts filter (e => p(e))
+  }
 
-  def filterFacts(p: FactType => Boolean): immutable.IndexedSeq[Fact]
+  def filterFacts(p: Fact => Boolean): immutable.IndexedSeq[Fact] = {
+    findAllFacts filter (e => p(e))
+  }
 }
 
 /**
@@ -240,18 +410,31 @@ trait TupleFact extends Fact {
  *
  * @author Chris de Vreeze
  */
-trait FootnoteLink extends XbrliElem
+final class FootnoteLink private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == LinkFootnoteLinkEName, s"Expected EName $LinkFootnoteLinkEName but found $resolvedName")
+}
 
 /**
  * Entity in an XBRL instance context
  *
  * @author Chris de Vreeze
  */
-trait Entity extends XbrliElem {
+final class Entity private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def identifier: Identifier
+  require(resolvedName == XbrliEntityEName, s"Expected EName $XbrliEntityEName but found $resolvedName")
 
-  def segmentOption: Option[Segment]
+  def identifier: Identifier = {
+    getChildElem(XbrliIdentifierEName).asInstanceOf[Identifier]
+  }
+
+  def segmentOption: Option[Segment] = {
+    findChildElem(XbrliSegmentEName) collect { case e: Segment => e }
+  }
 }
 
 /**
@@ -261,13 +444,23 @@ trait Entity extends XbrliElem {
  *
  * @author Chris de Vreeze
  */
-trait Period extends XbrliElem {
+final class Period private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def isInstant: Boolean
+  require(resolvedName == XbrliPeriodEName, s"Expected EName $XbrliPeriodEName but found $resolvedName")
 
-  def isFiniteDuration: Boolean
+  def isInstant: Boolean = {
+    findChildElem(XbrliInstantEName).isDefined
+  }
 
-  def isForever: Boolean
+  def isFiniteDuration: Boolean = {
+    findChildElem(XbrliStartDateEName).isDefined
+  }
+
+  def isForever: Boolean = {
+    findChildElem(XbrliForeverEName).isDefined
+  }
 }
 
 /**
@@ -275,30 +468,137 @@ trait Period extends XbrliElem {
  *
  * @author Chris de Vreeze
  */
-trait Scenario extends XbrliElem
+final class Scenario private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == XbrliScenarioEName, s"Expected EName $XbrliScenarioEName but found $resolvedName")
+}
 
 /**
  * Segment in an XBRL instance context entity
  *
  * @author Chris de Vreeze
  */
-trait Segment extends XbrliElem
+final class Segment private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == XbrliSegmentEName, s"Expected EName $XbrliSegmentEName but found $resolvedName")
+}
 
 /**
  * Identifier in an XBRL instance context entity
  *
  * @author Chris de Vreeze
  */
-trait Identifier extends XbrliElem
+final class Identifier private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
+
+  require(resolvedName == XbrliIdentifierEName, s"Expected EName $XbrliIdentifierEName but found $resolvedName")
+}
 
 /**
  * Divide in an XBRL instance unit
  *
  * @author Chris de Vreeze
  */
-trait Divide extends XbrliElem {
+final class Divide private[xbrli] (
+  override val wrappedElem: DomElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(wrappedElem, childElems) {
 
-  def numerator: immutable.IndexedSeq[EName]
+  require(resolvedName == XbrliDivideEName, s"Expected EName $XbrliDivideEName but found $resolvedName")
 
-  def denominator: immutable.IndexedSeq[EName]
+  def numerator: immutable.IndexedSeq[EName] = {
+    val unitNumerator = getChildElem(XbrliUnitNumeratorEName)
+    val result = unitNumerator.filterChildElems(XbrliMeasureEName).map(e => e.getTextAsEName)
+    result
+  }
+
+  def denominator: immutable.IndexedSeq[EName] = {
+    val unitDenominator = getChildElem(XbrliUnitDenominatorEName)
+    val result = unitDenominator.filterChildElems(XbrliMeasureEName).map(e => e.getTextAsEName)
+    result
+  }
+}
+
+object XbrliElem {
+
+  /**
+   * Expensive method to create an XbrliElem tree
+   */
+  def apply(elem: DomElem): XbrliElem = {
+    // Recursive calls
+    val childElems = elem.findAllChildElems.map(e => apply(e))
+    apply(elem, childElems)
+  }
+
+  private[xbrli] def apply(elem: DomElem, childElems: immutable.IndexedSeq[XbrliElem]): XbrliElem = elem.elem.resolvedName match {
+    case XbrliXbrlEName => new XbrlInstance(elem, childElems)
+    case LinkSchemaRefEName => new SchemaRef(elem, childElems)
+    case LinkLinkbaseRefEName => new LinkbaseRef(elem, childElems)
+    case LinkRoleRefEName => new RoleRef(elem, childElems)
+    case LinkArcroleRefEName => new ArcroleRef(elem, childElems)
+    case XbrliContextEName => new XbrliContext(elem, childElems)
+    case XbrliUnitEName => new XbrliUnit(elem, childElems)
+    case LinkFootnoteLinkEName => new FootnoteLink(elem, childElems)
+    case XbrliEntityEName => new Entity(elem, childElems)
+    case XbrliPeriodEName => new Period(elem, childElems)
+    case XbrliScenarioEName => new Scenario(elem, childElems)
+    case XbrliSegmentEName => new Segment(elem, childElems)
+    case XbrliIdentifierEName => new Identifier(elem, childElems)
+    case XbrliDivideEName => new Divide(elem, childElems)
+    case _ if Fact.accepts(elem) => Fact(elem, childElems)
+    case _ => new XbrliElem(elem, childElems)
+  }
+}
+
+object Fact {
+
+  def accepts(elem: DomElem): Boolean = ItemFact.accepts(elem) || TupleFact.accepts(elem)
+
+  private[xbrli] def apply(elem: DomElem, childElems: immutable.IndexedSeq[XbrliElem]): Fact =
+    if (ItemFact.accepts(elem)) ItemFact(elem, childElems) else TupleFact(elem, childElems)
+
+  def isFactPath(path: Path): Boolean = {
+    !path.isRoot &&
+      !Set(Option(LinkNs), Option(XbrliNs)).contains(path.firstEntry.elementName.namespaceUriOption)
+  }
+}
+
+object ItemFact {
+
+  def accepts(elem: DomElem): Boolean = {
+    Fact.isFactPath(elem.path) &&
+      elem.elem.attributeOption(ContextRefEName).isDefined
+  }
+
+  private[xbrli] def apply(elem: DomElem, childElems: immutable.IndexedSeq[XbrliElem]): ItemFact = {
+    require(Fact.isFactPath(elem.path))
+    require(elem.elem.attributeOption(ContextRefEName).isDefined)
+
+    val unitRefOption = elem.elem.attributeOption(UnitRefEName)
+
+    if (unitRefOption.isEmpty) new NonNumericItemFact(elem, childElems)
+    else {
+      if (elem.elem.findChildElem(withEName(XbrliNumeratorEName)).isDefined) new FractionItemFact(elem, childElems)
+      else new NonFractionNumericItemFact(elem, childElems)
+    }
+  }
+}
+
+object TupleFact {
+
+  def accepts(elem: DomElem): Boolean = {
+    Fact.isFactPath(elem.path) &&
+      elem.elem.attributeOption(ContextRefEName).isEmpty
+  }
+
+  private[xbrli] def apply(elem: DomElem, childElems: immutable.IndexedSeq[XbrliElem]): TupleFact = {
+    require(Fact.isFactPath(elem.path))
+    require(elem.elem.attributeOption(ContextRefEName).isEmpty)
+
+    new TupleFact(elem, childElems)
+  }
 }

@@ -17,8 +17,7 @@
 package eu.cdevreeze.yaidom.xbrl
 
 /**
- * This package contains the model for XBRL instances as purely abstract API. Typical implementations of this API are entirely
- * immutable.
+ * This package contains the model of XBRL instances.
  *
  * @author Chris de Vreeze
  */

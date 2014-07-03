@@ -14,11 +14,21 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze.yaidom.xbrl.xbrli
+package eu.cdevreeze.yaidom
+package xbrl
+package xbrli
+
+import java.net.URI
 
 /**
- * This package implements the XBRL instance API using (preferably immutable) yaidom trees.
+ * Immutable XBRL instance document. Its main value in addition to its document element is its optional URI.
+ * Expensive to create, because of the cached XBRL instance element.
  *
  * @author Chris de Vreeze
  */
-package object yaidomimpl
+final class XbrlInstanceDocument(val uriOption: Option[URI], val wrappedElem: DomElem) {
+
+  /** The document element, as XbrlInstance */
+  val xbrlInstance: XbrlInstance =
+    XbrliElem(wrappedElem).asInstanceOf[XbrlInstance]
+}
