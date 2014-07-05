@@ -33,8 +33,7 @@ import org.scalatest.Suite
 
 import ElemApi.withEName
 import eu.cdevreeze.yaidom.Document
-import eu.cdevreeze.yaidom.xbrl.xbrli.DomElem.IndexedDomElem
-import eu.cdevreeze.yaidom.xbrl.xbrli.XbrlInstanceDocument
+import eu.cdevreeze.yaidom.xbrl.xbrli.XbrlInstanceDocumentModule.IndexedElemXbrliModule._
 
 /**
  * NL-FRIS validation test. It shows how yaidom's extensibility and yaidom-XBRL can help in precise and clear validation
@@ -76,7 +75,7 @@ class NlFrisTest extends Suite {
     val doc: Document =
       docParser.parse(new File(parentDir, "kvk-rpt-grote-rechtspersoon-geconsolideerd-model-b-e-indirect-2013.xbrl"))
 
-    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(doc.uriOption, indexed.Elem(doc.documentElement))
+    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(doc.uriOption, wrap(indexed.Elem(doc.documentElement)))
 
     import ElemApi._
 
@@ -231,10 +230,10 @@ class NlFrisTest extends Suite {
   /** Checks NL-FRIS 8.0, rule 2.5.2. */
   private def hasNoPeriodWithTime(xbrlInstanceDoc: XbrlInstanceDocument): Boolean = {
     xbrlInstanceDoc.xbrlInstance.allContexts.filter(e => !e.period.isForever) forall {
-      case e: xbrli.XbrliContext if e.period.isInstant =>
+      case e: XbrliContext if e.period.isInstant =>
         val instant = e.period.getChildElem(XbrliInstantEName).wrappedElem.elem.text
         !instant.contains("T")
-      case e: xbrli.XbrliContext if e.period.isFiniteDuration =>
+      case e: XbrliContext if e.period.isFiniteDuration =>
         val startDate = e.period.getChildElem(XbrliStartDateEName).wrappedElem.elem.text
         val endDate = e.period.getChildElem(XbrliEndDateEName).wrappedElem.elem.text
         !startDate.contains("T") && !endDate.contains("T")

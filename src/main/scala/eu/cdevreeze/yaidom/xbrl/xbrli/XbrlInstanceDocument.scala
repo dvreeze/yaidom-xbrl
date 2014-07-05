@@ -17,18 +17,27 @@
 package eu.cdevreeze.yaidom
 package xbrl
 package xbrli
+//import XbrliModule.IndexedElemXbrliModule._
 
 import java.net.URI
 
-/**
- * Immutable XBRL instance document. Its main value in addition to its document element is its optional URI.
- * Expensive to create, because of the cached XBRL instance element.
- *
- * @author Chris de Vreeze
- */
-final class XbrlInstanceDocument(val uriOption: Option[URI], val wrappedElem: DomElem) {
+trait XbrlInstanceDocumentModule extends XbrliModule {
 
-  /** The document element, as XbrlInstance */
-  val xbrlInstance: XbrlInstance =
-    XbrliElem(wrappedElem).asInstanceOf[XbrlInstance]
+  /**
+   * Immutable XBRL instance document. Its main value in addition to its document element is its optional URI.
+   * Expensive to create, because of the cached XBRL instance element.
+   *
+   * @author Chris de Vreeze
+   */
+  final class XbrlInstanceDocument(val uriOption: Option[URI], val wrappedElem: DomElem) {
+
+    /** The document element, as XbrlInstance */
+    val xbrlInstance: XbrlInstance =
+      XbrliElem(wrappedElem).asInstanceOf[XbrlInstance]
+  }
+
+}
+
+object XbrlInstanceDocumentModule {
+  object IndexedElemXbrliModule extends XbrlInstanceDocumentModule with DomElemTypeModule.IndexedElemModule
 }
