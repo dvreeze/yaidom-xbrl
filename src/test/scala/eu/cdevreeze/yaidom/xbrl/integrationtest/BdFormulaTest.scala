@@ -29,9 +29,7 @@ import org.scalatest.Suite
 
 import ElemApi.withEName
 import eu.cdevreeze.yaidom.Document
-import eu.cdevreeze.yaidom.xbrl.xbrli.DomElem.IndexedDomElem
-import eu.cdevreeze.yaidom.xbrl.xbrli.ItemFact
-import eu.cdevreeze.yaidom.xbrl.xbrli.XbrlInstanceDocument
+import eu.cdevreeze.yaidom.xbrl.xbrli.XbrlInstanceDocumentModule.IndexedElemXbrliModule._
 
 /**
  * BD formula test.
@@ -65,7 +63,7 @@ class BdFormulaTest extends Suite {
         elem.plusAttribute(QName("contextRef"), "c1")
     }
 
-    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(editedDoc.uriOption, indexed.Elem(editedDoc.documentElement))
+    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(editedDoc.uriOption, wrap(indexed.Elem(editedDoc.documentElement)))
 
     import ElemApi._
 

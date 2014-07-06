@@ -19,47 +19,58 @@ package xbrl.xbrli
 
 import scala.collection.immutable
 
-/**
- * "DOM element", offering the API of the wrapped DOM element needed by XBRL instances.
- *
- * @author Chris de Vreeze
- */
-trait DomElem extends Any {
+trait DomElemTypeModule {
 
   type E <: ElemApi[E] with HasText
 
-  def findAllChildElems: immutable.IndexedSeq[DomElem]
-
-  def elem: E
-
-  def path: Path
-
-  def scope: Scope
-
-  def textAsResolvedQName: EName
-
-  def toElem: Elem
-}
-
-object DomElem {
+  type DomElem <: DomElemApi
+  
+  def wrap(e: E): DomElem
 
   /**
-   * Implicitly turns an indexed.Elem into a DomElem.
+   * "DOM element", offering the API of the wrapped DOM element needed by XBRL instances.
+   *
+   * @author Chris de Vreeze
    */
-  implicit final class IndexedDomElem(val elem: indexed.Elem) extends AnyVal with DomElem {
+  trait DomElemApi extends Any {
 
+    def findAllChildElems: immutable.IndexedSeq[DomElem]
+
+    def elem: E
+
+    def path: Path
+
+    def scope: Scope
+
+    def textAsResolvedQName: EName
+
+    def toElem: Elem
+  }
+
+}
+
+object DomElemTypeModule {
+  trait IndexedElemModule extends DomElemTypeModule {
     type E = indexed.Elem
+    type DomElem = IndexedDomElem
+    
+    def wrap(e: indexed.Elem) = new IndexedDomElem(e)
+    
+    class IndexedDomElem(val elem: indexed.Elem) extends DomElemApi {
+      
+      def findAllChildElems: immutable.IndexedSeq[IndexedDomElem] = {
+        elem.findAllChildElems.map(e => new IndexedDomElem(e))
+      }
 
-    def findAllChildElems: immutable.IndexedSeq[IndexedDomElem] = {
-      elem.findAllChildElems.map(e => new IndexedDomElem(e))
+      def path: Path = elem.path
+
+      def scope: Scope = elem.elem.scope
+
+      def textAsResolvedQName: EName = elem.elem.textAsResolvedQName
+
+      def toElem: Elem = elem.elem
     }
 
-    def path: Path = elem.path
-
-    def scope: Scope = elem.elem.scope
-
-    def textAsResolvedQName: EName = elem.elem.textAsResolvedQName
-
-    def toElem: Elem = elem.elem
   }
 }
+
