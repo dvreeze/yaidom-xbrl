@@ -19,12 +19,21 @@ package xbrl.xbrli
 
 import scala.collection.immutable
 
+/**
+ * Module offering "DOM wrapper elements" for a chosen underlying yaidom element implementation.
+ */
 trait DomElemTypeModule {
 
+  /**
+   * The type of the underlying DOM tree implementation
+   */
   type E <: ElemApi[E] with HasText
 
   type DomElem <: DomElemApi
-  
+
+  /**
+   * Wraps an underlying DOM element in a DomElem instance, thus making it usable inside XBRL instances, as the backing object.
+   */
   def wrap(e: E): DomElem
 
   /**
@@ -50,14 +59,19 @@ trait DomElemTypeModule {
 }
 
 object DomElemTypeModule {
+
+  /**
+   * DomElemTypeModule fixing the underlying element implementation to indexed.Elem.
+   */
   trait IndexedElemModule extends DomElemTypeModule {
+
     type E = indexed.Elem
     type DomElem = IndexedDomElem
-    
+
     def wrap(e: indexed.Elem) = new IndexedDomElem(e)
-    
+
     class IndexedDomElem(val elem: indexed.Elem) extends DomElemApi {
-      
+
       def findAllChildElems: immutable.IndexedSeq[IndexedDomElem] = {
         elem.findAllChildElems.map(e => new IndexedDomElem(e))
       }
@@ -73,4 +87,3 @@ object DomElemTypeModule {
 
   }
 }
-

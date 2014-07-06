@@ -605,6 +605,4 @@ trait XbrliModule extends DomElemTypeModule {
       new TupleFact(elem, childElems)
     }
   }
-
 }
-

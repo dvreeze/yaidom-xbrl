@@ -17,7 +17,6 @@
 package eu.cdevreeze.yaidom
 package xbrl
 package xbrli
-//import XbrliModule.IndexedElemXbrliModule._
 
 import java.net.URI
 
@@ -39,5 +38,6 @@ trait XbrlInstanceDocumentModule extends XbrliModule {
 }
 
 object XbrlInstanceDocumentModule {
+
   object IndexedElemXbrliModule extends XbrlInstanceDocumentModule with DomElemTypeModule.IndexedElemModule
 }
