@@ -17,11 +17,13 @@
 package eu.cdevreeze.yaidom
 
 /**
- * The root package of yaidom-XBRL. It contains many constants used throughout the library.
+ * The yaidom-XBRL package.
  *
  * @author Chris de Vreeze
  */
 package object xbrl {
+
+  import core.EName
 
   val XbrliNs = "http://www.xbrl.org/2003/instance"
   val LinkNs = "http://www.xbrl.org/2003/linkbase"

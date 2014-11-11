@@ -9,13 +9,13 @@ organization := "eu.cdevreeze.yaidom"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.4"
 
-crossScalaVersions := Seq("2.11.2", "2.10.4")
+crossScalaVersions := Seq("2.11.4", "2.10.4")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
-libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "1.0"
+libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "1.2"
 
 libraryDependencies += ("joda-time" % "joda-time" % "2.3").intransitive()
 

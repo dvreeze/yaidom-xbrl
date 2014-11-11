@@ -16,9 +16,17 @@
 
 package eu.cdevreeze.yaidom.xbrl
 
+import java.net.URI
+
 /**
- * This package contains the model of XBRL instances.
+ * Immutable XBRL instance document. Its main value in addition to its document element is its optional URI.
+ * Expensive to create, because of the cached XBRL instance element.
  *
  * @author Chris de Vreeze
  */
-package object xbrli
+final class XbrlInstanceDocument(val uriOption: Option[URI], val bridgeElem: BridgeElem) {
+
+  /** The document element, as XbrlInstance */
+  val xbrlInstance: XbrlInstance =
+    XbrliElem(bridgeElem).asInstanceOf[XbrlInstance]
+}

@@ -14,22 +14,27 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze.yaidom
-package xbrl
-package integrationtest
+package eu.cdevreeze.yaidom.xbrl.integrationtest
 
 import java.io.File
 
+import scala.BigDecimal
 import scala.collection.immutable
 
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Suite
+import org.scalatest.junit.JUnitRunner
 
-import ElemApi.withEName
-import eu.cdevreeze.yaidom.Document
-import eu.cdevreeze.yaidom.xbrl.xbrli.XbrlInstanceDocumentModule.IndexedElemXbrliModule._
+import eu.cdevreeze.yaidom.core.EName
+import eu.cdevreeze.yaidom.core.QName
+import eu.cdevreeze.yaidom.indexed
+import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
+import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
+import eu.cdevreeze.yaidom.simple.Document
+import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem.wrap
+import eu.cdevreeze.yaidom.xbrl.ItemFact
+import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 
 /**
  * BD formula test.
@@ -49,7 +54,7 @@ class BdFormulaTest extends Suite {
    */
   @Test def testXbrlProcessing(): Unit = {
     // Using a yaidom DocumentParser that used SAX internally
-    val docParser = parse.DocumentParserUsingSax.newInstance
+    val docParser = DocumentParserUsingSax.newInstance
 
     val parentDir = new File(pathToParentDir.getPath)
 
@@ -57,7 +62,7 @@ class BdFormulaTest extends Suite {
       docParser.parse(new File(parentDir, "IHZ2013-01.xbrl"))
 
     // Edit the document, updating bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal with contextRef c1
-    val paths = doc.documentElement.filterElemPaths(_.qname == QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal"))
+    val paths = indexed.Elem(doc.documentElement).filterElems(_.qname == QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal")).map(_.path)
     val editedDoc = doc.updatedAtPaths(paths.toSet) {
       case (elem, path) =>
         elem.plusAttribute(QName("contextRef"), "c1")
@@ -65,15 +70,13 @@ class BdFormulaTest extends Suite {
 
     val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(editedDoc.uriOption, wrap(indexed.Elem(editedDoc.documentElement)))
 
-    import ElemApi._
-
     require {
       xbrlInstanceDoc.xbrlInstance.allTopLevelItems.size >= 20
     }
 
-    require(xbrlInstanceDoc.wrappedElem.toElem.findAllElemsOrSelf.map(_.scope).toSet.size == 1)
+    require(xbrlInstanceDoc.xbrlInstance.findAllElemsOrSelf.map(_.scope).toSet.size == 1)
 
-    val scope = xbrlInstanceDoc.wrappedElem.scope
+    val scope = xbrlInstanceDoc.xbrlInstance.scope
     import scope._
 
     // The "value assertion" itself
@@ -85,8 +88,8 @@ class BdFormulaTest extends Suite {
       factsFilteredOnName filter { fact =>
         val context = xbrlInstanceDoc.xbrlInstance.allContextsById(fact.contextRef)
         context.filterElems(withEName(QName("xbrldi:explicitMember").res)) exists { elem =>
-          (elem.wrappedElem.toElem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
-            (elem.wrappedElem.toElem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
+          (elem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
+            (elem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
         }
       }
     }
@@ -98,8 +101,8 @@ class BdFormulaTest extends Suite {
       factsFilteredOnName filter { fact =>
         val context = xbrlInstanceDoc.xbrlInstance.allContextsById(fact.contextRef)
         context.filterElems(withEName(QName("xbrldi:explicitMember").res)) exists { elem =>
-          (elem.wrappedElem.toElem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
-            (elem.wrappedElem.toElem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
+          (elem.attributeAsResolvedQName(EName("dimension")) == QName("bd-dim-dim:PartyDimension").res) &&
+            (elem.textAsResolvedQName == QName("bd-dim-dom:Declarant").res)
         }
       }
     }
