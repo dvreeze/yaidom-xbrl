@@ -67,7 +67,7 @@ sealed class XbrliElem private[xbrl] (
   final def text: String = bridgeElem.text
 
   final def findChildElemByPathEntry(entry: Path.Entry): Option[XbrliElem] =
-    childElems.find(_.bridgeElem.path.lastEntry == entry)
+    childElems.find(e => e.localName == entry.elementName.localPart && e.bridgeElem.path.lastEntry == entry)
 
   override def equals(other: Any): Boolean = other match {
     case e: XbrliElem => bridgeElem.backingElem == e.bridgeElem.backingElem
