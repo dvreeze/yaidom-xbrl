@@ -48,7 +48,7 @@ abstract class AbstractBulkNlFrisTest extends Suite {
   protected val clazz = classOf[AbstractBulkNlFrisTest]
 
   protected val pathToParentDir: java.io.File =
-    (new java.io.File(classOf[BdFormulaTest].getResource("kvk-rpt-grote-rechtspersoon-geconsolideerd-model-b-e-indirect-2013.xbrl").toURI)).getParentFile
+    (new java.io.File(classOf[AbstractBulkNlFrisTest].getResource("kvk-rpt-grote-rechtspersoon-geconsolideerd-model-b-e-indirect-2013.xbrl").toURI)).getParentFile
 
   private val parSize: Int = System.getProperty("parSize", "100").toInt
 
