@@ -47,7 +47,7 @@ sealed class XbrliElem private[xbrl] (
   val bridgeElem: BridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends ScopedElemLike[XbrliElem] with IsNavigable[XbrliElem] with SubtypeAwareElemLike[XbrliElem] {
 
-  // require(childElems.map(_.bridgeElem.backingElem) == bridgeElem.findAllChildElems.map(_.backingElem))
+  require(childElems.map(_.bridgeElem.backingElem) == bridgeElem.findAllChildElems.map(_.backingElem))
 
   /**
    * Very fast implementation of findAllChildElems, for fast querying

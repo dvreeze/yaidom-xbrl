@@ -59,6 +59,13 @@ abstract class DomNode(val wrappedNode: NodeInfo) {
   }
 
   def toNodeOption: Option[simple.Node] = None
+
+  override def equals(other: Any): Boolean = other match {
+    case n: DomNode => wrappedNode == n.wrappedNode
+    case _ => false
+  }
+
+  override def hashCode: Int = wrappedNode.hashCode
 }
 
 abstract class DomParentNode(override val wrappedNode: NodeInfo) extends DomNode(wrappedNode) {
