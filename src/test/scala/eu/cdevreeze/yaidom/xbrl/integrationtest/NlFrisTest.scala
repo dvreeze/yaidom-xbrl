@@ -36,7 +36,8 @@ import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.ToHasElemApi
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem.wrap
+import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem
+import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingSaxonElem
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 import eu.cdevreeze.yaidom.xbrl.XbrliContext
 import eu.cdevreeze.yaidom.xbrl.XbrliEndDateEName
@@ -44,23 +45,16 @@ import eu.cdevreeze.yaidom.xbrl.XbrliInstantEName
 import eu.cdevreeze.yaidom.xbrl.XbrliStartDateEName
 import eu.cdevreeze.yaidom.xbrl.XmlLangEName
 import eu.cdevreeze.yaidom.xbrl.XsiNilEName
+import eu.cdevreeze.yaidom.xbrl.saxon
+import net.sf.saxon.om.DocumentInfo
+import net.sf.saxon.s9api.Processor
 
 /**
  * NL-FRIS validation test. It shows how yaidom's extensibility and yaidom-XBRL can help in precise and clear validation
  * of rules against XBRL instances.
  *
- * This code can also be used as basis for a first blog on yaidom-XBRL.
- *
  * Note that in this example, we only look at XBRL instances, without looking at the corresponding taxonomies, That, of course,
  * is a major simplification.
- *
- * The blog could first refer to preceding blogs about yaidom, next it could explain the basics of XBRL (instances), then it
- * could go on to build a yaidom wrapper for XBRL instances, and then it could show simple NL-FRIS and KVK-FRIS validation checks
- * using the yaidom-XBRL wrapper class for XBRL instances. Some queries could easily be written without the "XBRL instance"
- * wrapper, and some queries really profit from the wrapper. The wrapper can always be unwrapped to descend to the raw XML
- * level, of course. Much of the query API remains the same when doing so.
- *
- * Encourage the reader to play with Scala and yaidom in the REPL.
  *
  * @author Chris de Vreeze
  */
@@ -72,21 +66,40 @@ class NlFrisTest extends Suite {
 
   private val clazz = classOf[NlFrisTest]
 
-  /**
-   * The code in this test can be copied to the content in the first article on yaidom XBRL processing.
-   */
-  @Test def testXbrlProcessing(): Unit = {
-    // Using a yaidom DocumentParser that used SAX internally
+  @Test def testXbrlProcessingUsingIndexedElem(): Unit = {
     val docParser = DocumentParserUsingSax.newInstance
 
-    // Replace the following path!
     val parentDir = new File(pathToParentDir.getPath)
 
     val doc: Document =
       docParser.parse(new File(parentDir, "kvk-rpt-grote-rechtspersoon-geconsolideerd-model-b-e-indirect-2013.xbrl"))
 
-    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(doc.uriOption, wrap(indexed.Elem(doc.documentElement)))
+    val xbrlInstanceDoc: XbrlInstanceDocument =
+      new XbrlInstanceDocument(
+        doc.uriOption,
+        BridgeElemTakingIndexedElem.wrap(indexed.Elem(doc.documentElement)))
 
+    testXbrlProcessing(xbrlInstanceDoc)
+  }
+
+  @Test def testXbrlProcessingUsingSaxonElem(): Unit = {
+    val processor = new Processor(false)
+    val docBuilder = processor.newDocumentBuilder()
+
+    val parentDir = new File(pathToParentDir.getPath)
+    val f = new File(parentDir, "kvk-rpt-grote-rechtspersoon-geconsolideerd-model-b-e-indirect-2013.xbrl")
+
+    val node = docBuilder.build(f)
+
+    val xbrlInstanceDoc: XbrlInstanceDocument =
+      new XbrlInstanceDocument(
+        Some(f.toURI),
+        BridgeElemTakingSaxonElem.wrap(new saxon.DomDocument(node.getUnderlyingNode.asInstanceOf[DocumentInfo]).documentElement))
+
+    testXbrlProcessing(xbrlInstanceDoc)
+  }
+
+  private def testXbrlProcessing(xbrlInstanceDoc: XbrlInstanceDocument): Unit = {
     require {
       xbrlInstanceDoc.xbrlInstance.allTopLevelItems.size >= 20
     }

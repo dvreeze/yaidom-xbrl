@@ -17,6 +17,10 @@
 package eu.cdevreeze.yaidom.xbrl.integrationtest
 
 import java.io.File
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+
+import javax.xml.transform.stream.StreamSource
 
 import scala.BigDecimal
 import scala.collection.immutable
@@ -29,12 +33,18 @@ import org.scalatest.junit.JUnitRunner
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.QName
 import eu.cdevreeze.yaidom.indexed
+import eu.cdevreeze.yaidom.simple
 import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
+import eu.cdevreeze.yaidom.print.DocumentPrinterUsingSax
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem.wrap
+import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem
+import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingSaxonElem
 import eu.cdevreeze.yaidom.xbrl.ItemFact
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
+import eu.cdevreeze.yaidom.xbrl.saxon
+import net.sf.saxon.om.DocumentInfo
+import net.sf.saxon.s9api.Processor
 
 /**
  * BD formula test.
@@ -51,9 +61,9 @@ class BdFormulaTest extends Suite {
 
   /**
    * Tests the equivalent of formula Saldo_fiscale_winstberekening__volgens_vermogensvergelijking__Regel_3_173.xml.
+   * It uses an indexed element.
    */
-  @Test def testXbrlProcessing(): Unit = {
-    // Using a yaidom DocumentParser that used SAX internally
+  @Test def testXbrlProcessingUsingIndexedElem(): Unit = {
     val docParser = DocumentParserUsingSax.newInstance
 
     val parentDir = new File(pathToParentDir.getPath)
@@ -61,15 +71,53 @@ class BdFormulaTest extends Suite {
     val doc: Document =
       docParser.parse(new File(parentDir, "IHZ2013-01.xbrl"))
 
-    // Edit the document, updating bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal with contextRef c1
-    val paths = indexed.Elem(doc.documentElement).filterElems(_.qname == QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal")).map(_.path)
-    val editedDoc = doc.updatedAtPaths(paths.toSet) {
-      case (elem, path) =>
-        elem.plusAttribute(QName("contextRef"), "c1")
-    }
+    val editedElem = adaptElem(doc.documentElement)
 
-    val xbrlInstanceDoc: XbrlInstanceDocument = new XbrlInstanceDocument(editedDoc.uriOption, wrap(indexed.Elem(editedDoc.documentElement)))
+    val xbrlInstanceDoc: XbrlInstanceDocument =
+      new XbrlInstanceDocument(
+        doc.uriOption,
+        BridgeElemTakingIndexedElem.wrap(indexed.Elem(editedElem)))
 
+    testXbrlProcessing(xbrlInstanceDoc)
+  }
+
+  /**
+   * Tests the equivalent of formula Saldo_fiscale_winstberekening__volgens_vermogensvergelijking__Regel_3_173.xml.
+   * It uses a Saxon element.
+   */
+  @Test def testXbrlProcessingUsingSaxonElem(): Unit = {
+    val docParser = DocumentParserUsingSax.newInstance
+
+    val parentDir = new File(pathToParentDir.getPath)
+    val f = new File(parentDir, "IHZ2013-01.xbrl")
+
+    val doc: Document =
+      docParser.parse(f)
+
+    val editedElem = adaptElem(doc.documentElement)
+
+    val docPrinter = DocumentPrinterUsingSax.newInstance
+
+    val bos = new ByteArrayOutputStream
+    docPrinter.print(editedElem, scala.io.Codec.UTF8.toString, bos)
+    val bytes = bos.toByteArray
+
+    val processor = new Processor(false)
+    val docBuilder = processor.newDocumentBuilder()
+
+    val is = new ByteArrayInputStream(bytes)
+
+    val node = docBuilder.build(new StreamSource(is))
+
+    val xbrlInstanceDoc: XbrlInstanceDocument =
+      new XbrlInstanceDocument(
+        Some(f.toURI),
+        BridgeElemTakingSaxonElem.wrap(new saxon.DomDocument(node.getUnderlyingNode.asInstanceOf[DocumentInfo]).documentElement))
+
+    testXbrlProcessing(xbrlInstanceDoc)
+  }
+
+  private def testXbrlProcessing(xbrlInstanceDoc: XbrlInstanceDocument): Unit = {
     require {
       xbrlInstanceDoc.xbrlInstance.allTopLevelItems.size >= 20
     }
@@ -125,6 +173,16 @@ class BdFormulaTest extends Suite {
     assertResult(true) {
       varSetEvals forall (_ == true)
     }
+  }
+
+  private def adaptElem(elem: simple.Elem): simple.Elem = {
+    // Edit the document, updating bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal with contextRef c1
+    val paths = indexed.Elem(elem).filterElems(_.qname == QName("bd-bedr:BalanceProfitCalculationForTaxPurposesFiscal")).map(_.path)
+    val editedElem = elem.updatedAtPaths(paths.toSet) {
+      case (elem, path) =>
+        elem.plusAttribute(QName("contextRef"), "c1")
+    }
+    editedElem
   }
 
   // TODO Totaal_vermogensverschil_Regel_1_203.xml
