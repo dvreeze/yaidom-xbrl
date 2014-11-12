@@ -35,8 +35,9 @@ import net.sf.saxon.s9api.Processor
 @RunWith(classOf[JUnitRunner])
 class BulkNlFrisTestUsingSaxonElem extends AbstractBulkNlFrisTest {
 
+  private val processor = new Processor(false)
+
   protected def getXbrlInstanceDocument(): XbrlInstanceDocument = {
-    val processor = new Processor(false)
     val docBuilder = processor.newDocumentBuilder()
 
     val parentDir = new File(pathToParentDir.getPath)
