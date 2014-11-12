@@ -182,12 +182,12 @@ final class DomElem(
     val sc = scope
 
     val filteredChildren = children.toStream filter {
-      case e: DomElem if e.qname.localPart == entry.localName && e.resolvedName == entry.elementName => true
+      case e: DomElem if e.resolvedName == entry.elementName => true
       case _ => false
     }
 
     val childOption = filteredChildren.drop(entry.index).headOption collect { case e: DomElem => e }
-    assert(childOption.forall(_.resolvedName == entry.elementName))
+    // assert(childOption.forall(_.resolvedName == entry.elementName))
     childOption
   }
 
@@ -203,7 +203,7 @@ final class DomElem(
     if (parentOption.isEmpty) Path.Root
     else {
       val prevSiblingElems = previousSiblings collect { case e: DomElem => e }
-      val cnt = prevSiblingElems.filter(e => e.qname.localPart == this.qname.localPart && e.resolvedName == this.resolvedName).size
+      val cnt = prevSiblingElems.filter(e => e.resolvedName == this.resolvedName).size
       val entry = Path.Entry(this.resolvedName, cnt)
 
       // Recursive call
