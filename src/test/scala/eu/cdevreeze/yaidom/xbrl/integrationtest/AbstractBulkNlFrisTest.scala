@@ -52,7 +52,7 @@ abstract class AbstractBulkNlFrisTest extends Suite {
 
   private val parSize: Int = System.getProperty("parSize", "100").toInt
 
-  @Test def testXbrlProcessingUsingIndexedElem(): Unit = {
+  @Test def testXbrlProcessing(): Unit = {
     val startMs = System.currentTimeMillis
 
     (0 to parSize).toVector.par foreach { i =>
