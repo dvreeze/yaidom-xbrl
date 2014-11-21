@@ -21,7 +21,7 @@ import java.io.File
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingSaxonElem
+import eu.cdevreeze.yaidom.xbrl.saxon.BridgeElemTakingSaxonElem
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 import eu.cdevreeze.yaidom.xbrl.saxon
 import net.sf.saxon.om.DocumentInfo

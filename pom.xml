@@ -179,6 +179,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>eu.cdevreeze.yaidom</groupId>
+			<artifactId>
+				yaidom-xlink_${scala.binary.version}
+			</artifactId>
+			<version>1.3</version>
+		</dependency>
 	</dependencies>
 
 </project>

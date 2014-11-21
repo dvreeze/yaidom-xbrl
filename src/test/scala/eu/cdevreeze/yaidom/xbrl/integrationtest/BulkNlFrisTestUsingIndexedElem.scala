@@ -24,7 +24,7 @@ import org.scalatest.junit.JUnitRunner
 import eu.cdevreeze.yaidom.indexed
 import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem
+import eu.cdevreeze.yaidom.bridge.DefaultIndexedBridgeElem
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 
 /**
@@ -46,7 +46,7 @@ class BulkNlFrisTestUsingIndexedElem extends AbstractBulkNlFrisTest {
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
         doc.uriOption,
-        BridgeElemTakingIndexedElem.wrap(indexed.Elem(doc.documentElement)))
+        DefaultIndexedBridgeElem.wrap(indexed.Elem(doc.documentElement)))
 
     xbrlInstanceDoc
   }

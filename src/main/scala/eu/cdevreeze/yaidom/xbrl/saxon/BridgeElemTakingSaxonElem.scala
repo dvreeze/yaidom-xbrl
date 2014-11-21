@@ -14,31 +14,30 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze.yaidom.xbrl
+package eu.cdevreeze.yaidom.xbrl.saxon
 
 import scala.collection.immutable
-
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Path
 import eu.cdevreeze.yaidom.core.QName
 import eu.cdevreeze.yaidom.core.Scope
-import eu.cdevreeze.yaidom.indexed
+import eu.cdevreeze.yaidom.bridge.IndexedBridgeElem
 
 /**
- * Overridable bridge element taking an `indexed.Elem`. This is a value class instance, to prevent object creation.
+ * Overridable bridge element taking a `saxon.DomElem`. This is a value class instance, to prevent object creation.
  *
  * @author Chris de Vreeze
  */
-class BridgeElemTakingIndexedElem(val backingElem: eu.cdevreeze.yaidom.indexed.Elem) extends AnyVal with BridgeElem {
+class BridgeElemTakingSaxonElem(val backingElem: DomElem) extends AnyVal with IndexedBridgeElem {
 
-  final type BackingElem = eu.cdevreeze.yaidom.indexed.Elem
+  final type BackingElem = DomElem
 
-  final type SelfType = BridgeElemTakingIndexedElem
+  final type SelfType = BridgeElemTakingSaxonElem
 
-  final type UnwrappedBackingElem = eu.cdevreeze.yaidom.simple.Elem
+  final type UnwrappedBackingElem = DomElem
 
   final def findAllChildElems: immutable.IndexedSeq[SelfType] =
-    backingElem.findAllChildElems.map(e => new BridgeElemTakingIndexedElem(e))
+    backingElem.findAllChildElems.map(e => new BridgeElemTakingSaxonElem(e))
 
   final def resolvedName: EName = backingElem.resolvedName
 
@@ -53,18 +52,18 @@ class BridgeElemTakingIndexedElem(val backingElem: eu.cdevreeze.yaidom.indexed.E
   final def text: String = backingElem.text
 
   final def findChildElemByPathEntry(entry: Path.Entry): Option[SelfType] =
-    backingElem.findChildElemByPathEntry(entry).map(e => new BridgeElemTakingIndexedElem(e))
+    backingElem.findChildElemByPathEntry(entry).map(e => new BridgeElemTakingSaxonElem(e))
 
-  final def toElem: eu.cdevreeze.yaidom.simple.Elem = backingElem.elem
+  final def toElem: eu.cdevreeze.yaidom.simple.Elem = backingElem.toElem
 
-  final def rootElem: UnwrappedBackingElem = backingElem.rootElem
+  final def rootElem: UnwrappedBackingElem = backingElem.ancestorsOrSelf.last
 
   final def path: Path = backingElem.path
 
-  final def unwrappedBackingElem: UnwrappedBackingElem = backingElem.elem
+  final def unwrappedBackingElem: UnwrappedBackingElem = backingElem
 }
 
-object BridgeElemTakingIndexedElem {
+object BridgeElemTakingSaxonElem {
 
-  def wrap(elem: indexed.Elem): BridgeElemTakingIndexedElem = new BridgeElemTakingIndexedElem(elem)
+  def wrap(elem: DomElem): BridgeElemTakingSaxonElem = new BridgeElemTakingSaxonElem(elem)
 }

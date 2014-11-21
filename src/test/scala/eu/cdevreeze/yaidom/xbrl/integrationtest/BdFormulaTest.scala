@@ -38,8 +38,8 @@ import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.print.DocumentPrinterUsingSax
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingSaxonElem
+import eu.cdevreeze.yaidom.bridge.DefaultIndexedBridgeElem
+import eu.cdevreeze.yaidom.xbrl.saxon.BridgeElemTakingSaxonElem
 import eu.cdevreeze.yaidom.xbrl.ItemFact
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 import eu.cdevreeze.yaidom.xbrl.saxon
@@ -76,7 +76,7 @@ class BdFormulaTest extends Suite {
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
         doc.uriOption,
-        BridgeElemTakingIndexedElem.wrap(indexed.Elem(editedElem)))
+        DefaultIndexedBridgeElem.wrap(indexed.Elem(editedElem)))
 
     testXbrlProcessing(xbrlInstanceDoc)
   }

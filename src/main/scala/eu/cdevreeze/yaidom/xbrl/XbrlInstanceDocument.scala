@@ -17,6 +17,7 @@
 package eu.cdevreeze.yaidom.xbrl
 
 import java.net.URI
+import eu.cdevreeze.yaidom.bridge.IndexedBridgeElem
 
 /**
  * Immutable XBRL instance document. Its main value in addition to its document element is its optional URI.
@@ -24,7 +25,7 @@ import java.net.URI
  *
  * @author Chris de Vreeze
  */
-final class XbrlInstanceDocument(val uriOption: Option[URI], val bridgeElem: BridgeElem) {
+final class XbrlInstanceDocument(val uriOption: Option[URI], val bridgeElem: IndexedBridgeElem) {
 
   /** The document element, as XbrlInstance */
   val xbrlInstance: XbrlInstance =

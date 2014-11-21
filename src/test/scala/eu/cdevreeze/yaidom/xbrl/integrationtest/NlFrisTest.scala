@@ -36,8 +36,8 @@ import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.ToHasElemApi
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingIndexedElem
-import eu.cdevreeze.yaidom.xbrl.BridgeElemTakingSaxonElem
+import eu.cdevreeze.yaidom.bridge.DefaultIndexedBridgeElem
+import eu.cdevreeze.yaidom.xbrl.saxon.BridgeElemTakingSaxonElem
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 import eu.cdevreeze.yaidom.xbrl.XbrliContext
 import eu.cdevreeze.yaidom.xbrl.XbrliEndDateEName
@@ -77,7 +77,7 @@ class NlFrisTest extends Suite {
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
         doc.uriOption,
-        BridgeElemTakingIndexedElem.wrap(indexed.Elem(doc.documentElement)))
+        DefaultIndexedBridgeElem.wrap(indexed.Elem(doc.documentElement)))
 
     testXbrlProcessing(xbrlInstanceDoc)
   }
