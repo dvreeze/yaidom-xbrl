@@ -88,6 +88,12 @@ abstract class AbstractBulkNlFrisTest extends Suite {
     assertResult(entityFacts) {
       entityFactsInTuples
     }
+    assertResult(true) {
+      xbrlInstanceDoc.xbrlInstance.filterFacts(_.isNil).isEmpty
+    }
+    assertResult(xbrlInstanceDoc.xbrlInstance.findAllFacts.size) {
+      xbrlInstanceDoc.xbrlInstance.findAllItems.size + xbrlInstanceDoc.xbrlInstance.findAllTuples.size
+    }
 
     // NL-FRIS 8.0 checks.
 

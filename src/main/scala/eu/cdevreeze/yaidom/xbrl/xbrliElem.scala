@@ -39,7 +39,22 @@ import eu.cdevreeze.yaidom.bridge.IndexedBridgeElem
  *
  * Also note that the package-private constructor contains redundant data, in order to speed up (yaidom-based) querying.
  *
- * TODO Mind xsi:nil.
+ * These XBRL instance elements are just an XBRL instance view on the underlying DOM-like tree (offered by the bridge
+ * element), and therefore do not know about the taxonomy describing the XBRL instance (other than the href to the
+ * DTS entrypoint).
+ *
+ * As a consequence, this model must recognize facts by only looking at the elements and their ancestry, without knowing
+ * anything about the substitution groups of the corresponding concept declarations. Fortunately, the XBRL instance
+ * schema (xbrl-instance-2003-12-31.xsd) and the specification of allowed XBRL tuple content are (almost) restrictive enough
+ * in order to recognize facts.
+ *
+ * It is even possible to easily distinguish between item facts and tuple facts, based on the presence or absence of the
+ * contextRef attribute. There is one complication, though, and that is nil item and tuple facts. Unfortunately, concept
+ * declarations in taxonomy schemas may have the nillable attribute set to true. This led to some clutter in the
+ * inheritance hierarchy for numeric item facts.
+ *
+ * Hence, regarding nil facts, the user of the API is responsible for keeping in mind that facts can indeed be nil facts
+ * (which facts are easy to filter away).
  *
  * @author Chris de Vreeze
  */
@@ -279,7 +294,7 @@ final class XbrliUnit private[xbrl] (
 }
 
 /**
- * Item or tuple fact in an XBRL instance, either top-level or nested
+ * Item or tuple fact in an XBRL instance, either top-level or nested (and either non-nil or nil)
  *
  * @author Chris de Vreeze
  */
@@ -288,10 +303,12 @@ abstract class Fact private[xbrl] (
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   def isTopLevel: Boolean = bridgeElem.path.entries.size == 1
+
+  def isNil: Boolean = attributeOption(XsiNilEName) == Some("true")
 }
 
 /**
- * Item fact in an XBRL instance, either top-level or nested
+ * Item fact in an XBRL instance, either top-level or nested (and either non-nil or nil)
  *
  * @author Chris de Vreeze
  */
@@ -305,17 +322,19 @@ abstract class ItemFact private[xbrl] (
 }
 
 /**
- * Non-numeric item fact in an XBRL instance, either top-level or nested
+ * Non-numeric item fact in an XBRL instance, either top-level or nested (and either non-nil or nil)
  *
  * @author Chris de Vreeze
  */
 final class NonNumericItemFact private[xbrl] (
   override val bridgeElem: IndexedBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends ItemFact(bridgeElem, childElems) {
+
+  require(attributeOption(UnitRefEName).isEmpty, s"Expected no attribute $UnitRefEName")
 }
 
 /**
- * Numeric item fact in an XBRL instance, either top-level or nested
+ * Numeric item fact in an XBRL instance, either top-level or nested (and either non-nil or nil)
  *
  * @author Chris de Vreeze
  */
@@ -329,13 +348,27 @@ abstract class NumericItemFact private[xbrl] (
 }
 
 /**
- * Non-fraction numeric item fact in an XBRL instance, either top-level or nested
+ * Nil numeric item fact in an XBRL instance, either top-level or nested
  *
  * @author Chris de Vreeze
  */
-final class NonFractionNumericItemFact private[xbrl] (
+final class NilNumericItemFact private[xbrl] (
   override val bridgeElem: IndexedBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(bridgeElem, childElems) {
+
+  require(isNil, s"Expected nil numeric item fact")
+}
+
+/**
+ * Non-nil non-fraction numeric item fact in an XBRL instance, either top-level or nested
+ *
+ * @author Chris de Vreeze
+ */
+final class NonNilNonFractionNumericItemFact private[xbrl] (
+  override val bridgeElem: IndexedBridgeElem,
+  childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(bridgeElem, childElems) {
+
+  require(!isNil, s"Expected non-nil numeric item fact")
 
   def precisionOption: Option[String] = attributeOption(PrecisionEName)
 
@@ -343,13 +376,15 @@ final class NonFractionNumericItemFact private[xbrl] (
 }
 
 /**
- * Fraction item fact in an XBRL instance, either top-level or nested
+ * Non-nil fraction item fact in an XBRL instance, either top-level or nested
  *
  * @author Chris de Vreeze
  */
-final class FractionItemFact private[xbrl] (
+final class NonNilFractionItemFact private[xbrl] (
   override val bridgeElem: IndexedBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(bridgeElem, childElems) {
+
+  require(!isNil, s"Expected non-nil numeric item fact")
 
   require(findAllChildElems.map(_.resolvedName).toSet == Set(XbrliNumeratorEName, XbrliDenominatorEName))
 
@@ -365,7 +400,7 @@ final class FractionItemFact private[xbrl] (
 }
 
 /**
- * Tuple fact in an XBRL instance, either top-level or nested
+ * Tuple fact in an XBRL instance, either top-level or nested (and either non-nil or nil)
  *
  * @author Chris de Vreeze
  */
@@ -567,8 +602,12 @@ object ItemFact {
 
     if (unitRefOption.isEmpty) new NonNumericItemFact(elem, childElems)
     else {
-      if (elem.backingElem.findChildElem(withEName(XbrliNumeratorEName)).isDefined) new FractionItemFact(elem, childElems)
-      else new NonFractionNumericItemFact(elem, childElems)
+      if (elem.backingElem.attributeOption(XsiNilEName) == Some("true"))
+        new NilNumericItemFact(elem, childElems)
+      else if (elem.backingElem.findChildElem(withEName(XbrliNumeratorEName)).isDefined)
+        new NonNilFractionItemFact(elem, childElems)
+      else
+        new NonNilNonFractionNumericItemFact(elem, childElems)
     }
   }
 }
