@@ -16,19 +16,22 @@
 
 package eu.cdevreeze.yaidom.xbrl.saxon
 
+import java.net.URI
+
 import scala.collection.immutable
+
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Path
 import eu.cdevreeze.yaidom.core.QName
 import eu.cdevreeze.yaidom.core.Scope
-import eu.cdevreeze.yaidom.bridge.IndexedBridgeElem
+import eu.cdevreeze.yaidom.bridge.DocawareBridgeElem
 
 /**
  * Overridable bridge element taking a `saxon.DomElem`. This is a value class instance, to prevent object creation.
  *
  * @author Chris de Vreeze
  */
-class BridgeElemTakingSaxonElem(val backingElem: DomElem) extends AnyVal with IndexedBridgeElem {
+class BridgeElemTakingSaxonElem(val backingElem: DomElem) extends AnyVal with DocawareBridgeElem {
 
   final type BackingElem = DomElem
 
@@ -61,6 +64,14 @@ class BridgeElemTakingSaxonElem(val backingElem: DomElem) extends AnyVal with In
   final def path: Path = backingElem.path
 
   final def unwrappedBackingElem: UnwrappedBackingElem = backingElem
+
+  final def docUri: URI = {
+    // Assuming that the document URI is the root element base URI, which is not necessarily true
+    Option(rootElem.wrappedNode.getBaseURI).map(s => new URI(s)).getOrElse(new URI(""))
+  }
+
+  final def baseUri: URI =
+    Option(backingElem.wrappedNode.getBaseURI).map(s => new URI(s)).getOrElse(new URI(""))
 }
 
 object BridgeElemTakingSaxonElem {

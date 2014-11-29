@@ -47,7 +47,6 @@ class BulkNlFrisTestUsingSaxonElem extends AbstractBulkNlFrisTest {
 
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
-        Some(f.toURI),
         BridgeElemTakingSaxonElem.wrap(new saxon.DomDocument(node.getUnderlyingNode.asInstanceOf[DocumentInfo]).documentElement))
 
     xbrlInstanceDoc

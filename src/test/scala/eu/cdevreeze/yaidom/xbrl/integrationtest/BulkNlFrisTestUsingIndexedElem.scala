@@ -17,14 +17,15 @@
 package eu.cdevreeze.yaidom.xbrl.integrationtest
 
 import java.io.File
+import java.net.URI
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import eu.cdevreeze.yaidom.indexed
+import eu.cdevreeze.yaidom.bridge.DefaultDocawareBridgeElem
+import eu.cdevreeze.yaidom.docaware
 import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.bridge.DefaultIndexedBridgeElem
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 
 /**
@@ -45,8 +46,7 @@ class BulkNlFrisTestUsingIndexedElem extends AbstractBulkNlFrisTest {
 
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
-        doc.uriOption,
-        DefaultIndexedBridgeElem.wrap(indexed.Elem(doc.documentElement)))
+        DefaultDocawareBridgeElem.wrap(docaware.Elem(doc.uriOption.getOrElse(new URI("")), doc.documentElement)))
 
     xbrlInstanceDoc
   }

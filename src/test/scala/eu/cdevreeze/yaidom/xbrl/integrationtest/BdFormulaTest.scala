@@ -16,11 +16,10 @@
 
 package eu.cdevreeze.yaidom.xbrl.integrationtest
 
-import java.io.File
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-
-import javax.xml.transform.stream.StreamSource
+import java.io.File
+import java.net.URI
 
 import scala.BigDecimal
 import scala.collection.immutable
@@ -30,19 +29,21 @@ import org.junit.runner.RunWith
 import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
 
+import eu.cdevreeze.yaidom.bridge.DefaultDocawareBridgeElem
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.QName
+import eu.cdevreeze.yaidom.docaware
 import eu.cdevreeze.yaidom.indexed
-import eu.cdevreeze.yaidom.simple
 import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.print.DocumentPrinterUsingSax
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
+import eu.cdevreeze.yaidom.simple
 import eu.cdevreeze.yaidom.simple.Document
-import eu.cdevreeze.yaidom.bridge.DefaultIndexedBridgeElem
-import eu.cdevreeze.yaidom.xbrl.saxon.BridgeElemTakingSaxonElem
 import eu.cdevreeze.yaidom.xbrl.ItemFact
 import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
 import eu.cdevreeze.yaidom.xbrl.saxon
+import eu.cdevreeze.yaidom.xbrl.saxon.BridgeElemTakingSaxonElem
+import javax.xml.transform.stream.StreamSource
 import net.sf.saxon.om.DocumentInfo
 import net.sf.saxon.s9api.Processor
 
@@ -75,8 +76,7 @@ class BdFormulaTest extends Suite {
 
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
-        doc.uriOption,
-        DefaultIndexedBridgeElem.wrap(indexed.Elem(editedElem)))
+        DefaultDocawareBridgeElem.wrap(docaware.Elem(doc.uriOption.getOrElse(new URI("")), editedElem)))
 
     testXbrlProcessing(xbrlInstanceDoc)
   }
@@ -111,7 +111,6 @@ class BdFormulaTest extends Suite {
 
     val xbrlInstanceDoc: XbrlInstanceDocument =
       new XbrlInstanceDocument(
-        Some(f.toURI),
         BridgeElemTakingSaxonElem.wrap(new saxon.DomDocument(node.getUnderlyingNode.asInstanceOf[DocumentInfo]).documentElement))
 
     testXbrlProcessing(xbrlInstanceDoc)

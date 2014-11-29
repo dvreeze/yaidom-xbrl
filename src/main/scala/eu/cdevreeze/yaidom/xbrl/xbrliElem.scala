@@ -29,7 +29,8 @@ import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.queryapi.IsNavigable
 import eu.cdevreeze.yaidom.queryapi.ScopedElemLike
 import eu.cdevreeze.yaidom.queryapi.SubtypeAwareElemLike
-import eu.cdevreeze.yaidom.bridge.IndexedBridgeElem
+import eu.cdevreeze.yaidom.bridge.DocawareBridgeElem
+import java.net.URI
 
 /**
  * XML element inside XBRL instance (or the entire XBRL instance itself). This API is immutable if the wrapped element is
@@ -56,10 +57,13 @@ import eu.cdevreeze.yaidom.bridge.IndexedBridgeElem
  * Hence, regarding nil facts, the user of the API is responsible for keeping in mind that facts can indeed be nil facts
  * (which facts are easy to filter away).
  *
+ * If the containing document has no URI, create the underlying DocawareBridgeElem with an empty URI (that is, the
+ * empty string as URI, which is a relative URI containing only a path, which is the empty string).
+ *
  * @author Chris de Vreeze
  */
 sealed class XbrliElem private[xbrl] (
-  val bridgeElem: IndexedBridgeElem,
+  val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends ScopedElemLike[XbrliElem] with IsNavigable[XbrliElem] with SubtypeAwareElemLike[XbrliElem] {
 
   require(childElems.map(_.bridgeElem.backingElem) == bridgeElem.findAllChildElems.map(_.backingElem))
@@ -90,6 +94,16 @@ sealed class XbrliElem private[xbrl] (
   }
 
   final override def hashCode: Int = bridgeElem.backingElem.hashCode
+
+  final def docUriOption: Option[URI] = {
+    val uri = bridgeElem.docUri
+    if (uri.isAbsolute) Some(uri) else None
+  }
+
+  final def baseUriOption: Option[URI] = {
+    val uri = bridgeElem.baseUri
+    if (uri.isAbsolute) Some(uri) else None
+  }
 }
 
 /**
@@ -105,7 +119,7 @@ sealed class XbrliElem private[xbrl] (
  * @author Chris de Vreeze
  */
 final class XbrlInstance private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliXbrlEName, s"Expected EName $XbrliXbrlEName but found $resolvedName")
@@ -203,7 +217,7 @@ final class XbrlInstance private[xbrl] (
  * @author Chris de Vreeze
  */
 final class SchemaRef private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == LinkSchemaRefEName, s"Expected EName $LinkSchemaRefEName but found $resolvedName")
@@ -215,7 +229,7 @@ final class SchemaRef private[xbrl] (
  * @author Chris de Vreeze
  */
 final class LinkbaseRef private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == LinkLinkbaseRefEName, s"Expected EName $LinkLinkbaseRefEName but found $resolvedName")
@@ -227,7 +241,7 @@ final class LinkbaseRef private[xbrl] (
  * @author Chris de Vreeze
  */
 final class RoleRef private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == LinkRoleRefEName, s"Expected EName $LinkRoleRefEName but found $resolvedName")
@@ -239,7 +253,7 @@ final class RoleRef private[xbrl] (
  * @author Chris de Vreeze
  */
 final class ArcroleRef private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == LinkArcroleRefEName, s"Expected EName $LinkArcroleRefEName but found $resolvedName")
@@ -251,7 +265,7 @@ final class ArcroleRef private[xbrl] (
  * @author Chris de Vreeze
  */
 final class XbrliContext private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliContextEName, s"Expected EName $XbrliContextEName but found $resolvedName")
@@ -277,7 +291,7 @@ final class XbrliContext private[xbrl] (
  * @author Chris de Vreeze
  */
 final class XbrliUnit private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliUnitEName, s"Expected EName $XbrliUnitEName but found $resolvedName")
@@ -299,7 +313,7 @@ final class XbrliUnit private[xbrl] (
  * @author Chris de Vreeze
  */
 abstract class Fact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   def isTopLevel: Boolean = bridgeElem.path.entries.size == 1
@@ -313,7 +327,7 @@ abstract class Fact private[xbrl] (
  * @author Chris de Vreeze
  */
 abstract class ItemFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends Fact(bridgeElem, childElems) {
 
   require(attributeOption(ContextRefEName).isDefined, s"Expected attribute $ContextRefEName")
@@ -327,7 +341,7 @@ abstract class ItemFact private[xbrl] (
  * @author Chris de Vreeze
  */
 final class NonNumericItemFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends ItemFact(bridgeElem, childElems) {
 
   require(attributeOption(UnitRefEName).isEmpty, s"Expected no attribute $UnitRefEName")
@@ -339,7 +353,7 @@ final class NonNumericItemFact private[xbrl] (
  * @author Chris de Vreeze
  */
 abstract class NumericItemFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends ItemFact(bridgeElem, childElems) {
 
   require(attributeOption(UnitRefEName).isDefined, s"Expected attribute $UnitRefEName")
@@ -353,7 +367,7 @@ abstract class NumericItemFact private[xbrl] (
  * @author Chris de Vreeze
  */
 final class NilNumericItemFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(bridgeElem, childElems) {
 
   require(isNil, s"Expected nil numeric item fact")
@@ -365,7 +379,7 @@ final class NilNumericItemFact private[xbrl] (
  * @author Chris de Vreeze
  */
 final class NonNilNonFractionNumericItemFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(bridgeElem, childElems) {
 
   require(!isNil, s"Expected non-nil numeric item fact")
@@ -381,7 +395,7 @@ final class NonNilNonFractionNumericItemFact private[xbrl] (
  * @author Chris de Vreeze
  */
 final class NonNilFractionItemFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends NumericItemFact(bridgeElem, childElems) {
 
   require(!isNil, s"Expected non-nil numeric item fact")
@@ -405,7 +419,7 @@ final class NonNilFractionItemFact private[xbrl] (
  * @author Chris de Vreeze
  */
 final class TupleFact private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends Fact(bridgeElem, childElems) {
 
   def findAllChildFacts: immutable.IndexedSeq[Fact] = {
@@ -431,7 +445,7 @@ final class TupleFact private[xbrl] (
  * @author Chris de Vreeze
  */
 final class FootnoteLink private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == LinkFootnoteLinkEName, s"Expected EName $LinkFootnoteLinkEName but found $resolvedName")
@@ -443,7 +457,7 @@ final class FootnoteLink private[xbrl] (
  * @author Chris de Vreeze
  */
 final class Entity private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliEntityEName, s"Expected EName $XbrliEntityEName but found $resolvedName")
@@ -465,7 +479,7 @@ final class Entity private[xbrl] (
  * @author Chris de Vreeze
  */
 final class Period private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliPeriodEName, s"Expected EName $XbrliPeriodEName but found $resolvedName")
@@ -489,7 +503,7 @@ final class Period private[xbrl] (
  * @author Chris de Vreeze
  */
 final class Scenario private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliScenarioEName, s"Expected EName $XbrliScenarioEName but found $resolvedName")
@@ -501,7 +515,7 @@ final class Scenario private[xbrl] (
  * @author Chris de Vreeze
  */
 final class Segment private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliSegmentEName, s"Expected EName $XbrliSegmentEName but found $resolvedName")
@@ -513,7 +527,7 @@ final class Segment private[xbrl] (
  * @author Chris de Vreeze
  */
 final class Identifier private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliIdentifierEName, s"Expected EName $XbrliIdentifierEName but found $resolvedName")
@@ -525,7 +539,7 @@ final class Identifier private[xbrl] (
  * @author Chris de Vreeze
  */
 final class Divide private[xbrl] (
-  override val bridgeElem: IndexedBridgeElem,
+  override val bridgeElem: DocawareBridgeElem,
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliDivideEName, s"Expected EName $XbrliDivideEName but found $resolvedName")
@@ -548,13 +562,13 @@ object XbrliElem {
   /**
    * Expensive method to create an XbrliElem tree
    */
-  def apply(elem: IndexedBridgeElem): XbrliElem = {
+  def apply(elem: DocawareBridgeElem): XbrliElem = {
     // Recursive calls
     val childElems = elem.findAllChildElems.map(e => apply(e))
     apply(elem, childElems)
   }
 
-  private[xbrl] def apply(elem: IndexedBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): XbrliElem = elem.resolvedName match {
+  private[xbrl] def apply(elem: DocawareBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): XbrliElem = elem.resolvedName match {
     case XbrliXbrlEName => new XbrlInstance(elem, childElems)
     case LinkSchemaRefEName => new SchemaRef(elem, childElems)
     case LinkLinkbaseRefEName => new LinkbaseRef(elem, childElems)
@@ -576,9 +590,9 @@ object XbrliElem {
 
 object Fact {
 
-  def accepts(elem: IndexedBridgeElem): Boolean = ItemFact.accepts(elem) || TupleFact.accepts(elem)
+  def accepts(elem: DocawareBridgeElem): Boolean = ItemFact.accepts(elem) || TupleFact.accepts(elem)
 
-  private[xbrl] def apply(elem: IndexedBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): Fact =
+  private[xbrl] def apply(elem: DocawareBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): Fact =
     if (ItemFact.accepts(elem)) ItemFact(elem, childElems) else TupleFact(elem, childElems)
 
   def isFactPath(path: Path): Boolean = {
@@ -589,12 +603,12 @@ object Fact {
 
 object ItemFact {
 
-  def accepts(elem: IndexedBridgeElem): Boolean = {
+  def accepts(elem: DocawareBridgeElem): Boolean = {
     Fact.isFactPath(elem.path) &&
       elem.backingElem.attributeOption(ContextRefEName).isDefined
   }
 
-  private[xbrl] def apply(elem: IndexedBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): ItemFact = {
+  private[xbrl] def apply(elem: DocawareBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): ItemFact = {
     require(Fact.isFactPath(elem.path))
     require(elem.backingElem.attributeOption(ContextRefEName).isDefined)
 
@@ -614,12 +628,12 @@ object ItemFact {
 
 object TupleFact {
 
-  def accepts(elem: IndexedBridgeElem): Boolean = {
+  def accepts(elem: DocawareBridgeElem): Boolean = {
     Fact.isFactPath(elem.path) &&
       elem.backingElem.attributeOption(ContextRefEName).isEmpty
   }
 
-  private[xbrl] def apply(elem: IndexedBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): TupleFact = {
+  private[xbrl] def apply(elem: DocawareBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): TupleFact = {
     require(Fact.isFactPath(elem.path))
     require(elem.backingElem.attributeOption(ContextRefEName).isEmpty)
 
