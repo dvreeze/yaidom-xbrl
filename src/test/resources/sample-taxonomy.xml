@@ -7,6 +7,8 @@
             xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
             xmlns:sbr="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension"
             xmlns:nl-types="http://www.nltaxonomie.nl/9.0/basis/sbr/types/nl-types"
+            xmlns:cbs-bedr-a="http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts"
+            xmlns:cbs-pdom="http://www.nltaxonomie.nl/9.0/report/cbs/lineitems/cbs-primary-domains"
             xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
             xmlns:cbs-dim="http://www.nltaxonomie.nl/9.0/domein/cbs/axes/cbs-axes"
             xmlns:cbs-dm-begin-end="http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-period-begin-and-end"
@@ -21,9 +23,7 @@
   
   <!-- Concept labels as 1-to-n relations from concepts to resources -->
   
-<t:labelLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
-             xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
-             t:linkrole="http://www.xbrl.org/2003/role/link">
+<t:labelLink t:linkrole="http://www.xbrl.org/2003/role/link">
   <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
                t:from="cbs-bedr-items:AccommodationCostsBuildingTaxes"
                t:linkrole="http://www.xbrl.org/2003/role/link">
@@ -1013,10 +1013,7 @@
   
   <!-- Concept references as 1-to-n relations from concepts to resources, even if that means repetition of references -->
   
-<t:referenceLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
-                 xmlns:ref="http://www.xbrl.org/2006/ref"
-                 xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
-                 t:linkrole="http://www.xbrl.org/2003/role/link">
+<t:referenceLink t:linkrole="http://www.xbrl.org/2003/role/link">
   <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
                    t:from="cbs-bedr-items:NetTurnover"
                    t:linkrole="http://www.xbrl.org/2003/role/link">
@@ -1096,10 +1093,7 @@
     <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:TotalAssetsInvestmentsMember" order="4.0"/>
   </t:definitionLink>
 
-<t:definitionLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
-                  xmlns:cbs-pdom="http://www.nltaxonomie.nl/9.0/report/cbs/lineitems/cbs-primary-domains"
-                  xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
-                  t:linkrole="urn:cbs:linkrole:nature-of-investment-table">
+<t:definitionLink t:linkrole="urn:cbs:linkrole:nature-of-investment-table">
   <t:definitionArc order="1.0"
                     t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
                     t:from="cbs-pdom:NatureOfInvestmentLineItems"
@@ -1162,10 +1156,7 @@
                     t:to="cbs-bedr-items:InvestmentsTangibleAssetsOther"/>
 </t:definitionLink>
 
-<t:presentationLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
-                    xmlns:cbs-bedr-a="http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts"
-                    xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
-                    t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours">
+<t:presentationLink t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours">
   <t:presentationArc order="1.0"
                       t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
                       t:from="cbs-bedr-a:CBSShorttermStatisticTitle"
