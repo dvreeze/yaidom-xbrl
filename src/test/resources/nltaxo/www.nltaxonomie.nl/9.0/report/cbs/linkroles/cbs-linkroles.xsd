@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cbs-lr="http://www.nltaxonomie.nl/9.0/report/cbs/linkroles/cbs-linkroles" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/report/cbs/linkroles/cbs-linkroles">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:roleType id="cbs-lr_Investments_Large_Industrial" roleURI="urn:cbs:linkrole:fs-cbs-investments-large-industrial">
+        <link:definition>Statistiek van de Investeringen voor grote industriele bedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Investments_Large_Non_Industrial" roleURI="urn:cbs:linkrole:fs-cbs-investments-large-non-industrial">
+        <link:definition>Statistiek van de Investeringen voor grote niet industriele bedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Investments_Small" roleURI="urn:cbs:linkrole:fs-cbs-investments-small">
+        <link:definition>Statistiek van de Investeringen voor kleine bedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+
+      <link:roleType id="cbs-lr_productionstatistic-construction" roleURI="urn:cbs:linkrole:fs-cbs-productionstatistic-construction">
+        <link:definition>Productiestatistiek bouw</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_productionstatistic-other" roleURI="urn:cbs:linkrole:fs-cbs-productionstatistic-other">
+        <link:definition>Productiestatistiek overig</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_productionstatistic-commerce" roleURI="urn:cbs:linkrole:fs-cbs-productionstatistic-commerce">
+        <link:definition>Productiestatistiek handel</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_productionstatistic-health" roleURI="urn:cbs:linkrole:fs-cbs-productionstatistic-health">
+        <link:definition>Productiestatistiek zorg</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_productionstatistic-industry" roleURI="urn:cbs:linkrole:fs-cbs-productionstatistic-industry">
+        <link:definition>Productiestatistiek industrie</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Contact-information" roleURI="urn:cbs:linkrole:fs-cbs-contact-information">
+        <link:definition>Contactinformatie</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Contact-information-sts" roleURI="urn:cbs:linkrole:fs-cbs-contact-information-sts">
+        <link:definition>Contactinformatie</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-gross-wholesale-gross" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-gross-wholesale-gross">
+        <link:definition>Korte termijnnstatistiek voor de bruto omzet in de groothandel</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+     
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover">
+        <link:definition>Korte termijn statistiek voor de omzet</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-excised" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-excised">
+        <link:definition>Korte termijn statistiek voor de accijnsgerelateerde omzet</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-excised-large" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-excised-large">
+        <link:definition>Korte termijnstatistiek voor de accijnsgerelateerde omzet voor grote bedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-excised-trade" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-excised-trade">
+        <link:definition>Korte termijn statistiek voor de accijnsgerelateerde omzet van handelsbedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-excised-trade-small" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-excised-trade-small">
+        <link:definition>Korte termijnstatistiek voor de accijnsgerelateerde omzet van kleine handelsbedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-wholesale-large" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-wholesale-large">
+        <link:definition>Korte termijnstatistiek voor omzet in de groothandel voor grote bedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-wholesale-small" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-wholesale-small">
+        <link:definition>Korte termijnstatistiek voor omzet in de groothandel voor kleine bedrijven</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad">
+        <link:definition>Korte termijnstatistiek voor de omzet in binnen- en buitenland</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-wholesale-costs-of-sales" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-wholesale-costs-of-sales">
+        <link:definition>Korte termijnstatistiek voor de omzet in de groothandel met inkoopwaarde</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad-industry-other" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-industry-other">
+        <link:definition>Korte termijnstatistiek voor de industriele omzet in binnen en buitenland</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad-excised" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-excised">
+        <link:definition>Korte termijnstatistiek voor accijnsgerelateerde omzet in binnen- en buitenland</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+     
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad-stock-products" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-products">
+        <link:definition>Korte termijnstatistiek voor de omzet in binnen- en buitenland met voorraden gereed product</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad-excised-stock-products" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-excised-stock-products">
+        <link:definition>Korte termijnstatistiek voor de accijnsgerelateerde omzet met voorraden gereed product</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad-stock-commodities-products" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products">
+        <link:definition>Korte termijnstatistiek voor de omzet in binnen- en buitenland met handels- en productievoorraden</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-home-abroad-stock-commodities-products-hours" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours">
+        <link:definition>Korte termijnstatistiek voor de omzet in binnen- en buitenland met handels- en productievoorraden en directe uren</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-working-hours-A-B-and-C" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-working-hours-a-b-and-c">
+        <link:definition>Korte termijnstatistiek voor fase A, B en C gerelateerde verhuurde uren</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-gross" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-gross">
+        <link:definition>Korte termijnstatistiek voor de bruto omzet</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="cbs-lr_Shortterm-Statistics-Turnover-internetsales" roleURI="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-internetsales">
+        <link:definition>Korte termijnstatistiek voor de bruto omzet inclusief internetverkopen</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:linkbaseRef xlink:href="cbs-linkroles-generic-lab-nl.xml" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple"/>
+      <link:linkbaseRef xlink:href="cbs-linkroles-generic-lab-en.xml" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple"/>
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

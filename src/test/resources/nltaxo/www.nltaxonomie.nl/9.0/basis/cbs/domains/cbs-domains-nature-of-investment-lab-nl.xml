@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+         
+         <link:label id="cbs-dm-noi_NewUsedSelfProducedDomain_label_nl" xlink:label="cbs-dm-noi_NewUsedSelfProducedDomain_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Aard van de investering [domein]</link:label>
+      <link:loc xlink:href="cbs-domains-natureofinvestment.xsd#cbs-dm-noi_NewUsedSelfProducedDomain" xlink:label="cbs-dm-noi_NewUsedSelfProducedDomain_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dm-noi_NewUsedSelfProducedDomain_loc" xlink:to="cbs-dm-noi_NewUsedSelfProducedDomain_label_nl" xlink:type="arc"/>
+	  <link:label id="cbs-dm-noi_NewMember_label_nl" xlink:label="cbs-dm-noi_NewMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Investeringen in nieuwe activa [member]</link:label>
+      <link:loc xlink:href="cbs-domains-natureofinvestment.xsd#cbs-dm-noi_NewMember" xlink:label="cbs-dm-noi_NewMember_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dm-noi_NewMember_loc" xlink:to="cbs-dm-noi_NewMember_label_nl" xlink:type="arc"/>	 
+ 	  <link:label id="cbs-dm-noi_UsedMember_label_nl" xlink:label="cbs-dm-noi_UsedMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Investeringen in tweedehands activa [member]</link:label>
+      <link:loc xlink:href="cbs-domains-natureofinvestment.xsd#cbs-dm-noi_UsedMember" xlink:label="cbs-dm-noi_UsedMember_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dm-noi_UsedMember_loc" xlink:to="cbs-dm-noi_UsedMember_label_nl" xlink:type="arc"/>
+	  <link:label id="cbs-dm-noi_SelfProducedMember_label_nl" xlink:label="cbs-dm-noi_SelfProducedMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Investeringen in in eigen gebruik vervaardigde activa [member]</link:label>
+      <link:loc xlink:href="cbs-domains-natureofinvestment.xsd#cbs-dm-noi_SelfProducedMember" xlink:label="cbs-dm-noi_SelfProducedMember_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dm-noi_SelfProducedMember_loc" xlink:to="cbs-dm-noi_SelfProducedMember_label_nl" xlink:type="arc"/>	 	 
+	  <link:label id="cbs-dm-noi_TotalAssetsInvestmentsMember_label_nl" xlink:label="cbs-dm-noi_TotalAssetsInvestmentsMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Totale investeringen in gespecificeerd activa [member]</link:label>
+      <link:loc xlink:href="cbs-domains-natureofinvestment.xsd#cbs-dm-noi_TotalAssetsInvestmentsMember" xlink:label="cbs-dm-noi_TotalAssetsInvestmentsMember_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dm-noi_TotalAssetsInvestmentsMember_loc" xlink:to="cbs-dm-noi_TotalAssetsInvestmentsMember_label_nl" xlink:type="arc"/>	 
+
+   </link:labelLink>
+
+</link:linkbase>

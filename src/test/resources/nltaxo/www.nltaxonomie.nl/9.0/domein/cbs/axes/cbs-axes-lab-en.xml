@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+	  
+            <link:label id="cbs-dim_NewUsedSelfProducedAxis_label_en" xlink:label="cbs-dim_NewUsedSelfProducedAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Nature of investments, components [axis]</link:label>
+      <link:loc xlink:href="cbs-axes.xsd#cbs-dim_NewUsedSelfProducedAxis" xlink:label="cbs-dim_NewUsedSelfProducedAxis_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dim_NewUsedSelfProducedAxis_loc" xlink:to="cbs-dim_NewUsedSelfProducedAxis_label_en" xlink:type="arc"/>
+
+      <link:label id="cbs-dim_NatureOfInvestmentSoftwareAxis_label_en" xlink:label="cbs-dim_NatureOfInvestmentSoftwareAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Nature of investments in software, components [axis]</link:label>
+      <link:loc xlink:href="cbs-axes.xsd#cbs-dim_NatureOfInvestmentSoftwareAxis" xlink:label="cbs-dim_NatureOfInvestmentSoftwareAxis_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dim_NatureOfInvestmentSoftwareAxis_loc" xlink:to="cbs-dim_NatureOfInvestmentSoftwareAxis_label_en" xlink:type="arc"/>
+
+	<link:label id="cbs-dim_PeriodBeginEndAxis_label_en" xlink:label="cbs-dim_PeriodBeginEndAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Tangible fixed assets: prepayments and obligations [axis]</link:label>
+      <link:loc xlink:href="cbs-axes.xsd#cbs-dim_PeriodBeginEndAxis" xlink:label="cbs-dim_PeriodBeginEndAxis_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-dim_PeriodBeginEndAxis_loc" xlink:to="cbs-dim_PeriodBeginEndAxis_label_en" xlink:type="arc"/>
+
+  </link:labelLink>
+</link:linkbase>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:cbs:linkrole:nature-of-investment-table" xlink:type="simple" xlink:href="cbs-linkroles-tables.xsd#cbs-dlr_NatureOfInvestmentTable"/>
+  <link:roleRef roleURI="urn:cbs:linkrole:new-used-selfproduced-axis" xlink:type="simple" xlink:href="../../../domein/cbs/linkroles/cbs-linkroles-axes.xsd#cbs-dlra_NewUsedSelfProducedAxis"/>
+ 
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"/>
+  <link:definitionLink xlink:type="extended" xlink:role="urn:cbs:linkrole:nature-of-investment-table">
+    <link:loc xlink:type="locator" xlink:href="../lineitems/cbs-primary-domains.xsd#cbs-pdom_NatureOfInvestmentLineItems" xlink:label="cbs-pdom_NatureOfInvestmentLineItems_loc"/>
+    <link:loc xlink:type="locator" xlink:href="../tables/cbs-tables.xsd#cbs-hc_ValidationTable" xlink:label="cbs-hc_ValidationTable_loc"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="cbs-pdom_NatureOfInvestmentLineItems_loc" xlink:to="cbs-hc_ValidationTable_loc" order="1.0" xbrldt:closed="true" xbrldt:contextElement="scenario"/>
+    <link:loc xlink:type="locator" xlink:href="../../../domein/cbs/axes/cbs-axes.xsd#cbs-dim_NewUsedSelfProducedAxis" xlink:label="cbs-dim_NewUsedSelfProducedAxis_loc"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="cbs-hc_ValidationTable_loc" xlink:to="cbs-dim_NewUsedSelfProducedAxis_loc" order="4.0" xbrldt:targetRole="urn:cbs:linkrole:new-used-selfproduced-axis"/>
+    
+  </link:definitionLink>
+</link:linkbase>

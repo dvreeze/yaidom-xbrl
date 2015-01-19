@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cbs-bedr-a="http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts" xmlns:sbr="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts" >
+   <xs:annotation>
+      <xs:appinfo>
+         <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-bedr-abstracts-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+         <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-bedr-abstracts-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      </xs:appinfo>
+   </xs:annotation>
+   <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+   <xs:import namespace="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" schemaLocation="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension.xsd"/>
+   <xs:element abstract="true" id="cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle" name="GlobalCommonDocumentTaxonomyCBSTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentsInTangibleAssetsTitle" name="InvestmentsInTangibleAssetsTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentsInIntangibleAssetsTitle" name="InvestmentsInIntangibleAssetsTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentsPrepaymentsTitle" name="InvestmentsPrepaymentsTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentsNotesTitle" name="InvestmentsNotesTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_RevenueOnDisposalsTitle" name="RevenueOnDisposalsTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle" name="InvestmentStatisticLimitedPlaceholderTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle" name="InvestmentStatisticExtendedPlaceholderTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle" name="InvestmentStatisticExtendedOtherPlaceholderTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_CBSShorttermStatisticTitle" name="CBSShorttermStatisticTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_CBSIncomeStatementTitle" name="CBSIncomeStatementTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+   <xs:element abstract="true" id="cbs-bedr-a_InvestmentByRegionTitle" name="InvestmentByRegionTitle" nillable="false" substitutionGroup="sbr:presentationItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+</xs:schema>
+

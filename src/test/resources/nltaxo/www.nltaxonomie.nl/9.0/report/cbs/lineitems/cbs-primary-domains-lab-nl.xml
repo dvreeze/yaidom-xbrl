@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+      
+      <link:label id="cbs-pdom_NatureOfInvestmentLineItems_label_nl" xlink:label="cbs-pdom_NatureOfInvestmentLineItems_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Aard van de investering [posten]</link:label>
+      <link:loc xlink:href="cbs-primary-domains.xsd#cbs-pdom_NatureOfInvestmentLineItems" xlink:label="cbs-pdom_NatureOfInvestmentLineItems_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-pdom_NatureOfInvestmentLineItems_loc" xlink:to="cbs-pdom_NatureOfInvestmentLineItems_label_nl" xlink:type="arc"/>
+
+      <link:label id="cbs-pdom_NatureOfInvestmentSoftwareLineItems_label_nl" xlink:label="cbs-pdom_NatureOfInvestmentSoftwareLineItems_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Investeringen in immateriele activa [posten]</link:label>
+      <link:loc xlink:href="cbs-primary-domains.xsd#cbs-pdom_NatureOfInvestmentSoftwareLineItems" xlink:label="cbs-pdom_NatureOfInvestmentSoftwareLineItems_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-pdom_NatureOfInvestmentSoftwareLineItems_loc" xlink:to="cbs-pdom_NatureOfInvestmentSoftwareLineItems_label_nl" xlink:type="arc"/>
+
+      <link:label id="cbs-pdom_AdimensionalLineItems_label_nl" xlink:label="cbs-pdom_AdimensionalLineItems_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Adimensioneel [posten]</link:label>
+      <link:loc xlink:href="cbs-primary-domains.xsd#cbs-pdom_AdimensionalLineItems" xlink:label="cbs-pdom_AdimensionalLineItems_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-pdom_AdimensionalLineItems_loc" xlink:to="cbs-pdom_AdimensionalLineItems_label_nl" xlink:type="arc"/>
+
+      <link:label id="cbs-pdom_PeriodBeginEndLineItems_label_nl" xlink:label="cbs-pdom_PeriodBeginEndLineItems_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Vooruitbetalingen op activa [posten]</link:label>
+      <link:loc xlink:href="cbs-primary-domains.xsd#cbs-pdom_PeriodBeginEndLineItems" xlink:label="cbs-pdom_PeriodBeginEndLineItems_loc" xlink:type="locator"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-pdom_PeriodBeginEndLineItems_loc" xlink:to="cbs-pdom_PeriodBeginEndLineItems_label_nl" xlink:type="arc"/>
+
+
+  </link:labelLink>
+</link:linkbase>

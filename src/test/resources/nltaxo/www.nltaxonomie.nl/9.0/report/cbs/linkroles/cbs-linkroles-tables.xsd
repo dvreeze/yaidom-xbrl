@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cbs-dlr="http://www.nltaxonomie.nl/9.0/report/cbs/linkroles/cbs-linkroles-tables" xmlns:link="http://www.xbrl.org/2003/linkbase" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/report/cbs/linkroles/cbs-linkroles-tables">
+   <xs:annotation>
+      <xs:appinfo>
+		<link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-linkroles-tables-generic-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+		<link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-linkroles-tables-generic-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+		
+                <link:roleType id="cbs-dlr_NatureOfInvestmentTable" roleURI="urn:cbs:linkrole:nature-of-investment-table">
+			<link:definition>Aard van de Investering [tabel]</link:definition>
+			<link:usedOn>link:definitionLink</link:usedOn>
+		</link:roleType>
+
+                <link:roleType id="cbs-dlr_NatureOfInvestmentSoftwareTable" roleURI="urn:cbs:linkrole:nature-of-investment-software-table">
+			<link:definition>Investeringen in software naar soort [tabel]</link:definition>
+			<link:usedOn>link:definitionLink</link:usedOn>
+		</link:roleType>
+
+                <link:roleType id="cbs-dlr_AdimensionalTable" roleURI="urn:cbs:linkrole:adimensional-table">
+			<link:definition>Adimensionele elementen [tabel]</link:definition>
+			<link:usedOn>link:definitionLink</link:usedOn>
+		</link:roleType>
+
+                <link:roleType id="cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable" roleURI="urn:cbs:linkrole:begin-end-period-prepayments-assets-table">
+			<link:definition>Vooruitbetalingen en aangegane verplichtingen aan het begin en einde van de rapportageverplichtingen [tabel]</link:definition>
+			<link:usedOn>link:definitionLink</link:usedOn>
+		</link:roleType>
+		
+	</xs:appinfo>
+    </xs:annotation>
+</xs:schema>

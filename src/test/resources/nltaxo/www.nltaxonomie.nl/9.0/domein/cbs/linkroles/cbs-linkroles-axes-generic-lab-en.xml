@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd">
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <link:roleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label" roleURI="http://www.xbrl.org/2008/role/label"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+	
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlra_NewUsedSelfProducedAxis_loc" xlink:to="cbs-dlra_NewUsedSelfProducedAxis_label-en"/>
+    <label:label xlink:type="resource" id="cbs-dlra_NewUsedSelfProducedAxis_label-en" xlink:label="cbs-dlra_NewUsedSelfProducedAxis_label-en" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="en">Nature of investments components [axis]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-axes.xsd#cbs-dlra_NewUsedSelfProducedAxis" xlink:label="cbs-dlra_NewUsedSelfProducedAxis_loc"/>
+
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlra_NatureOfInvestmentSoftwareAxis_loc" xlink:to="cbs-dlra_NatureOfInvestmentSoftwareAxis_label-en"/>
+    <label:label xlink:type="resource" id="cbs-dlra_NatureOfInvestmentSoftwareAxis_label-en" xlink:label="cbs-dlra_NatureOfInvestmentSoftwareAxis_label-en" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="en">Nature of investments in software, components [axis]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-axes.xsd#cbs-dlra_NatureOfInvestmentSoftwareAxis" xlink:label="cbs-dlra_NatureOfInvestmentSoftwareAxis_loc"/>
+
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlra_PeriodBeginEndAxis_loc" xlink:to="cbs-dlra_PeriodBeginEndAxis_label-en"/>
+    <label:label xlink:type="resource" id="cbs-dlra_PeriodBeginEndAxis_label-en" xlink:label="cbs-dlra_PeriodBeginEndAxis_label-en" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="en">Prepayments and obligations in tangible fixed assets components [axis]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-axes.xsd#cbs-dlra_PeriodBeginEndAxis" xlink:label="cbs-dlra_PeriodBeginEndAxis_loc"/>
+   
+  </gen:link>
+</link:linkbase>

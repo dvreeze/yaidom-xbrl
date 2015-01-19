@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cbs-dlra="http://www.nltaxonomie.nl/9.0/domein/cbs/linkroles/cbs-linkroles-axes" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/domein/cbs/linkroles/cbs-linkroles-axes">
+    <xs:annotation>
+      <xs:appinfo>
+		<link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-linkroles-axes-generic-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+		<link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-linkroles-axes-generic-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+
+       <link:roleType id="cbs-dlra_NewUsedSelfProducedAxis" roleURI="urn:cbs:linkrole:new-used-selfproduced-axis">
+            <link:definition>Eigen vermogen, componenten [as]</link:definition>
+            <link:usedOn>link:definitionLink</link:usedOn>
+        </link:roleType>
+       <link:roleType id="cbs-dlra_NatureOfInvestmentSoftwareAxis" roleURI="urn:cbs:linkrole:nature-of-investment-software-axis">
+            <link:definition>Aard van de investeringen in software, componenten [as]</link:definition>
+            <link:usedOn>link:definitionLink</link:usedOn>
+        </link:roleType>
+       <link:roleType id="cbs-dlra_PeriodBeginEndAxis" roleURI="urn:cbs:linkrole:period-begin-end-axis">
+            <link:definition>Vooruitbetalingen en aangegane verplichtingen in materiele vaste activa [as]</link:definition>
+            <link:usedOn>link:definitionLink</link:usedOn>
+        </link:roleType>
+
+    </xs:appinfo>
+   </xs:annotation>
+</xs:schema>

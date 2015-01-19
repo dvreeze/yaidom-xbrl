@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<t:taxonomy xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
+            xmlns:txs="https://github.com/dvreeze/yaidom-xbrl/xmlschema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:ref="http://www.xbrl.org/2006/ref"
+            xmlns:xbrli="http://www.xbrl.org/2003/instance"
+            xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+            xmlns:sbr="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension"
+            xmlns:nl-types="http://www.nltaxonomie.nl/9.0/basis/sbr/types/nl-types"
+            xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+            xmlns:cbs-dim="http://www.nltaxonomie.nl/9.0/domein/cbs/axes/cbs-axes"
+            xmlns:cbs-dm-begin-end="http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-period-begin-and-end"
+            xmlns:cbs-dm-noi="http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestment"
+            xmlns:cbs-dm-nois="http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestmentsoftware">
+            
+  <!-- Note that unlike the original taxonomy files, this file is concise, clear about concepts and relationships, and data belonging together is often collocated -->
+            
+  <!-- The links are like the original, but without XLink, mentioning referred concept QNames instead -->
+  <!-- The original documents are not known from the content in this file (although they can be looked up) -->
+  <!-- One namespace is used for both the link elements and attributes ("combining the xlink and link namespaces") -->
+  
+  <!-- Concept labels as 1-to-n relations from concepts to resources -->
+  
+  <t:labelLink t:linkrole="http://www.xbrl.org/2003/role/link">
+    <t:conceptLabel t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsBuildingTaxes" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs building taxes</t:label>
+    </t:conceptLabel>
+    <t:conceptLabel t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsEnvironmentalCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs environmental costs</t:label>
+    </t:conceptLabel>
+    <t:conceptLabel t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsMaintenanceAndRepairCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs maintenance and repair costs</t:label>
+    </t:conceptLabel>
+  </t:labelLink>
+  
+  <!-- Concept references as 1-to-n relations from concepts to resources, even if that means repetition of references -->
+  
+  <t:referenceLink t:linkrole="http://www.xbrl.org/2003/role/link">
+    <t:conceptReference t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:NetTurnover" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
+      <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+      <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+    </t:conceptReference>
+    <t:conceptReference t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherHome" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
+      <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+      <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+    </t:conceptReference>
+    <t:conceptReference t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherAbroad" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
+      <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+      <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+    </t:conceptReference>
+  </t:referenceLink>
+  
+  <!-- Inter-concept relationships as m-to-n relations from concepts to concepts -->
+  
+  <t:definitionLink t:linkrole="urn:cbs:linkrole:new-used-selfproduced-axis">
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:new-used-selfproduced-axis" t:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" t:from="cbs-dim:NewUsedSelfProducedAxis" t:to="cbs-dm-noi:NewUsedSelfProducedDomain" order="1.0" xbrldt:targetRole="urn:cbs:linkrole:natureofinvestment-domain" xbrldt:usable="false" />
+  </t:definitionLink>
+  
+  <t:definitionLink t:linkrole="urn:cbs:linkrole:nature-of-investment-software-axis">
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:nature-of-investment-software-axis" t:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" t:from="cbs-dim:NatureOfInvestmentSoftwareAxis" t:to="cbs-dm-nois:NatureOfInvestmentSoftwareDomain" order="1.0" xbrldt:targetRole="urn:cbs:linkrole:natureofinvestmentsoftware-domain" xbrldt:usable="false" />
+  </t:definitionLink>
+  
+  <t:definitionLink t:linkrole="urn:cbs:linkrole:period-begin-end-axis">
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:period-begin-end-axis" t:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" t:from="cbs-dim:PeriodBeginEndAxis" t:to="cbs-dm-begin-end:PeriodBeginEndDomain" order="1.0" xbrldt:targetRole="urn:cbs:linkrole:period-begin-end-domain" xbrldt:usable="false" />
+  </t:definitionLink>
+  
+  <t:definitionLink t:linkrole="urn:cbs:linkrole:natureofinvestment-domain">
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:NewMember" order="1.0"/>
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:UsedMember" order="2.0"/>
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:SelfProducedMember" order="3.0"/>
+    <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:TotalAssetsInvestmentsMember" order="4.0"/>
+  </t:definitionLink>
+  
+  <!-- Role types, arcrole types etc. -->
+  
+  <t:roleTypes>
+    <t:roleType roleURI="urn:cbs:linkrole:new-used-selfproduced-axis">
+      <t:definition>Eigen vermogen, componenten [as]</t:definition>
+      <t:usedOn>t:definitionLink</t:usedOn>
+    </t:roleType>
+    <t:roleType roleURI="urn:cbs:linkrole:nature-of-investment-software-axis">
+      <t:definition>Aard van de investeringen in software, componenten [as]</t:definition>
+      <t:usedOn>t:definitionLink</t:usedOn>
+    </t:roleType>
+    <t:roleType roleURI="urn:cbs:linkrole:period-begin-end-axis">
+      <t:definition>Vooruitbetalingen en aangegane verplichtingen in materiele vaste activa [as]</t:definition>
+      <t:usedOn>t:definitionLink</t:usedOn>
+    </t:roleType>
+    <t:roleType roleURI="urn:cbs:linkrole:natureofinvestment-domain">
+      <t:definition>Aard van de investering [domein]</t:definition>
+      <t:usedOn>t:definitionLink</t:usedOn>
+    </t:roleType>
+  </t:roleTypes>
+  
+  <!-- Combining several schemas, moving the target namespace to the global declarations/definitions themselves -->
+  <!-- Top level declarations and definitions are in the txs namespace, whereas the rest remains in the xs namespace -->
+  <!-- All concepts referred to in links must be mentioned in the schema below -->
+  <!-- Other "closure" requirements pertain to types and substitution groups, and their hierarchies, arcrole and role URNs etc. -->
+  <!-- Be careful with hrefs, because they typically cannot be copied as is from the original schemas. Also be careful with id attributes. -->
+  <!-- xs:appinfo content such as role type definitions are not part of the schema below, but mentioned separately -->
+  
+  <txs:schema elementFormDefault="qualified">
+    <txs:element qname="cbs-bedr-items:AccommodationCostsBuildingTaxes" type="nl-types:monetaryNoDecimalsItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:balance="debit" xbrli:periodType="duration" />
+    <txs:element qname="cbs-bedr-items:AccommodationCostsEnvironmentalCosts" type="nl-types:monetaryNoDecimalsItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:balance="debit" xbrli:periodType="duration" />
+    <txs:element qname="cbs-bedr-items:AccommodationCostsMaintenanceAndRepairCosts" type="nl-types:monetaryNoDecimalsItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:balance="debit" xbrli:periodType="duration" />
+    <txs:element qname="cbs-bedr-items:NetTurnover" type="nl-types:monetaryNoDecimalsItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:balance="credit" xbrli:periodType="duration" />
+    <txs:element qname="cbs-bedr-items:TurnoverNetOtherHome" type="nl-types:monetaryNoDecimalsItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:balance="credit" xbrli:periodType="duration" />
+    <txs:element qname="cbs-bedr-items:TurnoverNetOtherAbroad" type="nl-types:monetaryNoDecimalsItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:balance="credit" xbrli:periodType="duration" />
+    
+    <txs:element qname="cbs-dim:NewUsedSelfProducedAxis" abstract="true" nillable="false" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+    <txs:element qname="cbs-dim:NatureOfInvestmentSoftwareAxis" abstract="true" nillable="false" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="cbs-dim:PeriodBeginEndAxis" abstract="true" nillable="false" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+    
+    <txs:element qname="cbs-dm-begin-end:PeriodBeginEndDomain" abstract="true" nillable="false" substitutionGroup="sbr:domainItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    
+    <txs:element qname="cbs-dm-noi:NewUsedSelfProducedDomain" abstract="true" nillable="false" substitutionGroup="sbr:domainItem" type="xbrli:stringItemType" xbrli:periodType="duration" />
+    <txs:element qname="cbs-dm-noi:NewMember" abstract="true" nillable="false" substitutionGroup="sbr:domainMemberItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="cbs-dm-noi:UsedMember" abstract="true" nillable="false" substitutionGroup="sbr:domainMemberItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="cbs-dm-noi:SelfProducedMember" abstract="true" nillable="false" substitutionGroup="sbr:domainMemberItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="cbs-dm-noi:TotalAssetsInvestmentsMember" abstract="true" nillable="false" substitutionGroup="sbr:domainMemberItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    
+    <txs:element qname="cbs-dm-nois:NatureOfInvestmentSoftwareDomain" abstract="true" nillable="false" substitutionGroup="sbr:domainItem" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    
+    <txs:element qname="sbr:domainItem" substitutionGroup="xbrli:item" abstract="true" nillable="false" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="sbr:domainMemberItem" substitutionGroup="xbrli:item" abstract="true" nillable="false" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="sbr:primaryDomainItem" substitutionGroup="xbrli:item" abstract="true" nillable="false" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="sbr:presentationItem" substitutionGroup="xbrli:item" abstract="true" nillable="false" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+    <txs:element qname="sbr:presentationTuple" substitutionGroup="xbrli:tuple" abstract="true" type="sbr:placeholder"/>
+    <txs:element qname="sbr:specificationTuple" substitutionGroup="xbrli:tuple" abstract="true" type="sbr:placeholder"/>
+    
+    <txs:complexType qname="sbr:placeholder"/>
+    <txs:complexType qname="nl-types:monetaryNoDecimalsItemType">
+      <xs:simpleContent>
+        <xs:restriction base="xbrli:monetaryItemType">
+          <xs:fractionDigits value="0"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </txs:complexType>
+  </txs:schema>
+</t:taxonomy>

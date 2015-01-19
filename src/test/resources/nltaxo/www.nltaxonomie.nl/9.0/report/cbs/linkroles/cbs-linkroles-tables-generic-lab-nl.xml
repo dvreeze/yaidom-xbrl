@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd">
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <link:roleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label" roleURI="http://www.xbrl.org/2008/role/label"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+	
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlr_NatureOfInvestmentTable_loc" xlink:to="cbs-dlr_NatureOfInvestmentTable_label-nl"/>
+    <label:label xlink:type="resource" id="cbs-dlr_NatureOfInvestmentTable_label-nl" xlink:label="cbs-dlr_NatureOfInvestmentTable_label-nl" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl">Aard van de Investering [tabel]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-tables.xsd#cbs-dlr_NatureOfInvestmentTable" xlink:label="cbs-dlr_NatureOfInvestmentTable_loc"/>
+
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlr_NatureOfInvestmentSoftwareTable_loc" xlink:to="cbs-dlr_NatureOfInvestmentSoftwareTable_label-nl"/>
+    <label:label xlink:type="resource" id="cbs-dlr_NatureOfInvestmentSoftwareTable_label-nl" xlink:label="cbs-dlr_NatureOfInvestmentSoftwareTable_label-nl" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl">Investeringen in software naar soort [tabel]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-tables.xsd#cbs-dlr_NatureOfInvestmentSoftwareTable" xlink:label="cbs-dlr_NatureOfInvestmentSoftwareTable_loc"/>
+
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlr_AdimensionalTable_loc" xlink:to="cbs-dlr_AdimensionalTable_label-nl"/>
+    <label:label xlink:type="resource" id="cbs-dlr_AdimensionalTable_label-nl" xlink:label="cbs-dlr_AdimensionalTable_label-nl" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl">Adimensionele elementen [tabel]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-tables.xsd#cbs-dlr_AdimensionalTable" xlink:label="cbs-dlr_AdimensionalTable_loc"/>
+
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable_loc" xlink:to="cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable_label-nl"/>
+    <label:label xlink:type="resource" id="cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable_label-nl" xlink:label="cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable_label-nl" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl">Vooruitbetalingen en aangegane verplichtingen aan het begin en einde van de rapportageverplichtingen [tabel]</label:label>
+    <link:loc xlink:type="locator" xlink:href="cbs-linkroles-tables.xsd#cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable" xlink:label="cbs-dlr_BeginEndPeriodPrepaymentsAssetsTable_loc"/>
+
+	</gen:link>
+</link:linkbase>

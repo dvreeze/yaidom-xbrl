@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cbs-dlrd="http://www.nltaxonomie.nl/9.0/basis/cbs/linkroles/cbs-linkroles-domains" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/basis/cbs/linkroles/cbs-linkroles-domains">
+    <xs:annotation>
+      <xs:appinfo>
+	  <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-linkroles-domains-generic-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+	  <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="cbs-linkroles-domains-generic-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+	  
+	  <link:roleType id="cbs-dlrd_NatureOfInvestmentDomain" roleURI="urn:cbs:linkrole:natureofinvestment-domain">
+            <link:definition>Aard van de investering [domein]</link:definition>
+            <link:usedOn>link:definitionLink</link:usedOn>
+        </link:roleType>
+        <link:roleType id="cbs-dlrd_NatureOfInvestmentSoftwareDomain" roleURI="urn:cbs:linkrole:natureofinvestmentsoftware-domain">
+            <link:definition>Aard van de investering in software[domein]</link:definition>
+            <link:usedOn>link:definitionLink</link:usedOn>
+        </link:roleType>
+       <link:roleType id="cbs-dlrd_PeriodBeginEndDomain" roleURI="urn:cbs:linkrole:period-begin-end-domain">
+            <link:definition>Begin of einde periode voor vooruitbetalingen en aangegane verplichtingen in materiele vaste activa [domein]</link:definition>
+            <link:usedOn>link:definitionLink</link:usedOn>
+        </link:roleType>
+
+
+   </xs:appinfo>
+   </xs:annotation>
+</xs:schema>

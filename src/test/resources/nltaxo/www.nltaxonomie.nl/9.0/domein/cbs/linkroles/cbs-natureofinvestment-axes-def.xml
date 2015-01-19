@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+  <link:roleRef roleURI="urn:cbs:linkrole:new-used-selfproduced-axis" xlink:type="simple" xlink:href="cbs-linkroles-axes.xsd#cbs-dlra_NewUsedSelfProducedAxis"/>
+  <link:roleRef roleURI="urn:cbs:linkrole:natureofinvestment-domain" xlink:type="simple" xlink:href="../../../basis/cbs/linkroles/cbs-linkroles-domains.xsd#cbs-dlrd_NatureOfInvestmentDomain"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"/>
+  <link:definitionLink xlink:type="extended" xlink:role="urn:cbs:linkrole:new-used-selfproduced-axis">
+    <link:loc xlink:type="locator" xlink:href="../axes/cbs-axes.xsd#cbs-dim_NewUsedSelfProducedAxis" xlink:label="cbs-dim_NewUsedSelfProducedAxis_loc"/>
+    <link:loc xlink:type="locator" xlink:href="../../../basis/cbs/domains/cbs-domains-natureofinvestment.xsd#cbs-dm-noi_NewUsedSelfProducedDomain" xlink:label="cbs-dm-noi_NewUsedSelfProducedDomain_loc"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="cbs-dim_NewUsedSelfProducedAxis_loc" xlink:to="cbs-dm-noi_NewUsedSelfProducedDomain_loc" order="1.0" xbrldt:targetRole="urn:cbs:linkrole:natureofinvestment-domain" xbrldt:usable="false"/>
+  </link:definitionLink>
+</link:linkbase>

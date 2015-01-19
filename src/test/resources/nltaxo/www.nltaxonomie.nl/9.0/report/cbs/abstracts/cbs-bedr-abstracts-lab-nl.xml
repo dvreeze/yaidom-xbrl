@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase"  xmlns:xlink="http://www.w3.org/1999/xlink" >
+   <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+      <link:label xlink:label="cbs-bedr-a_CBSIncomeStatementTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_CBSIncomeStatementTitle_label_nl">Productiestatistiek</link:label>
+      <link:label xlink:label="cbs-bedr-a_CBSShorttermStatisticTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_CBSShorttermStatisticTitle_label_nl">Kortetermijn statistiek</link:label>
+      <link:label xlink:label="cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle_label_nl">Informatie over de rapportage</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_CBSIncomeStatementTitle_loc" xlink:to="cbs-bedr-a_CBSIncomeStatementTitle_label_nl" xlink:type="arc"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_CBSShorttermStatisticTitle_loc" xlink:to="cbs-bedr-a_CBSShorttermStatisticTitle_label_nl" xlink:type="arc"/>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle_loc" xlink:to="cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle_label_nl" xlink:type="arc"/>
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_CBSIncomeStatementTitle" xlink:label="cbs-bedr-a_CBSIncomeStatementTitle_loc" xlink:type="locator"/>
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_CBSShorttermStatisticTitle" xlink:label="cbs-bedr-a_CBSShorttermStatisticTitle_loc" xlink:type="locator"/>
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle" xlink:label="cbs-bedr-a_GlobalCommonDocumentTaxonomyCBSTitle_loc" xlink:type="locator"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentsInIntangibleAssetsTitle" xlink:label="cbs-bedr-a_InvestmentsInIntangibleAssetsTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentsInIntangibleAssetsTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentsInIntangibleAssetsTitle_label_nl">Investeringen in immateriele activa [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentsInIntangibleAssetsTitle_loc" xlink:to="cbs-bedr-a_InvestmentsInIntangibleAssetsTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentsInTangibleAssetsTitle" xlink:label="cbs-bedr-a_InvestmentsInTangibleAssetsTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentsInTangibleAssetsTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentsInTangibleAssetsTitle_label_nl">Investeringen in materiele vaste activa [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentsInTangibleAssetsTitle_loc" xlink:to="cbs-bedr-a_InvestmentsInTangibleAssetsTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentsPrepaymentsTitle" xlink:label="cbs-bedr-a_InvestmentsPrepaymentsTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentsPrepaymentsTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentsPrepaymentsTitle_label_nl">Vooruitbetaalde investeringen [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentsPrepaymentsTitle_loc" xlink:to="cbs-bedr-a_InvestmentsPrepaymentsTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentsNotesTitle" xlink:label="cbs-bedr-a_InvestmentsNotesTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentsNotesTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentsNotesTitle_label_nl">Toelichting bij de investeringen [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentsNotesTitle_loc" xlink:to="cbs-bedr-a_InvestmentsNotesTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_RevenueOnDisposalsTitle" xlink:label="cbs-bedr-a_RevenueOnDisposalsTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_RevenueOnDisposalsTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_RevenueOnDisposalsTitle_label_nl">Desinvesteringen in materiele vaste activa [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_RevenueOnDisposalsTitle_loc" xlink:to="cbs-bedr-a_RevenueOnDisposalsTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle" xlink:label="cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle_label_nl">Investeringsstatistiek voor kleine bedrijven [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle_loc" xlink:to="cbs-bedr-a_InvestmentStatisticLimitedPlaceholderTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle" xlink:label="cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle_label_nl">Investeringsstatistiek voor grote industriele bedrijven [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle_loc" xlink:to="cbs-bedr-a_InvestmentStatisticExtendedPlaceholderTitle_label_nl" xlink:type="arc"/>
+
+      <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle" xlink:label="cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle_label_nl">Investeringsstatistiek voor grote, niet-industriele, bedrijven [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle_loc" xlink:to="cbs-bedr-a_InvestmentStatisticExtendedOtherPlaceholderTitle_label_nl" xlink:type="arc"/>
+
+    <link:loc xlink:href="cbs-bedr-abstracts.xsd#cbs-bedr-a_InvestmentByRegionTitle" xlink:label="cbs-bedr-a_InvestmentByRegionTitle_loc" xlink:type="locator"/>
+     <link:label xlink:label="cbs-bedr-a_InvestmentByRegionTitle_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl" id="cbs-bedr-a_InvestmentByRegionTitle_label_nl">Investeringen naar regio [titel]</link:label>
+      <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="cbs-bedr-a_InvestmentByRegionTitle_loc" xlink:to="cbs-bedr-a_InvestmentByRegionTitle_label_nl" xlink:type="arc"/>
+
+  </link:labelLink>
+</link:linkbase>
