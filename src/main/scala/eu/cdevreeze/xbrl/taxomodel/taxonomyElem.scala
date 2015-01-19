@@ -107,12 +107,12 @@ abstract class Link private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends TaxonomyElem(simpleElem, childElems) {
 
   require(attributeOption(YatmLinkRoleEName).isDefined, s"Element ${resolvedName} must have a ${YatmLinkRoleEName} attribute")
-  require(findAllRelationships.forall(_.linkRole == linkRole), s"All relationshils in ${resolvedName} must have linkrole ${linkRole}")
+  require(findAllArcs.forall(_.linkRole == linkRole), s"All relationshils in ${resolvedName} must have linkrole ${linkRole}")
 
   final def linkRole: String = attribute(YatmLinkRoleEName)
 
-  final def findAllRelationships: immutable.IndexedSeq[Relationship] =
-    findAllChildElemsOfType(classTag[Relationship])
+  final def findAllArcs: immutable.IndexedSeq[Arc] =
+    findAllChildElemsOfType(classTag[Arc])
 }
 
 final class LabelLink private[taxomodel] (
@@ -121,8 +121,8 @@ final class LabelLink private[taxomodel] (
 
   require(simpleElem.resolvedName == YatmLabelLinkEName)
 
-  def findAllConceptLabels: immutable.IndexedSeq[ConceptLabel] =
-    findAllChildElemsOfType(classTag[ConceptLabel])
+  def findAllLabelArcs: immutable.IndexedSeq[LabelArc] =
+    findAllChildElemsOfType(classTag[LabelArc])
 }
 
 final class ReferenceLink private[taxomodel] (
@@ -131,8 +131,8 @@ final class ReferenceLink private[taxomodel] (
 
   require(simpleElem.resolvedName == YatmReferenceLinkEName)
 
-  def findAllConceptReferences: immutable.IndexedSeq[ConceptReference] =
-    findAllChildElemsOfType(classTag[ConceptReference])
+  def findAllReferenceArcs: immutable.IndexedSeq[ReferenceArc] =
+    findAllChildElemsOfType(classTag[ReferenceArc])
 }
 
 final class DefinitionLink private[taxomodel] (
@@ -145,9 +145,9 @@ final class DefinitionLink private[taxomodel] (
     findAllChildElemsOfType(classTag[DefinitionArc])
 }
 
-// Relationships
+// Relationships, or YATM arcs (not XLink arcs)
 
-abstract class Relationship private[taxomodel] (
+abstract class Arc private[taxomodel] (
   simpleElem: simple.Elem,
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends TaxonomyElem(simpleElem, childElems) {
 
@@ -156,49 +156,49 @@ abstract class Relationship private[taxomodel] (
   final def linkRole: String = attribute(YatmLinkRoleEName)
 }
 
-abstract class StandardRelationship private[taxomodel] (
+abstract class StandardArc private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Relationship(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Arc(simpleElem, childElems) {
 
   require(attributeAsResolvedQNameOption(YatmFromEName).isDefined, s"Element ${resolvedName} must have a ${YatmFromEName} attribute")
 
   final def sourceConcept: EName = attributeAsResolvedQName(YatmFromEName)
 }
 
-abstract class InterConceptRelationship private[taxomodel] (
+abstract class InterConceptArc private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardRelationship(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardArc(simpleElem, childElems) {
 
   require(attributeAsResolvedQNameOption(YatmToEName).isDefined, s"Element ${resolvedName} must have a ${YatmToEName} attribute")
 
   final def targetConcept: EName = attributeAsResolvedQName(YatmToEName)
 }
 
-abstract class ConceptResourceRelationship private[taxomodel] (
+abstract class ConceptResourceArc private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardRelationship(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardArc(simpleElem, childElems) {
 }
 
-final class ConceptLabel private[taxomodel] (
+final class LabelArc private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends ConceptResourceRelationship(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends ConceptResourceArc(simpleElem, childElems) {
 
-  require(simpleElem.resolvedName == YatmConceptLabelEName)
+  require(simpleElem.resolvedName == YatmLabelArcEName)
   require(filterChildElemsOfType(classTag[Label])(anyElem).size == 1, s"Element ${resolvedName} must have precisely 1 ${YatmLabelEName} child element")
 
   def getLabel: Label = getChildElemOfType(classTag[Label])(anyElem)
 }
 
-final class ConceptReference private[taxomodel] (
+final class ReferenceArc private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends ConceptResourceRelationship(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends ConceptResourceArc(simpleElem, childElems) {
 
-  require(simpleElem.resolvedName == YatmConceptReferenceEName)
+  require(simpleElem.resolvedName == YatmReferenceArcEName)
 }
 
 final class DefinitionArc private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptRelationship(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptArc(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmDefinitionArcEName)
 }
@@ -330,8 +330,8 @@ object TaxonomyElem {
     case YatmLabelLinkEName => new LabelLink(simpleElem, childElems)
     case YatmReferenceLinkEName => new ReferenceLink(simpleElem, childElems)
     case YatmDefinitionLinkEName => new DefinitionLink(simpleElem, childElems)
-    case YatmConceptLabelEName => new ConceptLabel(simpleElem, childElems)
-    case YatmConceptReferenceEName => new ConceptReference(simpleElem, childElems)
+    case YatmLabelArcEName => new LabelArc(simpleElem, childElems)
+    case YatmReferenceArcEName => new ReferenceArc(simpleElem, childElems)
     case YatmDefinitionArcEName => new DefinitionArc(simpleElem, childElems)
     case YatmLabelEName => new Label(simpleElem, childElems)
     case YatmRoleTypesEName => new RoleTypes(simpleElem, childElems)

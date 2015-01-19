@@ -22,32 +22,32 @@
   <!-- Concept labels as 1-to-n relations from concepts to resources -->
   
   <t:labelLink t:linkrole="http://www.xbrl.org/2003/role/link">
-    <t:conceptLabel t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsBuildingTaxes" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+    <t:labelArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsBuildingTaxes" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
       <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs building taxes</t:label>
-    </t:conceptLabel>
-    <t:conceptLabel t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsEnvironmentalCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+    </t:labelArc>
+    <t:labelArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsEnvironmentalCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
       <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs environmental costs</t:label>
-    </t:conceptLabel>
-    <t:conceptLabel t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsMaintenanceAndRepairCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+    </t:labelArc>
+    <t:labelArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsMaintenanceAndRepairCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
       <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs maintenance and repair costs</t:label>
-    </t:conceptLabel>
+    </t:labelArc>
   </t:labelLink>
   
   <!-- Concept references as 1-to-n relations from concepts to resources, even if that means repetition of references -->
   
   <t:referenceLink t:linkrole="http://www.xbrl.org/2003/role/link">
-    <t:conceptReference t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:NetTurnover" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
+    <t:referenceArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:NetTurnover" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
       <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
       <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
-    </t:conceptReference>
-    <t:conceptReference t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherHome" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
+    </t:referenceArc>
+    <t:referenceArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherHome" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
       <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
       <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
-    </t:conceptReference>
-    <t:conceptReference t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherAbroad" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
+    </t:referenceArc>
+    <t:referenceArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherAbroad" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
       <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
       <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
-    </t:conceptReference>
+    </t:referenceArc>
   </t:referenceLink>
   
   <!-- Inter-concept relationships as m-to-n relations from concepts to concepts -->

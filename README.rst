@@ -15,7 +15,7 @@ updates to the taxonomy. Preferably, the taxonomy model has an in-memory represe
 the original taxonomy files without serializing it.
 
 Relationship prohibition and overriding must be possible on a given taxonomy model, resulting in an "effective" taxonomy
-model, without requiring any further context. Cycle detection and equalities such as S-equality should preferable also
+model, without requiring any further context. Cycle detection and equalities such as S-equality should preferably also
 be possible using this taxonomy model alone. Foremost, however, the taxonomy model should make it easy to query for
 concepts and their relationships. Types, substitution groups and their hierarchies should also be represented.
 

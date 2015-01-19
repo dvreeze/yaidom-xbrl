@@ -20,8 +20,8 @@ package object taxomodel {
   val YatmReferenceLinkEName = EName(YatmNs, "referenceLink")
   val YatmDefinitionLinkEName = EName(YatmNs, "definitionLink")
 
-  val YatmConceptLabelEName = EName(YatmNs, "conceptLabel")
-  val YatmConceptReferenceEName = EName(YatmNs, "conceptReference")
+  val YatmLabelArcEName = EName(YatmNs, "labelArc")
+  val YatmReferenceArcEName = EName(YatmNs, "referenceArc")
 
   val YatmDefinitionArcEName = EName(YatmNs, "definitionArc")
 

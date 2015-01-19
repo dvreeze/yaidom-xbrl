@@ -45,7 +45,7 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
         fromLoc <- labelLink.labeledLocators.getOrElse(arc.from, Vector())
         toRes <- labelLink.labeledResources.getOrElse(arc.to, Vector())
       } yield {
-        convertToConceptLabel(arc, fromLoc, toRes.asInstanceOf[link.LabelResource])
+        convertToLabelArc(arc, fromLoc, toRes.asInstanceOf[link.LabelResource])
       }
 
     val scope = Scope.from("t" -> YatmNs)
@@ -57,7 +57,7 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
     TaxonomyElem.build(NamespaceUtils.pushUpPrefixedNamespaces(resultElem)).asInstanceOf[LabelLink]
   }
 
-  def convertToConceptLabel(arc: link.Arc, fromLoc: link.Locator, toRes: link.LabelResource): ConceptLabel = {
+  def convertToLabelArc(arc: link.Arc, fromLoc: link.Locator, toRes: link.LabelResource): LabelArc = {
     val globalElemDecl =
       taxo.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href}"))
 
@@ -65,11 +65,12 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
     val fromConceptQName = globalElemDecl.preferredTargetQName
     assert(globalElemDecl.wrappedElem.scope.resolveQNameOption(fromConceptQName) == Some(fromConceptEName))
 
-    val scope = Scope.from("t" -> YatmNs) ++ globalElemDecl.wrappedElem.scope.filterKeys(fromConceptQName.prefixOption.toSet)
+    val scope =
+      Scope.from("t" -> YatmNs) ++ globalElemDecl.wrappedElem.scope.filterKeys(fromConceptQName.prefixOption.toSet)
 
     val resultElem =
       emptyElem(
-        QName("t:conceptLabel"),
+        QName("t:labelArc"),
         Vector(
           QName("t:linkrole") -> arc.elr,
           QName("t:arcrole") -> arc.arcrole,
@@ -84,6 +85,6 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
             plusAttributeOption(QName("xml:lang"), toRes.langOption)
         }
 
-    TaxonomyElem.build(resultElem).asInstanceOf[ConceptLabel]
+    TaxonomyElem.build(resultElem).asInstanceOf[LabelArc]
   }
 }
