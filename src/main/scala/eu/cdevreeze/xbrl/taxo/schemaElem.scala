@@ -20,6 +20,7 @@ import java.net.URI
 
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.QName
+import eu.cdevreeze.yaidom.core.Scope
 import eu.cdevreeze.yaidom.docaware
 
 /**
@@ -48,6 +49,13 @@ final class GlobalElementDeclaration(val wrappedElem: docaware.Elem) extends Sch
 
     val prefixOption = adaptedScope.keySet.headOption
     QName(prefixOption, wrappedElem.attribute(NameEName))
+  }
+
+  def scopeNeededForPreferredTargetQName: Scope = {
+    wrappedElem.scope filter {
+      case (pref, ns) =>
+        (pref == preferredTargetQName.prefixOption.getOrElse("")) && (Some(ns) == targetNamespaceOption)
+    }
   }
 
   def ownUriOption: Option[URI] =

@@ -96,6 +96,12 @@ final class TaxonomyModel private[taxomodel] (
   def findAllDefinitionLinks: immutable.IndexedSeq[DefinitionLink] =
     findAllChildElemsOfType(classTag[DefinitionLink])
 
+  def findAllPresentationLinks: immutable.IndexedSeq[PresentationLink] =
+    findAllChildElemsOfType(classTag[PresentationLink])
+
+  def findAllCalculationLinks: immutable.IndexedSeq[CalculationLink] =
+    findAllChildElemsOfType(classTag[CalculationLink])
+
   def findAllSchemas: immutable.IndexedSeq[Schema] =
     findAllChildElemsOfType(classTag[Schema])
 }
@@ -145,6 +151,26 @@ final class DefinitionLink private[taxomodel] (
     findAllChildElemsOfType(classTag[DefinitionArc])
 }
 
+final class PresentationLink private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+
+  require(simpleElem.resolvedName == YatmPresentationLinkEName)
+
+  def findAllPresentationArcs: immutable.IndexedSeq[PresentationArc] =
+    findAllChildElemsOfType(classTag[PresentationArc])
+}
+
+final class CalculationLink private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+
+  require(simpleElem.resolvedName == YatmCalculationLinkEName)
+
+  def findAllCalculationArcs: immutable.IndexedSeq[CalculationArc] =
+    findAllChildElemsOfType(classTag[CalculationArc])
+}
+
 // Relationships, or YATM arcs (not XLink arcs)
 
 abstract class Arc private[taxomodel] (
@@ -172,6 +198,8 @@ abstract class InterConceptArc private[taxomodel] (
   require(attributeAsResolvedQNameOption(YatmToEName).isDefined, s"Element ${resolvedName} must have a ${YatmToEName} attribute")
 
   final def targetConcept: EName = attributeAsResolvedQName(YatmToEName)
+
+  final def order: BigDecimal = attributeOption(OrderEName).map(s => BigDecimal(s)).getOrElse(BigDecimal(1.0))
 }
 
 abstract class ConceptResourceArc private[taxomodel] (
@@ -194,6 +222,9 @@ final class ReferenceArc private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends ConceptResourceArc(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmReferenceArcEName)
+  require(filterChildElemsOfType(classTag[Reference])(anyElem).size == 1, s"Element ${resolvedName} must have precisely 1 ${YatmReferenceEName} child element")
+
+  def getReference: Reference = getChildElemOfType(classTag[Reference])(anyElem)
 }
 
 final class DefinitionArc private[taxomodel] (
@@ -201,6 +232,20 @@ final class DefinitionArc private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptArc(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmDefinitionArcEName)
+}
+
+final class PresentationArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptArc(simpleElem, childElems) {
+
+  require(simpleElem.resolvedName == YatmPresentationArcEName)
+}
+
+final class CalculationArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptArc(simpleElem, childElems) {
+
+  require(simpleElem.resolvedName == YatmCalculationArcEName)
 }
 
 // Resources
@@ -215,6 +260,13 @@ final class Label private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends Resource(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmLabelEName)
+}
+
+final class Reference private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Resource(simpleElem, childElems) {
+
+  require(simpleElem.resolvedName == YatmReferenceEName)
 }
 
 // Role types
@@ -330,10 +382,15 @@ object TaxonomyElem {
     case YatmLabelLinkEName => new LabelLink(simpleElem, childElems)
     case YatmReferenceLinkEName => new ReferenceLink(simpleElem, childElems)
     case YatmDefinitionLinkEName => new DefinitionLink(simpleElem, childElems)
+    case YatmPresentationLinkEName => new PresentationLink(simpleElem, childElems)
+    case YatmCalculationLinkEName => new CalculationLink(simpleElem, childElems)
     case YatmLabelArcEName => new LabelArc(simpleElem, childElems)
     case YatmReferenceArcEName => new ReferenceArc(simpleElem, childElems)
     case YatmDefinitionArcEName => new DefinitionArc(simpleElem, childElems)
+    case YatmPresentationArcEName => new PresentationArc(simpleElem, childElems)
+    case YatmCalculationArcEName => new CalculationArc(simpleElem, childElems)
     case YatmLabelEName => new Label(simpleElem, childElems)
+    case YatmReferenceEName => new Reference(simpleElem, childElems)
     case YatmRoleTypesEName => new RoleTypes(simpleElem, childElems)
     case YatmRoleTypeEName => new RoleType(simpleElem, childElems)
     case YatmDefinitionEName => new Definition(simpleElem, childElems)

@@ -62,8 +62,42 @@ class LargeTaxonomyModelTest extends Suite {
       taxoModelBuilder.convertToLabelLink(orgLabelLink)
     }
 
-    val xmlString = docPrinter.print(firstLabelLink.simpleElem.prettify(2))
-    println(xmlString)
+    val labelLinkXmlString = docPrinter.print(firstLabelLink.simpleElem.prettify(2))
+    println(labelLinkXmlString)
+    println()
+
+    val firstReferenceLink = {
+      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-bedr-items-ref.xml")).get
+      val orgReferenceLink = linkbase.referenceLinks.head
+
+      taxoModelBuilder.convertToReferenceLink(orgReferenceLink)
+    }
+
+    val referenceLinkXmlString = docPrinter.print(firstReferenceLink.simpleElem.prettify(2))
+    println(referenceLinkXmlString)
+    println()
+
+    val firstDefinitionLink = {
+      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-natureofinvestment-lineitems-def.xml")).get
+      val orgDefinitionLink = linkbase.definitionLinks.head
+
+      taxoModelBuilder.convertToDefinitionLink(orgDefinitionLink)
+    }
+
+    val definitionLinkXmlString = docPrinter.print(firstDefinitionLink.simpleElem.prettify(2))
+    println(definitionLinkXmlString)
+    println()
+
+    val firstPresentationLink = {
+      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-short-term-statistic-turnover-home-abroad-stock-commodities-products-hours-pre.xml")).get
+      val orgPresentationLink = linkbase.presentationLinks.head
+
+      taxoModelBuilder.convertToPresentationLink(orgPresentationLink)
+    }
+
+    val presentationLinkXmlString = docPrinter.print(firstPresentationLink.simpleElem.prettify(2))
+    println(presentationLinkXmlString)
+    println()
 
     assertResult(true) {
       taxo.docs.size >= 40

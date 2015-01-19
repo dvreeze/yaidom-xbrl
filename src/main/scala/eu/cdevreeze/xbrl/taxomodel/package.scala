@@ -19,13 +19,17 @@ package object taxomodel {
   val YatmLabelLinkEName = EName(YatmNs, "labelLink")
   val YatmReferenceLinkEName = EName(YatmNs, "referenceLink")
   val YatmDefinitionLinkEName = EName(YatmNs, "definitionLink")
+  val YatmPresentationLinkEName = EName(YatmNs, "presentationLink")
+  val YatmCalculationLinkEName = EName(YatmNs, "calculationLink")
 
   val YatmLabelArcEName = EName(YatmNs, "labelArc")
   val YatmReferenceArcEName = EName(YatmNs, "referenceArc")
-
   val YatmDefinitionArcEName = EName(YatmNs, "definitionArc")
+  val YatmPresentationArcEName = EName(YatmNs, "presentationArc")
+  val YatmCalculationArcEName = EName(YatmNs, "calculationArc")
 
   val YatmLabelEName = EName(YatmNs, "label")
+  val YatmReferenceEName = EName(YatmNs, "reference")
 
   val YatmRoleTypesEName = EName(YatmNs, "roleTypes")
   val YatmRoleTypeEName = EName(YatmNs, "roleType")
@@ -44,4 +48,5 @@ package object taxomodel {
   val YatmXsSimpleTypeEName = EName(YatmXsNs, "simpleType")
 
   val QNameEName = EName("qname")
+  val OrderEName = EName("order")
 }

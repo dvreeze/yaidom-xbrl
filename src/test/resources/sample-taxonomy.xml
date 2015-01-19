@@ -21,34 +21,1059 @@
   
   <!-- Concept labels as 1-to-n relations from concepts to resources -->
   
-  <t:labelLink t:linkrole="http://www.xbrl.org/2003/role/link">
-    <t:labelArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsBuildingTaxes" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+<t:labelLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
+             xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+             t:linkrole="http://www.xbrl.org/2003/role/link">
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AccommodationCostsBuildingTaxes"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
       <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs building taxes</t:label>
-    </t:labelArc>
-    <t:labelArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsEnvironmentalCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AccommodationCostsEnvironmentalCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
       <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs environmental costs</t:label>
-    </t:labelArc>
-    <t:labelArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:AccommodationCostsMaintenanceAndRepairCosts" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label">
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AccommodationCostsMaintenanceAndRepairCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
       <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs maintenance and repair costs</t:label>
-    </t:labelArc>
-  </t:labelLink>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AccommodationCostsOtherCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs other costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AccommodationCostsRentalAndLeaseCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accommodation costs rental and lease costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AuxiliaryMaterials"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Auxiliary materials</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfEmployeesInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of employees in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfEmployeesInTheReportingPeriodInFTEs"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of employees in the reporting period in FTEs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfEmployeesNotOnPayrollInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of employees not on payroll in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfEmployeesOnOwnPayrollInFTEsInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of employees on own payroll in FTEs in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfEmployeesOnOwnPayrollInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average Number of employees on own payroll in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfEmployeesOnPayrollWorkingInTheCompagny"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of employees on payroll working in the compagny in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfInsourcedEmployeesInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Averaga number of insourced employees in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfOutsourcedEmployeesOnOwnPayrollInTheReportPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of outsourced employees on own payroll in the report period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfOutsourcedEmployeesOrTempWorkersPreviouslyInsourcedForTempAgenciesOnly"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of outsourced employees, or temp workers, previously insourced (for temp agencies only)</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfOwnersBusinessPartnersEtceteraAndFamilyMembersWorkingInTheCompanyInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of owners, business partners etc. and family members working in the company in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AverageNumberOfTempAgencyWorkersInTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Average number of temp agency workers in the reporting period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:BenefitPaymentsAndSubsidiesReceived"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Received benefit payments and subsidies</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:BookLossesOnAssets"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Book losses on assets</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:BookProfitsOnAssets"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Book profits on assets</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:BusinessRevenuesOtherTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Business revenues other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:BusinessRevenuesTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total business revenues</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:KvKID"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Chamber of Commerce number of the enterprise concerning the report</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ChangeDifferenceDueToImpairmentOrReversals"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Change difference due to impairment or reversals</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ChangesInInvoicedTermsForWorkInProgress"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Changes in invoiced terms for work in progress</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ClosingStockOfFinishedGoodsAndWorkInProgressNettedAlreadyInvoicedAtTheEndOfTheYear"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Closing stock of finished goods and work in progress netted already invoiced at the end of the year</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CityName"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible fixed assets estimated</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CommunicationCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Communication costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CompanyCostsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Company costs other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CompanyIncomeOtherPassedOnLabourCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Company income other passed on labour costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CompanyResultTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total company result</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ContactPersonSurname"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Surname contactperson</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfSaleOfRetailGoods"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of sale of retail goods</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfSaleOfWholesaleGoods"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of sale of wholesale goods</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfSalesTradeGoods"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of sales trade goods</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfWholesaleRevenuesFromForeignPurchasesExcludingTransitTrade"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of wholesale revenues from foreign purchases excluding transit trade</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfWholesaleRevenuesFromTransitTradeThroughForeignPurchases"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of wholesale revenues from transit trade through foreign purchases</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfWholesaleSalesFromEMUCountriesThroughTransitTradeBought"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of wholesale sales from EMU countries through transit trade bought</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostOfWholesaleSalesFromTheEUCountriesThroughTransitTradeBought"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost of wholesale sales from the EU countries through transit trade bought</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostPriceNotMentionedElsewhere"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Cost price not mentioned elsewhere</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostPriceOtherTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total cost price other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostsForServicesByThirdPartiesICT"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Costs for services by third parties, ICT</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostsIncurredAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Costs incurred abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostsOfEducationCommercial"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Costs of education commercial</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CostsOfTemporaryConstructionConsortiaNonSpecifiable"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Costs of temporary construction consortia, non specifiable</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:Depreciation"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Depreciation</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:EmployerPartSocialInsuranceCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Employer part social insurance costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:EnergyCostsCommercialIncludingNetServices"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Energy costs commercial including net services</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:EnergyCostsElectricityCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Energy costs, electricity costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:EnergyCostsNaturalGasCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Costs of natural gas</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:EnergyCostsNetservicesCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Network service costs for energy</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:EnergyCostsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Energy costs other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ExportSubsidiesAndOtherCompensationAndSubsidiesUnderEURegulations"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Export subsidies and other compensation and subsidies under EU regulations</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ExtraordinaryExpenses"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Extraordinary expenses</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ExtraordinaryIncome"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Extraordinary income</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ExtraordinaryIncomeNet"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net extraordinary income</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:FinancialExpenses"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Financial expenses</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:FinancialIncome"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Financial income</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:FinancialResultsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Financial results total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:FinishedGoodsAndWorkInProgressNettedAlreadyInvoicedChangeStock"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Change stock of finished goods and work in progress netted already invoiced</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:FinishedGoodsAndWorkInProgressNettedAlreadyInvoicedStockOpeningOfTheReportingPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Initial stock of finished goods and work in progress netted already invoiced at the beginning of the year</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:FreightCharges"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Freight Charges</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GasOilDieselOilForConstructionMachineryFuelsForMachinesAndEquipment"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Gas oil and diesel oil for construction machinery/fuels for machines and equipment</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GeneralCompanyCostsNotMentionedElsewhereLicenseAndPatentCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">General company costs not mentioned elsewhere license and patent costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GeneralCompanyCostsNotMentionedElsewhereManagementFeesAndIntraGroupCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">General company costs not mentioned elsewhere managementfees and intra group costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GeneralCompanyCostsNotMentionedElsewhereOfficeSuppliesAndSubscriptions"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">General company costs not mentioned elsewhere office supplies and subscriptions</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GeneralCompanyCostsNotMentionedElsewhereOtherRentalAndOperationalLeaseCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">General company costs not mentioned elsewhere other rental and operational lease costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GeneralCompanyCostsNotMentionedElsewhereProductTaxes"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">General company costs not mentioned elsewhere product taxes</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GovernmentFeesAndDues"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Government fees and dues</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:GovernmentSubsidiesExclWageCostSubsidies"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Government subsidies excl. wage cost subsidies</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:IndemnityPaymentsExcludingCompensationForIllnessDisability"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Indemnity payments, excluding compensation for illness/disability</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvoicedTermsOfFinishedProductsAndWorkInProgressClosing"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Invoiced terms of finished products and work in progress: closing</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:MachineDeviceAndInventoryCostsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total machine costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ManualAndMachineTools"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Manual and machine tools</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NetBookProfitsAndLossesOnAssets"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net book profits and losses on assets</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NetConstructionActivitiesAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net construction activities abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NetProfitBeforeTax"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net profit before tax</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NetTurnover"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net Turnover</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NetTurnoverAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net turnover abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NetTurnoverHome"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net turnover home</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OperationalCostsAndOtherIntragroupServicesPassedOn"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Operational costs and other intra-group services passed on</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OtherCompanyCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other company costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OtherCompanyIncomeNotMentionedElsewhere"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other company income not mentioned elsewhere</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OtherCostsMachineDeviceAndInventoryCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other costs machines, devices and inventory</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OtherGeneralCompanyCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other general company costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OtherGeneralCompanyCostsNotMentionedElsewhere"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other general company costs not mentioned elsewhere</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:OtherGeneralCostsOfNonspecifiedCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other general costs of non-specified costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:PaymentsToOtherTemporaryWorkers"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Payments to other temporary workers</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:PeriodCode"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Variant periode (default: no)</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:PersonnelCostsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total personnel costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ProvisionsBalanceTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total provisions balance</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ProvisionsBecomingAvailable"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Provisions becoming available</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ProvisionsContributions"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Provisions contributions</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ProvisionsWithdrawn"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Provisions withdrawn</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:PurchaseOfCommodities"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Purchase of commodities</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:PurchaseOfPaidServicesAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Purchase of paid services abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:RentAndOperationalLeaseOfMachinesEquipmentFurnitureComputersEtc"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Rent and operational lease of machines, equipment, furniture, computers, etc.</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:RevenueFromConstructionActivitiesAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Revenue from construction activities abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:RevenuesFromLicencesRoyaltiesCopyrights"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Revenues from licences/royalties/copyrights</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:RevenuesTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Revenues Total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesCostCommissionCost"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sales cost commission cost</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sales costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesCostsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other Costs of Sales</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesCostsPublicityFairsAdvertising"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Publicity, fairs and advertising costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sales other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesOwnMadeProducts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sales own made products</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesServicesThirdParties"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sales services thirdparties</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SalesWholeSaleAndOrRetail"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sales wholesale and/or retail</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ServicesByThirdPartiesCostsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other costs for services by third parties</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ServicesByThirdPartiesCostsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total costs for services by third parties</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SickPaymentsReceived"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sickpayments received</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SocialSecurityCostsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Other Social Security Costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StaffCostsAgencyWorkers"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Payments to agency workers</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StaffCostsOtherRemunerationOfCommissioners"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Remuneration of commissioners</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StaffCostsOtherTemporaryWorkersAgencyAndOtherWorkersPayments"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Paid to emplyment agencies and other temporary employees</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StaffCostsTotalOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total other staff costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StockCommoditiesClosing"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stock commodities closing</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StockCommoditiesOpening"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stock commodities opening</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StockProductsClosing"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stock products closing</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StockWorkInProgressClosing"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stock work in progress closing</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StocksOfRetailGoodsAtEndOfPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stocks of retail goods at end of period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StocksOfRetailGoodsAtStartOfPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stocks of retail goods at start of period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StocksOfWholesaleGoodsAtEndOfPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stocks of wholesale goods at end of period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:StocksOfWholesaleGoodsAtStartOfPeriod"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Stocks of wholesale goods at start of period</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SubsidiesOnWagesAndRestitutionsReceived"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subsidies on wages and restitutions received</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:SubsidiesOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subsidies other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TermsOfFinishedProductsAndWorkInProgressInvoicedOpening"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Invoiced terms of finished products and work in progress: opening</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TheWholesaleTurnoverExcludingVATOfTheCompanyThroughTransitTradeToEMUCountries"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">The wholesale turnover (excluding VAT) of the company through transit trade to EMU countries</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TheWholesaleTurnoverExcludingVATOfTheCompanyThroughTransitTradeToForeign"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">The wholesale turnover (excluding VAT) of the company through transit trade to foreign</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TheWholesaleTurnoverExcludingVATOfTheCompanyThroughTransitTradeToTheEUCountries"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">The wholesale turnover (excluding VAT) of the company through transit trade to the EU countries</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TotalCompanyCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total company costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TotalCostsOfRawAndAuxiliaryMaterialsEtc"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total costs of raw and auxiliary materials etc.</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TransportCostsFuelCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs fuel costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TransportCostsHolderTaxCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs holder tax costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TransportCostsInsuranceCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs insurance costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TransportCostsMaintenanceAndRepairCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs maintenance and repair costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TransportCostsOtherCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs other costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TransportCostsRentAndLeaseCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs rent and lease costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToManufacturingServicesProvidedByTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to manufacturing services provided by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToOtherServicesProvidedByTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to other services provided by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToProductsManufacturedWithinTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to products manufactured within the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToRentingOfMovables"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to renting of movables</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToRepairServicesByTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl.VAT) related to repair services by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToRetailActivitiesByTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to retail activities by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToTradeIntermediationActivitiesByTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to trade intermediation activities by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExclVATRelatedToWholesaleActivitiesByTheCompany"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excl. VAT) related to wholesale activities by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverExcludingVATAbroadRelatedWholesaleActivitiesOfTheCompanyExcludingTransitTrade"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (excluding VAT) abroad related wholesale activities of the company excluding transit trade</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverGeneratedInTheNetherlandsExclVATRelatedToManufacturingActivitiesOfTheCompanyAndDependingOnSICInclOrExclOnchargedFreightCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover generated in the Netherlands (excl. VAT) related to manufacturing activities of the company and depending on SIC, incl. or excl. (on-charged) freight costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverNetIndustrialAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net industrial turnover abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverNetIndustrialHome"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net industrial turnover home</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverNetOtherAbroad"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net other turnover abroad</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverNetOtherHome"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Net other turnover home</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverNetTransportCostsIncludedInTurnoverChargedByThirdParties"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs included in turnover charged by thirdparties</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:Volunteers"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Volunteers</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:WageAndSalaries"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Wage and salaries</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:AccommodationCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accomodation costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:CarAndTransportCosts"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Transport costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ExpensesResearchAndDevelopment"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Research and development costs</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTerrains"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments Domestic land and sites total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsIndustrialBuildings"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic industrial buildings</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsHousesNotForSale"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic houses not for sale</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsCivilEngineering"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic civil engineering</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTransportEquipmentOnTheRoadCars"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic transport equipment on theroad cars</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTransportEquipmentOnTheRoadOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic transport equipmen ton the road other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTransportEquipmentOnTrack"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic transport equipment on railtrack</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTransportEquipmentThroughTheAir"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic transport equipment through the air</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTransportEquipmentOnTheWater"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic transport equipment on the water</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsICTEquipmentComputersAndPeripheralEquipment"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic in ict equipment computers and peripheral equipment</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsICTEquipmentCommunicationsEquipmentAndAssociatedPeripherals"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic in ict equipment communications equipment and associated peripherals</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsNewMachinesInstallationsAndEquipmentOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic new machines installations and equipment other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTangibleAssetsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible assets other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticInTangibleFixedAssetsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic intangible fixed assets total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsComputerProgramsSoftware"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic computer programs software total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticInIntangibleAssetsOther"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic inintangible assets other</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticInIntangibleAssetsOtherTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic inintangible assets other total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticInIntangibleAssetsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic in intangible assets total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:RevenueDisposalDomesticTangibleFixedAssetsTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Revenu of disposal domestic tangible fixed assets total</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:NotesInvestmentsOrDisposals"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Toelichting op investeringen en of desinvesteringen</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticTangibleFixedAssetsUnderConstructionBuildingsIndustrialBuildingsPrepayments"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible fixed assets under construction building sindustrial buildings prepayments</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticTangibleFixedAssetsUnderConstructionBuildingsHousesNotForSalePrepayments"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible fixed assets under construction buildings houses not for sale prepayments</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticTangibleFixedAssetsUnderConstructionCivilEngineeringPrepayments"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible fixed assets under construction civil engineering prepayments</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticTangibleFixedAssetsUnderConstructionOtherPrepayments"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible fixed asset sunder construction other prepayments</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsTangibleFixedAssetsUnderConstructionTotalPrepayments"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments tangible fixed assets under construction total prepayments</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsDomesticTangibleFixedAssetsRegion"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Investments domestic tangible fixed assets by region</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVAT"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Gross turnover including value added taxes</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVATRelatedToSalesByInternet"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Gross turnover including value added taxes from sale by internet</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVATRelatedToWholeSaleAndRetailActivities"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover whole sale retail gross</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:ProductRelatedInvoicedTaxesOnTurnoverNet"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Product related invoiced taxes on net turnover</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:WorkingHoursMadeAvailablePhaseA"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Phase A working hours made available</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:WorkingHoursMadeAvailablePhaseBAndC"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total number of hours made available (phase B and C, phase 3 and 4 CAO)</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:DirectProductiveWorkingHoursOwnAndHiredPersonnelTotal"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total of direct productive working hours of own and hired personnel</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:InvestmentsAnticipated"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Anticipated investments in tangible fixed assets in the next bookyear</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:DomicileHeadquarters"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Location of office (country)</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVATRelatedToRetailActivities"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (incl. VAT) related to retail activities by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVATRelatedToWholeSaleActivities"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (incl. VAT) related to wholesale activities by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVATRelatedToTradeIntermediationActivities"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (incl. VAT) related to trade intermediation activities by the company</t:label>
+  </t:labelArc>
+  <t:labelArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+               t:from="cbs-bedr-items:TurnoverIncludingVATRelatedToOtherActivities"
+               t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:label t:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Turnover (incl. VAT) related to other activities by the company</t:label>
+  </t:labelArc>
+</t:labelLink>
   
   <!-- Concept references as 1-to-n relations from concepts to resources, even if that means repetition of references -->
   
-  <t:referenceLink t:linkrole="http://www.xbrl.org/2003/role/link">
-    <t:referenceArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:NetTurnover" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
-      <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
-      <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
-    </t:referenceArc>
-    <t:referenceArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherHome" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
-      <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
-      <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
-    </t:referenceArc>
-    <t:referenceArc t:linkrole="http://www.xbrl.org/2003/role/link" t:from="cbs-bedr-items:TurnoverNetOtherAbroad" t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference">
-      <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
-      <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
-    </t:referenceArc>
-  </t:referenceLink>
+<t:referenceLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
+                 xmlns:ref="http://www.xbrl.org/2006/ref"
+                 xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+                 t:linkrole="http://www.xbrl.org/2003/role/link">
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:NetTurnover"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:TurnoverNetOtherHome"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:TurnoverNetOtherAbroad"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:TurnoverNetIndustrialHome"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:TurnoverNetIndustrialAbroad"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:NetTurnoverHome"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+  <t:referenceArc t:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference"
+                   t:from="cbs-bedr-items:NetTurnoverAbroad"
+                   t:linkrole="http://www.xbrl.org/2003/role/link">
+      <t:reference t:role="http://www.xbrl.org/2003/role/reference">
+         <ref:Name>Richtlijnen voor de begrippen in de statistiek voor de korte termijn</ref:Name>
+         <ref:URI>www.cbsvooruwbedrijf.nl/sbrks</ref:URI>
+      </t:reference>
+  </t:referenceArc>
+</t:referenceLink>
   
   <!-- Inter-concept relationships as m-to-n relations from concepts to concepts -->
   
@@ -70,6 +1095,118 @@
     <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:SelfProducedMember" order="3.0"/>
     <t:definitionArc t:linkrole="urn:cbs:linkrole:natureofinvestment-domain" t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" t:from="cbs-dm-noi:NewUsedSelfProducedDomain" t:to="cbs-dm-noi:TotalAssetsInvestmentsMember" order="4.0"/>
   </t:definitionLink>
+
+<t:definitionLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
+                  xmlns:cbs-pdom="http://www.nltaxonomie.nl/9.0/report/cbs/lineitems/cbs-primary-domains"
+                  xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+                  t:linkrole="urn:cbs:linkrole:nature-of-investment-table">
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsIndustrialBuildings"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsHousesNotForSale"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsCivilEngineering"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsTransportEquipmentOnTheRoadCars"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsTransportEquipmentOnTheRoadOther"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsTransportEquipmentOnTrack"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsTransportEquipmentThroughTheAir"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsTransportEquipmentOnTheWater"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsICTEquipmentComputersAndPeripheralEquipment"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsICTEquipmentCommunicationsEquipmentAndAssociatedPeripherals"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsNewMachinesInstallationsAndEquipmentOther"/>
+  <t:definitionArc order="1.0"
+                    t:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+                    t:from="cbs-pdom:NatureOfInvestmentLineItems"
+                    t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
+                    t:to="cbs-bedr-items:InvestmentsTangibleAssetsOther"/>
+</t:definitionLink>
+
+<t:presentationLink xmlns:t="https://github.com/dvreeze/yaidom-xbrl/taxonomy"
+                    xmlns:cbs-bedr-a="http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts"
+                    xmlns:cbs-bedr-items="http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+                    t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours">
+  <t:presentationArc order="1.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-a:CBSShorttermStatisticTitle"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:NetTurnover"/>
+  <t:presentationArc order="2.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-items:NetTurnover"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:TurnoverNetIndustrialHome"/>
+  <t:presentationArc order="3.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-items:NetTurnover"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:TurnoverNetIndustrialAbroad"/>
+  <t:presentationArc order="4.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-items:NetTurnover"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:TurnoverNetOtherHome"/>
+  <t:presentationArc order="5.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-items:NetTurnover"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:TurnoverNetOtherAbroad"/>
+  <t:presentationArc order="6.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-a:CBSShorttermStatisticTitle"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:StockWorkInProgressClosing"/>
+  <t:presentationArc order="7.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-a:CBSShorttermStatisticTitle"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:StockProductsClosing"/>
+  <t:presentationArc order="8.0"
+                      t:arcrole="http://www.xbrl.org/2003/arcrole/parent-child"
+                      t:from="cbs-bedr-a:CBSShorttermStatisticTitle"
+                      t:linkrole="urn:cbs:linkrole:fs-cbs-short-term-stat-turnover-home-abroad-stock-commodities-products-hours"
+                      t:to="cbs-bedr-items:DirectProductiveWorkingHoursOwnAndHiredPersonnelTotal"/>
+</t:presentationLink>
   
   <!-- Role types, arcrole types etc. -->
   
