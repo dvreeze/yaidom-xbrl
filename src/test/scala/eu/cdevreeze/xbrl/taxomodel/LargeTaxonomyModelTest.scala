@@ -16,6 +16,7 @@
 
 package eu.cdevreeze.xbrl.taxomodel
 
+import scala.reflect.classTag
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.scalatest.Suite
@@ -44,7 +45,9 @@ class LargeTaxonomyModelTest extends Suite {
 
   @Test def testParseTaxonomyModel(): Unit = {
     def isXml(file: File): Boolean = Set(".xml", ".xsd").exists(s => file.toString.endsWith(s))
-    val xmlFiles = findFiles(new File(clazz.getResource("/nltaxo").toURI), isXml)
+    def isAcceptedXml(file: File): Boolean = isXml(file) && !file.getPath.contains("/weg/")
+
+    val xmlFiles = findFiles(new File(clazz.getResource("/nltaxo").toURI), isAcceptedXml)
 
     val docParser = getDocumentParser
     val docPrinter = DocumentPrinterUsingDom.newInstance
@@ -52,52 +55,6 @@ class LargeTaxonomyModelTest extends Suite {
     val taxoDocs =
       xmlFiles.map(f => docParser.parse(f.toURI)).map(doc => docaware.Document(doc.uriOption.get, doc))
     val taxo = new Taxonomy(taxoDocs)
-
-    val taxoModelBuilder = new TaxonomyModelBuilder(taxo)
-
-    val firstLabelLink = {
-      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-bedr-items-lab-en.xml")).get
-      val orgLabelLink = linkbase.labelLinks.head
-
-      taxoModelBuilder.convertToLabelLink(orgLabelLink)
-    }
-
-    val labelLinkXmlString = docPrinter.print(firstLabelLink.simpleElem.prettify(2))
-    println(labelLinkXmlString)
-    println()
-
-    val firstReferenceLink = {
-      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-bedr-items-ref.xml")).get
-      val orgReferenceLink = linkbase.referenceLinks.head
-
-      taxoModelBuilder.convertToReferenceLink(orgReferenceLink)
-    }
-
-    val referenceLinkXmlString = docPrinter.print(firstReferenceLink.simpleElem.prettify(2))
-    println(referenceLinkXmlString)
-    println()
-
-    val firstDefinitionLink = {
-      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-natureofinvestment-lineitems-def.xml")).get
-      val orgDefinitionLink = linkbase.definitionLinks.head
-
-      taxoModelBuilder.convertToDefinitionLink(orgDefinitionLink)
-    }
-
-    val definitionLinkXmlString = docPrinter.print(firstDefinitionLink.simpleElem.prettify(2))
-    println(definitionLinkXmlString)
-    println()
-
-    val firstPresentationLink = {
-      val linkbase = taxo.linkbases.find(_.bridgeElem.docUri.toString.contains("cbs-short-term-statistic-turnover-home-abroad-stock-commodities-products-hours-pre.xml")).get
-      val orgPresentationLink = linkbase.presentationLinks.head
-
-      taxoModelBuilder.convertToPresentationLink(orgPresentationLink)
-    }
-
-    val presentationLinkXmlString = docPrinter.print(firstPresentationLink.simpleElem.prettify(2))
-    println(presentationLinkXmlString)
-    println()
 
     assertResult(true) {
       taxo.docs.size >= 40
@@ -108,6 +65,21 @@ class LargeTaxonomyModelTest extends Suite {
     assertResult(true) {
       taxo.schemaDocs.exists(doc => doc.uri == new URI("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items.xsd"))
     }
+
+    val taxoModelBuilder = new TaxonomyModelBuilder(taxo)
+
+    val taxoModel = taxoModelBuilder.convertToTaxonomyModel
+
+    assertResult(true) {
+      taxoModel.findAllDefinitionLinks.size >= 10
+    }
+    assertResult(true) {
+      taxoModel.findAllElemsOfType(classTag[Arc]).flatMap(_.attributeAsResolvedQNameOption(EName(YatmNs, "from"))).toSet.
+        contains(EName("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items", "AccommodationCostsBuildingTaxes"))
+    }
+
+    val taxoModelXmlString = docPrinter.print(Document(taxoModel.simpleElem))
+    println(taxoModelXmlString)
   }
 
   private def findFiles(root: File, fileFilter: File => Boolean): Vector[File] = {

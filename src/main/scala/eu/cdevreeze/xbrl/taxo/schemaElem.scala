@@ -33,17 +33,16 @@ sealed trait SchemaElem {
   def wrappedElem: docaware.Elem
 }
 
-final class GlobalElementDeclaration(val wrappedElem: docaware.Elem) extends SchemaElem {
-  require(wrappedElem.resolvedName == XsElementEName)
+abstract class GlobalSchemaComponent(val wrappedElem: docaware.Elem) extends SchemaElem {
   require(wrappedElem.path.entries.size == 1)
   require(wrappedElem.attributeOption(NameEName).isDefined)
 
-  def targetNamespaceOption: Option[String] = wrappedElem.rootElem.attributeOption(TargetNamespaceEName)
+  final def targetNamespaceOption: Option[String] = wrappedElem.rootElem.attributeOption(TargetNamespaceEName)
 
-  def targetEName: EName =
+  final def targetEName: EName =
     EName(targetNamespaceOption, wrappedElem.attribute(NameEName))
 
-  def preferredTargetQName: QName = {
+  final def preferredTargetQName: QName = {
     val scope = wrappedElem.scope filter { case (pref, ns) => targetNamespaceOption.toSet.contains(ns) }
     val adaptedScope = if (scope.keySet == Set("")) scope else scope.withoutDefaultNamespace
 
@@ -51,41 +50,37 @@ final class GlobalElementDeclaration(val wrappedElem: docaware.Elem) extends Sch
     QName(prefixOption, wrappedElem.attribute(NameEName))
   }
 
-  def scopeNeededForPreferredTargetQName: Scope = {
+  final def scopeNeededForPreferredTargetQName: Scope = {
     wrappedElem.scope filter {
       case (pref, ns) =>
         (pref == preferredTargetQName.prefixOption.getOrElse("")) && (Some(ns) == targetNamespaceOption)
     }
   }
+}
+
+final class GlobalElementDeclaration(wrappedElem: docaware.Elem) extends GlobalSchemaComponent(wrappedElem) {
+  require(wrappedElem.resolvedName == XsElementEName)
+  require(wrappedElem.path.entries.size == 1)
+  require(wrappedElem.attributeOption(NameEName).isDefined)
 
   def ownUriOption: Option[URI] =
     wrappedElem.attributeOption(IdEName).
       map(id => new URI(wrappedElem.baseUri.getScheme, wrappedElem.baseUri.getSchemeSpecificPart, id))
 }
 
-trait NamedTypeDefinition extends SchemaElem {
-
-  def targetNamespaceOption: Option[String] = wrappedElem.rootElem.attributeOption(TargetNamespaceEName)
-
-  def targetEName: EName
+abstract class NamedTypeDefinition(wrappedElem: docaware.Elem) extends GlobalSchemaComponent(wrappedElem) {
 }
 
-final class NamedSimpleTypeDefinition(val wrappedElem: docaware.Elem) extends NamedTypeDefinition {
+final class NamedSimpleTypeDefinition(wrappedElem: docaware.Elem) extends NamedTypeDefinition(wrappedElem) {
   require(wrappedElem.resolvedName == XsSimpleTypeEName)
   require(wrappedElem.path.entries.size == 1)
   require(wrappedElem.attributeOption(NameEName).isDefined)
-
-  def targetEName: EName =
-    EName(targetNamespaceOption, wrappedElem.attribute(NameEName))
 }
 
-final class NamedComplexTypeDefinition(val wrappedElem: docaware.Elem) extends NamedTypeDefinition {
+final class NamedComplexTypeDefinition(wrappedElem: docaware.Elem) extends NamedTypeDefinition(wrappedElem) {
   require(wrappedElem.resolvedName == XsComplexTypeEName)
   require(wrappedElem.path.entries.size == 1)
   require(wrappedElem.attributeOption(NameEName).isDefined)
-
-  def targetEName: EName =
-    EName(targetNamespaceOption, wrappedElem.attribute(NameEName))
 }
 
 object SchemaElem {
@@ -100,5 +95,17 @@ object SchemaElem {
     def toNamedTypeDefinition: NamedTypeDefinition =
       if (wrappedElem.resolvedName == XsSimpleTypeEName) new NamedSimpleTypeDefinition(wrappedElem)
       else new NamedComplexTypeDefinition(wrappedElem)
+  }
+
+  implicit class ToNamedSimpleTypeDefinition(val wrappedElem: docaware.Elem) extends AnyVal {
+
+    def toNamedSimpleTypeDefinition: NamedSimpleTypeDefinition =
+      new NamedSimpleTypeDefinition(wrappedElem)
+  }
+
+  implicit class ToNamedComplexTypeDefinition(val wrappedElem: docaware.Elem) extends AnyVal {
+
+    def toNamedComplexTypeDefinition: NamedComplexTypeDefinition =
+      new NamedComplexTypeDefinition(wrappedElem)
   }
 }

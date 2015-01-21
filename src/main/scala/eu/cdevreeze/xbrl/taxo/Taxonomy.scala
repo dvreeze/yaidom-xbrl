@@ -22,6 +22,11 @@ import eu.cdevreeze.yaidom.docaware
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.xlink.link.Linkbase
 import eu.cdevreeze.yaidom.xlink.link.Locator
+import eu.cdevreeze.yaidom.xlink.link.LabelLink
+import eu.cdevreeze.yaidom.xlink.link.ReferenceLink
+import eu.cdevreeze.yaidom.xlink.link.PresentationLink
+import eu.cdevreeze.yaidom.xlink.link.DefinitionLink
+import eu.cdevreeze.yaidom.xlink.link.CalculationLink
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.xlink.link.LinkLinkbaseEName
 import eu.cdevreeze.yaidom.bridge.DefaultDocawareBridgeElem
@@ -46,6 +51,16 @@ final class Taxonomy(val docs: immutable.IndexedSeq[docaware.Document]) {
       Linkbase(DefaultDocawareBridgeElem.wrap(elem))
     }
   }
+
+  def labelLinks: immutable.IndexedSeq[LabelLink] = linkbases.flatMap(_.labelLinks)
+
+  def referenceLinks: immutable.IndexedSeq[ReferenceLink] = linkbases.flatMap(_.referenceLinks)
+
+  def presentationLinks: immutable.IndexedSeq[PresentationLink] = linkbases.flatMap(_.presentationLinks)
+
+  def definitionLinks: immutable.IndexedSeq[DefinitionLink] = linkbases.flatMap(_.definitionLinks)
+
+  def calculationLinks: immutable.IndexedSeq[CalculationLink] = linkbases.flatMap(_.calculationLinks)
 
   val globalElementDeclarationsByUri: Map[URI, GlobalElementDeclaration] = {
     schemaDocs.flatMap(_.documentElement.filterChildElems(withEName(XsElementEName))).map(_.toGlobalElementDeclaration) filter { elemDecl =>

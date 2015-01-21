@@ -21,18 +21,53 @@ import scala.collection.immutable
 import eu.cdevreeze.xbrl.taxo.Taxonomy
 import eu.cdevreeze.yaidom.core.QName
 import eu.cdevreeze.yaidom.core.Scope
+import eu.cdevreeze.yaidom.docaware
+import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
+import eu.cdevreeze.yaidom.simple
 import eu.cdevreeze.yaidom.simple.Node
 import eu.cdevreeze.yaidom.utils.NamespaceUtils
 import eu.cdevreeze.yaidom.xlink.link
+import eu.cdevreeze.xbrl.taxo
+import eu.cdevreeze.xbrl.taxo.SchemaElem.ToGlobalElementDeclaration
+import eu.cdevreeze.xbrl.taxo.SchemaElem.ToNamedSimpleTypeDefinition
+import eu.cdevreeze.xbrl.taxo.SchemaElem.ToNamedComplexTypeDefinition
 
 /**
  * Builder of a TaxonomyModel and its parts, given an input Taxonomy.
  *
  * @author Chris de Vreeze
  */
-final class TaxonomyModelBuilder(val taxo: Taxonomy) {
+final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
 
   import Node._
+
+  def convertToTaxonomyModel: TaxonomyModel = {
+    val scope = Scope.from("t" -> YatmNs)
+
+    // Not complete yet. For example, missing generic links and role/arcrole types.
+
+    val resultElem =
+      emptyElem(QName("t:taxonomy"), scope) withChildren {
+        val links =
+          taxonomy.definitionLinks.map(lnk => convertToDefinitionLink(lnk)) ++
+            taxonomy.presentationLinks.map(lnk => convertToPresentationLink(lnk)) ++
+            taxonomy.calculationLinks.map(lnk => convertToCalculationLink(lnk)) ++
+            taxonomy.labelLinks.map(lnk => convertToLabelLink(lnk)) ++
+            taxonomy.referenceLinks.map(lnk => convertToReferenceLink(lnk))
+
+        val schema = convertToSchema(taxonomy.schemaDocs.map(_.documentElement))
+
+        (links :+ schema).map(_.simpleElem)
+      }
+
+    def removeSomeNamespaces(elem: simple.Elem): simple.Elem =
+      elem.transformElemsOrSelf(e => e.copy(scope = e.scope -- Set("xlink", "link", "xsi")))
+
+    val editedResultElem =
+      NamespaceUtils.pushUpPrefixedNamespaces(removeSomeNamespaces(resultElem)).prettify(2)
+
+    TaxonomyModel.build(editedResultElem)
+  }
 
   def convertToLabelLink(labelLink: link.LabelLink): LabelLink = {
     val elr = labelLink.role
@@ -151,7 +186,7 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
 
   def convertToLabelArc(arc: link.Arc, fromLoc: link.Locator, toRes: link.LabelResource): LabelArc = {
     val globalElemDecl =
-      taxo.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href}"))
+      taxonomy.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href} (document ${fromLoc.bridgeElem.docUri})"))
 
     val fromConceptEName = globalElemDecl.targetEName
     val fromConceptQName = globalElemDecl.preferredTargetQName
@@ -182,7 +217,7 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
 
   def convertToReferenceArc(arc: link.Arc, fromLoc: link.Locator, toRes: link.ReferenceResource): ReferenceArc = {
     val globalElemDecl =
-      taxo.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href}"))
+      taxonomy.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href} (document ${fromLoc.bridgeElem.docUri})"))
 
     val fromConceptEName = globalElemDecl.targetEName
     val fromConceptQName = globalElemDecl.preferredTargetQName
@@ -229,12 +264,76 @@ final class TaxonomyModelBuilder(val taxo: Taxonomy) {
     convertToInterConceptArc(arc, fromLoc, toLoc, QName("t:calculationArc")).asInstanceOf[CalculationArc]
   }
 
+  def convertToSchema(schemaElems: immutable.IndexedSeq[docaware.Elem]): Schema = {
+    val childElems = schemaElems.map(e => convertToSchema(e)).flatMap(_.findAllChildElems).map(_.simpleElem)
+
+    val resultElem =
+      emptyElem(
+        QName("txs:schema"),
+        Vector(QName("elementFormDefault") -> "qualified"),
+        Scope.from("txs" -> YatmXsNs)).withChildren(childElems)
+
+    TaxonomyElem.build(NamespaceUtils.pushUpPrefixedNamespaces(resultElem)).asInstanceOf[Schema]
+  }
+
+  def convertToSchema(schemaElem: docaware.Elem): Schema = {
+    val elemDecls =
+      schemaElem.filterChildElems(withEName(taxo.XsElementEName)).map(e => convertToGlobalElementDeclaration(e.toGlobalElementDeclaration))
+
+    val simpleTypeDefs =
+      schemaElem.filterChildElems(withEName(taxo.XsSimpleTypeEName)).map(e => convertToNamedSimpleTypeDefinition(e.toNamedSimpleTypeDefinition))
+
+    val complexTypeDefs =
+      schemaElem.filterChildElems(withEName(taxo.XsComplexTypeEName)).map(e => convertToNamedComplexTypeDefinition(e.toNamedComplexTypeDefinition))
+
+    val childElems = (elemDecls ++ simpleTypeDefs ++ complexTypeDefs).map(_.simpleElem)
+
+    val resultElem =
+      emptyElem(
+        QName("txs:schema"),
+        Vector(QName("elementFormDefault") -> "qualified"),
+        Scope.from("txs" -> YatmXsNs)).withChildren(childElems)
+
+    TaxonomyElem.build(NamespaceUtils.pushUpPrefixedNamespaces(resultElem)).asInstanceOf[Schema]
+  }
+
+  def convertToGlobalElementDeclaration(orgElemDecl: taxo.GlobalElementDeclaration): GlobalElementDeclaration = {
+    val resultElem = convertToGlobalSchemaComponent(orgElemDecl)
+
+    TaxonomyElem.build(resultElem).asInstanceOf[GlobalElementDeclaration]
+  }
+
+  def convertToNamedSimpleTypeDefinition(orgTypeDef: taxo.NamedSimpleTypeDefinition): NamedSimpleTypeDefinition = {
+    val resultElem = convertToGlobalSchemaComponent(orgTypeDef)
+
+    TaxonomyElem.build(resultElem).asInstanceOf[NamedSimpleTypeDefinition]
+  }
+
+  def convertToNamedComplexTypeDefinition(orgTypeDef: taxo.NamedComplexTypeDefinition): NamedComplexTypeDefinition = {
+    val resultElem = convertToGlobalSchemaComponent(orgTypeDef)
+
+    TaxonomyElem.build(resultElem).asInstanceOf[NamedComplexTypeDefinition]
+  }
+
+  private def convertToGlobalSchemaComponent(orgElem: taxo.GlobalSchemaComponent): simple.Elem = {
+    val scope =
+      orgElem.wrappedElem.scope ++ Scope.from("txs" -> YatmXsNs) ++ orgElem.scopeNeededForPreferredTargetQName
+
+    val targetQName = orgElem.preferredTargetQName
+    val attrs =
+      (QName("qname") -> targetQName.toString) +: (orgElem.wrappedElem.attributes.filterNot(_._1 == QName("name")))
+
+    val resultElem =
+      orgElem.wrappedElem.elem.copy(qname = QName("txs", orgElem.wrappedElem.localName), attributes = attrs, scope = scope)
+    resultElem
+  }
+
   private def convertToInterConceptArc(arc: link.Arc, fromLoc: link.Locator, toLoc: link.Locator, arcQName: QName): InterConceptArc = {
     val fromGlobalElemDecl =
-      taxo.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href}"))
+      taxonomy.findGlobalElementDeclaration(fromLoc).getOrElse(sys.error(s"Could not find ${fromLoc.href} (document ${fromLoc.bridgeElem.docUri})"))
 
     val toGlobalElemDecl =
-      taxo.findGlobalElementDeclaration(toLoc).getOrElse(sys.error(s"Could not find ${toLoc.href}"))
+      taxonomy.findGlobalElementDeclaration(toLoc).getOrElse(sys.error(s"Could not find ${toLoc.href} (document ${toLoc.bridgeElem.docUri})"))
 
     val fromConceptEName = fromGlobalElemDecl.targetEName
     val fromConceptQName = fromGlobalElemDecl.preferredTargetQName
