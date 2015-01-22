@@ -81,11 +81,26 @@ sealed abstract class TaxonomyElem private[taxomodel] (
 
 // Taxonomy model
 
+/**
+ * Taxonomy model. Expensive to create, for fast querying.
+ */
 final class TaxonomyModel private[taxomodel] (
   simpleElem: simple.Elem,
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends TaxonomyElem(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmTaxonomyEName)
+
+  val standardArcs: immutable.IndexedSeq[StandardArc] =
+    findAllStandardLinks.flatMap(_.findAllStandardArcs)
+
+  val standardArcsBySource: Map[EName, immutable.IndexedSeq[StandardArc]] =
+    standardArcs.groupBy(_.sourceConcept)
+
+  val interConceptArcsByTarget: Map[EName, immutable.IndexedSeq[InterConceptArc]] =
+    standardArcs.collect({ case arc: InterConceptArc => arc }).groupBy(_.targetConcept)
+
+  def findAllStandardLinks: immutable.IndexedSeq[StandardLink] =
+    findAllChildElemsOfType(classTag[StandardLink])
 
   def findAllLabelLinks: immutable.IndexedSeq[LabelLink] =
     findAllChildElemsOfType(classTag[LabelLink])
@@ -121,9 +136,17 @@ abstract class Link private[taxomodel] (
     findAllChildElemsOfType(classTag[Arc])
 }
 
-final class LabelLink private[taxomodel] (
+abstract class StandardLink private[taxomodel] (
   simpleElem: simple.Elem,
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+
+  def findAllStandardArcs: immutable.IndexedSeq[StandardArc] =
+    findAllChildElemsOfType(classTag[StandardArc])
+}
+
+final class LabelLink private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardLink(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmLabelLinkEName)
 
@@ -133,7 +156,7 @@ final class LabelLink private[taxomodel] (
 
 final class ReferenceLink private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardLink(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmReferenceLinkEName)
 
@@ -143,7 +166,7 @@ final class ReferenceLink private[taxomodel] (
 
 final class DefinitionLink private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardLink(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmDefinitionLinkEName)
 
@@ -153,7 +176,7 @@ final class DefinitionLink private[taxomodel] (
 
 final class PresentationLink private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardLink(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmPresentationLinkEName)
 
@@ -163,7 +186,7 @@ final class PresentationLink private[taxomodel] (
 
 final class CalculationLink private[taxomodel] (
   simpleElem: simple.Elem,
-  childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends StandardLink(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmCalculationLinkEName)
 
@@ -260,6 +283,8 @@ final class Label private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends Resource(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmLabelEName)
+
+  def langOption: Option[String] = attributeOption(EName("http://www.w3.org/XML/1998/namespace", "lang"))
 }
 
 final class Reference private[taxomodel] (
@@ -309,14 +334,38 @@ abstract class SchemaElem private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends TaxonomyElem(simpleElem, childElems) {
 }
 
+/**
+ * Schema. Expensive to create, for fast querying.
+ */
 final class Schema private[taxomodel] (
   simpleElem: simple.Elem,
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends SchemaElem(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmXsSchemaEName)
 
+  /**
+   * All global element declarations mapped by the target EName as key. If there are multiple results for
+   * one target EName, which is incorrect according to the XML Schema specification, one of them is picked and
+   * the others are ignored.
+   */
+  val globalElementDeclarationsByEName: Map[EName, GlobalElementDeclaration] = {
+    findAllGlobalElementDeclarations.groupBy(_.targetEName).mapValues(_.head)
+  }
+
+  /**
+   * All named type definitions mapped by the target EName as key. If there are multiple results for
+   * one target EName, which is incorrect according to the XML Schema specification, one of them is picked and
+   * the others are ignored.
+   */
+  val namedTypeDefinitionsByEName: Map[EName, NamedTypeDefinition] = {
+    findAllNamedTypeDefinitions.groupBy(_.targetEName).mapValues(_.head)
+  }
+
   def findAllGlobalElementDeclarations: immutable.IndexedSeq[GlobalElementDeclaration] =
     findAllChildElemsOfType(classTag[GlobalElementDeclaration])
+
+  def findAllNamedTypeDefinitions: immutable.IndexedSeq[NamedTypeDefinition] =
+    findAllChildElemsOfType(classTag[NamedTypeDefinition])
 
   def findAllNamedComplexTypeDefinitions: immutable.IndexedSeq[NamedComplexTypeDefinition] =
     findAllChildElemsOfType(classTag[NamedComplexTypeDefinition])
@@ -325,10 +374,10 @@ final class Schema private[taxomodel] (
     findAllChildElemsOfType(classTag[NamedSimpleTypeDefinition])
 
   def findGlobalElementDeclarationByEName(ename: EName): Option[GlobalElementDeclaration] =
-    findChildElemOfType(classTag[GlobalElementDeclaration])(e => e.targetEName == ename)
+    globalElementDeclarationsByEName.get(ename)
 
   def findNamedTypeDefinitionByEName(ename: EName): Option[NamedTypeDefinition] =
-    findChildElemOfType(classTag[NamedTypeDefinition])(e => e.targetEName == ename)
+    namedTypeDefinitionsByEName.get(ename)
 }
 
 final class GlobalElementDeclaration private[taxomodel] (
@@ -339,6 +388,8 @@ final class GlobalElementDeclaration private[taxomodel] (
   require(attributeAsResolvedQNameOption(QNameEName).isDefined, s"Element ${resolvedName} must have a ${QNameEName} attribute")
 
   def targetEName: EName = attributeAsResolvedQName(QNameEName)
+
+  def isAbstract: Boolean = attributeOption(AbstractEName) == Some("true")
 }
 
 abstract class NamedTypeDefinition private[taxomodel] (

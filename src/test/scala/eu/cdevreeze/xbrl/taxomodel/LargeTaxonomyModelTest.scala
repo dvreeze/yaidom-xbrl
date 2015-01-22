@@ -16,6 +16,7 @@
 
 package eu.cdevreeze.xbrl.taxomodel
 
+import scala.collection.immutable
 import scala.reflect.classTag
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,9 +33,10 @@ import eu.cdevreeze.yaidom.parse.DocumentParser
 import java.io.InputStream
 import eu.cdevreeze.xbrl.taxo.Taxonomy
 import eu.cdevreeze.yaidom.print.DocumentPrinterUsingDom
+import eu.cdevreeze.yaidom.core.Scope
 
 /**
- * Large TaxonomyModel parsing test.
+ * Large TaxonomyModel parsing and querying test.
  *
  * @author Chris de Vreeze
  */
@@ -78,8 +80,71 @@ class LargeTaxonomyModelTest extends Suite {
         contains(EName("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items", "AccommodationCostsBuildingTaxes"))
     }
 
-    val taxoModelXmlString = docPrinter.print(Document(taxoModel.simpleElem))
-    println(taxoModelXmlString)
+    if (System.getProperty("taxomodel.debug", "false").toBoolean) {
+      val taxoModelXmlString = docPrinter.print(Document(taxoModel.simpleElem))
+      println(taxoModelXmlString)
+    }
+  }
+
+  @Test def testQueryTaxonomyModel(): Unit = {
+    val docParser = DocumentParserUsingSax.newInstance
+
+    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-9.0.xml").toURI)
+    val doc = docParser.parse(taxoModelFile.toURI)
+
+    implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
+    import TaxonomyQueryApi._
+
+    val cbsBedrANs = "http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts"
+    val cbsBedrItemsNs = "http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+
+    val scope = Scope.from(
+      "cbs-bedr-a" -> cbsBedrANs,
+      "cbs-bedr-items" -> cbsBedrItemsNs)
+
+    // Finding P-links ending with concrete concepts
+
+    def findConcretePLinkLeaves(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
+      val arcs = concept.filterOutgoingArcs(classTag[PresentationArc])(_.linkRole == elr)
+      val elemDecls = arcs.flatMap(_.targetConcept.asOptionalGlobalElementDeclaration)
+
+      elemDecls flatMap { elemDecl =>
+        if (elemDecl.isAbstract) {
+          // Recursive call
+          findConcretePLinkLeaves(elemDecl.targetEName, elr)
+        } else {
+          Vector(elemDecl.targetEName)
+        }
+      }
+    }
+
+    val reportElr = "urn:cbs:linkrole:fs-cbs-investments-small"
+
+    val islpt = EName(cbsBedrANs, "InvestmentStatisticLimitedPlaceholderTitle")
+
+    val islptLeaves = findConcretePLinkLeaves(islpt, reportElr)
+
+    assertResult(true) {
+      Set(
+        EName(cbsBedrItemsNs, "InvestmentsTerrains"),
+        EName(cbsBedrItemsNs, "InvestmentsIndustrialBuildings"),
+        EName(cbsBedrItemsNs, "InvestmentsHousesNotForSale"),
+        EName(cbsBedrItemsNs, "InvestmentsCivilEngineering")).subsetOf(islptLeaves.toSet)
+    }
+
+    // Finding concept labels
+
+    val nlLabels =
+      islpt.filterOutgoingArcs(classTag[LabelArc])(arc => arc.getLabel.langOption == Some("nl")) map { arc =>
+        arc.getLabel
+      }
+
+    assertResult(true) {
+      nlLabels.map(_.text).contains("Investeringsstatistiek voor kleine bedrijven [titel]")
+    }
+    assertResult(true) {
+      islpt.asGlobalElementDeclaration.attributeOption(EName("substitutionGroup")) == Some("sbr:presentationItem")
+    }
   }
 
   private def findFiles(root: File, fileFilter: File => Boolean): Vector[File] = {

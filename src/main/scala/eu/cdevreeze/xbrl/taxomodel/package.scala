@@ -1,3 +1,19 @@
+/*
+ * Copyright 2014 Chris de Vreeze
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package eu.cdevreeze.xbrl
 
 import eu.cdevreeze.yaidom.core.EName
@@ -8,6 +24,10 @@ import eu.cdevreeze.yaidom.core.EName
  *
  * The direct connection to the original taxonomy documents is lost, and as a result URIs in the original documents
  * make no sense in this model. Indeed, xs:import, xs:include and XLink locators do not occur in YATM.
+ *
+ * This package also contains a query API on top of the taxonomy model, for easy navigation within a taxonomy.
+ *
+ * @author Chris de Vreeze
  */
 package object taxomodel {
 
@@ -49,4 +69,5 @@ package object taxomodel {
 
   val QNameEName = EName("qname")
   val OrderEName = EName("order")
+  val AbstractEName = EName("abstract")
 }
