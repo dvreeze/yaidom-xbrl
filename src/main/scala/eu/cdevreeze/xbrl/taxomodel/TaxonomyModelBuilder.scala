@@ -193,7 +193,7 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
     assert(globalElemDecl.wrappedElem.scope.resolveQNameOption(fromConceptQName) == Some(fromConceptEName))
 
     val scope =
-      Scope.from("t" -> YatmNs) ++ globalElemDecl.scopeNeededForPreferredTargetQName
+      Scope.from("t" -> YatmNs) ++ globalElemDecl.scopeNeededForPreferredTargetQName ++ filterNonIdNoXLinkAttributeScope(arc)
 
     val resultElem =
       emptyElem(
@@ -201,11 +201,11 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
         Vector(
           QName("t:linkrole") -> arc.elr,
           QName("t:arcrole") -> arc.arcrole,
-          QName("t:from") -> fromConceptQName.toString) ++ filterNonIdNoNamespaceAttributes(arc),
+          QName("t:from") -> fromConceptQName.toString) ++ filterNonIdNoXLinkAttributes(arc),
         scope) plusChild {
           textElem(
             QName("t:label"),
-            filterNonIdNoNamespaceAttributes(toRes),
+            filterNonIdNoXLinkAttributes(toRes),
             scope,
             toRes.text).
             plusAttributeOption(QName("t:role"), toRes.roleOption).
@@ -231,7 +231,7 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
       }
 
     val scope =
-      refScope ++ Scope.from("t" -> YatmNs) ++ globalElemDecl.scopeNeededForPreferredTargetQName
+      refScope ++ Scope.from("t" -> YatmNs) ++ globalElemDecl.scopeNeededForPreferredTargetQName ++ filterNonIdNoXLinkAttributeScope(arc)
 
     val resultElem =
       emptyElem(
@@ -239,11 +239,11 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
         Vector(
           QName("t:linkrole") -> arc.elr,
           QName("t:arcrole") -> arc.arcrole,
-          QName("t:from") -> fromConceptQName.toString) ++ filterNonIdNoNamespaceAttributes(arc),
+          QName("t:from") -> fromConceptQName.toString) ++ filterNonIdNoXLinkAttributes(arc),
         scope) plusChild {
           textElem(
             QName("t:reference"),
-            filterNonIdNoNamespaceAttributes(toRes),
+            filterNonIdNoXLinkAttributes(toRes),
             scope,
             toRes.text).
             plusAttributeOption(QName("t:role"), toRes.roleOption).withChildren(refElems.map(e => e.copy(scope = scope)))
@@ -346,7 +346,8 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
     val scope =
       Scope.from("t" -> YatmNs) ++
         fromGlobalElemDecl.scopeNeededForPreferredTargetQName ++
-        toGlobalElemDecl.scopeNeededForPreferredTargetQName
+        toGlobalElemDecl.scopeNeededForPreferredTargetQName ++
+        filterNonIdNoXLinkAttributeScope(arc)
 
     val resultElem =
       emptyElem(
@@ -355,16 +356,21 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
           QName("t:linkrole") -> arc.elr,
           QName("t:arcrole") -> arc.arcrole,
           QName("t:from") -> fromConceptQName.toString,
-          QName("t:to") -> toConceptQName.toString) ++ filterNonIdNoNamespaceAttributes(arc),
+          QName("t:to") -> toConceptQName.toString) ++ filterNonIdNoXLinkAttributes(arc),
         scope)
 
     TaxonomyElem.build(resultElem).asInstanceOf[InterConceptArc]
   }
 
-  private def filterNonIdNoNamespaceAttributes(xlink: link.XLink): Vector[(QName, String)] = {
+  private def filterNonIdNoXLinkAttributes(xlink: link.XLink): Vector[(QName, String)] = {
     xlink.attributes.toVector filter {
       case (qname, value) =>
-        qname.prefixOption.isEmpty && (qname.localPart != "id")
+        (qname.prefixOption != Some("xlink")) && (qname != QName("id"))
     }
+  }
+
+  private def filterNonIdNoXLinkAttributeScope(xlink: link.XLink): Scope = {
+    val prefixes = filterNonIdNoXLinkAttributes(xlink).flatMap(_._1.prefixOption).toSet
+    xlink.bridgeElem.scope.filterKeys(prefixes)
   }
 }

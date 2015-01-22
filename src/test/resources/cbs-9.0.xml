@@ -29,21 +29,27 @@
                        t:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain"
                        t:from="cbs-dim:NewUsedSelfProducedAxis"
                        t:linkrole="urn:cbs:linkrole:new-used-selfproduced-axis"
-                       t:to="cbs-dm-noi:NewUsedSelfProducedDomain"/>
+                       t:to="cbs-dm-noi:NewUsedSelfProducedDomain"
+                       xbrldt:targetRole="urn:cbs:linkrole:natureofinvestment-domain"
+                       xbrldt:usable="false"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:period-begin-end-axis">
       <t:definitionArc order="1.0"
                        t:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain"
                        t:from="cbs-dim:PeriodBeginEndAxis"
                        t:linkrole="urn:cbs:linkrole:period-begin-end-axis"
-                       t:to="cbs-dm-begin-end:PeriodBeginEndDomain"/>
+                       t:to="cbs-dm-begin-end:PeriodBeginEndDomain"
+                       xbrldt:targetRole="urn:cbs:linkrole:period-begin-end-domain"
+                       xbrldt:usable="false"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:nature-of-investment-software-axis">
       <t:definitionArc order="1.0"
                        t:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain"
                        t:from="cbs-dim:NatureOfInvestmentSoftwareAxis"
                        t:linkrole="urn:cbs:linkrole:nature-of-investment-software-axis"
-                       t:to="cbs-dm-nois:NatureOfInvestmentSoftwareDomain"/>
+                       t:to="cbs-dm-nois:NatureOfInvestmentSoftwareDomain"
+                       xbrldt:targetRole="urn:cbs:linkrole:natureofinvestmentsoftware-domain"
+                       xbrldt:usable="false"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:natureofinvestmentsoftware-domain">
       <t:definitionArc order="1.0"
@@ -3665,7 +3671,9 @@
                        t:arcrole="http://xbrl.org/int/dim/arcrole/all"
                        t:from="cbs-pdom:AdimensionalLineItems"
                        t:linkrole="urn:cbs:linkrole:adimensional-table"
-                       t:to="cbs-hc:ValidationTable"/>
+                       t:to="cbs-hc:ValidationTable"
+                       xbrldt:closed="true"
+                       xbrldt:contextElement="scenario"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:begin-end-period-prepayments-assets-table">
       <t:definitionArc order="1.0"
@@ -3699,24 +3707,30 @@
                        t:arcrole="http://xbrl.org/int/dim/arcrole/all"
                        t:from="cbs-pdom:NatureOfInvestmentLineItems"
                        t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
-                       t:to="cbs-hc:ValidationTable"/>
+                       t:to="cbs-hc:ValidationTable"
+                       xbrldt:closed="true"
+                       xbrldt:contextElement="scenario"/>
       <t:definitionArc order="4.0"
                        t:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
                        t:from="cbs-hc:ValidationTable"
                        t:linkrole="urn:cbs:linkrole:nature-of-investment-table"
-                       t:to="cbs-dim:NewUsedSelfProducedAxis"/>
+                       t:to="cbs-dim:NewUsedSelfProducedAxis"
+                       xbrldt:targetRole="urn:cbs:linkrole:new-used-selfproduced-axis"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:begin-end-period-prepayments-assets-table">
       <t:definitionArc order="1.0"
                        t:arcrole="http://xbrl.org/int/dim/arcrole/all"
                        t:from="cbs-pdom:PeriodBeginEndLineItems"
                        t:linkrole="urn:cbs:linkrole:begin-end-period-prepayments-assets-table"
-                       t:to="cbs-hc:ValidationTable"/>
+                       t:to="cbs-hc:ValidationTable"
+                       xbrldt:closed="true"
+                       xbrldt:contextElement="scenario"/>
       <t:definitionArc order="4.0"
                        t:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
                        t:from="cbs-hc:ValidationTable"
                        t:linkrole="urn:cbs:linkrole:begin-end-period-prepayments-assets-table"
-                       t:to="cbs-dim:PeriodBeginEndAxis"/>
+                       t:to="cbs-dim:PeriodBeginEndAxis"
+                       xbrldt:targetRole="urn:cbs:linkrole:period-begin-end-axis"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:nature-of-investment-table">
       <t:definitionArc order="1.0"
@@ -3785,12 +3799,15 @@
                        t:arcrole="http://xbrl.org/int/dim/arcrole/all"
                        t:from="cbs-pdom:NatureOfInvestmentSoftwareLineItems"
                        t:linkrole="urn:cbs:linkrole:nature-of-investment-software-table"
-                       t:to="cbs-hc:ValidationTable"/>
+                       t:to="cbs-hc:ValidationTable"
+                       xbrldt:closed="true"
+                       xbrldt:contextElement="scenario"/>
       <t:definitionArc order="4.0"
                        t:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
                        t:from="cbs-hc:ValidationTable"
                        t:linkrole="urn:cbs:linkrole:nature-of-investment-software-table"
-                       t:to="cbs-dim:NatureOfInvestmentSoftwareAxis"/>
+                       t:to="cbs-dim:NatureOfInvestmentSoftwareAxis"
+                       xbrldt:targetRole="urn:cbs:linkrole:nature-of-investment-software-axis"/>
   </t:definitionLink>
   <t:definitionLink t:linkrole="urn:cbs:linkrole:nature-of-investment-software-table">
       <t:definitionArc order="1.0"
