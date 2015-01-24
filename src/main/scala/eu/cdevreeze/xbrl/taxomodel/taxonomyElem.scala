@@ -279,7 +279,7 @@ final class DefinitionArc private[taxomodel] (
 
   def effectiveTargetRole: String = {
     if (isDimensional) {
-      if (attributeOption(XbrldtTargetRoleEName).isDefined) attribute(XbrldtTargetRoleEName) else linkRole
+      attributeOption(XbrldtTargetRoleEName).getOrElse(linkRole)
     } else linkRole
   }
 }
