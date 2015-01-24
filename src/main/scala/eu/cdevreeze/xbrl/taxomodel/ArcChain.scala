@@ -17,6 +17,7 @@
 package eu.cdevreeze.xbrl.taxomodel
 
 import scala.collection.immutable
+
 import eu.cdevreeze.yaidom.core.EName
 
 /**
@@ -27,7 +28,7 @@ import eu.cdevreeze.yaidom.core.EName
  */
 final class ArcChain[A <: InterConceptArc](val arcs: immutable.IndexedSeq[A]) {
   require(arcs.size >= 1)
-  require(arcs.sliding(2).filter(_.size == 2).forall(pair => ArcChain.matchingConcepts(pair(0), pair(1))))
+  require(arcs.sliding(2).filter(_.size == 2).forall(pair => ArcChain.haveMatchingConcepts(pair(0), pair(1))))
 
   def sourceConcept: EName = arcs.head.sourceConcept
 
@@ -61,7 +62,27 @@ object ArcChain {
 
   def from[A <: InterConceptArc](arcs: A*): ArcChain[A] = new ArcChain(arcs.toVector)
 
-  def matchingConcepts[A <: InterConceptArc](arc1: A, arc2: A): Boolean = {
+  def haveMatchingConcepts[A <: InterConceptArc](arc1: A, arc2: A): Boolean = {
     arc1.targetConcept == arc2.sourceConcept
+  }
+
+  def haveMatchingConceptsAndSameElr[A <: InterConceptArc](arc1: A, arc2: A): Boolean = {
+    haveMatchingConcepts(arc1, arc2) && (arc1.linkRole == arc2.linkRole)
+  }
+
+  def areConsecutiveDimensionalArcs[A <: InterConceptArc](arc1: A, arc2: A): Boolean = {
+    haveMatchingConcepts(arc1, arc2) && {
+      (arc1, arc2) match {
+        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isHasHypercube && arc2.isHypercubeDimension =>
+          arc1.effectiveTargetRole == arc2.linkRole
+        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isHypercubeDimension && arc2.isDimensionDomain =>
+          arc1.effectiveTargetRole == arc2.linkRole
+        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isDimensionDomain && arc2.isDomainMember =>
+          arc1.effectiveTargetRole == arc2.linkRole
+        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isDomainMember && arc2.isDomainMember =>
+          arc1.effectiveTargetRole == arc2.linkRole
+        case (arc1, arc2) => false
+      }
+    }
   }
 }

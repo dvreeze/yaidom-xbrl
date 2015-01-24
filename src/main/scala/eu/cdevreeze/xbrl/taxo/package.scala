@@ -26,11 +26,14 @@ import eu.cdevreeze.yaidom.core.EName
 package object taxo {
 
   val XsNs = "http://www.w3.org/2001/XMLSchema"
+  val XbrldtNs = "http://xbrl.org/2005/xbrldt"
 
   val XsSchemaEName = EName(XsNs, "schema")
   val XsElementEName = EName(XsNs, "element")
   val XsSimpleTypeEName = EName(XsNs, "simpleType")
   val XsComplexTypeEName = EName(XsNs, "complexType")
+
+  val XbrldtTargetRoleEName = EName(XbrldtNs, "targetRole")
 
   val TargetNamespaceEName = EName("targetNamespace")
   val NameEName = EName("name")

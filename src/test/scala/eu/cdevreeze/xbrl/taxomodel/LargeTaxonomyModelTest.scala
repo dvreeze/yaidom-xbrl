@@ -160,6 +160,186 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
+  @Test def testQueryDimensions(): Unit = {
+    val docParser = DocumentParserUsingSax.newInstance
+
+    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-9.0.xml").toURI)
+    val doc = docParser.parse(taxoModelFile.toURI)
+
+    implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
+    import TaxonomyQueryApi._
+
+    val cbsBedrItemsNs = "http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
+
+    val hasHypercubes =
+      taxoModel.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
+    val elrs = hasHypercubes.map(_.linkRole).toSet
+
+    assertResult(4) {
+      hasHypercubes.size
+    }
+    assertResult(Set(
+      "urn:cbs:linkrole:adimensional-table",
+      "urn:cbs:linkrole:nature-of-investment-table",
+      "urn:cbs:linkrole:begin-end-period-prepayments-assets-table",
+      "urn:cbs:linkrole:nature-of-investment-software-table")) {
+      elrs
+    }
+
+    assertResult(true) {
+      hasHypercubes forall { hasHypercube =>
+        !hasHypercube.sourceConcept.filterOutgoingArcs(classTag[DefinitionArc])(arc => arc.isDomainMember && arc.linkRole == hasHypercube.linkRole).isEmpty
+      }
+    }
+
+    // Perform queries for a specific has-hypercube linkrole, at the has-hypercube inheritance side ("the left-hand side")
+
+    val elr = "urn:cbs:linkrole:nature-of-investment-table"
+
+    val hasHypercube = hasHypercubes.find(_.linkRole == elr).get
+
+    val primary = EName("http://www.nltaxonomie.nl/9.0/report/cbs/lineitems/cbs-primary-domains", "NatureOfInvestmentLineItems")
+
+    assertResult(primary) {
+      hasHypercube.sourceConcept
+    }
+
+    val domMemChains =
+      primary.findOutgoingArcChains(classTag[DefinitionArc]) { arc =>
+        arc.isDomainMember && arc.linkRole == hasHypercube.linkRole
+      } {
+        case (chain, arc) =>
+          ArcChain.areConsecutiveDimensionalArcs(chain.arcs.last, arc) && !chain.append(arc).hasCycle
+      }
+
+    val concepts = domMemChains.map(_.targetConcept)
+
+    assertResult(true) {
+      Set(
+        EName(cbsBedrItemsNs, "InvestmentsCivilEngineering"),
+        EName(cbsBedrItemsNs, "InvestmentsIndustrialBuildings"),
+        EName(cbsBedrItemsNs, "InvestmentsHousesNotForSale"),
+        EName(cbsBedrItemsNs, "InvestmentsTransportEquipmentOnTrack")).subsetOf(concepts.toSet)
+    }
+
+    def findInheritanceChains(concept: EName, elr: String): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+      val chains =
+        concept.findIncomingArcChains(classTag[DefinitionArc]) { arc =>
+          arc.isDomainMember
+        } {
+          case (chain, arc) =>
+            arc.isDomainMember &&
+              ArcChain.areConsecutiveDimensionalArcs(arc, chain.arcs.head) && !chain.prepend(arc).hasCycle
+        }
+      chains.filter(_.arcs.head.linkRole == elr)
+    }
+
+    def findPrimariesInheritedBy(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
+      val chains = findInheritanceChains(concept, elr)
+      chains.map(_.sourceConcept).distinct
+    }
+
+    val primaries = concepts.flatMap(concept => findPrimariesInheritedBy(concept, elr))
+
+    assertResult(Set(primary)) {
+      primaries.toSet
+    }
+
+    // Perform queries for a specific has-hypercube linkrole, at the dimensional tree side ("the right-hand side")
+
+    def findDimensionalChains(hasHypercube: DefinitionArc): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+      val chains =
+        hasHypercube.sourceConcept.findOutgoingArcChains(classTag[DefinitionArc]) { arc =>
+          arc == hasHypercube
+        } {
+          case (chain, arc) =>
+            ArcChain.areConsecutiveDimensionalArcs(chain.arcs.last, arc) && !chain.append(arc).hasCycle
+        }
+      chains
+    }
+
+    val dimChains = findDimensionalChains(hasHypercube)
+
+    assertResult(true) {
+      dimChains.forall(_.arcs.head == hasHypercube)
+    }
+
+    assertResult(true) {
+      dimChains forall {
+        case ch =>
+          ch.arcs exists {
+            case arc: DefinitionArc =>
+              arc.isHypercubeDimension &&
+                arc.linkRole == elr &&
+                arc.sourceConcept == EName("http://www.nltaxonomie.nl/9.0/report/cbs/tables/cbs-tables", "ValidationTable") &&
+                arc.targetConcept == EName("http://www.nltaxonomie.nl/9.0/domein/cbs/axes/cbs-axes", "NewUsedSelfProducedAxis")
+          }
+      }
+    }
+
+    assertResult(true) {
+      dimChains forall {
+        case ch =>
+          ch.arcs exists {
+            case arc: DefinitionArc =>
+              arc.isDimensionDomain &&
+                arc.linkRole == "urn:cbs:linkrole:new-used-selfproduced-axis" &&
+                arc.sourceConcept == EName("http://www.nltaxonomie.nl/9.0/domein/cbs/axes/cbs-axes", "NewUsedSelfProducedAxis") &&
+                arc.targetConcept == EName("http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestment", "NewUsedSelfProducedDomain")
+          }
+      }
+    }
+
+    assertResult(true) {
+      dimChains forall {
+        case ch =>
+          ch.arcs exists {
+            case arc: DefinitionArc =>
+              arc.isDomainMember &&
+                arc.linkRole == "urn:cbs:linkrole:natureofinvestment-domain" &&
+                arc.sourceConcept == EName("http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestment", "NewUsedSelfProducedDomain")
+          }
+      }
+    }
+
+    assertResult(Set(
+      "NewMember",
+      "UsedMember",
+      "SelfProducedMember",
+      "TotalAssetsInvestmentsMember").map(s => EName("http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestment", s))) {
+      dimChains.map(_.targetConcept).toSet
+    }
+
+    // Perform queries from concrete concepts via has-hypercubes to the members
+
+    def findInheritedDimensionalChains(inheritingConcept: EName): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+      val result =
+        findInheritanceChains(inheritingConcept, elr) flatMap { ch =>
+          val hasHypercubes =
+            ch.sourceConcept.filterOutgoingArcs(classTag[DefinitionArc])(arc => arc.isHasHypercube && arc.linkRole == elr)
+          hasHypercubes.flatMap(hasHypercube => findDimensionalChains(hasHypercube)).distinct
+        }
+      result.distinct
+    }
+
+    val foundDimChains = findInheritedDimensionalChains(concepts(0))
+
+    assertResult(dimChains.map(_.targetConcept).toSet) {
+      foundDimChains.map(_.targetConcept).toSet
+    }
+
+    assertResult(true) {
+      concepts forall { concept =>
+        findInheritedDimensionalChains(concept).map(_.arcs.map(_.targetConcept)).toSet ==
+          foundDimChains.map(_.arcs.map(_.targetConcept)).toSet
+      }
+    }
+
+    assertResult(dimChains.map(_.arcs.map(_.targetConcept)).toSet) {
+      foundDimChains.map(_.arcs.map(_.targetConcept)).toSet
+    }
+  }
+
   private def findFiles(root: File, fileFilter: File => Boolean): Vector[File] = {
     // Recursive calls
     root.listFiles.toVector flatMap {

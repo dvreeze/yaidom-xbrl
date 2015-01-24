@@ -16,9 +16,11 @@
 
 package eu.cdevreeze.xbrl.taxomodel
 
+import scala.BigDecimal
 import scala.collection.immutable
 import scala.reflect.classTag
 
+import eu.cdevreeze.xbrl.taxo.XbrldtTargetRoleEName
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Path
 import eu.cdevreeze.yaidom.core.QName
@@ -28,7 +30,6 @@ import eu.cdevreeze.yaidom.queryapi.IsNavigable
 import eu.cdevreeze.yaidom.queryapi.ScopedElemLike
 import eu.cdevreeze.yaidom.queryapi.SubtypeAwareElemLike
 import eu.cdevreeze.yaidom.simple
-import TaxonomyElem._
 
 /**
  * Read-only YATM taxonomy element, backed by a simple Elem (so without context).
@@ -203,6 +204,8 @@ abstract class Arc private[taxomodel] (
   require(attributeOption(YatmLinkRoleEName).isDefined, s"Element ${resolvedName} must have a ${YatmLinkRoleEName} attribute")
 
   final def linkRole: String = attribute(YatmLinkRoleEName)
+
+  final def arcrole: String = attribute(YatmArcroleEName)
 }
 
 abstract class StandardArc private[taxomodel] (
@@ -255,6 +258,30 @@ final class DefinitionArc private[taxomodel] (
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptArc(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmDefinitionArcEName)
+
+  def isDimensional: Boolean =
+    isHasHypercube || isHypercubeDimension || isDimensionDomain || isDomainMember || isDimensionDefault
+
+  def isHasHypercube: Boolean =
+    (arcrole == "http://xbrl.org/int/dim/arcrole/all") || (arcrole == "http://xbrl.org/int/dim/arcrole/notAll")
+
+  def isHypercubeDimension: Boolean =
+    (arcrole == "http://xbrl.org/int/dim/arcrole/hypercube-dimension")
+
+  def isDimensionDomain: Boolean =
+    (arcrole == "http://xbrl.org/int/dim/arcrole/dimension-domain")
+
+  def isDomainMember: Boolean =
+    (arcrole == "http://xbrl.org/int/dim/arcrole/domain-member")
+
+  def isDimensionDefault: Boolean =
+    (arcrole == "http://xbrl.org/int/dim/arcrole/dimension-default")
+
+  def effectiveTargetRole: String = {
+    if (isDimensional) {
+      if (attributeOption(XbrldtTargetRoleEName).isDefined) attribute(XbrldtTargetRoleEName) else linkRole
+    } else linkRole
+  }
 }
 
 final class PresentationArc private[taxomodel] (

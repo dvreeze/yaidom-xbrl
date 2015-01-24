@@ -134,6 +134,8 @@ trait TaxonomyQueryApi extends Any {
     findIncomingArcChains(classTag[PresentationArc])(hasCorrectElr)(hasCorrectElrAndNoCycles)(taxonomy)
   }
 
+  // Private implementation methods
+
   private def filterOutgoingArcs[A <: StandardArc](thisConcept: EName, arcType: ClassTag[A])(p: A => Boolean)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[A] = {
     implicit val arcClassTag = arcType
     taxonomy.standardArcsBySource.getOrElse(thisConcept, Vector()) collect { case arc: A if p(arc) => arc }
