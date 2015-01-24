@@ -43,8 +43,17 @@ final class ArcChain[A <: InterConceptArc](val arcs: immutable.IndexedSeq[A]) {
     new ArcChain(arcs :+ arc)
   }
 
+  def prepend(arc: A): ArcChain[A] = {
+    require(canPrepend(arc))
+    new ArcChain(arc +: arcs)
+  }
+
   def canAppend(arc: A): Boolean = {
     this.targetConcept == arc.sourceConcept
+  }
+
+  def canPrepend(arc: A): Boolean = {
+    this.sourceConcept == arc.targetConcept
   }
 }
 

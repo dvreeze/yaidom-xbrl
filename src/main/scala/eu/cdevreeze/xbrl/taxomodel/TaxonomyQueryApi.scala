@@ -79,7 +79,7 @@ trait TaxonomyQueryApi extends Any {
   /**
    * Finds all longest arc chains with arcs of the given arc type, having this concept as source concept,
    * such that predicate `first` holds for the first arc in each such chain, and `succ` holds for each intermediate
-   * arc chain result and the following arc.
+   * "prefix" arc chain result and the following arc.
    *
    * This is a very general method, used to implement methods such as `findOutgoingParentChildArcChains`.
    *
@@ -89,6 +89,21 @@ trait TaxonomyQueryApi extends Any {
    */
   final def findOutgoingArcChains[A <: InterConceptArc](arcType: ClassTag[A])(first: A => Boolean)(succ: (ArcChain[A], A) => Boolean)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[A]] = {
     findOutgoingArcChains(concept, arcType)(first)(succ)(taxonomy)
+  }
+
+  /**
+   * Finds all longest arc chains with arcs of the given arc type, having this concept as target concept,
+   * such that predicate `last` holds for the last arc in each such chain, and `pred` holds for each intermediate
+   * "suffix" arc chain result and the preceding arc.
+   *
+   * This is a very general method, used to implement methods such as `findIncomingParentChildArcChains`.
+   *
+   * Typically this method should not be used in application code if a more specific method is available.
+   * When using this method, keep in mind that a combinatorial explosion is possible. Even non-termination is
+   * possible, if there are arc cycles, and `pred` does not return false on cycle detection.
+   */
+  final def findIncomingArcChains[A <: InterConceptArc](arcType: ClassTag[A])(last: A => Boolean)(pred: (ArcChain[A], A) => Boolean)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[A]] = {
+    findIncomingArcChains(concept, arcType)(last)(pred)(taxonomy)
   }
 
   /**
@@ -105,7 +120,19 @@ trait TaxonomyQueryApi extends Any {
     findOutgoingArcChains(classTag[PresentationArc])(hasCorrectElr)(hasCorrectElrAndNoCycles)(taxonomy)
   }
 
-  // TODO findIncomingArcChains
+  /**
+   * Returns all longest parent-child arc chains of the given extended link role, with this concept as target concept.
+   * On cycle detection, the arc chain is returned instead of being extended any further.
+   */
+  final def findIncomingParentChildArcChains(elr: String)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[PresentationArc]] = {
+    def hasCorrectElr(arc: PresentationArc): Boolean = arc.linkRole == elr
+
+    def hasCorrectElrAndNoCycles(ch: ArcChain[PresentationArc], arc: PresentationArc): Boolean = {
+      hasCorrectElr(arc) && !ch.prepend(arc).hasCycle
+    }
+
+    findIncomingArcChains(classTag[PresentationArc])(hasCorrectElr)(hasCorrectElrAndNoCycles)(taxonomy)
+  }
 
   private def filterOutgoingArcs[A <: StandardArc](thisConcept: EName, arcType: ClassTag[A])(p: A => Boolean)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[A] = {
     implicit val arcClassTag = arcType
@@ -138,6 +165,32 @@ trait TaxonomyQueryApi extends Any {
         // Recursive calls
         val nextArcChains = findAllLongestArcChainsStartingWith(nextChain, arcType)(p)(taxonomy)
         nextArcChains
+      }
+      arcChains
+    }
+  }
+
+  private def findIncomingArcChains[A <: InterConceptArc](thisConcept: EName, arcType: ClassTag[A])(last: A => Boolean)(pred: (ArcChain[A], A) => Boolean)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[A]] = {
+    val prevArcs = filterIncomingArcs(thisConcept, arcType)(last)(taxonomy)
+
+    val arcChains = prevArcs.flatMap(arc => findAllLongestArcChainsEndingWith(ArcChain.from(arc), arcType)(pred)(taxonomy))
+    arcChains
+  }
+
+  private def findAllLongestArcChainsEndingWith[A <: InterConceptArc](thisChain: ArcChain[A], arcType: ClassTag[A])(p: (ArcChain[A], A) => Boolean)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[A]] = {
+    val concept = thisChain.sourceConcept
+    val prevArcs = filterIncomingArcs(concept, arcType)(arc => p(thisChain, arc))(taxonomy)
+
+    if (prevArcs.isEmpty) {
+      Vector(thisChain)
+    } else {
+      val arcChains = prevArcs flatMap { arc =>
+        assert(thisChain.canPrepend(arc))
+        val prevChain = thisChain.prepend(arc)
+
+        // Recursive calls
+        val prevArcChains = findAllLongestArcChainsEndingWith(prevChain, arcType)(p)(taxonomy)
+        prevArcChains
       }
       arcChains
     }

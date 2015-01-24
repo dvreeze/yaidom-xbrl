@@ -126,6 +126,25 @@ class LargeTaxonomyModelTest extends Suite {
         EName(cbsBedrItemsNs, "InvestmentsCivilEngineering")).subsetOf(islptLeaves.toSet)
     }
 
+    // Finding P-links ending with given concepts
+
+    def findUltimatePLinkParents(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
+      val chains = concept.findIncomingParentChildArcChains(elr)
+      chains.map(_.sourceConcept).distinct
+    }
+
+    assertResult(true) {
+      val parents = findUltimatePLinkParents(EName(cbsBedrItemsNs, "InvestmentsIndustrialBuildings"), reportElr)
+
+      Set(islpt).subsetOf(parents.toSet)
+    }
+
+    assertResult(true) {
+      val parents = findUltimatePLinkParents(EName(cbsBedrItemsNs, "InvestmentsCivilEngineering"), reportElr)
+
+      Set(islpt).subsetOf(parents.toSet)
+    }
+
     // Finding concept labels
 
     val nlLabels =
