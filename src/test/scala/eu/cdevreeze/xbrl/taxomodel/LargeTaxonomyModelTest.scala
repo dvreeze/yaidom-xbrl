@@ -104,25 +104,19 @@ class LargeTaxonomyModelTest extends Suite {
 
     // Finding P-links ending with concrete concepts
 
-    def findConcretePLinkLeaves(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
-      val arcs = concept.filterOutgoingArcs(classTag[PresentationArc])(_.linkRole == elr)
-      val elemDecls = arcs.flatMap(_.targetConcept.asOptionalGlobalElementDeclaration)
+    def findConcretePLinkChildren(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
+      val chains = concept.findOutgoingParentChildArcChains(elr)
+      val concepts = chains.map(_.targetConcept).distinct
 
-      elemDecls flatMap { elemDecl =>
-        if (elemDecl.isAbstract) {
-          // Recursive call
-          findConcretePLinkLeaves(elemDecl.targetEName, elr)
-        } else {
-          Vector(elemDecl.targetEName)
-        }
-      }
+      val elemDecls = concepts.flatMap(_.asOptionalGlobalElementDeclaration)
+      elemDecls.filter(e => !e.isAbstract).map(_.targetEName)
     }
 
     val reportElr = "urn:cbs:linkrole:fs-cbs-investments-small"
 
     val islpt = EName(cbsBedrANs, "InvestmentStatisticLimitedPlaceholderTitle")
 
-    val islptLeaves = findConcretePLinkLeaves(islpt, reportElr)
+    val islptLeaves = findConcretePLinkChildren(islpt, reportElr)
 
     assertResult(true) {
       Set(
