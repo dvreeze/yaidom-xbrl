@@ -103,6 +103,17 @@ final class Taxonomy(val docs: immutable.IndexedSeq[docaware.Document]) {
 
 object Taxonomy {
 
+  private val knownHosts = Set("www.w3.org", "www.xbrl.org", "xbrl.org")
+
+  def skipXbrlAndW3cUris(uri: URI): Boolean = {
+    if (uri.getScheme.startsWith("http")) {
+      knownHosts.contains(uri.getHost)
+    } else {
+      val uriString = uri.toString
+      knownHosts.exists(h => uriString.contains(s"/${h}/"))
+    }
+  }
+
   /**
    * Finds the documents in the DTS with the given entrypoints.
    */

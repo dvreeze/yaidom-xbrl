@@ -61,11 +61,7 @@ class LargeTaxonomyModelTest extends Suite {
       docaware.Document(doc.uriOption.get, doc)
     }
 
-    def skipUris(uri: URI): Boolean = {
-      uri.toString.contains("www.xbrl.org/") && Set("/dtr/", "/lrr/").exists(s => uri.toString.contains(s))
-    }
-
-    val taxoDocs = Taxonomy.findDts(Set(entrypointUri), skipUris _)(getDoc _)
+    val taxoDocs = Taxonomy.findDts(Set(entrypointUri), Taxonomy.skipXbrlAndW3cUris _)(getDoc _)
     val taxo = new Taxonomy(taxoDocs)
 
     assertResult(true) {
