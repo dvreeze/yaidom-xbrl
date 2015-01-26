@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_5219dec828c24384a8e29bb035b04f76_pd_sdra" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pd_sdra" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_ff495bf8258a4b5e9d436394e477855f_pd" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pd" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_de9b7b5cdc154968b6b941af27f4c199_pch_sdcb" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pch_sdcb" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_990d330d95d94924a6dd5fea5ec1c105_pd_sdcacbdcra" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pd_sdcacbdcra" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_fbc1f24c08bd4d8d83957bd42a65ccd0_nodim" roleURI="urn:bd:linkrole:bd-lr-hd_cube-nodim" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_5466b7c942a840b295c2857625777898_pin_sdra" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pin_sdra" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_f0a46ec7fea6490eabeaef3b96f6ea6b_pch_sddc" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pch_sddc" xlink:type="simple" />
+  <link:roleRef xlink:href="./bd-linkroles-tables.xsd#bd_ce8e19f8396c402aa54b361927f98aaa_pp_sdcacbdcra" roleURI="urn:bd:linkrole:bd-lr-hd_cube-pp_sdcacbdcra" xlink:type="simple" />
+  <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" />
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pd_sdra" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_HouseNumberAddition" xlink:label="bd-alg_HouseNumberAddition_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_HouseNumberNL" xlink:label="bd-alg_HouseNumberNL_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_PlaceOfResidenceNL" xlink:label="bd-alg_PlaceOfResidenceNL_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_PostalCodeNL" xlink:label="bd-alg_PostalCodeNL_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_StreetNameNL" xlink:label="bd-alg_StreetNameNL_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AccountingRent" xlink:label="bd-asl_AccountingRent_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_Caretakercosts" xlink:label="bd-burg_Caretakercosts_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_Cleaningcosts" xlink:label="bd-burg_Cleaningcosts_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_Energycosts" xlink:label="bd-burg_Energycosts_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_HabitatRent" xlink:label="bd-burg_HabitatRent_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_PlainRent" xlink:label="bd-burg_PlainRent_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_ServiceRecreationRoomCosts" xlink:label="bd-burg_ServiceRecreationRoomCosts_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_HouseNumberAddition_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_HouseNumberNL_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_PlaceOfResidenceNL_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_PostalCodeNL_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_StreetNameNL_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AccountingRent_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_Caretakercosts_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_Cleaningcosts_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_Energycosts_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_HabitatRent_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_PlainRent_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_ServiceRecreationRoomCosts_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pd" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_DateOfBirth" xlink:label="bd-alg_DateOfBirth_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_Surname" xlink:label="bd-alg_Surname_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ReferenceIncome" xlink:label="bd-asl_ReferenceIncome_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_DateOfBirth_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_Surname_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ReferenceIncome_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pch_sdcb" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DateOfBirth" xlink:label="bd-asl_DateOfBirth_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MonthlyAmount" xlink:label="bd-asl_MonthlyAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_Name" xlink:label="bd-asl_Name_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_SocialSecurityBankResidenceCountry" xlink:label="bd-asl_SocialSecurityBankResidenceCountry_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DateOfBirth_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MonthlyAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_Name_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_SocialSecurityBankResidenceCountry_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pd_sdcacbdcra" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceEndDate" xlink:label="bd-asl_AllowanceEndDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceInterestToBePaid" xlink:label="bd-asl_AllowanceInterestToBePaid_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceInterestToBeReceived" xlink:label="bd-asl_AllowanceInterestToBeReceived_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceStartDate" xlink:label="bd-asl_AllowanceStartDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceToBePaidBack" xlink:label="bd-asl_AllowanceToBePaidBack_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceToBePaidTotal" xlink:label="bd-asl_AllowanceToBePaidTotal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceToBeReceived" xlink:label="bd-asl_AllowanceToBeReceived_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceToBeReceivedTotal" xlink:label="bd-asl_AllowanceToBeReceivedTotal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalConclusion" xlink:label="bd-asl_CapitalConclusion_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalGreenInvestmentAmount" xlink:label="bd-asl_CapitalGreenInvestmentAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalLimit" xlink:label="bd-asl_CapitalLimit_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalPersonIdentifier" xlink:label="bd-asl_CapitalPersonIdentifier_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalPersonName" xlink:label="bd-asl_CapitalPersonName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalSavingsAndInvestmentsBase" xlink:label="bd-asl_CapitalSavingsAndInvestmentsBase_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CapitalSpecialAmount" xlink:label="bd-asl_CapitalSpecialAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalDate" xlink:label="bd-asl_DisposalDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalLevelType" xlink:label="bd-asl_DisposalLevelType_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalNumber" xlink:label="bd-asl_DisposalNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalYearAmount" xlink:label="bd-asl_DisposalYearAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalYearAmountFine" xlink:label="bd-asl_DisposalYearAmountFine_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalYearAmountInterest" xlink:label="bd-asl_DisposalYearAmountInterest_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalYearAmountPrevious" xlink:label="bd-asl_DisposalYearAmountPrevious_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_PartYearConclusion" xlink:label="bd-asl_PartYearConclusion_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_PartYearFinancialCapacity" xlink:label="bd-asl_PartYearFinancialCapacity_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_PartYearMonthlyAmount" xlink:label="bd-asl_PartYearMonthlyAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_SchemeDecision" xlink:label="bd-asl_SchemeDecision_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceEndDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceInterestToBePaid_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceInterestToBeReceived_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceStartDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceToBePaidBack_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceToBePaidTotal_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceToBeReceived_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceToBeReceivedTotal_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalConclusion_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalGreenInvestmentAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalLimit_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalPersonIdentifier_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalPersonName_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalSavingsAndInvestmentsBase_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CapitalSpecialAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalLevelType_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalNumber_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalYearAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalYearAmountFine_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalYearAmountInterest_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalYearAmountPrevious_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_PartYearConclusion_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_PartYearFinancialCapacity_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_PartYearMonthlyAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_SchemeDecision_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-nodim" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_TaxReturnMessageType" xlink:label="bd-alg_TaxReturnMessageType_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_AllowanceYear" xlink:label="bd-asl_AllowanceYear_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CalculationYear" xlink:label="bd-asl_CalculationYear_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_CourtNameAddress" xlink:label="bd-asl_CourtNameAddress_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DecisionOnObjection" xlink:label="bd-asl_DecisionOnObjection_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DispatchIndication" xlink:label="bd-asl_DispatchIndication_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalTypeMainLevel" xlink:label="bd-asl_DisposalTypeMainLevel_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DisposalYear" xlink:label="bd-asl_DisposalYear_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_EstablishedIncome" xlink:label="bd-asl_EstablishedIncome_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_HearingReport" xlink:label="bd-asl_HearingReport_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MessageAttribute" xlink:label="bd-asl_MessageAttribute_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MessageCauseText" xlink:label="bd-asl_MessageCauseText_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MessageDecision" xlink:label="bd-asl_MessageDecision_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MessageEndDate" xlink:label="bd-asl_MessageEndDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MessageStartDate" xlink:label="bd-asl_MessageStartDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_NoticeOfAssessmentDate" xlink:label="bd-asl_NoticeOfAssessmentDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_NotificationNumberIncome" xlink:label="bd-asl_NotificationNumberIncome_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_NotificationPersonIdentifier" xlink:label="bd-asl_NotificationPersonIdentifier_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_NotificationPersonName" xlink:label="bd-asl_NotificationPersonName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionAppealDate" xlink:label="bd-asl_ObjectionAppealDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionDescription" xlink:label="bd-asl_ObjectionDescription_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionExplanation" xlink:label="bd-asl_ObjectionExplanation_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionHearing" xlink:label="bd-asl_ObjectionHearing_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionHearingProcedureDate" xlink:label="bd-asl_ObjectionHearingProcedureDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionPractitionerName" xlink:label="bd-asl_ObjectionPractitionerName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionPractitionerTelephoneNumber" xlink:label="bd-asl_ObjectionPractitionerTelephoneNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ObjectionReceiptDate" xlink:label="bd-asl_ObjectionReceiptDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ReimbursementOfCosts" xlink:label="bd-asl_ReimbursementOfCosts_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ReimbursementOfCostsAmount" xlink:label="bd-asl_ReimbursementOfCostsAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ReimbursementOfCostsExplanation" xlink:label="bd-asl_ReimbursementOfCostsExplanation_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_SenderNameAddress" xlink:label="bd-asl_SenderNameAddress_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_SenderNameAddressPostalCode" xlink:label="bd-asl_SenderNameAddressPostalCode_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/sbr/items/nl-common-data.xsd#nl-cd_HouseNumberAddition" xlink:label="nl-cd_HouseNumberAddition_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/sbr/items/nl-common-data.xsd#nl-cd_HouseNumberNL" xlink:label="nl-cd_HouseNumberNL_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_TaxReturnMessageType_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_AllowanceYear_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CalculationYear_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_CourtNameAddress_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DecisionOnObjection_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DispatchIndication_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalTypeMainLevel_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DisposalYear_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_EstablishedIncome_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_HearingReport_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MessageAttribute_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MessageCauseText_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MessageDecision_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MessageEndDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MessageStartDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_NoticeOfAssessmentDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_NotificationNumberIncome_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_NotificationPersonIdentifier_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_NotificationPersonName_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionAppealDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionDescription_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionExplanation_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionHearing_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionHearingProcedureDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionPractitionerName_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionPractitionerTelephoneNumber_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ObjectionReceiptDate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ReimbursementOfCosts_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ReimbursementOfCostsAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ReimbursementOfCostsExplanation_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_SenderNameAddress_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_SenderNameAddressPostalCode_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="nl-cd_HouseNumberAddition_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="nl-cd_HouseNumberNL_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pin_sdra" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_Surname" xlink:label="bd-alg_Surname_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DateOfBirth" xlink:label="bd-asl_DateOfBirth_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ExemptionIncomeHomeResideChild" xlink:label="bd-asl_ExemptionIncomeHomeResideChild_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ReferenceIncome" xlink:label="bd-asl_ReferenceIncome_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_Surname_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DateOfBirth_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ExemptionIncomeHomeResideChild_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ReferenceIncome_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pch_sddc" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DateOfBirth" xlink:label="bd-asl_DateOfBirth_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareCenterAddressAbroad" xlink:label="bd-asl_DayCareCenterAddressAbroad_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareCenterCountryCodeAbroad" xlink:label="bd-asl_DayCareCenterCountryCodeAbroad_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareCenterHourlyRateAverage" xlink:label="bd-asl_DayCareCenterHourlyRateAverage_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareCenterHoursTotal" xlink:label="bd-asl_DayCareCenterHoursTotal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareGuestParentsHourlyRateAverage" xlink:label="bd-asl_DayCareGuestParentsHourlyRateAverage_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareGuestParentsHoursTotal" xlink:label="bd-asl_DayCareGuestParentsHoursTotal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareHours" xlink:label="bd-asl_DayCareHours_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareIdentificationNumber" xlink:label="bd-asl_DayCareIdentificationNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareInstitutionType" xlink:label="bd-asl_DayCareInstitutionType_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareName" xlink:label="bd-asl_DayCareName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareOCWCode" xlink:label="bd-asl_DayCareOCWCode_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCarePlaceOfResidence" xlink:label="bd-asl_DayCarePlaceOfResidence_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCarePostalCode" xlink:label="bd-asl_DayCarePostalCode_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareStreetName" xlink:label="bd-asl_DayCareStreetName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_DayCareType" xlink:label="bd-asl_DayCareType_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_MonthlyAmount" xlink:label="bd-asl_MonthlyAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_Name" xlink:label="bd-asl_Name_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-burgers.xsd#bd-burg_DayCareHourlyRate" xlink:label="bd-burg_DayCareHourlyRate_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DateOfBirth_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareCenterAddressAbroad_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareCenterCountryCodeAbroad_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareCenterHourlyRateAverage_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareCenterHoursTotal_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareGuestParentsHourlyRateAverage_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareGuestParentsHoursTotal_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareHours_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareIdentificationNumber_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareInstitutionType_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareName_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareOCWCode_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCarePlaceOfResidence_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCarePostalCode_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareStreetName_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_DayCareType_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_MonthlyAmount_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_Name_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-burg_DayCareHourlyRate_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:bd:linkrole:bd-lr-hd_cube-pp_sdcacbdcra" xlink:type="extended">
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_DateOfBirth" xlink:label="bd-alg_DateOfBirth_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_Surname" xlink:label="bd-alg_Surname_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-aanslag.xsd#bd-asl_ReferenceIncome" xlink:label="bd-asl_ReferenceIncome_loc" xlink:type="locator" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_DateOfBirth_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-alg_Surname_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+    <link:definitionArc xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="bd-asl_ReferenceIncome_loc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" order="0" xlink:type="arc" />
+  </link:definitionLink>
+</link:linkbase>

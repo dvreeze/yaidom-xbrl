@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="kvk-dm_PeriodStartMember_label_nl" xlink:label="kvk-dm_PeriodStartMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Begin van de periode [member]</link:label>
+    <link:label id="kvk-dm_PeriodEndMember_label_nl" xlink:label="kvk-dm_PeriodEndMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Eind van de periode [member]</link:label>
+    <link:label id="kvk-dm_SegmentReportingDomain_label_nl" xlink:label="kvk-dm_SegmentReportingDomain_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Gesegmenteerde informatie [domein]</link:label>
+    <link:label id="kvk-dm_SegmentReportingMember_label_nl" xlink:label="kvk-dm_SegmentReportingMember_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Gesegmenteerde informatie [member]</link:label>
+    <link:label id="kvk-dm_TimeDomain_label_nl" xlink:label="kvk-dm_TimeDomain_label_nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="nl">Tijd [domein]</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-dm_PeriodEndMember_loc" xlink:to="kvk-dm_PeriodEndMember_label_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-dm_PeriodStartMember_loc" xlink:to="kvk-dm_PeriodStartMember_label_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-dm_SegmentReportingDomain_loc" xlink:to="kvk-dm_SegmentReportingDomain_label_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-dm_SegmentReportingMember_loc" xlink:to="kvk-dm_SegmentReportingMember_label_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-dm_TimeDomain_loc" xlink:to="kvk-dm_TimeDomain_label_nl" xlink:type="arc"/>
+    <link:loc xlink:href="kvk-domains.xsd#kvk-dm_PeriodEndMember" xlink:label="kvk-dm_PeriodEndMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-domains.xsd#kvk-dm_PeriodStartMember" xlink:label="kvk-dm_PeriodStartMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-domains.xsd#kvk-dm_SegmentReportingDomain" xlink:label="kvk-dm_SegmentReportingDomain_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-domains.xsd#kvk-dm_SegmentReportingMember" xlink:label="kvk-dm_SegmentReportingMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-domains.xsd#kvk-dm_TimeDomain" xlink:label="kvk-dm_TimeDomain_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

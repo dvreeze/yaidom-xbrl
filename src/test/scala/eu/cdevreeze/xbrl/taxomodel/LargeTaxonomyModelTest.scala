@@ -16,24 +16,28 @@
 
 package eu.cdevreeze.xbrl.taxomodel
 
+import java.io.File
+import java.io.InputStream
+import java.net.URI
+
+import scala.Vector
 import scala.collection.immutable
 import scala.reflect.classTag
+
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
-import eu.cdevreeze.yaidom.core.EName
-import eu.cdevreeze.yaidom.indexed
-import eu.cdevreeze.yaidom.docaware
-import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
-import eu.cdevreeze.yaidom.simple.Document
-import java.net.URI
-import java.io.File
-import eu.cdevreeze.yaidom.parse.DocumentParser
-import java.io.InputStream
+
+import TaxonomyQueryApi.ToTaxonomyQueryApi
 import eu.cdevreeze.xbrl.taxo.Taxonomy
-import eu.cdevreeze.yaidom.print.DocumentPrinterUsingDom
+import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Scope
+import eu.cdevreeze.yaidom.docaware
+import eu.cdevreeze.yaidom.parse.DocumentParser
+import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
+import eu.cdevreeze.yaidom.print.DocumentPrinterUsingDom
+import eu.cdevreeze.yaidom.simple.Document
 
 /**
  * Large TaxonomyModel parsing and querying test.
@@ -45,27 +49,30 @@ class LargeTaxonomyModelTest extends Suite {
 
   private val clazz = classOf[LargeTaxonomyModelTest]
 
-  @Test def testParseTaxonomyModel(): Unit = {
-    def isXml(file: File): Boolean = Set(".xml", ".xsd").exists(s => file.toString.endsWith(s))
-    def isAcceptedXml(file: File): Boolean = isXml(file) && !file.getPath.contains("/weg/")
-
-    val xmlFiles = findFiles(new File(clazz.getResource("/nltaxo").toURI), isAcceptedXml)
+  @Test def testParseDts(): Unit = {
+    val defaultEntrypointUri = "http://www.nltaxonomie.nl/9.0/report/cbs/entrypoints/stat-handel/cbs-rpt-maandenquete-detailhandel-2015.xsd"
+    val entrypointUri = new URI(System.getProperty("taxomodel.entrypoint", defaultEntrypointUri))
 
     val docParser = getDocumentParser
     val docPrinter = DocumentPrinterUsingDom.newInstance
 
-    val taxoDocs =
-      xmlFiles.map(f => docParser.parse(f.toURI)).map(doc => docaware.Document(doc.uriOption.get, doc))
+    def getDoc(uri: URI): docaware.Document = {
+      val doc = docParser.parse(uri)
+      docaware.Document(doc.uriOption.get, doc)
+    }
+
+    def skipUris(uri: URI): Boolean = {
+      uri.toString.contains("www.xbrl.org/") && Set("/dtr/", "/lrr/").exists(s => uri.toString.contains(s))
+    }
+
+    val taxoDocs = Taxonomy.findDts(Set(entrypointUri), skipUris _)(getDoc _)
     val taxo = new Taxonomy(taxoDocs)
 
     assertResult(true) {
-      taxo.docs.size >= 40
+      taxo.docs.size >= 10
     }
     assertResult(true) {
-      taxo.linkbases.size >= 30
-    }
-    assertResult(true) {
-      taxo.schemaDocs.exists(doc => doc.uri == new URI("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items.xsd"))
+      taxo.linkbases.size >= 10
     }
 
     val taxoModelBuilder = new TaxonomyModelBuilder(taxo)
@@ -73,11 +80,7 @@ class LargeTaxonomyModelTest extends Suite {
     val taxoModel = taxoModelBuilder.convertToTaxonomyModel
 
     assertResult(true) {
-      taxoModel.findAllDefinitionLinks.size >= 10
-    }
-    assertResult(true) {
-      taxoModel.findAllElemsOfType(classTag[Arc]).flatMap(_.attributeAsResolvedQNameOption(EName(YatmNs, "from"))).toSet.
-        contains(EName("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items", "AccommodationCostsBuildingTaxes"))
+      taxoModel.findAllDefinitionLinks.size >= 2
     }
 
     if (System.getProperty("taxomodel.debug", "false").toBoolean) {
@@ -86,14 +89,22 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
-  @Test def testQueryTaxonomyModel(): Unit = {
+  @Test def testQueryCbsTaxonomyModel(): Unit = {
     val docParser = DocumentParserUsingSax.newInstance
 
-    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-9.0.xml").toURI)
+    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-rpt-investeringsstatistiek-klein-2014.xml").toURI)
     val doc = docParser.parse(taxoModelFile.toURI)
 
     implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
     import TaxonomyQueryApi._
+
+    assertResult(true) {
+      taxoModel.findAllDefinitionLinks.size >= 10
+    }
+    assertResult(true) {
+      taxoModel.findAllElemsOfType(classTag[Arc]).flatMap(_.attributeAsResolvedQNameOption(EName(YatmNs, "from"))).toSet.
+        contains(EName("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items", "AccommodationCostsBuildingTaxes"))
+    }
 
     val cbsBedrANs = "http://www.nltaxonomie.nl/9.0/report/cbs/abstracts/cbs-bedr-abstracts"
     val cbsBedrItemsNs = "http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
@@ -156,14 +167,15 @@ class LargeTaxonomyModelTest extends Suite {
       nlLabels.map(_.text).contains("Investeringsstatistiek voor kleine bedrijven [titel]")
     }
     assertResult(true) {
-      islpt.asGlobalElementDeclaration.attributeOption(EName("substitutionGroup")) == Some("sbr:presentationItem")
+      islpt.asGlobalElementDeclaration.substitutionGroupOption ==
+        Some(EName("{http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension}presentationItem"))
     }
   }
 
-  @Test def testQueryDimensions(): Unit = {
+  @Test def testQueryCbsDimensions(): Unit = {
     val docParser = DocumentParserUsingSax.newInstance
 
-    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-9.0.xml").toURI)
+    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-rpt-investeringsstatistiek-klein-2014.xml").toURI)
     val doc = docParser.parse(taxoModelFile.toURI)
 
     implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
@@ -175,13 +187,12 @@ class LargeTaxonomyModelTest extends Suite {
       taxoModel.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
     val elrs = hasHypercubes.map(_.linkRole).toSet
 
-    assertResult(4) {
+    assertResult(3) {
       hasHypercubes.size
     }
     assertResult(Set(
       "urn:cbs:linkrole:adimensional-table",
       "urn:cbs:linkrole:nature-of-investment-table",
-      "urn:cbs:linkrole:begin-end-period-prepayments-assets-table",
       "urn:cbs:linkrole:nature-of-investment-software-table")) {
       elrs
     }
@@ -246,17 +257,6 @@ class LargeTaxonomyModelTest extends Suite {
     }
 
     // Perform queries for a specific has-hypercube linkrole, at the dimensional tree side ("the right-hand side")
-
-    def findDimensionalChains(hasHypercube: DefinitionArc): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
-      val chains =
-        hasHypercube.sourceConcept.findOutgoingArcChains(classTag[DefinitionArc]) { arc =>
-          arc == hasHypercube
-        } {
-          case (chain, arc) =>
-            ArcChain.areConsecutiveDimensionalArcs(chain.arcs.last, arc) && !chain.append(arc).hasCycle
-        }
-      chains
-    }
 
     val dimChains = findDimensionalChains(hasHypercube)
 
@@ -340,6 +340,45 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
+  @Test def testQueryBdDimensions(): Unit = {
+    val docParser = DocumentParserUsingSax.newInstance
+
+    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/bd-rpt-ihz-aangifte-2014.xml").toURI)
+    val doc = docParser.parse(taxoModelFile.toURI)
+
+    implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
+    import TaxonomyQueryApi._
+
+    val hasHypercubes =
+      taxoModel.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
+    val elrs = hasHypercubes.map(_.linkRole).toSet
+
+    assertResult(true) {
+      elrs.size >= 10
+    }
+
+    assertResult(Set(EName("{http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts}ValidationLineItems"))) {
+      hasHypercubes.map(_.sourceConcept).toSet
+    }
+
+    assertResult(Set(EName("{http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts}ValidationTable"))) {
+      hasHypercubes.map(_.targetConcept).toSet
+    }
+  }
+
+  private def findDimensionalChains(hasHypercube: DefinitionArc)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+    import TaxonomyQueryApi._
+
+    val chains =
+      hasHypercube.sourceConcept.findOutgoingArcChains(classTag[DefinitionArc]) { arc =>
+        arc == hasHypercube
+      } {
+        case (chain, arc) =>
+          ArcChain.areConsecutiveDimensionalArcs(chain.arcs.last, arc) && !chain.append(arc).hasCycle
+      }
+    chains
+  }
+
   private def findFiles(root: File, fileFilter: File => Boolean): Vector[File] = {
     // Recursive calls
     root.listFiles.toVector flatMap {
@@ -350,13 +389,19 @@ class LargeTaxonomyModelTest extends Suite {
   }
 
   private def fileUriToHttpUri(fileUri: URI): URI = {
-    require(fileUri.getScheme == "file" && fileUri.getPath.contains("www.nltaxonomie.nl"))
-    new URI("http://" + (fileUri.toString.substring(fileUri.toString.indexOf("www.nltaxonomie.nl"))))
+    require(fileUri.getScheme == "file", s"Not a 'file' URI: $fileUri")
+    require(fileUri.getPath.contains("/nltaxo/"), s"Missing 'nltaxo' directory in $fileUri")
+    val idx = fileUri.getPath.indexOf("/nltaxo/") + "/nltaxo/".length
+    val path = fileUri.getPath.substring(idx)
+    new URI(s"http://${path}")
   }
 
   private def httpUriToFileUri(httpUri: URI): URI = {
     require(httpUri.getScheme == "http")
-    new URI("file:///" + httpUri.getHost + httpUri.getPath)
+    val rootDir = (new File(clazz.getResource("/nltaxo").toURI))
+    val hostDir = new File(rootDir, httpUri.getHost)
+    val path = new File(hostDir, httpUri.getPath)
+    path.toURI
   }
 
   private def getDocumentParser: DocumentParser = {

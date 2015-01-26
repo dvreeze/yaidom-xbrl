@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:kvk:linkrole:rights-granted-not-yet-exercised-domain" xlink:href="kvk-linkroles-domains.xsd#kvk-dlrd_RightsGrantedNotYetExercisedDomain" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple"/>
+  <link:definitionLink xlink:role="urn:kvk:linkrole:rights-granted-not-yet-exercised-domain" xlink:type="extended">
+    <link:definitionArc order="1" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rj-dm_RightsGrantedNotYetExercisedComponentDomain_loc" xlink:to="rj-dm_PersonnelMember_loc" xlink:type="arc"/>
+    <link:definitionArc order="2" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rj-dm_RightsGrantedNotYetExercisedComponentDomain_loc" xlink:to="rj-dm_ManagingDirectorsMember_loc" xlink:type="arc"/>
+    <link:definitionArc order="3" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rj-dm_RightsGrantedNotYetExercisedComponentDomain_loc" xlink:to="rj-dm_SupervisoryDirectorsMember_loc" xlink:type="arc"/>
+    <link:definitionArc order="4" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rj-dm_RightsGrantedNotYetExercisedComponentDomain_loc" xlink:to="rj-dm_RightsGrantedNotYetExercisedMember_loc" xlink:type="arc"/>
+    <link:loc xlink:href="../../rj/domains/rj-domains.xsd#rj-dm_ManagingDirectorsMember" xlink:label="rj-dm_ManagingDirectorsMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../rj/domains/rj-domains.xsd#rj-dm_PersonnelMember" xlink:label="rj-dm_PersonnelMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../rj/domains/rj-domains.xsd#rj-dm_RightsGrantedNotYetExercisedComponentDomain" xlink:label="rj-dm_RightsGrantedNotYetExercisedComponentDomain_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../rj/domains/rj-domains.xsd#rj-dm_RightsGrantedNotYetExercisedMember" xlink:label="rj-dm_RightsGrantedNotYetExercisedMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../rj/domains/rj-domains.xsd#rj-dm_SupervisoryDirectorsMember" xlink:label="rj-dm_SupervisoryDirectorsMember_loc" xlink:type="locator"/>
+  </link:definitionLink>
+</link:linkbase>

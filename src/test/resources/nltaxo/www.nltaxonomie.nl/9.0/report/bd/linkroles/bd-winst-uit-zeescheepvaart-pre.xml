@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_b75be3758f6f492bbef650575f73fb0a" roleURI="urn:bd:linkrole:bd-lr-pre_winst-uit-zeescheepvaart" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_winst-uit-zeescheepvaart" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ShippingProfitTitle" xlink:label="bd-abstr_ShippingProfitTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ProfitShippingTotal" xlink:label="bd-bedr_ProfitShippingTotal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-bedr-tuples.xsd#bd-bedr-tuple_ShippingProfitSpecification" xlink:label="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShipName" xlink:label="bd-bedr_ShipName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_NetTonnageShip" xlink:label="bd-bedr_NetTonnageShip_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShipExploitationDaysCount" xlink:label="bd-bedr_ShipExploitationDaysCount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ProfitRatePerShipPerDay" xlink:label="bd-bedr_ProfitRatePerShipPerDay_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShipParticipatingInterestPercentage" xlink:label="bd-bedr_ShipParticipatingInterestPercentage_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ProfitShippingAmountPerShip" xlink:label="bd-bedr_ProfitShippingAmountPerShip_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-abstr_ShippingProfitTitle_loc" xlink:to="bd-bedr_ProfitShippingTotal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShippingProfitTitle_loc" xlink:to="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:to="bd-bedr_ShipName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:to="bd-bedr_NetTonnageShip_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:to="bd-bedr_ShipExploitationDaysCount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:to="bd-bedr_ProfitRatePerShipPerDay_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:to="bd-bedr_ShipParticipatingInterestPercentage_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShippingProfitSpecification_loc" xlink:to="bd-bedr_ProfitShippingAmountPerShip_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:kvk-dlrd="http://www.nltaxonomie.nl/9.0/basis/kvk/linkroles/kvk-linkroles-domains" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/basis/kvk/linkroles/kvk-linkroles-domains">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="kvk-linkroles-domains-generic-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="kvk-linkroles-domains-generic-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+      <link:roleType id="kvk-dlrd_AuditorsFeesDomain" roleURI="urn:kvk:linkrole:auditors-fees-domain">
+        <link:definition>Accountantshonoraria [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_BasisOfPreparationDomain" roleURI="urn:kvk:linkrole:basis-of-preparation-domain">
+        <link:definition>Grondslag [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_BasisOfPreparationFiscalDomain" roleURI="urn:kvk:linkrole:basis-of-preparation-fiscal-domain">
+        <link:definition>Grondslag, fiscaal [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_EquityDomain" roleURI="urn:kvk:linkrole:equity-domain">
+        <link:definition>Eigen vermogen [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_FinancialAssetsDomain" roleURI="urn:kvk:linkrole:financial-assets-domain">
+        <link:definition>Financiële vaste activa [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_FinancialStatementsTypeConsolidatedDomain" roleURI="urn:kvk:linkrole:financial-statements-type-consolidated-domain">
+        <link:definition>Type jaarrekening, geconsolideerd [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_FinancialStatementsTypeDomain" roleURI="urn:kvk:linkrole:financial-statements-type-domain">
+        <link:definition>Type jaarrekening [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_IntangibleAssetsDomain" roleURI="urn:kvk:linkrole:intangible-assets-domain">
+        <link:definition>Immateriële vaste activa [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_NegativeGoodwillDomain" roleURI="urn:kvk:linkrole:negative-goodwill-domain">
+        <link:definition>Negatieve goodwill [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_PropertyPlantEquipmentDomain" roleURI="urn:kvk:linkrole:property-plant-equipment-domain">
+        <link:definition>Materiële vaste activa [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_ProvisionsDomain" roleURI="urn:kvk:linkrole:provisions-domain">
+        <link:definition>Voorzieningen [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_RevaluationReserveDomain" roleURI="urn:kvk:linkrole:revaluation-reserve-domain">
+        <link:definition>Herwaarderingsreserve [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_RightsGrantedNotYetExercisedDomain" roleURI="urn:kvk:linkrole:rights-granted-not-yet-exercised-domain">
+        <link:definition>Toegekende rechten, nog niet uitgeoefend [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_SegmentReportingDomain" roleURI="urn:kvk:linkrole:segment-reporting-domain">
+        <link:definition>Gesegmenteerde informatie [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_ShareCapitalDomain" roleURI="urn:kvk:linkrole:share-capital-domain">
+        <link:definition>Aandelenkapitaal [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlrd_TimeDomain" roleURI="urn:kvk:linkrole:time-domain">
+        <link:definition>Tijd [domein]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

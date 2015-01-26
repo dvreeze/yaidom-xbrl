@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <link:referenceLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:reference xlink:label="bd_0a71fa03062148e3a4cb13644e5934e7_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_0a71fa03062148e3a4cb13644e5934e7">
+      <ref:Article>4.15</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_665f8ede0dba4dc4829bdd20859dcc8f_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_665f8ede0dba4dc4829bdd20859dcc8f">
+      <ref:Article>3.81</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_3d663a34b80b41b8a0888aa4e5309840_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_3d663a34b80b41b8a0888aa4e5309840">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>201</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_5bf1eafe19824b498aeb35f24c4a12aa_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_5bf1eafe19824b498aeb35f24c4a12aa">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>392</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_8020d1975cd5478ea8dec74b11224930_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_8020d1975cd5478ea8dec74b11224930">
+      <ref:Article>6.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_02917602e0eb427fa66642f33571b93b_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_02917602e0eb427fa66642f33571b93b">
+      <ref:Article>3.139</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>e</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_cc504a7a145946bbabe8172e8d4f932b_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_cc504a7a145946bbabe8172e8d4f932b">
+      <ref:Article>3.124</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>a</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_bbe61f59526847d2b2e9cbe996c6b182_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_bbe61f59526847d2b2e9cbe996c6b182">
+      <ref:Article>3.90</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_7f5f4027a89d4039b1b15f38a60f736b_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_7f5f4027a89d4039b1b15f38a60f736b">
+      <ref:Article>3.110</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_cb4bb840537f4b11b2b176c88e997133_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_cb4bb840537f4b11b2b176c88e997133">
+      <ref:Article>3.124</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>b</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_47a66a38806047c99c7ff14d68af3b26_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_47a66a38806047c99c7ff14d68af3b26">
+      <ref:Article>6.38</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_17b38a66f70c47dc943b6e592d450740_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_17b38a66f70c47dc943b6e592d450740">
+      <ref:Article>6.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_c6e1c400099542668b74a195926d856d_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_c6e1c400099542668b74a195926d856d">
+      <ref:Article>6.32</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_9a60318820154a51adb580dc68d66547_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_9a60318820154a51adb580dc68d66547">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610846</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_701f90e6374041008c160db92e55b909_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_701f90e6374041008c160db92e55b909">
+      <ref:Article>4.6</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_f436e2e929b74d1a9a57b13de17894dc_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_f436e2e929b74d1a9a57b13de17894dc">
+      <ref:Article>3.124</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>c</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_8ccf69da5e6a4b49860662fc2681ee77_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_8ccf69da5e6a4b49860662fc2681ee77">
+      <ref:Article>6.13</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_63f706f3228f45c7918d20f7e5c7860c">
+      <ref:Name>Verdrag of Besluit</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_3d412f98a9e849d0aa73d759d4dfda44_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_3d412f98a9e849d0aa73d759d4dfda44">
+      <ref:Article>3.100</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_059a08ccb1ed40a9aad2028f6de0da68_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_059a08ccb1ed40a9aad2028f6de0da68">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610915</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_dabea168190d4f9dbe6b4cd87900a003_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_dabea168190d4f9dbe6b4cd87900a003">
+      <ref:Article>6.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_52e85e5cfbbf4e5c99869f511ab57f75_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_52e85e5cfbbf4e5c99869f511ab57f75">
+      <ref:Article>4.12</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>a</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_81e2a1206ea44fcca76d2c28df89c317_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_81e2a1206ea44fcca76d2c28df89c317">
+      <ref:Article>3.92</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_cbe91fe2cfa647618b6eb3f9d0470d85_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_cbe91fe2cfa647618b6eb3f9d0470d85">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>391</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_0cf73a30724c44df8bbe714af578a3e0_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_0cf73a30724c44df8bbe714af578a3e0">
+      <ref:Article>3.91</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_859b7a4e22c24d17b5f0c4da49b50761_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_859b7a4e22c24d17b5f0c4da49b50761">
+      <ref:Article>3.100</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_15cf539d3dcd447c87a44eddd6546a12_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_15cf539d3dcd447c87a44eddd6546a12">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610847</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_bdb07df13c9b45f2bb1ef7dcb85131fa_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_bdb07df13c9b45f2bb1ef7dcb85131fa">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>36</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_7e191bbf43cf4da9b9e8b6d3c2d9ee35_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_7e191bbf43cf4da9b9e8b6d3c2d9ee35">
+      <ref:Article>2.14a</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_0a316ce5cab244be8b949f38d5a7fd75_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_0a316ce5cab244be8b949f38d5a7fd75">
+      <ref:Article>3.120</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_389e01d709824432916ac289a743e7f9_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_389e01d709824432916ac289a743e7f9">
+      <ref:Article>9.2</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_5adfe440afd544d8ad12a38568b248c8_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_5adfe440afd544d8ad12a38568b248c8">
+      <ref:Article>10a.9</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>2</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_cf4312cb4e124cad92f7f5e3049b7031_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_cf4312cb4e124cad92f7f5e3049b7031">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>108718</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_d3b92ffca21e4823be2252fcda521d66_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_d3b92ffca21e4823be2252fcda521d66">
+      <ref:Article>3.108</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_541124a156164c909f8fe68ba9d83967_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_541124a156164c909f8fe68ba9d83967">
+      <ref:Article>3.139</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>c</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_9be15cdf72484574a6e3da585c28f795_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_9be15cdf72484574a6e3da585c28f795">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>51</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_a3ea143488d74ddfbe3e0a9b7920f176_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_a3ea143488d74ddfbe3e0a9b7920f176">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>33</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_8874423274f349fdaa672ffc4f9af6e9_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_8874423274f349fdaa672ffc4f9af6e9">
+      <ref:Article>35c</ref:Article>
+      <ref:Name>Successiewet</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_2b979f5401a84fc79ee80f45f9a95acb_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_2b979f5401a84fc79ee80f45f9a95acb">
+      <ref:Article>35b</ref:Article>
+      <ref:Name>Successiewet</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_891674373e974c4d941dfef1dc9b5eb1_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_891674373e974c4d941dfef1dc9b5eb1">
+      <ref:Article>35e</ref:Article>
+      <ref:Name>Successiewet</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_777338e2d1b44925b76d99c9514bf81a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_777338e2d1b44925b76d99c9514bf81a">
+      <ref:Article>1</ref:Article>
+      <ref:Name>Successiewet</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_4c37447ba9d646eb85661f958ebaaee3_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_4c37447ba9d646eb85661f958ebaaee3">
+      <ref:Article>35d</ref:Article>
+      <ref:Name>Successiewet</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_6864ee7e10aa47128590eb57ba711ab5_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_6864ee7e10aa47128590eb57ba711ab5">
+      <ref:Article>21</ref:Article>
+      <ref:Name>Successiewet</ref:Name>
+      <ref:Paragraph>12</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_818d803bc9284f4c8332b76fdfa207cb_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_818d803bc9284f4c8332b76fdfa207cb">
+      <ref:Article>5.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>2</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_91a8e862a480457fb827eee0bbbcf3b7_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_91a8e862a480457fb827eee0bbbcf3b7">
+      <ref:Article>3.139</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>d</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_c848acde250e425a96846bbf6042a8f1_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_c848acde250e425a96846bbf6042a8f1">
+      <ref:Article>3.139</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>a</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_ff83deb94a7b4846927620ef6baa9cc8_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_ff83deb94a7b4846927620ef6baa9cc8">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>52</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_9a9a2772753a4e239be5e9c1464e4ed1_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_9a9a2772753a4e239be5e9c1464e4ed1">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610878</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_13e7418560164354b17bd9f6a0365381_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_13e7418560164354b17bd9f6a0365381">
+      <ref:Article>3.94</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_b32750c8642c4667ac4b9327e0dda7a8_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_b32750c8642c4667ac4b9327e0dda7a8">
+      <ref:Article>II</ref:Article>
+      <ref:Name>Belastingplan 2013</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_5c8c3a48a454488791283d1ee43488fd_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_5c8c3a48a454488791283d1ee43488fd">
+      <ref:Article>6.27</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_7b9f360530414747b05b909901e221db_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_7b9f360530414747b05b909901e221db">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610912</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_5131d035492e472a8601bac595e5b452_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_5131d035492e472a8601bac595e5b452">
+      <ref:Article>2.8</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_009f1c97782144d9932c3576ef2d8316_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_009f1c97782144d9932c3576ef2d8316">
+      <ref:Article>6.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_ba5e5c5de1544d80b515d1b1ec3e2a4f_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_ba5e5c5de1544d80b515d1b1ec3e2a4f">
+      <ref:Article>3.100</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_57937dc5185547049351cb151e44946a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_57937dc5185547049351cb151e44946a">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>37</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_a27cd51aaaee4fae9d8677be9e83915f_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_a27cd51aaaee4fae9d8677be9e83915f">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>38</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_7aaf0369325544e099422f78492e6bc2_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_7aaf0369325544e099422f78492e6bc2">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>29</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_d64af94ad63a47cd9fd8f448e2429ca6_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_d64af94ad63a47cd9fd8f448e2429ca6">
+      <ref:Article>3.132</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_793e2f5eac6d45389b7e889cc4d05df3_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_793e2f5eac6d45389b7e889cc4d05df3">
+      <ref:Article>6.25</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_b525664ce5f54b049b4fe2a76554c636_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_b525664ce5f54b049b4fe2a76554c636">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>107974</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_c12a5fb462744923b3c6e884d6a8641f_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_c12a5fb462744923b3c6e884d6a8641f">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>504853</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_f79b25f255f247a1af550f4f75a337eb_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_f79b25f255f247a1af550f4f75a337eb">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610895</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_aadb27133e0241b99af74dbff6ff60a8_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_aadb27133e0241b99af74dbff6ff60a8">
+      <ref:Article>5.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>3</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_3480c6241442423db5a2d2a8f889be84_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_3480c6241442423db5a2d2a8f889be84">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>504854</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_d641c429a0054b12becd09fb5bb549db_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_d641c429a0054b12becd09fb5bb549db">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>47</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_7140aba8dbcc4c6d81f7bad00052c900_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_7140aba8dbcc4c6d81f7bad00052c900">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>45</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_0a356a5b98d54741ba34b6577f30b251_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_0a356a5b98d54741ba34b6577f30b251">
+      <ref:Article>5.19</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_68303a00b049449b8017da67a8313b0a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_68303a00b049449b8017da67a8313b0a">
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_0c55c69f1c444364afd38d55ff7b1d66_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_0c55c69f1c444364afd38d55ff7b1d66">
+      <ref:Article>11</ref:Article>
+      <ref:Name>Uitvoeringsbesluit Loonbelasting 1965</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>2</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_d064f489f35641feb51854ae7bf6ad65_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_d064f489f35641feb51854ae7bf6ad65">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>34</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_42ff8b19c0374fd09807efc8ed9b9b9e_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_42ff8b19c0374fd09807efc8ed9b9b9e">
+      <ref:Article>11</ref:Article>
+      <ref:Name>Uitvoeringsbesluit Loonbelasting 1965</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>3</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_8b6a6ff7082e46e98354a9bd5c9b258e_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_8b6a6ff7082e46e98354a9bd5c9b258e">
+      <ref:Article>3.139</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>b</ref:Paragraph>
+    </link:reference>
+    <link:reference xlink:label="bd_f653b13154ab4082aaaab4dbff658126_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_f653b13154ab4082aaaab4dbff658126">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>50</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_95aa72edd4d846e5a039722473114f6c_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_95aa72edd4d846e5a039722473114f6c">
+      <ref:Article>6.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_b60cd563aadf4224bfa2943e17ae09ff_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_b60cd563aadf4224bfa2943e17ae09ff">
+      <ref:Article>6.3</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+    </link:reference>
+    <link:reference xlink:label="bd_e6ba742b42d2461fbdbf134141ee5580_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_e6ba742b42d2461fbdbf134141ee5580">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>46</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_cda1b718d6f74fed984e5deb90abf06b_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_cda1b718d6f74fed984e5deb90abf06b">
+      <ref:Article>3.87</ref:Article>
+      <ref:Name>Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_ee5efe0fb8da45dd8c2868b096620401_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_ee5efe0fb8da45dd8c2868b096620401">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>30</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_eeb61459a7574681bb6861c30ba53ce3_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_eeb61459a7574681bb6861c30ba53ce3">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>44</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_b7098515fda545389679b881a7779adb_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_b7098515fda545389679b881a7779adb">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>610932</ref:Paragraph>
+      <ref:Chapter>gsp definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_202e1f2206ee47978a16e4f32b0dcf84_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_202e1f2206ee47978a16e4f32b0dcf84">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>117</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_652a45418a9246368fa416eed9f4cda3_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_652a45418a9246368fa416eed9f4cda3">
+      <ref:Name>Invoeringswet Wet IB2001</ref:Name>
+    </link:reference>
+    <link:reference xlink:label="bd_61b87423bf1e41a2852268e5901f3eaf_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_61b87423bf1e41a2852268e5901f3eaf">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>26</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_SubstantialInterestRegularBenefitsDeductibleCostsSpecification" xlink:label="bd-burg-tuple_SubstantialInterestRegularBenefitsDeductibleCostsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_SubstantialInterestRegularBenefitsDeductibleCostsSpecification_loc" xlink:to="bd_0a71fa03062148e3a4cb13644e5934e7_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_IncomePresentWorkAbroadWithoutDutchWageTaxSpecification" xlink:label="bd-burg-tuple_IncomePresentWorkAbroadWithoutDutchWageTaxSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_IncomePresentWorkAbroadWithoutDutchWageTaxSpecification_loc" xlink:to="bd_665f8ede0dba4dc4829bdd20859dcc8f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_InhabitantSpecification" xlink:label="bd-burg-tuple_InhabitantSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_InhabitantSpecification_loc" xlink:to="bd_3d663a34b80b41b8a0888aa4e5309840_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ExemptedWagesInternationalOrganisationPresentWorkSpecification" xlink:label="bd-burg-tuple_ExemptedWagesInternationalOrganisationPresentWorkSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ExemptedWagesInternationalOrganisationPresentWorkSpecification_loc" xlink:to="bd_5bf1eafe19824b498aeb35f24c4a12aa_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceRelativesPeriodicPaymentsSpecification" xlink:label="bd-burg-tuple_MaintenanceRelativesPeriodicPaymentsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceRelativesPeriodicPaymentsSpecification_loc" xlink:to="bd_8020d1975cd5478ea8dec74b11224930_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_RefundGiftsSpecification" xlink:label="bd-burg-tuple_RefundGiftsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RefundGiftsSpecification_loc" xlink:to="bd_02917602e0eb427fa66642f33571b93b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PremiumsAnnuitiesSpecification" xlink:label="bd-burg-tuple_PremiumsAnnuitiesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PremiumsAnnuitiesSpecification_loc" xlink:to="bd_cc504a7a145946bbabe8172e8d4f932b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ImmovablePropertyInConnectionWithResultFromActivitiesSpecification" xlink:label="bd-burg-tuple_ImmovablePropertyInConnectionWithResultFromActivitiesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ImmovablePropertyInConnectionWithResultFromActivitiesSpecification_loc" xlink:to="bd_bbe61f59526847d2b2e9cbe996c6b182_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_OwnHouseTemporaryLetSpecification" xlink:label="bd-burg-tuple_OwnHouseTemporaryLetSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_OwnHouseTemporaryLetSpecification_loc" xlink:to="bd_7f5f4027a89d4039b1b15f38a60f736b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PremiumsAnnuitiesDisabledChildrenSpecification" xlink:label="bd-burg-tuple_PremiumsAnnuitiesDisabledChildrenSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PremiumsAnnuitiesDisabledChildrenSpecification_loc" xlink:to="bd_cb4bb840537f4b11b2b176c88e997133_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_GiftsOtherPeriodicSpecification" xlink:label="bd-burg-tuple_GiftsOtherPeriodicSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_GiftsOtherPeriodicSpecification_loc" xlink:to="bd_47a66a38806047c99c7ff14d68af3b26_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PresentWorkSpecification" xlink:label="bd-burg-tuple_PresentWorkSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PresentWorkSpecification_loc" xlink:to="bd_665f8ede0dba4dc4829bdd20859dcc8f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceRelativesRedemptionSumSpecification" xlink:label="bd-burg-tuple_MaintenanceRelativesRedemptionSumSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceRelativesRedemptionSumSpecification_loc" xlink:to="bd_17b38a66f70c47dc943b6e592d450740_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_GiftsOtherRemainingSpecification" xlink:label="bd-burg-tuple_GiftsOtherRemainingSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_GiftsOtherRemainingSpecification_loc" xlink:to="bd_c6e1c400099542668b74a195926d856d_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1OptingTaxpayerIncomePositiveSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1OptingTaxpayerIncomePositiveSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1OptingTaxpayerIncomePositiveSpecification_loc" xlink:to="bd_9a60318820154a51adb580dc68d66547_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_DebtsInConnectionWithResultFromActivitiesSpecification" xlink:label="bd-burg-tuple_DebtsInConnectionWithResultFromActivitiesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_DebtsInConnectionWithResultFromActivitiesSpecification_loc" xlink:to="bd_bbe61f59526847d2b2e9cbe996c6b182_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_IncomePreviousWorkAbroadWithoutDutchWageTaxSpecification" xlink:label="bd-burg-tuple_IncomePreviousWorkAbroadWithoutDutchWageTaxSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_IncomePreviousWorkAbroadWithoutDutchWageTaxSpecification_loc" xlink:to="bd_665f8ede0dba4dc4829bdd20859dcc8f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_SharesSubstantialInterestSpecification" xlink:label="bd-burg-tuple_SharesSubstantialInterestSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_SharesSubstantialInterestSpecification_loc" xlink:to="bd_701f90e6374041008c160db92e55b909_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_RefundPremiumsAndOtherNegativeIncomeProvisionExpensesSpecification" xlink:label="bd-burg-tuple_RefundPremiumsAndOtherNegativeIncomeProvisionExpensesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RefundPremiumsAndOtherNegativeIncomeProvisionExpensesSpecification_loc" xlink:to="bd_cb4bb840537f4b11b2b176c88e997133_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RefundPremiumsAndOtherNegativeIncomeProvisionExpensesSpecification_loc" xlink:to="bd_f436e2e929b74d1a9a57b13de17894dc_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RefundPremiumsAndOtherNegativeIncomeProvisionExpensesSpecification_loc" xlink:to="bd_cc504a7a145946bbabe8172e8d4f932b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceOneChildSpecification" xlink:label="bd-burg-tuple_MaintenanceOneChildSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceOneChildSpecification_loc" xlink:to="bd_8ccf69da5e6a4b49860662fc2681ee77_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox2NonOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox2NonOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox2NonOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1NonOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1NonOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1NonOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_AlimonyDeductibleCostsSpecification" xlink:label="bd-burg-tuple_AlimonyDeductibleCostsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_AlimonyDeductibleCostsSpecification_loc" xlink:to="bd_3d412f98a9e849d0aa73d759d4dfda44_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_LoanFinalStudyYearDataSpecification" xlink:label="bd-burg-tuple_LoanFinalStudyYearDataSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_LoanFinalStudyYearDataSpecification_loc" xlink:to="bd_059a08ccb1ed40a9aad2028f6de0da68_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceRelativesPensionPremiumSpecification" xlink:label="bd-burg-tuple_MaintenanceRelativesPensionPremiumSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceRelativesPensionPremiumSpecification_loc" xlink:to="bd_dabea168190d4f9dbe6b4cd87900a003_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_SubstantialInterestTransferPriceSpecification" xlink:label="bd-burg-tuple_SubstantialInterestTransferPriceSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_SubstantialInterestTransferPriceSpecification_loc" xlink:to="bd_52e85e5cfbbf4e5c99869f511ab57f75_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ActivitiesWorkResultsSpecification" xlink:label="bd-burg-tuple_ActivitiesWorkResultsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ActivitiesWorkResultsSpecification_loc" xlink:to="bd_81e2a1206ea44fcca76d2c28df89c317_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ActivitiesWorkResultsSpecification_loc" xlink:to="bd_cbe91fe2cfa647618b6eb3f9d0470d85_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ActivitiesWorkResultsSpecification_loc" xlink:to="bd_0cf73a30724c44df8bbe714af578a3e0_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_OwnHousePeriodicContributionsSpecification" xlink:label="bd-burg-tuple_OwnHousePeriodicContributionsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_OwnHousePeriodicContributionsSpecification_loc" xlink:to="bd_859b7a4e22c24d17b5f0c4da49b50761_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1OptingTaxpayerIncomeNegativeSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1OptingTaxpayerIncomeNegativeSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1OptingTaxpayerIncomeNegativeSpecification_loc" xlink:to="bd_15cf539d3dcd447c87a44eddd6546a12_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_SubstantialInterestRegularBenefitsSpecification" xlink:label="bd-burg-tuple_SubstantialInterestRegularBenefitsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_SubstantialInterestRegularBenefitsSpecification_loc" xlink:to="bd_52e85e5cfbbf4e5c99869f511ab57f75_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ResidenceForeignCountrySpecification" xlink:label="bd-burg-tuple_ResidenceForeignCountrySpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ResidenceForeignCountrySpecification_loc" xlink:to="bd_bdb07df13c9b45f2bb1ef7dcb85131fa_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TrustCapitalSpecification" xlink:label="bd-burg-tuple_TrustCapitalSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TrustCapitalSpecification_loc" xlink:to="bd_7e191bbf43cf4da9b9e8b6d3c2d9ee35_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_OwnHouseGroundLeaseBuildingPeriodicPaymentsSpecification" xlink:label="bd-burg-tuple_OwnHouseGroundLeaseBuildingPeriodicPaymentsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_OwnHouseGroundLeaseBuildingPeriodicPaymentsSpecification_loc" xlink:to="bd_0a316ce5cab244be8b949f38d5a7fd75_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_GiftAidSBBISpecification" xlink:label="bd-burg-tuple_GiftAidSBBISpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_GiftAidSBBISpecification_loc" xlink:to="bd_c6e1c400099542668b74a195926d856d_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_WithholdingTaxSavingsInterestSpecification" xlink:label="bd-burg-tuple_WithholdingTaxSavingsInterestSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_WithholdingTaxSavingsInterestSpecification_loc" xlink:to="bd_389e01d709824432916ac289a743e7f9_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_VentureCapitalLoansInvestmentsLossSpecification" xlink:label="bd-burg-tuple_VentureCapitalLoansInvestmentsLossSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_VentureCapitalLoansInvestmentsLossSpecification_loc" xlink:to="bd_5adfe440afd544d8ad12a38568b248c8_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PreviousWorkSpecification" xlink:label="bd-burg-tuple_PreviousWorkSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PreviousWorkSpecification_loc" xlink:to="bd_665f8ede0dba4dc4829bdd20859dcc8f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceObligationPaidPersonSpecification" xlink:label="bd-burg-tuple_MaintenanceObligationPaidPersonSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceObligationPaidPersonSpecification_loc" xlink:to="bd_cf4312cb4e124cad92f7f5e3049b7031_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PeriodicPaymentsDeductibleCostsSpecification" xlink:label="bd-burg-tuple_PeriodicPaymentsDeductibleCostsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PeriodicPaymentsDeductibleCostsSpecification_loc" xlink:to="bd_d3b92ffca21e4823be2252fcda521d66_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_StudyTrainingRefundExpenditureSpecification" xlink:label="bd-burg-tuple_StudyTrainingRefundExpenditureSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_StudyTrainingRefundExpenditureSpecification_loc" xlink:to="bd_541124a156164c909f8fe68ba9d83967_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox3ReductionAssetImmovableOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox3ReductionAssetImmovableOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox3ReductionAssetImmovableOptingTaxpayerSpecification_loc" xlink:to="bd_9be15cdf72484574a6e3da585c28f795_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox3ReductionAssetImmovableOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_OwnHousePrincipalResidenceIncomeSpecification" xlink:label="bd-burg-tuple_OwnHousePrincipalResidenceIncomeSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_OwnHousePrincipalResidenceIncomeSpecification_loc" xlink:to="bd_a3ea143488d74ddfbe3e0a9b7920f176_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_BusinessCapitalOtherSpecification" xlink:label="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:to="bd_8874423274f349fdaa672ffc4f9af6e9_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:to="bd_2b979f5401a84fc79ee80f45f9a95acb_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:to="bd_891674373e974c4d941dfef1dc9b5eb1_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:to="bd_777338e2d1b44925b76d99c9514bf81a_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:to="bd_4c37447ba9d646eb85661f958ebaaee3_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_BusinessCapitalOtherSpecification_loc" xlink:to="bd_6864ee7e10aa47128590eb57ba711ab5_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_StockSpecification" xlink:label="bd-burg-tuple_StockSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_StockSpecification_loc" xlink:to="bd_818d803bc9284f4c8332b76fdfa207cb_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ListedBuildingReimbursedExpensesSpecification" xlink:label="bd-burg-tuple_ListedBuildingReimbursedExpensesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ListedBuildingReimbursedExpensesSpecification_loc" xlink:to="bd_91a8e862a480457fb827eee0bbbcf3b7_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceObligationsRefundSpecification" xlink:label="bd-burg-tuple_MaintenanceObligationsRefundSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceObligationsRefundSpecification_loc" xlink:to="bd_c848acde250e425a96846bbf6042a8f1_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox3ImmovablePropertyDeductionSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox3ImmovablePropertyDeductionSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox3ImmovablePropertyDeductionSpecification_loc" xlink:to="bd_ff83deb94a7b4846927620ef6baa9cc8_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_CapitalInsuranceNotExemptedPartSpecification" xlink:label="bd-burg-tuple_CapitalInsuranceNotExemptedPartSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_CapitalInsuranceNotExemptedPartSpecification_loc" xlink:to="bd_9a9a2772753a4e239be5e9c1464e4ed1_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ActivitiesWorkCostsSpecification" xlink:label="bd-burg-tuple_ActivitiesWorkCostsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ActivitiesWorkCostsSpecification_loc" xlink:to="bd_13e7418560164354b17bd9f6a0365381_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TrainingExpensesStudyFundingActualCostSpecification" xlink:label="bd-burg-tuple_TrainingExpensesStudyFundingActualCostSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TrainingExpensesStudyFundingActualCostSpecification_loc" xlink:to="bd_b32750c8642c4667ac4b9327e0dda7a8_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TrainingExpensesStudyFundingActualCostSpecification_loc" xlink:to="bd_5c8c3a48a454488791283d1ee43488fd_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TrainingExpensesStudyFundingActualCostSpecification_loc" xlink:to="bd_7b9f360530414747b05b909901e221db_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PreservedIncomeSpecification" xlink:label="bd-burg-tuple_PreservedIncomeSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PreservedIncomeSpecification_loc" xlink:to="bd_5131d035492e472a8601bac595e5b452_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_SocialAssistanceBenefitMaintenancePassedOnSpecification" xlink:label="bd-burg-tuple_SocialAssistanceBenefitMaintenancePassedOnSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_SocialAssistanceBenefitMaintenancePassedOnSpecification_loc" xlink:to="bd_009f1c97782144d9932c3576ef2d8316_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PeriodicPaymentsOtherSpecification" xlink:label="bd-burg-tuple_PeriodicPaymentsOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PeriodicPaymentsOtherSpecification_loc" xlink:to="bd_ba5e5c5de1544d80b515d1b1ec3e2a4f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_SecondHouseSpecification" xlink:label="bd-burg-tuple_SecondHouseSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_SecondHouseSpecification_loc" xlink:to="bd_57937dc5185547049351cb151e44946a_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1IncomeDividendInterestAndRoyaltiesSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1IncomeDividendInterestAndRoyaltiesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1IncomeDividendInterestAndRoyaltiesSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1IncomeDividendInterestAndRoyaltiesSpecification_loc" xlink:to="bd_a27cd51aaaee4fae9d8677be9e83915f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_FictitiousActivitiesCostsSpecification" xlink:label="bd-burg-tuple_FictitiousActivitiesCostsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_FictitiousActivitiesCostsSpecification_loc" xlink:to="bd_bbe61f59526847d2b2e9cbe996c6b182_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ExemptedWagesInternationalOrganisationPreviousWorkSpecification" xlink:label="bd-burg-tuple_ExemptedWagesInternationalOrganisationPreviousWorkSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ExemptedWagesInternationalOrganisationPreviousWorkSpecification_loc" xlink:to="bd_7aaf0369325544e099422f78492e6bc2_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_RedemptionsAnnuitiesNotCoveredByWageTaxSpecification" xlink:label="bd-burg-tuple_RedemptionsAnnuitiesNotCoveredByWageTaxSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RedemptionsAnnuitiesNotCoveredByWageTaxSpecification_loc" xlink:to="bd_d64af94ad63a47cd9fd8f448e2429ca6_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_WeekendExpensesDisabledPersonsSpecification" xlink:label="bd-burg-tuple_WeekendExpensesDisabledPersonsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_WeekendExpensesDisabledPersonsSpecification_loc" xlink:to="bd_793e2f5eac6d45389b7e889cc4d05df3_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_FictitiousActivitiesResultsSpecification" xlink:label="bd-burg-tuple_FictitiousActivitiesResultsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_FictitiousActivitiesResultsSpecification_loc" xlink:to="bd_81e2a1206ea44fcca76d2c28df89c317_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_FictitiousActivitiesResultsSpecification_loc" xlink:to="bd_0cf73a30724c44df8bbe714af578a3e0_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TrainingExpensesNoStudyFundingSpecification" xlink:label="bd-burg-tuple_TrainingExpensesNoStudyFundingSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TrainingExpensesNoStudyFundingSpecification_loc" xlink:to="bd_b525664ce5f54b049b4fe2a76554c636_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TrustCapitalTransactionSpecification" xlink:label="bd-burg-tuple_TrustCapitalTransactionSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TrustCapitalTransactionSpecification_loc" xlink:to="bd_7e191bbf43cf4da9b9e8b6d3c2d9ee35_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PremiumsSettlementOldAgeReserveDiscontinuationProfitSpecification" xlink:label="bd-burg-tuple_PremiumsSettlementOldAgeReserveDiscontinuationProfitSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PremiumsSettlementOldAgeReserveDiscontinuationProfitSpecification_loc" xlink:to="bd_cc504a7a145946bbabe8172e8d4f932b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox2IncomeSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox2IncomeSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox2IncomeSpecification_loc" xlink:to="bd_c12a5fb462744923b3c6e884d6a8641f_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_OwnHouseDisposedRestDebtSpecification" xlink:label="bd-burg-tuple_OwnHouseDisposedRestDebtSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_OwnHouseDisposedRestDebtSpecification_loc" xlink:to="bd_f79b25f255f247a1af550f4f75a337eb_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_DebtBox3Specification" xlink:label="bd-burg-tuple_DebtBox3Specification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_DebtBox3Specification_loc" xlink:to="bd_aadb27133e0241b99af74dbff6ff60a8_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox3SetoffSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox3SetoffSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox3SetoffSpecification_loc" xlink:to="bd_3480c6241442423db5a2d2a8f889be84_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox2IncomeForeignOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox2IncomeForeignOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox2IncomeForeignOptingTaxpayerSpecification_loc" xlink:to="bd_d641c429a0054b12becd09fb5bb549db_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox2IncomeForeignOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereReducedRateOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereReducedRateOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereReducedRateOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_AssetsOtherInConnectionWithResultFromOtherActivitiesSpecification" xlink:label="bd-burg-tuple_AssetsOtherInConnectionWithResultFromOtherActivitiesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_AssetsOtherInConnectionWithResultFromOtherActivitiesSpecification_loc" xlink:to="bd_bbe61f59526847d2b2e9cbe996c6b182_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1IncomeSportsmenAndArtistsSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1IncomeSportsmenAndArtistsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1IncomeSportsmenAndArtistsSpecification_loc" xlink:to="bd_7140aba8dbcc4c6d81f7bad00052c900_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_AssetsOtherSpecification" xlink:label="bd-burg-tuple_AssetsOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_AssetsOtherSpecification_loc" xlink:to="bd_0a356a5b98d54741ba34b6577f30b251_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ListedBuildingCostsSpecification" xlink:label="bd-burg-tuple_ListedBuildingCostsSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ListedBuildingCostsSpecification_loc" xlink:to="bd_68303a00b049449b8017da67a8313b0a_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_RedemptionAnnuitiesCoveredByWagetaxSpecification" xlink:label="bd-burg-tuple_RedemptionAnnuitiesCoveredByWagetaxSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RedemptionAnnuitiesCoveredByWagetaxSpecification_loc" xlink:to="bd_0c55c69f1c444364afd38d55ff7b1d66_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RedemptionAnnuitiesCoveredByWagetaxSpecification_loc" xlink:to="bd_d064f489f35641feb51854ae7bf6ad65_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_RedemptionAnnuitiesCoveredByWagetaxSpecification_loc" xlink:to="bd_42ff8b19c0374fd09807efc8ed9b9b9e_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_GiftsOtherCulturalCentreSpecification" xlink:label="bd-burg-tuple_GiftsOtherCulturalCentreSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_GiftsOtherCulturalCentreSpecification_loc" xlink:to="bd_c6e1c400099542668b74a195926d856d_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_WaiverVentureCapitalLoansRefundSpecification" xlink:label="bd-burg-tuple_WaiverVentureCapitalLoansRefundSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_WaiverVentureCapitalLoansRefundSpecification_loc" xlink:to="bd_8b6a6ff7082e46e98354a9bd5c9b258e_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox3ReductionAssetExcludedImmovableOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox3ReductionAssetExcludedImmovableOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox3ReductionAssetExcludedImmovableOptingTaxpayerSpecification_loc" xlink:to="bd_f653b13154ab4082aaaab4dbff658126_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox3ReductionAssetExcludedImmovableOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ExtraordinaryExpenditureHealthCareRefundSpecification" xlink:label="bd-burg-tuple_ExtraordinaryExpenditureHealthCareRefundSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ExtraordinaryExpenditureHealthCareRefundSpecification_loc" xlink:to="bd_8b6a6ff7082e46e98354a9bd5c9b258e_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_GiftsCulturalCentrePeriodicSpecification" xlink:label="bd-burg-tuple_GiftsCulturalCentrePeriodicSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_GiftsCulturalCentrePeriodicSpecification_loc" xlink:to="bd_47a66a38806047c99c7ff14d68af3b26_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_MaintenanceObligationOtherSpecification" xlink:label="bd-burg-tuple_MaintenanceObligationOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceObligationOtherSpecification_loc" xlink:to="bd_95aa72edd4d846e5a039722473114f6c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_MaintenanceObligationOtherSpecification_loc" xlink:to="bd_b60cd563aadf4224bfa2943e17ae09ff_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1IncomeWageAndPensionSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1IncomeWageAndPensionSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1IncomeWageAndPensionSpecification_loc" xlink:to="bd_e6ba742b42d2461fbdbf134141ee5580_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereReducedRateNonOptingTaxpayerSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereReducedRateNonOptingTaxpayerSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereReducedRateNonOptingTaxpayerSpecification_loc" xlink:to="bd_63f706f3228f45c7918d20f7e5c7860c_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TravelAllowanceReceivedSpecification" xlink:label="bd-burg-tuple_TravelAllowanceReceivedSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TravelAllowanceReceivedSpecification_loc" xlink:to="bd_cda1b718d6f74fed984e5deb90abf06b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_ImmovablePropertyOtherSpecification" xlink:label="bd-burg-tuple_ImmovablePropertyOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_ImmovablePropertyOtherSpecification_loc" xlink:to="bd_ee5efe0fb8da45dd8c2868b096620401_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_AlimonyReceivedSpecification" xlink:label="bd-burg-tuple_AlimonyReceivedSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_AlimonyReceivedSpecification_loc" xlink:to="bd_859b7a4e22c24d17b5f0c4da49b50761_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_CommutingExpensesTaxDeductionSpecification" xlink:label="bd-burg-tuple_CommutingExpensesTaxDeductionSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_CommutingExpensesTaxDeductionSpecification_loc" xlink:to="bd_cda1b718d6f74fed984e5deb90abf06b_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_TaxationElsewhereBox1IncomeOtherSpecification" xlink:label="bd-burg-tuple_TaxationElsewhereBox1IncomeOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_TaxationElsewhereBox1IncomeOtherSpecification_loc" xlink:to="bd_eeb61459a7574681bb6861c30ba53ce3_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_LoanFinalStudyYearPeriodSpecification" xlink:label="bd-burg-tuple_LoanFinalStudyYearPeriodSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_LoanFinalStudyYearPeriodSpecification_loc" xlink:to="bd_b7098515fda545389679b881a7779adb_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_PremiumsPrivateInsurancePoliciesSpecification" xlink:label="bd-burg-tuple_PremiumsPrivateInsurancePoliciesSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PremiumsPrivateInsurancePoliciesSpecification_loc" xlink:to="bd_f436e2e929b74d1a9a57b13de17894dc_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_PremiumsPrivateInsurancePoliciesSpecification_loc" xlink:to="bd_202e1f2206ee47978a16e4f32b0dcf84_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_IncomeOtherSpecification" xlink:label="bd-burg-tuple_IncomeOtherSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_IncomeOtherSpecification_loc" xlink:to="bd_652a45418a9246368fa416eed9f4cda3_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-burg-tuples.xsd#bd-burg-tuple_AssetBankAccountSavingsCertificateEtcSpecification" xlink:label="bd-burg-tuple_AssetBankAccountSavingsCertificateEtcSpecification_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-burg-tuple_AssetBankAccountSavingsCertificateEtcSpecification_loc" xlink:to="bd_818d803bc9284f4c8332b76fdfa207cb_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:referenceArc xlink:from="bd-burg-tuple_AssetBankAccountSavingsCertificateEtcSpecification_loc" xlink:to="bd_61b87423bf1e41a2852268e5901f3eaf_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+  </link:referenceLink>
+</link:linkbase>

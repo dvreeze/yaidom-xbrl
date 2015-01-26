@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:venj-codes="http://www.nltaxonomie.nl/9.0/basis/venj/types/venj-codes" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/basis/venj/types/venj-codes">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="venj-codes-generic-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="venj-codes-generic-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <xs:complexType id="venj-codes_directorItemType" name="directorItemType">
+    <xs:simpleContent>
+      <xs:restriction base="xbrli:stringItemType">
+        <xs:enumeration id="venj-codes_Director_BestuurderHuidig" value="Bestuurder (huidig)"/>
+        <xs:enumeration id="venj-codes_Director_BestuurderVoormalig" value="Bestuurder (voormalig)"/>
+        <xs:enumeration id="venj-codes_Director_CommissarisHuidig" value="Commissaris (huidig)"/>
+        <xs:enumeration id="venj-codes_Director_CommissarisVoormalig" value="Commissaris (voormalig)"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType id="venj-codes_financialInstrumentsItemType" name="financialInstrumentsItemType">
+    <xs:simpleContent>
+      <xs:restriction base="xbrli:stringItemType">
+        <xs:enumeration id="venj-codes_FinancialInstrument_Derivaten" value="Derivaten"/>
+        <xs:enumeration id="venj-codes_FinancialInstrument_Financiele_instrumenten_onderdeel_handelsportefeuille" value="Financiele instrumenten die onderdeel zijn van een handelsportefeuille"/>
+        <xs:enumeration id="venj-codes_FinancialInstrument_Gekochte_leningen_obligaties" value="Gekochte leningen en obligaties"/>
+        <xs:enumeration id="venj-codes_FinancialInstrument_Investering_eigen_vermogen_instrumenten" value="Investering in eigen vermogen instrumenten"/>
+        <xs:enumeration id="venj-codes_FinancialInstrument_Overige_financiele_verplichtingen" value="Overige financiele verplichtingen"/>
+        <xs:enumeration id="venj-codes_FinancialInstrument_Verstrekte_leningen_overige_vorderingen" value="Verstrekte leningen en overige vorderingen"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType id="venj-codes_liabilitiesItemType" name="liabilitiesItemType">
+    <xs:simpleContent>
+      <xs:restriction base="xbrli:stringItemType">
+        <xs:enumeration id="venj-codes_Liabilities_Achtergestelde_leningen" value="Achtergestelde leningen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Andere_obligaties_onderhandse_leningen" value="Andere obligaties en onderhandse leningen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Belastingen_premies_sociale_verzekeringen" value="Belastingen en premies sociale verzekeringen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Converteerbare_leningen" value="Converteerbare leningen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Financiele_lease_verplichtingen" value="Financiele lease verplichtingen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Negatieve_goodwill" value="Negatieve goodwill"/>
+        <xs:enumeration id="venj-codes_Liabilities_Onderhanden_projecten_derden" value="Onderhanden projecten in opdracht van derden"/>
+        <xs:enumeration id="venj-codes_Liabilities_Overige_schulden" value="Overige schulden"/>
+        <xs:enumeration id="venj-codes_Liabilities_Overlopende_passiva" value="Overlopende passiva"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_aan_groepsmaatschappijen" value="Schulden aan groepsmaatschappijen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_aan_kredietinstellingen" value="Schulden aan kredietinstellingen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_aan_leveranciers_handelskredieten" value="Schulden aan leveranciers en handelskredieten"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_aan_overige_verbonden_maatschappijen" value="Schulden aan overige verbonden maatschappijen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_aan_participanten_maatschappijen_waarin_deelgenomen" value="Schulden aan participanten en maatschappijen waarin wordt deelgenomen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_pensioenen" value="Schulden inzake pensioenen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Schulden_personeelsbeloningen" value="Schulden inzake personeelsbeloningen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Te_betalen_wissels_cheques" value="Te betalen wissels en cheques"/>
+        <xs:enumeration id="venj-codes_Liabilities_Totaal" value="Totaal van verplichtingen"/>
+        <xs:enumeration id="venj-codes_Liabilities_Vooruit_ontvangen_bestellingen" value="Vooruitontvangen bestellingen"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType id="venj-codes_loanAdvanceGuaranteeItemType" name="loanAdvanceGuaranteeItemType">
+    <xs:simpleContent>
+      <xs:restriction base="xbrli:stringItemType">
+        <xs:enumeration id="venj-codes_LoanAdvanceGuarantee_Garantie" value="Garantie"/>
+        <xs:enumeration id="venj-codes_LoanAdvanceGuarantee_Lening" value="Lening"/>
+        <xs:enumeration id="venj-codes_LoanAdvanceGuarantee_Voorschot" value="Voorschot"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType id="venj-codes_remunerationDirectorsItemType" name="remunerationDirectorsItemType">
+    <xs:simpleContent>
+      <xs:restriction base="xbrli:stringItemType">
+        <xs:enumeration id="venj-codes_Remuneration_Lange_Termijn" value="Lange termijn betaalbaar"/>
+        <xs:enumeration id="venj-codes_Remuneration_Ontslagvergoeding" value="Ontslagvergoeding"/>
+        <xs:enumeration id="venj-codes_Remuneration_Periodiek" value="Periodiek betaalbaar"/>
+        <xs:enumeration id="venj-codes_Remuneration_Totaal" value="Totaal vergoeding"/>
+        <xs:enumeration id="venj-codes_Remuneration_Winstdeling" value="Winstdeling"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType id="venj-codes_transactionItemType" name="transactionItemType">
+    <xs:simpleContent>
+      <xs:restriction base="xbrli:stringItemType">
+        <xs:enumeration id="venj-codes_Transaction_Niet_Normale_Marktvoorwaarden" value="Niet onder normale marktvoorwaarden"/>
+        <xs:enumeration id="venj-codes_Transaction_Normale_Marktvoorwaarden" value="Onder normale marktvoorwaarden"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

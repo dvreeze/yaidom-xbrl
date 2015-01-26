@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:kvk:linkrole:provisions-movement-schedule-table" xlink:href="kvk-linkroles-tables.xsd#kvk-dlr_ProvisionsMovementScheduleTable" xlink:type="simple"/>
+  <link:roleRef roleURI="urn:kvk:linkrole:provisions-movement-schedule-time-table" xlink:href="kvk-linkroles-tables.xsd#kvk-dlr_ProvisionsMovementScheduleTimeTable" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple"/>
+  <link:definitionLink xlink:role="urn:kvk:linkrole:provisions-movement-schedule-table" xlink:type="extended">
+    <link:definitionArc order="1" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="rj-i_ProvisionsAdditions_loc" xlink:type="arc"/>
+    <link:definitionArc order="2" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="rj-i_ProvisionsExchangeDifferences_loc" xlink:type="arc"/>
+    <link:definitionArc order="3" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="rj-i_ProvisionsRelease_loc" xlink:type="arc"/>
+    <link:definitionArc order="4" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="rj-i_ProvisionsUsage_loc" xlink:type="arc"/>
+    <link:definitionArc order="5" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="rj-i_ProvisionsYieldedInterest_loc" xlink:type="arc"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_ProvisionsAdditions" xlink:label="rj-i_ProvisionsAdditions_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_ProvisionsExchangeDifferences" xlink:label="rj-i_ProvisionsExchangeDifferences_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_ProvisionsRelease" xlink:label="rj-i_ProvisionsRelease_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_ProvisionsUsage" xlink:label="rj-i_ProvisionsUsage_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_ProvisionsYieldedInterest" xlink:label="rj-i_ProvisionsYieldedInterest_loc" xlink:type="locator"/>
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:kvk:linkrole:provisions-movement-schedule-time-table" xlink:type="extended">
+    <link:definitionArc order="1" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="sbr-dim_ValidationLineItems_loc" xlink:to="venj-bw2-i_Provisions_loc" xlink:type="arc"/>
+    <link:loc xlink:href="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts.xsd#sbr-dim_ValidationLineItems" xlink:label="sbr-dim_ValidationLineItems_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/venj/items/venj-bw2-data.xsd#venj-bw2-i_Provisions" xlink:label="venj-bw2-i_Provisions_loc" xlink:type="locator"/>
+  </link:definitionLink>
+</link:linkbase>

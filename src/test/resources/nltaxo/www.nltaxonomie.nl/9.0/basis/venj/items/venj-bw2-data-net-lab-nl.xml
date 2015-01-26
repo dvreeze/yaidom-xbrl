@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/netLabel" xlink:href="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd#netLabel" xlink:type="simple"/>
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="venj-bw2-i_OperatingResult_netLabel_nl" xlink:label="venj-bw2-i_OperatingResult_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Bedrijfsresultaat, netto</link:label>
+    <link:label id="venj-bw2-i_GrossOperatingResult_netLabel_nl" xlink:label="venj-bw2-i_GrossOperatingResult_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Bruto-omzetresultaat, netto</link:label>
+    <link:label id="venj-bw2-i_GrossMargin_netLabel_nl" xlink:label="venj-bw2-i_GrossMargin_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Brutomarge, netto</link:label>
+    <link:label id="venj-bw2-i_NetOperatingResult_netLabel_nl" xlink:label="venj-bw2-i_NetOperatingResult_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Netto-omzetresultaat, netto</link:label>
+    <link:label id="venj-bw2-i_NetResultAfterTax_netLabel_nl" xlink:label="venj-bw2-i_NetResultAfterTax_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Nettoresultaat na belastingen, netto</link:label>
+    <link:label id="venj-bw2-i_ResultAttributableNoncontrollingInterest_netLabel_nl" xlink:label="venj-bw2-i_ResultAttributableNoncontrollingInterest_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Resultaat aandeel van derden, netto</link:label>
+    <link:label id="venj-bw2-i_ResultAfterTax_netLabel_nl" xlink:label="venj-bw2-i_ResultAfterTax_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Resultaat na belastingen, netto</link:label>
+    <link:label id="venj-bw2-i_ResultAfterTaxOrdinaryActivities_netLabel_nl" xlink:label="venj-bw2-i_ResultAfterTaxOrdinaryActivities_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Resultaat uit gewone bedrijfsuitoefening na belastingen, netto</link:label>
+    <link:label id="venj-bw2-i_ResultBeforeTaxOrdinaryActivities_netLabel_nl" xlink:label="venj-bw2-i_ResultBeforeTaxOrdinaryActivities_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Resultaat uit gewone bedrijfsuitoefening voor belastingen, netto</link:label>
+    <link:label id="venj-bw2-i_OutcomeAssetsLessLiabilitiesCurrent_netLabel_nl" xlink:label="venj-bw2-i_OutcomeAssetsLessLiabilitiesCurrent_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Uitkomst van activa min kortlopende schulden, netto</link:label>
+    <link:label id="venj-bw2-i_OutcomeAssetsCurrentLessLiabilitiesCurrent_netLabel_nl" xlink:label="venj-bw2-i_OutcomeAssetsCurrentLessLiabilitiesCurrent_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Uitkomst van vlottende activa min kortlopende schulden, netto</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_GrossMargin_loc" xlink:to="venj-bw2-i_GrossMargin_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_GrossOperatingResult_loc" xlink:to="venj-bw2-i_GrossOperatingResult_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_NetOperatingResult_loc" xlink:to="venj-bw2-i_NetOperatingResult_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_NetResultAfterTax_loc" xlink:to="venj-bw2-i_NetResultAfterTax_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_OperatingResult_loc" xlink:to="venj-bw2-i_OperatingResult_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_OutcomeAssetsCurrentLessLiabilitiesCurrent_loc" xlink:to="venj-bw2-i_OutcomeAssetsCurrentLessLiabilitiesCurrent_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_OutcomeAssetsLessLiabilitiesCurrent_loc" xlink:to="venj-bw2-i_OutcomeAssetsLessLiabilitiesCurrent_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_ResultAfterTaxOrdinaryActivities_loc" xlink:to="venj-bw2-i_ResultAfterTaxOrdinaryActivities_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_ResultAfterTax_loc" xlink:to="venj-bw2-i_ResultAfterTax_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_ResultAttributableNoncontrollingInterest_loc" xlink:to="venj-bw2-i_ResultAttributableNoncontrollingInterest_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_ResultBeforeTaxOrdinaryActivities_loc" xlink:to="venj-bw2-i_ResultBeforeTaxOrdinaryActivities_netLabel_nl" xlink:type="arc"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_GrossMargin" xlink:label="venj-bw2-i_GrossMargin_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_GrossOperatingResult" xlink:label="venj-bw2-i_GrossOperatingResult_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_NetOperatingResult" xlink:label="venj-bw2-i_NetOperatingResult_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_NetResultAfterTax" xlink:label="venj-bw2-i_NetResultAfterTax_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_OperatingResult" xlink:label="venj-bw2-i_OperatingResult_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_OutcomeAssetsCurrentLessLiabilitiesCurrent" xlink:label="venj-bw2-i_OutcomeAssetsCurrentLessLiabilitiesCurrent_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_OutcomeAssetsLessLiabilitiesCurrent" xlink:label="venj-bw2-i_OutcomeAssetsLessLiabilitiesCurrent_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_ResultAfterTaxOrdinaryActivities" xlink:label="venj-bw2-i_ResultAfterTaxOrdinaryActivities_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_ResultAfterTax" xlink:label="venj-bw2-i_ResultAfterTax_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_ResultAttributableNoncontrollingInterest" xlink:label="venj-bw2-i_ResultAttributableNoncontrollingInterest_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_ResultBeforeTaxOrdinaryActivities" xlink:label="venj-bw2-i_ResultBeforeTaxOrdinaryActivities_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

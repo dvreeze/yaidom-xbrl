@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="rj-i_AdjustmentsReconcileOperatingResult_totalLabel_en" xlink:label="rj-i_AdjustmentsReconcileOperatingResult_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Adjustments to reconcile operating result, total</link:label>
+    <link:label id="rj-i_CashAndCashEquivalentsCashFlow_totalLabel_en" xlink:label="rj-i_CashAndCashEquivalentsCashFlow_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Cash and cash equivalents (cash flow), total</link:label>
+    <link:label id="rj-i_ChangesWorkingCapital_totalLabel_en" xlink:label="rj-i_ChangesWorkingCapital_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Changes in working capital, total</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_AdjustmentsReconcileOperatingResult_loc" xlink:to="rj-i_AdjustmentsReconcileOperatingResult_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_CashAndCashEquivalentsCashFlow_loc" xlink:to="rj-i_CashAndCashEquivalentsCashFlow_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_ChangesWorkingCapital_loc" xlink:to="rj-i_ChangesWorkingCapital_totalLabel_en" xlink:type="arc"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_AdjustmentsReconcileOperatingResult" xlink:label="rj-i_AdjustmentsReconcileOperatingResult_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_CashAndCashEquivalentsCashFlow" xlink:label="rj-i_CashAndCashEquivalentsCashFlow_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_ChangesWorkingCapital" xlink:label="rj-i_ChangesWorkingCapital_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_3b4247d5691e460c8d07447460cd5dfd" roleURI="urn:bd:linkrole:bd-lr-pre_opgaaf-intracommunautaire-prestaties" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_opgaaf-intracommunautaire-prestaties" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_IntraCommunitySuppliesServicesReportTitle" xlink:label="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATIdentificationNumberNLFiscalEntityDivision" xlink:label="bd-ob_VATIdentificationNumberNLFiscalEntityDivision_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_MessageDetailsTitle" xlink:label="bd-abstr_MessageDetailsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_SoftwareVendorAccountNumber" xlink:label="bd-alg_SoftwareVendorAccountNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_SoftwarePackageName" xlink:label="bd-alg_SoftwarePackageName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_SoftwarePackageVersion" xlink:label="bd-alg_SoftwarePackageVersion_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_MessageReferenceSupplierICP" xlink:label="bd-alg_MessageReferenceSupplierICP_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_DateTimeCreation" xlink:label="bd-alg_DateTimeCreation_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_TaxConsultantDataTitle" xlink:label="bd-abstr_TaxConsultantDataTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_TaxConsultantNumber" xlink:label="bd-alg_TaxConsultantNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-alg-tuples.xsd#bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification" xlink:label="bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_ProfessionalAssociationForTaxServiceProvidersName" xlink:label="bd-alg_ProfessionalAssociationForTaxServiceProvidersName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_CommunicationsDataTitle" xlink:label="bd-abstr_CommunicationsDataTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_ContactInitials" xlink:label="bd-alg_ContactInitials_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_ContactPrefix" xlink:label="bd-alg_ContactPrefix_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_ContactSurname" xlink:label="bd-alg_ContactSurname_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_ContactTelephoneNumber" xlink:label="bd-alg_ContactTelephoneNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunitySupplies" xlink:label="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_CountryCodeISO-EC" xlink:label="bd-ob_CountryCodeISO-EC_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATIdentificationNumberNational" xlink:label="bd-ob_VATIdentificationNumberNational_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_SuppliesAmount" xlink:label="bd-ob_SuppliesAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityServices" xlink:label="bd-ob-tuple_IntraCommunityServices_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_ServicesAmount" xlink:label="bd-ob_ServicesAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunitySuppliesCorrection" xlink:label="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_CorrectionsSuppliesAmount" xlink:label="bd-ob_CorrectionsSuppliesAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityServicesCorrection" xlink:label="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_CorrectionsServicesAmount" xlink:label="bd-ob_CorrectionsServicesAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityABCSupplies" xlink:label="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityABCSuppliesCorrection" xlink:label="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob_VATIdentificationNumberNLFiscalEntityDivision_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-abstr_MessageDetailsTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_SoftwareVendorAccountNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_SoftwarePackageName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_SoftwarePackageVersion_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_MessageReferenceSupplierICP_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_DateTimeCreation_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-abstr_TaxConsultantDataTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_TaxConsultantDataTitle_loc" xlink:to="bd-alg_TaxConsultantNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_TaxConsultantDataTitle_loc" xlink:to="bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification_loc" xlink:to="bd-alg_ProfessionalAssociationForTaxServiceProvidersName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-abstr_CommunicationsDataTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_CommunicationsDataTitle_loc" xlink:to="bd-alg_ContactInitials_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_CommunicationsDataTitle_loc" xlink:to="bd-alg_ContactPrefix_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_CommunicationsDataTitle_loc" xlink:to="bd-alg_ContactSurname_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_CommunicationsDataTitle_loc" xlink:to="bd-alg_ContactTelephoneNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="9" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:to="bd-ob_CountryCodeISO-EC_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:to="bd-ob_VATIdentificationNumberNational_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:to="bd-ob_SuppliesAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob-tuple_IntraCommunityServices_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityServices_loc" xlink:to="bd-ob_CountryCodeISO-EC_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityServices_loc" xlink:to="bd-ob_VATIdentificationNumberNational_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityServices_loc" xlink:to="bd-ob_ServicesAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:to="bd-ob_CountryCodeISO-EC_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:to="bd-ob_VATIdentificationNumberNational_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:to="bd-ob_CorrectionsSuppliesAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="8" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:to="bd-ob_CountryCodeISO-EC_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:to="bd-ob_VATIdentificationNumberNational_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:to="bd-ob_CorrectionsServicesAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="9" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:to="bd-ob_CountryCodeISO-EC_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:to="bd-ob_VATIdentificationNumberNational_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:to="bd-ob_SuppliesAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IntraCommunitySuppliesServicesReportTitle_loc" xlink:to="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="10" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:to="bd-ob_CountryCodeISO-EC_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:to="bd-ob_VATIdentificationNumberNational_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:to="bd-ob_CorrectionsSuppliesAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>

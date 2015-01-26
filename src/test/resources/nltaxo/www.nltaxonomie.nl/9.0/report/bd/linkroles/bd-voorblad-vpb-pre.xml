@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_ffaede764d9a4687be51c4d0a64c2e33" roleURI="urn:bd:linkrole:bd-lr-pre_voorblad" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_voorblad" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_TaxReturnCommonDataTitle" xlink:label="bd-abstr_TaxReturnCommonDataTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LegalPersonName" xlink:label="bd-bedr_LegalPersonName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_FunctionalCurrencySchemeExists" xlink:label="bd-bedr_FunctionalCurrencySchemeExists_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_TaxReturnConcernsTaxEntity" xlink:label="bd-bedr_TaxReturnConcernsTaxEntity_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_IncomeTaxReturnSignatureTitle" xlink:label="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_IncomeTaxReturnSignatureInitials" xlink:label="bd-bedr_IncomeTaxReturnSignatureInitials_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_IncomeTaxReturnSignaturePrefix" xlink:label="bd-bedr_IncomeTaxReturnSignaturePrefix_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_IncomeTaxReturnSignatureSurname" xlink:label="bd-bedr_IncomeTaxReturnSignatureSurname_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_IncomeTaxReturnSignatureFunctionSignatory" xlink:label="bd-bedr_IncomeTaxReturnSignatureFunctionSignatory_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_IncomeTaxReturnSignatureTelephoneNumber" xlink:label="bd-bedr_IncomeTaxReturnSignatureTelephoneNumber_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-abstr_TaxReturnCommonDataTitle_loc" xlink:to="bd-bedr_LegalPersonName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_TaxReturnCommonDataTitle_loc" xlink:to="bd-bedr_FunctionalCurrencySchemeExists_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_TaxReturnCommonDataTitle_loc" xlink:to="bd-bedr_TaxReturnConcernsTaxEntity_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_TaxReturnCommonDataTitle_loc" xlink:to="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:to="bd-bedr_IncomeTaxReturnSignatureInitials_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:to="bd-bedr_IncomeTaxReturnSignaturePrefix_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:to="bd-bedr_IncomeTaxReturnSignatureSurname_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:to="bd-bedr_IncomeTaxReturnSignatureFunctionSignatory_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_IncomeTaxReturnSignatureTitle_loc" xlink:to="bd-bedr_IncomeTaxReturnSignatureTelephoneNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>

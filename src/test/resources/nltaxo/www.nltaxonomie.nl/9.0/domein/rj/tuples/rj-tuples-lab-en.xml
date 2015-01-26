@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="rj-t_LocationActualActivitiesAddressAbroadSpecification_label_en" xlink:label="rj-t_LocationActualActivitiesAddressAbroadSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Address of actual establishment abroad [specification]</link:label>
+    <link:label id="rj-t_LocationActualActivitiesAddressNLSpecification_label_en" xlink:label="rj-t_LocationActualActivitiesAddressNLSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Address of actual establishment in the Netherlands [specification]</link:label>
+    <link:label id="rj-t_ChangeAccountingEstimatesSpecification_label_en" xlink:label="rj-t_ChangeAccountingEstimatesSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Change in accounting estimates [specification]</link:label>
+    <link:label id="rj-t_ChangeAccountingPoliciesSpecification_label_en" xlink:label="rj-t_ChangeAccountingPoliciesSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Change in accounting policies [specification]</link:label>
+    <link:label id="rj-t_ConstructionContractsSpecification_label_en" xlink:label="rj-t_ConstructionContractsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Construction contracts [specification]</link:label>
+    <link:label id="rj-t_ContingentLiabilitiesDetailsSpecification_label_en" xlink:label="rj-t_ContingentLiabilitiesDetailsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Contingent liabilities, details [specification]</link:label>
+    <link:label id="rj-t_DiscontinuedOperationsSpecification_label_en" xlink:label="rj-t_DiscontinuedOperationsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Discontinued operations [specification]</link:label>
+    <link:label id="rj-t_ExceptionalItemsSpecification_label_en" xlink:label="rj-t_ExceptionalItemsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Exceptional items [specification]</link:label>
+    <link:label id="rj-t_FinancialInstrumentsPolicySpecification_label_en" xlink:label="rj-t_FinancialInstrumentsPolicySpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Financial instruments, policy [specification]</link:label>
+    <link:label id="rj-t_HedgeRelationshipDetailsSpecification_label_en" xlink:label="rj-t_HedgeRelationshipDetailsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Hedge relationship [specification]</link:label>
+    <link:label id="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_label_en" xlink:label="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Intangible assets, individual asset of importance for the legal entity [specification]</link:label>
+    <link:label id="rj-t_LicensingAgreementsSpecification_label_en" xlink:label="rj-t_LicensingAgreementsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Licensing agreements [specification]</link:label>
+    <link:label id="rj-t_MergersAcquisitionsSpecification_label_en" xlink:label="rj-t_MergersAcquisitionsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Mergers and acquisitions [specification]</link:label>
+    <link:label id="rj-t_NetRevenueSegmentCategorySpecification_label_en" xlink:label="rj-t_NetRevenueSegmentCategorySpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Net revenue, segmented by category [specification]</link:label>
+    <link:label id="rj-t_ParticipatingInterestsSpecification_label_en" xlink:label="rj-t_ParticipatingInterestsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Participating interests [specification]</link:label>
+    <link:label id="rj-t_PriorPeriodErrorsSpecification_label_en" xlink:label="rj-t_PriorPeriodErrorsSpecification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Prior period errors [specification]</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_ChangeAccountingEstimatesSpecification_loc" xlink:to="rj-t_ChangeAccountingEstimatesSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_ChangeAccountingPoliciesSpecification_loc" xlink:to="rj-t_ChangeAccountingPoliciesSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_ConstructionContractsSpecification_loc" xlink:to="rj-t_ConstructionContractsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_ContingentLiabilitiesDetailsSpecification_loc" xlink:to="rj-t_ContingentLiabilitiesDetailsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_DiscontinuedOperationsSpecification_loc" xlink:to="rj-t_DiscontinuedOperationsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_ExceptionalItemsSpecification_loc" xlink:to="rj-t_ExceptionalItemsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_FinancialInstrumentsPolicySpecification_loc" xlink:to="rj-t_FinancialInstrumentsPolicySpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_HedgeRelationshipDetailsSpecification_loc" xlink:to="rj-t_HedgeRelationshipDetailsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_loc" xlink:to="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_LicensingAgreementsSpecification_loc" xlink:to="rj-t_LicensingAgreementsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_LocationActualActivitiesAddressAbroadSpecification_loc" xlink:to="rj-t_LocationActualActivitiesAddressAbroadSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_LocationActualActivitiesAddressNLSpecification_loc" xlink:to="rj-t_LocationActualActivitiesAddressNLSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_MergersAcquisitionsSpecification_loc" xlink:to="rj-t_MergersAcquisitionsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_NetRevenueSegmentCategorySpecification_loc" xlink:to="rj-t_NetRevenueSegmentCategorySpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_ParticipatingInterestsSpecification_loc" xlink:to="rj-t_ParticipatingInterestsSpecification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-t_PriorPeriodErrorsSpecification_loc" xlink:to="rj-t_PriorPeriodErrorsSpecification_label_en" xlink:type="arc"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ChangeAccountingEstimatesSpecification" xlink:label="rj-t_ChangeAccountingEstimatesSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ChangeAccountingPoliciesSpecification" xlink:label="rj-t_ChangeAccountingPoliciesSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ConstructionContractsSpecification" xlink:label="rj-t_ConstructionContractsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ContingentLiabilitiesDetailsSpecification" xlink:label="rj-t_ContingentLiabilitiesDetailsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_DiscontinuedOperationsSpecification" xlink:label="rj-t_DiscontinuedOperationsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ExceptionalItemsSpecification" xlink:label="rj-t_ExceptionalItemsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_FinancialInstrumentsPolicySpecification" xlink:label="rj-t_FinancialInstrumentsPolicySpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_HedgeRelationshipDetailsSpecification" xlink:label="rj-t_HedgeRelationshipDetailsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification" xlink:label="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_LicensingAgreementsSpecification" xlink:label="rj-t_LicensingAgreementsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_LocationActualActivitiesAddressAbroadSpecification" xlink:label="rj-t_LocationActualActivitiesAddressAbroadSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_LocationActualActivitiesAddressNLSpecification" xlink:label="rj-t_LocationActualActivitiesAddressNLSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_MergersAcquisitionsSpecification" xlink:label="rj-t_MergersAcquisitionsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_NetRevenueSegmentCategorySpecification" xlink:label="rj-t_NetRevenueSegmentCategorySpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ParticipatingInterestsSpecification" xlink:label="rj-t_ParticipatingInterestsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_PriorPeriodErrorsSpecification" xlink:label="rj-t_PriorPeriodErrorsSpecification_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

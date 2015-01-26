@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+  <link:referenceLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_AverageNumberEmployeesSegmentSpecification" xlink:label="venj-bw2-t_AverageNumberEmployeesSegmentSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_ConsolidatedInterestsSpecification" xlink:label="venj-bw2-t_ConsolidatedInterestsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_ExtraordinaryItemsSpecification" xlink:label="venj-bw2-t_ExtraordinaryItemsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_FinancialInstrumentsDetailsSpecification" xlink:label="venj-bw2-t_FinancialInstrumentsDetailsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_LiabilitiesCurrentMaturitySpecification" xlink:label="venj-bw2-t_LiabilitiesCurrentMaturitySpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_LiabilitiesNoncurrentMaturitySpecification" xlink:label="venj-bw2-t_LiabilitiesNoncurrentMaturitySpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_LiabilitiesPledgedAsCollateralSpecification" xlink:label="venj-bw2-t_LiabilitiesPledgedAsCollateralSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_LoansAdvancesGuaranteesOnBehalfOfDirectorsSpecification" xlink:label="venj-bw2-t_LoansAdvancesGuaranteesOnBehalfOfDirectorsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_NetRevenueSegmentGeographicSpecification" xlink:label="venj-bw2-t_NetRevenueSegmentGeographicSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_RelatedPartyTransactionsSpecification" xlink:label="venj-bw2-t_RelatedPartyTransactionsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_RemunerationManagingSupervisoryDirectorsSpecification" xlink:label="venj-bw2-t_RemunerationManagingSupervisoryDirectorsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_ShareBasedPaymentsSpecification" xlink:label="venj-bw2-t_ShareBasedPaymentsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-tuples.xsd#venj-bw2-t_SignatureManagingSupervisoryDirectorsSpecification" xlink:label="venj-bw2-t_SignatureManagingSupervisoryDirectorsSpecification_loc" xlink:type="locator"/>
+    <link:reference id="venj-bw2-t_BW2_101_2_ref" xlink:label="venj-bw2-t_BW2_101_2_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>101</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+      <ref:Paragraph>2</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_210_2_ref" xlink:label="venj-bw2-t_BW2_210_2_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>210</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+      <ref:Paragraph>2</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_381_3_ref" xlink:label="venj-bw2-t_BW2_381_3_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>381</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+      <ref:Paragraph>3</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_381a_ref" xlink:label="venj-bw2-t_BW2_381a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>381a</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_381b_ref" xlink:label="venj-bw2-t_BW2_381b_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>381b</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_382_ref" xlink:label="venj-bw2-t_BW2_382_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>382</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_383_1_ref" xlink:label="venj-bw2-t_BW2_383_1_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>383</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+      <ref:Paragraph>1</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_383_2_ref" xlink:label="venj-bw2-t_BW2_383_2_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>383</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+      <ref:Paragraph>2</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_BW2_414_ref" xlink:label="venj-bw2-t_BW2_414_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>414</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+    </link:reference>
+    <link:reference id="venj-bw2-t_RJ_254_403_ref" xlink:label="venj-bw2-t_RJ_254_403_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>254</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>403</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_RJ_254_404_ref" xlink:label="venj-bw2-t_RJ_254_404_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>254</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>404</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_RJ_270_404_ref" xlink:label="venj-bw2-t_RJ_270_404_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>270</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>404</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_RJ_275_504_ref" xlink:label="venj-bw2-t_RJ_275_504_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>275</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>504</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_RJ_350_202_ref" xlink:label="venj-bw2-t_RJ_350_202_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>350</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>202</ref:Paragraph>
+    </link:reference>
+    <link:reference id="venj-bw2-t_RJk_B13_112_ref" xlink:label="venj-bw2-t_RJk_B13_112_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>B13</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving voor kleine rechtspersonen</ref:Name>
+      <ref:Paragraph>112</ref:Paragraph>
+    </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_AverageNumberEmployeesSegmentSpecification_loc" xlink:to="venj-bw2-t_BW2_382_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_ConsolidatedInterestsSpecification_loc" xlink:to="venj-bw2-t_BW2_414_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_ExtraordinaryItemsSpecification_loc" xlink:to="venj-bw2-t_RJ_270_404_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_ExtraordinaryItemsSpecification_loc" xlink:to="venj-bw2-t_RJk_B13_112_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_FinancialInstrumentsDetailsSpecification_loc" xlink:to="venj-bw2-t_BW2_381a_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_FinancialInstrumentsDetailsSpecification_loc" xlink:to="venj-bw2-t_BW2_381b_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_LiabilitiesCurrentMaturitySpecification_loc" xlink:to="venj-bw2-t_RJ_254_403_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_LiabilitiesNoncurrentMaturitySpecification_loc" xlink:to="venj-bw2-t_RJ_254_403_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_LiabilitiesPledgedAsCollateralSpecification_loc" xlink:to="venj-bw2-t_RJ_254_404_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_LoansAdvancesGuaranteesOnBehalfOfDirectorsSpecification_loc" xlink:to="venj-bw2-t_BW2_383_2_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_NetRevenueSegmentGeographicSpecification_loc" xlink:to="venj-bw2-t_RJ_350_202_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_RelatedPartyTransactionsSpecification_loc" xlink:to="venj-bw2-t_BW2_381_3_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_RemunerationManagingSupervisoryDirectorsSpecification_loc" xlink:to="venj-bw2-t_BW2_383_1_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_ShareBasedPaymentsSpecification_loc" xlink:to="venj-bw2-t_RJ_275_504_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_SignatureManagingSupervisoryDirectorsSpecification_loc" xlink:to="venj-bw2-t_BW2_101_2_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="venj-bw2-t_SignatureManagingSupervisoryDirectorsSpecification_loc" xlink:to="venj-bw2-t_BW2_210_2_ref" xlink:type="arc"/>
+  </link:referenceLink>
+</link:linkbase>

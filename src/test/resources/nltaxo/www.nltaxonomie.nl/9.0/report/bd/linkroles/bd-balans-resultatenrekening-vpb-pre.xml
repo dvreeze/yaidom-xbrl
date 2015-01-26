@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_0f073abb460f4afbacc8650f7640616b" roleURI="urn:bd:linkrole:bd-lr-pre_balans-resultatenrekening" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_balans-resultatenrekening" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_EnterpriseGeneralInformationTitle" xlink:label="bd-abstr_EnterpriseGeneralInformationTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_SubsidiaryTaxEntityExists" xlink:label="bd-bedr_SubsidiaryTaxEntityExists_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_FinancialFixedAssetsTitle" xlink:label="bd-abstr_FinancialFixedAssetsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ParticipatingInterests" xlink:label="bd-bedr_ParticipatingInterests_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LongTermReceivablesGroupCompaniesFiscal" xlink:label="bd-bedr_LongTermReceivablesGroupCompaniesFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LongTermReceivablesParticipatingInterestCompaniesFiscal" xlink:label="bd-bedr_LongTermReceivablesParticipatingInterestCompaniesFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_FinancialFixedAssetsOtherFiscal" xlink:label="bd-bedr_FinancialFixedAssetsOtherFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_FixedAssetsTitle" xlink:label="bd-abstr_FixedAssetsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_FinancialFixedAssetsSpecificationTitle" xlink:label="bd-abstr_FinancialFixedAssetsSpecificationTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LongTermReceivablesGroupCompaniesNominal" xlink:label="bd-bedr_LongTermReceivablesGroupCompaniesNominal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LongTermReceivablesParticipatingInterestCompaniesNominal" xlink:label="bd-bedr_LongTermReceivablesParticipatingInterestCompaniesNominal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_FinancialFixedAssetsOtherTaxNominalFiscal" xlink:label="bd-bedr_FinancialFixedAssetsOtherTaxNominalFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ReceivablesTitle" xlink:label="bd-abstr_ReceivablesTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShortTermReceivablesGroupCompaniesFiscal" xlink:label="bd-bedr_ShortTermReceivablesGroupCompaniesFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShortTermReceivablesParticipatingInterestCompaniesFiscal" xlink:label="bd-bedr_ShortTermReceivablesParticipatingInterestCompaniesFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ReceivablesSpecificationTitle" xlink:label="bd-abstr_ReceivablesSpecificationTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShortTermReceivablesGroupCompaniesNominal" xlink:label="bd-bedr_ShortTermReceivablesGroupCompaniesNominal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShortTermReceivablesParticipatingInterestCompaniesNominal" xlink:label="bd-bedr_ShortTermReceivablesParticipatingInterestCompaniesNominal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_BusinessCapitalTitle" xlink:label="bd-abstr_BusinessCapitalTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_PaidCalledUpCapitalFiscal" xlink:label="bd-bedr_PaidCalledUpCapitalFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_InformalCapitalFiscal" xlink:label="bd-bedr_InformalCapitalFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_SharePremiumFiscal" xlink:label="bd-bedr_SharePremiumFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_RetainedProfitsFiscal" xlink:label="bd-bedr_RetainedProfitsFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_CompartmentReserveTaxed" xlink:label="bd-bedr_CompartmentReserveTaxed_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_TaxReservesOtherFiscal" xlink:label="bd-bedr_TaxReservesOtherFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ProvisionsTitle" xlink:label="bd-abstr_ProvisionsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ProvisionAnnuityAndPension" xlink:label="bd-bedr_ProvisionAnnuityAndPension_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_LongTermDebtsTitle" xlink:label="bd-abstr_LongTermDebtsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ConvertibleLoansFiscal" xlink:label="bd-bedr_ConvertibleLoansFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_BondsFiscal" xlink:label="bd-bedr_BondsFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LongTermDebtsGroupCompanies" xlink:label="bd-bedr_LongTermDebtsGroupCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LongTermDebtsParticipatingInterestCompanies" xlink:label="bd-bedr_LongTermDebtsParticipatingInterestCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ShortTermDebtsTitle" xlink:label="bd-abstr_ShortTermDebtsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShortTermDebtsGroupCompanies" xlink:label="bd-bedr_ShortTermDebtsGroupCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShortTermDebtsParticipatingInterestCompanies" xlink:label="bd-bedr_ShortTermDebtsParticipatingInterestCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ProfitAndLossTitle" xlink:label="bd-abstr_ProfitAndLossTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ParticipatingInterestResultTotalFiscal" xlink:label="bd-bedr_ParticipatingInterestResultTotalFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_BusinessFinancialIncomeTitle" xlink:label="bd-abstr_BusinessFinancialIncomeTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_RevenuesOnReceivablesGroupCompanies" xlink:label="bd-bedr_RevenuesOnReceivablesGroupCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_RevenuesOnReceivablesParticipatingInterestCompanies" xlink:label="bd-bedr_RevenuesOnReceivablesParticipatingInterestCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_BusinessFinancialExpenditureTitle" xlink:label="bd-abstr_BusinessFinancialExpenditureTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_CostsOnReceivablesParticipatingInterestCompanies" xlink:label="bd-bedr_CostsOnReceivablesParticipatingInterestCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_CostsOnReceivablesGroupCompanies" xlink:label="bd-bedr_CostsOnReceivablesGroupCompanies_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ExtraordinaryIncomeBusinessTitle" xlink:label="bd-abstr_ExtraordinaryIncomeBusinessTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_BenefitsOrLossesRemovalSubsidiaryTerminationTaxEntityFiscal" xlink:label="bd-bedr_BenefitsOrLossesRemovalSubsidiaryTerminationTaxEntityFiscal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ExtraordinaryExpenditureBusinessTitle" xlink:label="bd-abstr_ExtraordinaryExpenditureBusinessTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_PaymentsCharitiesFiscal" xlink:label="bd-bedr_PaymentsCharitiesFiscal_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-abstr_EnterpriseGeneralInformationTitle_loc" xlink:to="bd-bedr_SubsidiaryTaxEntityExists_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="10" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsTitle_loc" xlink:to="bd-bedr_ParticipatingInterests_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsTitle_loc" xlink:to="bd-bedr_LongTermReceivablesGroupCompaniesFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsTitle_loc" xlink:to="bd-bedr_LongTermReceivablesParticipatingInterestCompaniesFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsTitle_loc" xlink:to="bd-bedr_FinancialFixedAssetsOtherFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FixedAssetsTitle_loc" xlink:to="bd-abstr_FinancialFixedAssetsSpecificationTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsSpecificationTitle_loc" xlink:to="bd-bedr_LongTermReceivablesGroupCompaniesNominal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsSpecificationTitle_loc" xlink:to="bd-bedr_LongTermReceivablesParticipatingInterestCompaniesNominal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_FinancialFixedAssetsSpecificationTitle_loc" xlink:to="bd-bedr_FinancialFixedAssetsOtherTaxNominalFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ReceivablesTitle_loc" xlink:to="bd-bedr_ShortTermReceivablesGroupCompaniesFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ReceivablesTitle_loc" xlink:to="bd-bedr_ShortTermReceivablesParticipatingInterestCompaniesFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ReceivablesSpecificationTitle_loc" xlink:to="bd-bedr_ShortTermReceivablesGroupCompaniesNominal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ReceivablesSpecificationTitle_loc" xlink:to="bd-bedr_ShortTermReceivablesParticipatingInterestCompaniesNominal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessCapitalTitle_loc" xlink:to="bd-bedr_PaidCalledUpCapitalFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessCapitalTitle_loc" xlink:to="bd-bedr_InformalCapitalFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessCapitalTitle_loc" xlink:to="bd-bedr_SharePremiumFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessCapitalTitle_loc" xlink:to="bd-bedr_RetainedProfitsFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessCapitalTitle_loc" xlink:to="bd-bedr_CompartmentReserveTaxed_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessCapitalTitle_loc" xlink:to="bd-bedr_TaxReservesOtherFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="9" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ProvisionsTitle_loc" xlink:to="bd-bedr_ProvisionAnnuityAndPension_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_LongTermDebtsTitle_loc" xlink:to="bd-bedr_ConvertibleLoansFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_LongTermDebtsTitle_loc" xlink:to="bd-bedr_BondsFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_LongTermDebtsTitle_loc" xlink:to="bd-bedr_LongTermDebtsGroupCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_LongTermDebtsTitle_loc" xlink:to="bd-bedr_LongTermDebtsParticipatingInterestCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShortTermDebtsTitle_loc" xlink:to="bd-bedr_ShortTermDebtsGroupCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShortTermDebtsTitle_loc" xlink:to="bd-bedr_ShortTermDebtsParticipatingInterestCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ProfitAndLossTitle_loc" xlink:to="bd-bedr_ParticipatingInterestResultTotalFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="8" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessFinancialIncomeTitle_loc" xlink:to="bd-bedr_RevenuesOnReceivablesGroupCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessFinancialIncomeTitle_loc" xlink:to="bd-bedr_RevenuesOnReceivablesParticipatingInterestCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessFinancialExpenditureTitle_loc" xlink:to="bd-bedr_CostsOnReceivablesParticipatingInterestCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_BusinessFinancialExpenditureTitle_loc" xlink:to="bd-bedr_CostsOnReceivablesGroupCompanies_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ExtraordinaryIncomeBusinessTitle_loc" xlink:to="bd-bedr_BenefitsOrLossesRemovalSubsidiaryTerminationTaxEntityFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ExtraordinaryExpenditureBusinessTitle_loc" xlink:to="bd-bedr_PaymentsCharitiesFiscal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>

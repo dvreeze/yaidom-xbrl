@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <link:referenceLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:reference xlink:label="bd_b138d6aa0dbd419caae2af8428d46b8a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_b138d6aa0dbd419caae2af8428d46b8a">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>91</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_32371b5a396b48d0b5d765c049622df8_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_32371b5a396b48d0b5d765c049622df8">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>89</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_d36cc141ec7e443b999b09973c07bad5_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_d36cc141ec7e443b999b09973c07bad5">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>83</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_b98ae65080514dd8b8d01f40340e8acf_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_b98ae65080514dd8b8d01f40340e8acf">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>84</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_05a103b102c046f5bf21f2cecf49b480_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_05a103b102c046f5bf21f2cecf49b480">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>90</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:reference xlink:label="bd_23dec28a08a444c1a7bb691a1636f2ed_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource" id="bd_23dec28a08a444c1a7bb691a1636f2ed">
+      <ref:Name>belastingdienst taxonomie definities.pdf</ref:Name>
+      <ref:Paragraph>88</ref:Paragraph>
+      <ref:Chapter>mda definities</ref:Chapter>
+    </link:reference>
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunitySuppliesCorrection" xlink:label="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:to="bd_b138d6aa0dbd419caae2af8428d46b8a_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityABCSuppliesCorrection" xlink:label="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:to="bd_32371b5a396b48d0b5d765c049622df8_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityServices" xlink:label="bd-ob-tuple_IntraCommunityServices_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-ob-tuple_IntraCommunityServices_loc" xlink:to="bd_d36cc141ec7e443b999b09973c07bad5_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityServicesCorrection" xlink:label="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:to="bd_b98ae65080514dd8b8d01f40340e8acf_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunitySupplies" xlink:label="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:to="bd_05a103b102c046f5bf21f2cecf49b480_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityABCSupplies" xlink:label="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:type="locator" />
+    <link:referenceArc xlink:from="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:to="bd_23dec28a08a444c1a7bb691a1636f2ed_ref" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:type="arc" />
+  </link:referenceLink>
+</link:linkbase>

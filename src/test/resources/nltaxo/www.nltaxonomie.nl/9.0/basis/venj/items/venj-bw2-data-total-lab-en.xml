@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="venj-bw2-i_Assets_totalLabel_en" xlink:label="venj-bw2-i_Assets_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Assets, total</link:label>
+    <link:label id="venj-bw2-i_CashAndCashEquivalents_totalLabel_en" xlink:label="venj-bw2-i_CashAndCashEquivalents_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Cash and cash equivalents, total</link:label>
+    <link:label id="venj-bw2-i_AssetsCurrent_totalLabel_en" xlink:label="venj-bw2-i_AssetsCurrent_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Current assets, total</link:label>
+    <link:label id="venj-bw2-i_LiabilitiesCurrent_totalLabel_en" xlink:label="venj-bw2-i_LiabilitiesCurrent_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Current liabilities, total</link:label>
+    <link:label id="venj-bw2-i_EquityAndLiabilities_totalLabel_en" xlink:label="venj-bw2-i_EquityAndLiabilities_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Equity and liabilities, total</link:label>
+    <link:label id="venj-bw2-i_Equity_totalLabel_en" xlink:label="venj-bw2-i_Equity_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Equity, total</link:label>
+    <link:label id="venj-bw2-i_FinancialAssets_totalLabel_en" xlink:label="venj-bw2-i_FinancialAssets_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Financial assets, total</link:label>
+    <link:label id="venj-bw2-i_EquityGroup_totalLabel_en" xlink:label="venj-bw2-i_EquityGroup_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Group equity, total</link:label>
+    <link:label id="venj-bw2-i_IntangibleAssets_totalLabel_en" xlink:label="venj-bw2-i_IntangibleAssets_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Intangible assets, total</link:label>
+    <link:label id="venj-bw2-i_Inventories_totalLabel_en" xlink:label="venj-bw2-i_Inventories_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Inventories, total</link:label>
+    <link:label id="venj-bw2-i_LegalStatutoryReserves_totalLabel_en" xlink:label="venj-bw2-i_LegalStatutoryReserves_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Legal and statutory reserves, total</link:label>
+    <link:label id="venj-bw2-i_NetRevenue_totalLabel_en" xlink:label="venj-bw2-i_NetRevenue_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Net revenue, total</link:label>
+    <link:label id="venj-bw2-i_AssetsNoncurrent_totalLabel_en" xlink:label="venj-bw2-i_AssetsNoncurrent_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Non-current assets, total</link:label>
+    <link:label id="venj-bw2-i_LiabilitiesNoncurrent_totalLabel_en" xlink:label="venj-bw2-i_LiabilitiesNoncurrent_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Non-current liabilities, total</link:label>
+    <link:label id="venj-bw2-i_OperatingExpenses_totalLabel_en" xlink:label="venj-bw2-i_OperatingExpenses_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Operating expenses, total</link:label>
+    <link:label id="venj-bw2-i_OperatingIncome_totalLabel_en" xlink:label="venj-bw2-i_OperatingIncome_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Operating income, total</link:label>
+    <link:label id="venj-bw2-i_PropertyPlantEquipment_totalLabel_en" xlink:label="venj-bw2-i_PropertyPlantEquipment_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Property, plant and equipment, total</link:label>
+    <link:label id="venj-bw2-i_Provisions_totalLabel_en" xlink:label="venj-bw2-i_Provisions_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Provisions, total</link:label>
+    <link:label id="venj-bw2-i_Receivables_totalLabel_en" xlink:label="venj-bw2-i_Receivables_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Receivables, total</link:label>
+    <link:label id="venj-bw2-i_Securities_totalLabel_en" xlink:label="venj-bw2-i_Securities_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Securities, total</link:label>
+    <link:label id="venj-bw2-i_ShareCapital_totalLabel_en" xlink:label="venj-bw2-i_ShareCapital_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Share capital, total</link:label>
+    <link:label id="venj-bw2-i_SumOfExpenses_totalLabel_en" xlink:label="venj-bw2-i_SumOfExpenses_totalLabel_en" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xlink:type="resource" xml:lang="en">Sum of expenses, total</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_AssetsCurrent_loc" xlink:to="venj-bw2-i_AssetsCurrent_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_AssetsNoncurrent_loc" xlink:to="venj-bw2-i_AssetsNoncurrent_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_Assets_loc" xlink:to="venj-bw2-i_Assets_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_CashAndCashEquivalents_loc" xlink:to="venj-bw2-i_CashAndCashEquivalents_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_EquityAndLiabilities_loc" xlink:to="venj-bw2-i_EquityAndLiabilities_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_EquityGroup_loc" xlink:to="venj-bw2-i_EquityGroup_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_Equity_loc" xlink:to="venj-bw2-i_Equity_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_FinancialAssets_loc" xlink:to="venj-bw2-i_FinancialAssets_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_IntangibleAssets_loc" xlink:to="venj-bw2-i_IntangibleAssets_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_Inventories_loc" xlink:to="venj-bw2-i_Inventories_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_LegalStatutoryReserves_loc" xlink:to="venj-bw2-i_LegalStatutoryReserves_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_LiabilitiesCurrent_loc" xlink:to="venj-bw2-i_LiabilitiesCurrent_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_LiabilitiesNoncurrent_loc" xlink:to="venj-bw2-i_LiabilitiesNoncurrent_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_NetRevenue_loc" xlink:to="venj-bw2-i_NetRevenue_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_OperatingExpenses_loc" xlink:to="venj-bw2-i_OperatingExpenses_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_OperatingIncome_loc" xlink:to="venj-bw2-i_OperatingIncome_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_PropertyPlantEquipment_loc" xlink:to="venj-bw2-i_PropertyPlantEquipment_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_Provisions_loc" xlink:to="venj-bw2-i_Provisions_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_Receivables_loc" xlink:to="venj-bw2-i_Receivables_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_Securities_loc" xlink:to="venj-bw2-i_Securities_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_ShareCapital_loc" xlink:to="venj-bw2-i_ShareCapital_totalLabel_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-i_SumOfExpenses_loc" xlink:to="venj-bw2-i_SumOfExpenses_totalLabel_en" xlink:type="arc"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_AssetsCurrent" xlink:label="venj-bw2-i_AssetsCurrent_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_AssetsNoncurrent" xlink:label="venj-bw2-i_AssetsNoncurrent_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_Assets" xlink:label="venj-bw2-i_Assets_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_CashAndCashEquivalents" xlink:label="venj-bw2-i_CashAndCashEquivalents_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_EquityAndLiabilities" xlink:label="venj-bw2-i_EquityAndLiabilities_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_EquityGroup" xlink:label="venj-bw2-i_EquityGroup_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_Equity" xlink:label="venj-bw2-i_Equity_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_FinancialAssets" xlink:label="venj-bw2-i_FinancialAssets_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_IntangibleAssets" xlink:label="venj-bw2-i_IntangibleAssets_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_Inventories" xlink:label="venj-bw2-i_Inventories_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_LegalStatutoryReserves" xlink:label="venj-bw2-i_LegalStatutoryReserves_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_LiabilitiesCurrent" xlink:label="venj-bw2-i_LiabilitiesCurrent_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_LiabilitiesNoncurrent" xlink:label="venj-bw2-i_LiabilitiesNoncurrent_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_NetRevenue" xlink:label="venj-bw2-i_NetRevenue_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_OperatingExpenses" xlink:label="venj-bw2-i_OperatingExpenses_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_OperatingIncome" xlink:label="venj-bw2-i_OperatingIncome_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_PropertyPlantEquipment" xlink:label="venj-bw2-i_PropertyPlantEquipment_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_Provisions" xlink:label="venj-bw2-i_Provisions_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_Receivables" xlink:label="venj-bw2-i_Receivables_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_Securities" xlink:label="venj-bw2-i_Securities_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_ShareCapital" xlink:label="venj-bw2-i_ShareCapital_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-data.xsd#venj-bw2-i_SumOfExpenses" xlink:label="venj-bw2-i_SumOfExpenses_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

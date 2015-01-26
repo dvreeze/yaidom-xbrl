@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_f921151a1caf431ab74610579f007bdb" roleURI="urn:bd:linkrole:bd-lr-pre_mini-one-stop-shop" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_mini-one-stop-shop" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_MiniOneStopShopTitle" xlink:label="bd-abstr_MiniOneStopShopTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_MessageDetailsTitle" xlink:label="bd-abstr_MessageDetailsTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_SoftwarePackageName" xlink:label="bd-alg_SoftwarePackageName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_SoftwarePackageVersion" xlink:label="bd-alg_SoftwarePackageVersion_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_SoftwareVendorAccountNumber" xlink:label="bd-alg_SoftwareVendorAccountNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-alg-tuples.xsd#bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification" xlink:label="bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-algemeen.xsd#bd-alg_ProfessionalAssociationForTaxServiceProvidersName" xlink:label="bd-alg_ProfessionalAssociationForTaxServiceProvidersName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_CustomerRegistrationTitle" xlink:label="bd-abstr_CustomerRegistrationTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_CompanyName" xlink:label="bd-ob_CompanyName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_VATReturnGeneralTitle" xlink:label="bd-abstr_VATReturnGeneralTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATReturnReferenceNumber" xlink:label="bd-ob_VATReturnReferenceNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATReturnDeviatingPeriodStartDate" xlink:label="bd-ob_VATReturnDeviatingPeriodStartDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATReturnDeviatingPeriodEndDate" xlink:label="bd-ob_VATReturnDeviatingPeriodEndDate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATReturnNil" xlink:label="bd-ob_VATReturnNil_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_GrandTotal" xlink:label="bd-ob_GrandTotal_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_VATReturnMSCONTitle" xlink:label="bd-abstr_VATReturnMSCONTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_GrandTotalMSID" xlink:label="bd-ob_GrandTotalMSID_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_GrandTotalMSEST" xlink:label="bd-ob_GrandTotalMSEST_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_MSIDSuppliesSpecification" xlink:label="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_MSCONCountryCode" xlink:label="bd-ob_MSCONCountryCode_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATNumberCountryCode" xlink:label="bd-ob_VATNumberCountryCode_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATNumber" xlink:label="bd-ob_VATNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATRate" xlink:label="bd-ob_VATRate_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_VATAmount" xlink:label="bd-ob_VATAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-omzetbelasting.xsd#bd-ob_TaxableAmount" xlink:label="bd-ob_TaxableAmount_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-ob-tuples.xsd#bd-ob-tuple_MSESTSuppliesSpecification" xlink:label="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-abstr_MiniOneStopShopTitle_loc" xlink:to="bd-abstr_MessageDetailsTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_SoftwarePackageName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_SoftwarePackageVersion_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg_SoftwareVendorAccountNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MessageDetailsTitle_loc" xlink:to="bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-alg-tuple_ProfessionalAssociationForTaxServiceProvidersSpecification_loc" xlink:to="bd-alg_ProfessionalAssociationForTaxServiceProvidersName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MiniOneStopShopTitle_loc" xlink:to="bd-abstr_CustomerRegistrationTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_CustomerRegistrationTitle_loc" xlink:to="bd-ob_CompanyName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_MiniOneStopShopTitle_loc" xlink:to="bd-abstr_VATReturnGeneralTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnGeneralTitle_loc" xlink:to="bd-ob_VATReturnReferenceNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnGeneralTitle_loc" xlink:to="bd-ob_VATReturnDeviatingPeriodStartDate_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnGeneralTitle_loc" xlink:to="bd-ob_VATReturnDeviatingPeriodEndDate_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnGeneralTitle_loc" xlink:to="bd-ob_VATReturnNil_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnGeneralTitle_loc" xlink:to="bd-ob_GrandTotal_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnGeneralTitle_loc" xlink:to="bd-abstr_VATReturnMSCONTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnMSCONTitle_loc" xlink:to="bd-ob_GrandTotalMSID_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnMSCONTitle_loc" xlink:to="bd-ob_GrandTotalMSEST_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnMSCONTitle_loc" xlink:to="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd-ob_MSCONCountryCode_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd-ob_VATNumberCountryCode_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd-ob_VATNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd-ob_VATRate_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd-ob_VATAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd-ob_TaxableAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_VATReturnMSCONTitle_loc" xlink:to="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd-ob_MSCONCountryCode_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd-ob_VATNumberCountryCode_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd-ob_VATNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd-ob_VATRate_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd-ob_VATAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd-ob_TaxableAmount_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>

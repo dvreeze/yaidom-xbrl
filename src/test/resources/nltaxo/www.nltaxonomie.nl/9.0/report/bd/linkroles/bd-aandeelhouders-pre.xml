@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_212472a2d1274678abbfd3cecba0de76" roleURI="urn:bd:linkrole:bd-lr-pre_aandeelhouders" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_aandeelhouders" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ShareholdersTitle" xlink:label="bd-abstr_ShareholdersTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-bedr-tuples.xsd#bd-bedr-tuple_ShareholderSpecification" xlink:label="bd-bedr-tuple_ShareholderSpecification_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderDirectorLargeShareholderIdentificationNumber" xlink:label="bd-bedr_ShareholderDirectorLargeShareholderIdentificationNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderName" xlink:label="bd-bedr_ShareholderName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderOrdinarySharesNominalValue" xlink:label="bd-bedr_ShareholderOrdinarySharesNominalValue_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderPrefenceSharesNominalValue" xlink:label="bd-bedr_ShareholderPrefenceSharesNominalValue_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderPrioritySharesNominalValue" xlink:label="bd-bedr_ShareholderPrioritySharesNominalValue_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderIssuedCapitalPercentage" xlink:label="bd-bedr_ShareholderIssuedCapitalPercentage_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderReceivablesOnEntity" xlink:label="bd-bedr_ShareholderReceivablesOnEntity_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderInterestPaid" xlink:label="bd-bedr_ShareholderInterestPaid_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderDebtToEntity" xlink:label="bd-bedr_ShareholderDebtToEntity_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderInterestReceived" xlink:label="bd-bedr_ShareholderInterestReceived_loc" xlink:type="locator" />
+    <link:loc xlink:href="../abstracts/bd-abstracts.xsd#bd-abstr_ShareholderAddressTitle" xlink:label="bd-abstr_ShareholderAddressTitle_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderAddressStreetName" xlink:label="bd-bedr_ShareholderAddressStreetName_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderAddressHouseNumber" xlink:label="bd-bedr_ShareholderAddressHouseNumber_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderAddressHouseNumberAddition" xlink:label="bd-bedr_ShareholderAddressHouseNumberAddition_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderAddressPlaceOfResidence" xlink:label="bd-bedr_ShareholderAddressPlaceOfResidence_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ShareholderCountryCode" xlink:label="bd-bedr_ShareholderCountryCode_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-abstr_ShareholdersTitle_loc" xlink:to="bd-bedr-tuple_ShareholderSpecification_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderDirectorLargeShareholderIdentificationNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderOrdinarySharesNominalValue_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderPrefenceSharesNominalValue_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderPrioritySharesNominalValue_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderIssuedCapitalPercentage_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="7" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderReceivablesOnEntity_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="8" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderInterestPaid_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="9" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderDebtToEntity_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="10" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-bedr_ShareholderInterestReceived_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="11" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ShareholderSpecification_loc" xlink:to="bd-abstr_ShareholderAddressTitle_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShareholderAddressTitle_loc" xlink:to="bd-bedr_ShareholderAddressStreetName_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShareholderAddressTitle_loc" xlink:to="bd-bedr_ShareholderAddressHouseNumber_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShareholderAddressTitle_loc" xlink:to="bd-bedr_ShareholderAddressHouseNumberAddition_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShareholderAddressTitle_loc" xlink:to="bd-bedr_ShareholderAddressPlaceOfResidence_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-abstr_ShareholderAddressTitle_loc" xlink:to="bd-bedr_ShareholderCountryCode_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label xlink:label="bd_77e8fb076ecf4880aa7b6d9700f38c74_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_77e8fb076ecf4880aa7b6d9700f38c74">Partij-domein</link:label>
+    <link:label xlink:label="bd_3bd655d92591435892378c8e91fdfe28_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_3bd655d92591435892378c8e91fdfe28">Tijd-domein</link:label>
+    <link:label xlink:label="bd_0874e9638a5f4d08b5dc6e4084f2482f_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_0874e9638a5f4d08b5dc6e4084f2482f">Regeling-domein</link:label>
+    <link:label xlink:label="bd_25b918e6a004482da92c9add9d0fefa0_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_25b918e6a004482da92c9add9d0fefa0">Verblijfs-domein</link:label>
+    <link:label xlink:label="bd_5e3758e47cda4e5a8755fe2afef72467_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_5e3758e47cda4e5a8755fe2afef72467">Buitenland</link:label>
+    <link:label xlink:label="bd_e558e58a63ac458eb422015f1ea64565_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_e558e58a63ac458eb422015f1ea64565">Begin jaar</link:label>
+    <link:label xlink:label="bd_aeaef649ae2b471c92e9d410b9f7afe3_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_aeaef649ae2b471c92e9d410b9f7afe3">Kind</link:label>
+    <link:label xlink:label="bd_17bbd394617140418367c78d84d6ebc4_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_17bbd394617140418367c78d84d6ebc4">Kinderopvangtoeslag</link:label>
+    <link:label xlink:label="bd_96d9175c61744ca38724eb5b346be28a_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_96d9175c61744ca38724eb5b346be28a">Huurtoeslag</link:label>
+    <link:label xlink:label="bd_1aef38d74f2947188e553de085a8e17a_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_1aef38d74f2947188e553de085a8e17a">Dochter</link:label>
+    <link:label xlink:label="bd_06a415d0dad3454c81312ebd88e37a8a_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_06a415d0dad3454c81312ebd88e37a8a">Partner</link:label>
+    <link:label xlink:label="bd_d63c19e8818c46a387037a3bf78746b2_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_d63c19e8818c46a387037a3bf78746b2">Bedrijf</link:label>
+    <link:label xlink:label="bd_b96f20b78fbf417481f046afb956bd54_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_b96f20b78fbf417481f046afb956bd54">Aangever</link:label>
+    <link:label xlink:label="bd_4f67eb6a003241388d73f0ae69e34962_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_4f67eb6a003241388d73f0ae69e34962">Nederland</link:label>
+    <link:label xlink:label="bd_fa398b1c10f4424ba4f660749b6e6071_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_fa398b1c10f4424ba4f660749b6e6071">Medebewoner</link:label>
+    <link:label xlink:label="bd_4b3cc549535949c58c89326b3e058ff5_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_4b3cc549535949c58c89326b3e058ff5">Einde jaar</link:label>
+    <link:label xlink:label="bd_d5957829ab3c458cb288005196b37b1e_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_d5957829ab3c458cb288005196b37b1e">Zorgtoeslag</link:label>
+    <link:label xlink:label="bd_b7b00e31da044d72accabd7d9815bd13_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_b7b00e31da044d72accabd7d9815bd13">Holding</link:label>
+    <link:label xlink:label="bd_82c684cbc80345cb83ffdaf1fb0fea77_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_82c684cbc80345cb83ffdaf1fb0fea77">Kindgebonden budget</link:label>
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_PartyDomain" xlink:label="bd-dim-dom_PartyDomain_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_PartyDomain_loc" xlink:to="bd_77e8fb076ecf4880aa7b6d9700f38c74_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_TimeDomain" xlink:label="bd-dim-dom_TimeDomain_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_TimeDomain_loc" xlink:to="bd_3bd655d92591435892378c8e91fdfe28_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_SchemeDomain" xlink:label="bd-dim-dom_SchemeDomain_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_SchemeDomain_loc" xlink:to="bd_0874e9638a5f4d08b5dc6e4084f2482f_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_ResidenceDomain" xlink:label="bd-dim-dom_ResidenceDomain_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_ResidenceDomain_loc" xlink:to="bd_25b918e6a004482da92c9add9d0fefa0_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Abroad" xlink:label="bd-dim-dom_Abroad_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Abroad_loc" xlink:to="bd_5e3758e47cda4e5a8755fe2afef72467_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Begin" xlink:label="bd-dim-dom_Begin_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Begin_loc" xlink:to="bd_e558e58a63ac458eb422015f1ea64565_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Child" xlink:label="bd-dim-dom_Child_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Child_loc" xlink:to="bd_aeaef649ae2b471c92e9d410b9f7afe3_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_DayCareAllowance" xlink:label="bd-dim-dom_DayCareAllowance_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_DayCareAllowance_loc" xlink:to="bd_17bbd394617140418367c78d84d6ebc4_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_RentAllowance" xlink:label="bd-dim-dom_RentAllowance_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_RentAllowance_loc" xlink:to="bd_96d9175c61744ca38724eb5b346be28a_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_SubsidiaryCompany" xlink:label="bd-dim-dom_SubsidiaryCompany_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_SubsidiaryCompany_loc" xlink:to="bd_1aef38d74f2947188e553de085a8e17a_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Partner" xlink:label="bd-dim-dom_Partner_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Partner_loc" xlink:to="bd_06a415d0dad3454c81312ebd88e37a8a_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Company" xlink:label="bd-dim-dom_Company_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Company_loc" xlink:to="bd_d63c19e8818c46a387037a3bf78746b2_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Declarant" xlink:label="bd-dim-dom_Declarant_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Declarant_loc" xlink:to="bd_b96f20b78fbf417481f046afb956bd54_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Netherlands" xlink:label="bd-dim-dom_Netherlands_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Netherlands_loc" xlink:to="bd_4f67eb6a003241388d73f0ae69e34962_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_Inhabitant" xlink:label="bd-dim-dom_Inhabitant_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_Inhabitant_loc" xlink:to="bd_fa398b1c10f4424ba4f660749b6e6071_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_End" xlink:label="bd-dim-dom_End_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_End_loc" xlink:to="bd_4b3cc549535949c58c89326b3e058ff5_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_CareAllowance" xlink:label="bd-dim-dom_CareAllowance_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_CareAllowance_loc" xlink:to="bd_d5957829ab3c458cb288005196b37b1e_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_HoldingCompany" xlink:label="bd-dim-dom_HoldingCompany_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_HoldingCompany_loc" xlink:to="bd_b7b00e31da044d72accabd7d9815bd13_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-domains.xsd#bd-dim-dom_ChildRelatedBudget" xlink:label="bd-dim-dom_ChildRelatedBudget_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dom_ChildRelatedBudget_loc" xlink:to="bd_82c684cbc80345cb83ffdaf1fb0fea77_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+  </link:labelLink>
+</link:linkbase>

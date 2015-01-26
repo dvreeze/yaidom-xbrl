@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label xlink:label="bd_4c32d4a0f98f4c74b4b18f0a49a2d358_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_4c32d4a0f98f4c74b4b18f0a49a2d358">MSID levering</link:label>
+    <link:label xlink:label="bd_93efa6ebed5b4c2c8cb03257cf32a6fd_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_93efa6ebed5b4c2c8cb03257cf32a6fd">Correctie intracommunautaire leveringen</link:label>
+    <link:label xlink:label="bd_df11c89c6fed459b9c2b0525d31bf821_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_df11c89c6fed459b9c2b0525d31bf821">Correctie intracommunautaire A-B-C-leveringen (vereenvoudigde regeling)</link:label>
+    <link:label xlink:label="bd_471a8ca1ef3b4e8a93eaca236cbb9e02_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_471a8ca1ef3b4e8a93eaca236cbb9e02">Intracommunautaire diensten</link:label>
+    <link:label xlink:label="bd_443edfae1576446795c93205f5d3e8bc_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_443edfae1576446795c93205f5d3e8bc">Correctie intracommunautaire diensten</link:label>
+    <link:label xlink:label="bd_ec4d5afdd14c4d189785d58a18b2d886_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_ec4d5afdd14c4d189785d58a18b2d886">Intracommunautaire leveringen</link:label>
+    <link:label xlink:label="bd_0619d872a78c44f5b33341b0f3346fb3_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_0619d872a78c44f5b33341b0f3346fb3">MSEST levering</link:label>
+    <link:label xlink:label="bd_d3a46f636754494f9091930668fd776d_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_d3a46f636754494f9091930668fd776d">Intracommunautaire A-B-C-leveringen (vereenvoudigde regeling)</link:label>
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_MSIDSuppliesSpecification" xlink:label="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_MSIDSuppliesSpecification_loc" xlink:to="bd_4c32d4a0f98f4c74b4b18f0a49a2d358_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunitySuppliesCorrection" xlink:label="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_IntraCommunitySuppliesCorrection_loc" xlink:to="bd_93efa6ebed5b4c2c8cb03257cf32a6fd_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityABCSuppliesCorrection" xlink:label="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_IntraCommunityABCSuppliesCorrection_loc" xlink:to="bd_df11c89c6fed459b9c2b0525d31bf821_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityServices" xlink:label="bd-ob-tuple_IntraCommunityServices_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_IntraCommunityServices_loc" xlink:to="bd_471a8ca1ef3b4e8a93eaca236cbb9e02_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityServicesCorrection" xlink:label="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_IntraCommunityServicesCorrection_loc" xlink:to="bd_443edfae1576446795c93205f5d3e8bc_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunitySupplies" xlink:label="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_IntraCommunitySupplies_loc" xlink:to="bd_ec4d5afdd14c4d189785d58a18b2d886_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_MSESTSuppliesSpecification" xlink:label="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_MSESTSuppliesSpecification_loc" xlink:to="bd_0619d872a78c44f5b33341b0f3346fb3_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-ob-tuples.xsd#bd-ob-tuple_IntraCommunityABCSupplies" xlink:label="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-ob-tuple_IntraCommunityABCSupplies_loc" xlink:to="bd_d3a46f636754494f9091930668fd776d_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+  </link:labelLink>
+</link:linkbase>

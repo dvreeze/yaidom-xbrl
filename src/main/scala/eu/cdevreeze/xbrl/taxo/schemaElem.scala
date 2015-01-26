@@ -56,6 +56,10 @@ abstract class GlobalSchemaComponent(val wrappedElem: docaware.Elem) extends Sch
         (pref == preferredTargetQName.prefixOption.getOrElse("")) && (Some(ns) == targetNamespaceOption)
     }
   }
+
+  final def substitutionGroupOption: Option[EName] = {
+    wrappedElem.attributeAsResolvedQNameOption(SubstitutionGroupEName)
+  }
 }
 
 final class GlobalElementDeclaration(wrappedElem: docaware.Elem) extends GlobalSchemaComponent(wrappedElem) {

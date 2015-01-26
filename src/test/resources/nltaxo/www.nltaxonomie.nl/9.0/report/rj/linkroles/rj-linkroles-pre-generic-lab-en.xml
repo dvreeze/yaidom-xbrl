@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xsi:schemaLocation="http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd" xmlns:label="http://xbrl.org/2008/label" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gen="http://xbrl.org/2008/generic">
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <link:roleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label" roleURI="http://www.xbrl.org/2008/role/label"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="rj-plr_CashFlowStatement_loc" xlink:to="rj-plr_CashFlowStatement_label-en"/>
+    <label:label xlink:type="resource" id="rj-plr_CashFlowStatement_label-en" xlink:label="rj-plr_CashFlowStatement_label-en" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="en">Cash flow statement</label:label>
+    <link:loc xlink:type="locator" xlink:href="rj-linkroles-pre.xsd#rj-plr_CashFlowStatement" xlink:label="rj-plr_CashFlowStatement_loc"/>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="rj-plr_ComprehensiveIncomeStatement_loc" xlink:to="rj-plr_ComprehensiveIncomeStatement_label-en"/>
+    <label:label xlink:type="resource" id="rj-plr_ComprehensiveIncomeStatement_label-en" xlink:label="rj-plr_ComprehensiveIncomeStatement_label-en" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="en">Comprehensive income statement</label:label>
+    <link:loc xlink:type="locator" xlink:href="rj-linkroles-pre.xsd#rj-plr_ComprehensiveIncomeStatement" xlink:label="rj-plr_ComprehensiveIncomeStatement_loc"/>
+  </gen:link>
+</link:linkbase>

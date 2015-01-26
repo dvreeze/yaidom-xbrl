@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/netLabel" xlink:href="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd#netLabel" xlink:type="simple"/>
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="rj-i_CashFlowFromOperations_netLabel_nl" xlink:label="rj-i_CashFlowFromOperations_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Kasstroom uit bedrijfsoperaties, netto</link:label>
+    <link:label id="rj-i_CashFlowFinancingActivities_netLabel_nl" xlink:label="rj-i_CashFlowFinancingActivities_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Kasstroom uit financieringsactiviteiten, netto</link:label>
+    <link:label id="rj-i_CashFlowInvestingActivities_netLabel_nl" xlink:label="rj-i_CashFlowInvestingActivities_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Kasstroom uit investeringsactiviteiten, netto</link:label>
+    <link:label id="rj-i_CashFlowOperatingActivities_netLabel_nl" xlink:label="rj-i_CashFlowOperatingActivities_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Kasstroom uit operationele activiteiten, netto</link:label>
+    <link:label id="rj-i_NetCashFlows_netLabel_nl" xlink:label="rj-i_NetCashFlows_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Netto-kasstroom, netto</link:label>
+    <link:label id="rj-i_IncreaseDecreaseCashAndCashEquivalents_netLabel_nl" xlink:label="rj-i_IncreaseDecreaseCashAndCashEquivalents_netLabel_nl" xlink:role="http://www.xbrl.org/2009/role/netLabel" xlink:type="resource" xml:lang="nl">Toename (afname) van geldmiddelen, netto</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_CashFlowFinancingActivities_loc" xlink:to="rj-i_CashFlowFinancingActivities_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_CashFlowFromOperations_loc" xlink:to="rj-i_CashFlowFromOperations_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_CashFlowInvestingActivities_loc" xlink:to="rj-i_CashFlowInvestingActivities_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_CashFlowOperatingActivities_loc" xlink:to="rj-i_CashFlowOperatingActivities_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_IncreaseDecreaseCashAndCashEquivalents_loc" xlink:to="rj-i_IncreaseDecreaseCashAndCashEquivalents_netLabel_nl" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="rj-i_NetCashFlows_loc" xlink:to="rj-i_NetCashFlows_netLabel_nl" xlink:type="arc"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_CashFlowFinancingActivities" xlink:label="rj-i_CashFlowFinancingActivities_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_CashFlowFromOperations" xlink:label="rj-i_CashFlowFromOperations_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_CashFlowInvestingActivities" xlink:label="rj-i_CashFlowInvestingActivities_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_CashFlowOperatingActivities" xlink:label="rj-i_CashFlowOperatingActivities_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_IncreaseDecreaseCashAndCashEquivalents" xlink:label="rj-i_IncreaseDecreaseCashAndCashEquivalents_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-data.xsd#rj-i_NetCashFlows" xlink:label="rj-i_NetCashFlows_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

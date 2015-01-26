@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:venj:linkrole:income-statement" xlink:href="../../venj/linkroles/venj-linkroles-pre.xsd#venj-plr_IncomeStatement" xlink:type="simple"/>
+  <link:presentationLink xlink:role="urn:venj:linkrole:income-statement" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/kvk-abstracts.xsd#kvk-abstr_EarningsPerShareTitle" xlink:label="kvk-abstr_EarningsPerShareTitle_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../abstracts/kvk-abstracts.xsd#kvk-abstr_IncomeStatementTitle" xlink:label="kvk-abstr_IncomeStatementTitle_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_EarningsPerShareBasic" xlink:label="rj-i_EarningsPerShareBasic_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/items/rj-data.xsd#rj-i_EarningsPerShareDiluted" xlink:label="rj-i_EarningsPerShareDiluted_loc" xlink:type="locator"/>
+    <link:presentationArc order="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="kvk-abstr_EarningsPerShareTitle_loc" xlink:to="rj-i_EarningsPerShareBasic_loc" xlink:type="arc"/>
+    <link:presentationArc order="2" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="kvk-abstr_EarningsPerShareTitle_loc" xlink:to="rj-i_EarningsPerShareDiluted_loc" xlink:type="arc"/>
+    <link:presentationArc order="22" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="kvk-abstr_IncomeStatementTitle_loc" xlink:to="kvk-abstr_EarningsPerShareTitle_loc" xlink:type="arc"/>
+  </link:presentationLink>
+</link:linkbase>

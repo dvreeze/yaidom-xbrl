@@ -19,8 +19,13 @@ package eu.cdevreeze.xbrl.taxomodel
 import scala.BigDecimal
 import scala.collection.immutable
 import scala.reflect.classTag
-
+import eu.cdevreeze.xbrl.taxo.SubstitutionGroupEName
 import eu.cdevreeze.xbrl.taxo.XbrldtTargetRoleEName
+import eu.cdevreeze.xbrl.taxo.BaseEName
+import eu.cdevreeze.xbrl.taxo.NameEName
+import eu.cdevreeze.xbrl.taxo.RefEName
+import eu.cdevreeze.xbrl.taxo.TypeEName
+import eu.cdevreeze.xbrl.taxo.XsNs
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Path
 import eu.cdevreeze.yaidom.core.QName
@@ -29,7 +34,11 @@ import eu.cdevreeze.yaidom.queryapi.ElemApi.anyElem
 import eu.cdevreeze.yaidom.queryapi.IsNavigable
 import eu.cdevreeze.yaidom.queryapi.ScopedElemLike
 import eu.cdevreeze.yaidom.queryapi.SubtypeAwareElemLike
+import eu.cdevreeze.yaidom.indexed
 import eu.cdevreeze.yaidom.simple
+import eu.cdevreeze.yaidom.utils.DocumentENameExtractor
+import eu.cdevreeze.yaidom.utils.SimpleTextENameExtractor
+import eu.cdevreeze.yaidom.utils.TextENameExtractor
 
 /**
  * Read-only YATM taxonomy element, backed by a simple Elem (so without context).
@@ -417,6 +426,10 @@ final class GlobalElementDeclaration private[taxomodel] (
   def targetEName: EName = attributeAsResolvedQName(QNameEName)
 
   def isAbstract: Boolean = attributeOption(AbstractEName) == Some("true")
+
+  def substitutionGroupOption: Option[EName] = {
+    attributeAsResolvedQNameOption(SubstitutionGroupEName)
+  }
 }
 
 abstract class NamedTypeDefinition private[taxomodel] (
@@ -487,6 +500,34 @@ object TaxonomyModel {
     // Recursive calls
     val childElems = simpleElem.findAllChildElems.map(e => TaxonomyElem.build(e))
     new TaxonomyModel(simpleElem, childElems)
+  }
+
+  val enameExtractor: DocumentENameExtractor = {
+    new DocumentENameExtractor {
+
+      // TODO Improve
+
+      def findAttributeValueENameExtractor(elem: indexed.Elem, attributeEName: EName): Option[TextENameExtractor] = {
+        if (elem.resolvedName.namespaceUriOption == Some(YatmNs)) {
+          if (Set(YatmFromEName, YatmToEName).contains(attributeEName)) Some(SimpleTextENameExtractor)
+          else None
+        } else if (elem.resolvedName.namespaceUriOption == Some(YatmXsNs)) {
+          val enames = Set(QNameEName, RefEName, NameEName, TypeEName, SubstitutionGroupEName, BaseEName)
+          if (enames.contains(attributeEName)) Some(SimpleTextENameExtractor)
+          else None
+        } else if (elem.resolvedName.namespaceUriOption == Some(XsNs)) {
+          val enames = Set(RefEName, NameEName, TypeEName, SubstitutionGroupEName, BaseEName)
+          if (enames.contains(attributeEName)) Some(SimpleTextENameExtractor)
+          else None
+        } else {
+          None
+        }
+      }
+
+      def findElemTextENameExtractor(elem: indexed.Elem): Option[TextENameExtractor] = {
+        None
+      }
+    }
   }
 }
 

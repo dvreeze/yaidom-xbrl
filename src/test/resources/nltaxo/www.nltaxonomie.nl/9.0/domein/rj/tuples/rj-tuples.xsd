@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:nl-cd="http://www.nltaxonomie.nl/9.0/basis/sbr/items/nl-common-data" xmlns:rj-i="http://www.nltaxonomie.nl/9.0/basis/rj/items/rj-data" xmlns:rj-t="http://www.nltaxonomie.nl/9.0/domein/rj/tuples/rj-tuples" xmlns:sbr="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" xmlns:venj-bw2-i="http://www.nltaxonomie.nl/9.0/basis/venj/items/venj-bw2-data" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/domein/rj/tuples/rj-tuples">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="rj-tuples-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="rj-tuples-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="rj-tuples-ref.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:type="simple"/>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import namespace="http://www.nltaxonomie.nl/9.0/basis/rj/items/rj-data" schemaLocation="../../../basis/rj/items/rj-data.xsd"/>
+  <xs:import namespace="http://www.nltaxonomie.nl/9.0/basis/sbr/items/nl-common-data" schemaLocation="../../../basis/sbr/items/nl-common-data.xsd"/>
+  <xs:import namespace="http://www.nltaxonomie.nl/9.0/basis/venj/items/venj-bw2-data" schemaLocation="../../../basis/venj/items/venj-bw2-data.xsd"/>
+  <xs:import namespace="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" schemaLocation="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <xs:element abstract="false" id="rj-t_ChangeAccountingEstimatesSpecification" name="ChangeAccountingEstimatesSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingEstimatesDescriptionOfDifferencesBetweenOldAndNewAccountingEstimates"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingEstimatesEffectOnCurrentPeriod"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingEstimatesEffectOnFuturePeriods"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingEstimatesReasonsWhyImpracticableToDetermineAdjustments"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_ChangeAccountingPoliciesSpecification" name="ChangeAccountingPoliciesSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:ChangeAccountingPoliciesDescriptionOfDifferencesBetweenOldAndNewAccountingPolicies"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:ChangeAccountingPoliciesReasonsForChangeInAccountingPolicies"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingPoliciesMethodProcessingEffectsChange"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:ChangeAccountingPoliciesEffectOnEquityAndResults"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingPoliciesEffectOnIndividualLineItems"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingPoliciesEffectOnFuturePeriods"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ChangeAccountingPoliciesReasonsWhyImpracticableToDetermineAdjustments"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_ConstructionContractsSpecification" name="ConstructionContractsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContractsProjectDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContractsAccumulatedProjectRevenues"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContractsProgressBillings"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContractsWithheldByClient"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContractsCapitalisedExpensesServicesNotYetRendered"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContracts"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ConstructionContractsClassification"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_ContingentLiabilitiesDetailsSpecification" name="ContingentLiabilitiesDetailsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:ContingentLiabilitiesDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:ContingentLiabilitiesFinancialImpact"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ContingentLiabilitiesMaturity"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_DiscontinuedOperationsSpecification" name="DiscontinuedOperationsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:DiscontinuedOperationsEventType"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:DiscontinuedOperationsDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:DiscontinuedOperationsNatureAndExtentDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:DiscontinuedOperationsSegment"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_ExceptionalItemsSpecification" name="ExceptionalItemsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ExceptionalItemsDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ExceptionalItemsFinancialImpact"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:ExceptionalItemsLineItemsWhereIncluded"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_FinancialInstrumentsPolicySpecification" name="FinancialInstrumentsPolicySpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:FinancialInstrumentsType"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:FinancialInstrumentsTypePolicy"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_HedgeRelationshipDetailsSpecification" name="HedgeRelationshipDetailsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:HedgeRelationshipDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:HedgeRelationshipCumulativeFairValueChangeIneffectivePart"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:HedgeRelationshipCumulativeFairValueChangeIneffectivePartAmountChargedToIncomeStatement"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:HedgeRelationshipCumulativeFairValueChangeEffectivePart"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification" name="IntangibleAssetsIndividualAssetOfImportanceSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:IntangibleAssetsIndividualAssetOfImportanceDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:IntangibleAssetsIndividualAssetOfImportanceAmount"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:IntangibleAssetsIndividualAssetOfImportanceRemainingLife"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_LicensingAgreementsSpecification" name="LicensingAgreementsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:LicensingAgreementsDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:LicensingAgreementsConditions"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:LicensingAgreementsNatureAndExtentDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:LicensingAgreementsChangesAgreementsDuringPeriod"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_LocationActualActivitiesAddressAbroadSpecification" name="LocationActualActivitiesAddressAbroadSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:DescriptionLocationAbroad"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:StreetNameAbroad"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:HouseNumberAbroad"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:HouseNumberAddition"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:POBoxNumber"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:PostalCodeAbroad"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:PlaceOfResidenceAbroad"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:NameRegion"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:CountryName"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_LocationActualActivitiesAddressNLSpecification" name="LocationActualActivitiesAddressNLSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:DescriptionLocationNL"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:StreetNameNL"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:HouseNumberNL"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:HouseNumberAddition"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:POBoxNumber"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:PostalCodeNL"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:PlaceOfResidenceNL"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:NameRegion"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="nl-cd:CountryName"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_MergersAcquisitionsSpecification" name="MergersAcquisitionsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsNameAcquiree"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsDescriptionAcquiree"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsMethodProcessing"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsDateAcquisition"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsDiscontinuedOperationsFollowingMergerAcquisition"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsPercentageVotingRightsAcquired"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsPurchasePriceDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsEstimateFairValueIdentifiableAssetsLiabilities"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:MergersAcquisitionsPoolingOfInterestsMethodAdditionalInformation"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_NetRevenueSegmentCategorySpecification" name="NetRevenueSegmentCategorySpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:NetRevenueSegmentCategoryDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:NetRevenueSegmentCategoryAmount"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_ParticipatingInterestsSpecification" name="ParticipatingInterestsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityName"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityLocation"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityInterestInShareCapital"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityInterestInVotingRights"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityReasonNonConsolidation"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityEquityLastFinancialStatements"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityResultsLastFinancialStatements"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityDateLastFinancialStatements"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityLiabilityDisclosure"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:EntityAccumulatedLosses"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="venj-bw2-i:EntityReasonDeviationNetAssetValue"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element abstract="false" id="rj-t_PriorPeriodErrorsSpecification" name="PriorPeriodErrorsSpecification" nillable="false" substitutionGroup="sbr:specificationTuple">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:PriorPeriodErrorsNatureAndExtentDescription"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:PriorPeriodErrorsMethodOfCorrection"/>
+            <xs:element maxOccurs="1" minOccurs="0" ref="rj-i:PriorPeriodErrorsExplanationReasonsNotCorrectedAndNatureIfCorrected"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

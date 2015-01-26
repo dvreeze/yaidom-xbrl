@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+  <link:referenceLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ChangeAccountingEstimatesSpecification" xlink:label="rj-t_ChangeAccountingEstimatesSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ChangeAccountingPoliciesSpecification" xlink:label="rj-t_ChangeAccountingPoliciesSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ConstructionContractsSpecification" xlink:label="rj-t_ConstructionContractsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ContingentLiabilitiesDetailsSpecification" xlink:label="rj-t_ContingentLiabilitiesDetailsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_DiscontinuedOperationsSpecification" xlink:label="rj-t_DiscontinuedOperationsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ExceptionalItemsSpecification" xlink:label="rj-t_ExceptionalItemsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_FinancialInstrumentsPolicySpecification" xlink:label="rj-t_FinancialInstrumentsPolicySpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_HedgeRelationshipDetailsSpecification" xlink:label="rj-t_HedgeRelationshipDetailsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification" xlink:label="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_LicensingAgreementsSpecification" xlink:label="rj-t_LicensingAgreementsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_LocationActualActivitiesAddressAbroadSpecification" xlink:label="rj-t_LocationActualActivitiesAddressAbroadSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_LocationActualActivitiesAddressNLSpecification" xlink:label="rj-t_LocationActualActivitiesAddressNLSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_MergersAcquisitionsSpecification" xlink:label="rj-t_MergersAcquisitionsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_NetRevenueSegmentCategorySpecification" xlink:label="rj-t_NetRevenueSegmentCategorySpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_ParticipatingInterestsSpecification" xlink:label="rj-t_ParticipatingInterestsSpecification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="rj-tuples.xsd#rj-t_PriorPeriodErrorsSpecification" xlink:label="rj-t_PriorPeriodErrorsSpecification_loc" xlink:type="locator"/>
+    <link:reference id="rj-t_BW2_379_ref" xlink:label="rj-t_BW2_379_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>379</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+    </link:reference>
+    <link:reference id="rj-t_BW2_384_6_ref" xlink:label="rj-t_BW2_384_6_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Article>384</ref:Article>
+      <ref:Name>Burgerlijk Wetboek Boek 2</ref:Name>
+      <ref:Paragraph>6</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_145_ref" xlink:label="rj-t_RJ_145_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>145</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+    </link:reference>
+    <link:reference id="rj-t_RJ_150_201_ref" xlink:label="rj-t_RJ_150_201_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>150</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>201</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_210_505_b_ref" xlink:label="rj-t_RJ_210_505_b_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>210</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>505</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_216_ref" xlink:label="rj-t_RJ_216_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>216</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+    </link:reference>
+    <link:reference id="rj-t_RJ_221_415_ref" xlink:label="rj-t_RJ_221_415_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>221</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>415</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_252_509_ref" xlink:label="rj-t_RJ_252_509_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>252</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>509</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_270_404_ref" xlink:label="rj-t_RJ_270_404_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>270</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>404</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_290_906_ref" xlink:label="rj-t_RJ_290_906_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>290</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>906</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_290_912_c_ref" xlink:label="rj-t_RJ_290_912_c_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>290</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>912</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_290_913_f_ref" xlink:label="rj-t_RJ_290_913_f_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>290</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>913</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_300_105_a_ref" xlink:label="rj-t_RJ_300_105_a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>300</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>105</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_345_309_ref" xlink:label="rj-t_RJ_345_309_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>345</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>309</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_350_202_ref" xlink:label="rj-t_RJ_350_202_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>350</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>202</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJ_390_103_ref" xlink:label="rj-t_RJ_390_103_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>390</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving</ref:Name>
+      <ref:Paragraph>103</ref:Paragraph>
+    </link:reference>
+    <link:reference id="rj-t_RJk_B18_104_a_ref" xlink:label="rj-t_RJk_B18_104_a_ref" xlink:role="http://www.xbrl.org/2003/role/reference" xlink:type="resource">
+      <ref:Chapter>B18</ref:Chapter>
+      <ref:Name>Richtlijnen voor de Jaarverslaggeving voor kleine rechtspersonen</ref:Name>
+      <ref:Paragraph>104</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+    </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_ChangeAccountingEstimatesSpecification_loc" xlink:to="rj-t_RJ_145_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_ChangeAccountingPoliciesSpecification_loc" xlink:to="rj-t_BW2_384_6_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_ConstructionContractsSpecification_loc" xlink:to="rj-t_RJ_221_415_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_ContingentLiabilitiesDetailsSpecification_loc" xlink:to="rj-t_RJ_252_509_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_DiscontinuedOperationsSpecification_loc" xlink:to="rj-t_RJ_345_309_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_ExceptionalItemsSpecification_loc" xlink:to="rj-t_RJ_270_404_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_FinancialInstrumentsPolicySpecification_loc" xlink:to="rj-t_RJ_290_906_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_FinancialInstrumentsPolicySpecification_loc" xlink:to="rj-t_RJ_290_912_c_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_HedgeRelationshipDetailsSpecification_loc" xlink:to="rj-t_RJ_290_913_f_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_IntangibleAssetsIndividualAssetOfImportanceSpecification_loc" xlink:to="rj-t_RJ_210_505_b_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_LicensingAgreementsSpecification_loc" xlink:to="rj-t_RJ_390_103_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_LocationActualActivitiesAddressAbroadSpecification_loc" xlink:to="rj-t_RJ_300_105_a_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_LocationActualActivitiesAddressAbroadSpecification_loc" xlink:to="rj-t_RJk_B18_104_a_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_LocationActualActivitiesAddressNLSpecification_loc" xlink:to="rj-t_RJ_300_105_a_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_LocationActualActivitiesAddressNLSpecification_loc" xlink:to="rj-t_RJk_B18_104_a_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_MergersAcquisitionsSpecification_loc" xlink:to="rj-t_RJ_216_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_NetRevenueSegmentCategorySpecification_loc" xlink:to="rj-t_RJ_350_202_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_ParticipatingInterestsSpecification_loc" xlink:to="rj-t_BW2_379_ref" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="rj-t_PriorPeriodErrorsSpecification_loc" xlink:to="rj-t_RJ_150_201_ref" xlink:type="arc"/>
+  </link:referenceLink>
+</link:linkbase>

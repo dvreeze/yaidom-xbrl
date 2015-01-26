@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:kvk:linkrole:financial-statements-type-consolidated-domain" xlink:href="kvk-linkroles-domains.xsd#kvk-dlrd_FinancialStatementsTypeConsolidatedDomain" xlink:type="simple"/>
+  <link:roleRef roleURI="urn:kvk:linkrole:financial-statements-type-domain" xlink:href="kvk-linkroles-domains.xsd#kvk-dlrd_FinancialStatementsTypeDomain" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple"/>
+  <link:definitionLink xlink:role="urn:kvk:linkrole:financial-statements-type-consolidated-domain" xlink:type="extended">
+    <link:definitionArc order="1" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="venj-bw2-dm_FinancialStatementsTypeDomain_loc" xlink:to="venj-bw2-dm_ConsolidatedMember_loc" xlink:type="arc"/>
+    <link:loc xlink:href="../../venj/domains/venj-bw2-domains.xsd#venj-bw2-dm_ConsolidatedMember" xlink:label="venj-bw2-dm_ConsolidatedMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../venj/domains/venj-bw2-domains.xsd#venj-bw2-dm_FinancialStatementsTypeDomain" xlink:label="venj-bw2-dm_FinancialStatementsTypeDomain_loc" xlink:type="locator"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="urn:kvk:linkrole:financial-statements-type-domain" xlink:type="extended">
+    <link:definitionArc order="1" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="venj-bw2-dm_FinancialStatementsTypeDomain_loc" xlink:to="venj-bw2-dm_ConsolidatedMember_loc" xlink:type="arc"/>
+    <link:definitionArc order="2" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="venj-bw2-dm_FinancialStatementsTypeDomain_loc" xlink:to="venj-bw2-dm_SeparateMember_loc" xlink:type="arc"/>
+    <link:loc xlink:href="../../venj/domains/venj-bw2-domains.xsd#venj-bw2-dm_ConsolidatedMember" xlink:label="venj-bw2-dm_ConsolidatedMember_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../venj/domains/venj-bw2-domains.xsd#venj-bw2-dm_FinancialStatementsTypeDomain" xlink:label="venj-bw2-dm_FinancialStatementsTypeDomain_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../venj/domains/venj-bw2-domains.xsd#venj-bw2-dm_SeparateMember" xlink:label="venj-bw2-dm_SeparateMember_loc" xlink:type="locator"/>
+  </link:definitionLink>
+</link:linkbase>

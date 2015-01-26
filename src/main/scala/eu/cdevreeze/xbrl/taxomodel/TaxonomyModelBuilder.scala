@@ -23,6 +23,7 @@ import eu.cdevreeze.yaidom.core.QName
 import eu.cdevreeze.yaidom.core.Scope
 import eu.cdevreeze.yaidom.docaware
 import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
+import eu.cdevreeze.yaidom.indexed
 import eu.cdevreeze.yaidom.simple
 import eu.cdevreeze.yaidom.simple.Node
 import eu.cdevreeze.yaidom.utils.NamespaceUtils
@@ -60,11 +61,9 @@ final class TaxonomyModelBuilder(val taxonomy: Taxonomy) {
         (links :+ schema).map(_.simpleElem)
       }
 
-    def removeSomeNamespaces(elem: simple.Elem): simple.Elem =
-      elem.transformElemsOrSelf(e => e.copy(scope = e.scope -- Set("xlink", "link", "xsi")))
-
     val editedResultElem =
-      NamespaceUtils.pushUpPrefixedNamespaces(removeSomeNamespaces(resultElem)).prettify(2)
+      NamespaceUtils.pushUpPrefixedNamespaces(
+        NamespaceUtils.stripUnusedNamespaces(indexed.Elem(resultElem), TaxonomyModel.enameExtractor)).prettify(2)
 
     TaxonomyModel.build(editedResultElem)
   }

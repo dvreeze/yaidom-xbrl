@@ -100,3 +100,52 @@ final class Taxonomy(val docs: immutable.IndexedSeq[docaware.Document]) {
     globalElementDeclarationsByUri.get(uri)
   }
 }
+
+object Taxonomy {
+
+  /**
+   * Finds the documents in the DTS with the given entrypoints.
+   */
+  def findDts(entrypointUris: Set[URI], skipUris: URI => Boolean)(docFactory: URI => docaware.Document): immutable.IndexedSeq[docaware.Document] = {
+    findDts(entrypointUris, skipUris, entrypointUris.map(u => (u, docFactory(u))).toMap)(docFactory)
+  }
+
+  private def findDts(
+    entrypointUris: Set[URI],
+    skipUris: URI => Boolean,
+    foundSoFar: Map[URI, docaware.Document])(docFactory: URI => docaware.Document): immutable.IndexedSeq[docaware.Document] = {
+
+    require(entrypointUris.subsetOf(foundSoFar.keySet))
+
+    val entrypoints = entrypointUris.toVector.map(u => docFactory(u))
+    val foundUris = entrypoints.flatMap(d => findDtsUris(d)(docFactory)).toSet
+    val newlyFoundUris = foundUris.diff(foundSoFar.keySet).filterNot(skipUris)
+
+    if (newlyFoundUris.isEmpty) {
+      foundSoFar.values.toVector.sortBy(_.uri.toString)
+    } else {
+      val newlyFoundDocs = newlyFoundUris.toVector.map(uri => docFactory(uri))
+
+      // Recursive call
+      findDts(newlyFoundDocs.map(_.uri).toSet, skipUris, foundSoFar ++ (newlyFoundDocs.map(d => (d.uri, d)).toMap))(docFactory)
+    }
+  }
+
+  private def findDtsUris(doc: docaware.Document)(docFactory: URI => docaware.Document): immutable.IndexedSeq[URI] = {
+    val imports =
+      doc.documentElement.filterElems(withEName(XsImportEName)).map(e => e.baseUri.resolve(e.attribute(SchemaLocationEName)))
+    val includes =
+      doc.documentElement.filterElems(withEName(XsIncludeEName)).map(e => e.baseUri.resolve(e.attribute(SchemaLocationEName)))
+
+    val xlinkENames = Set(LinkLocEName, LinkRoleRefEName, LinkArcroleRefEName, LinkLinkbaseRefEName)
+    val xlinkElems = doc.documentElement.filterElemsOrSelf(e => xlinkENames.contains(e.resolvedName))
+    val xlinkHrefs = xlinkElems.map(e => e.baseUri.resolve(e.attribute(XLinkHrefEName)))
+
+    val refs = (imports ++ includes ++ xlinkHrefs).map(u => removeFragment(u)).distinct
+    refs
+  }
+
+  private def removeFragment(uri: URI): URI = {
+    new URI(uri.getScheme, uri.getSchemeSpecificPart, null)
+  }
+}

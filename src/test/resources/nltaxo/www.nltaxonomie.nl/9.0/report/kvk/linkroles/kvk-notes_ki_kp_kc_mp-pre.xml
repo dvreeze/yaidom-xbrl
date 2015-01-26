@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:venj:linkrole:notes" xlink:href="../../venj/linkroles/venj-linkroles-pre.xsd#venj-plr_Notes" xlink:type="simple"/>
+  <link:presentationLink xlink:role="urn:venj:linkrole:notes" xlink:type="extended">
+    <link:loc xlink:href="../abstracts/kvk-abstracts.xsd#kvk-abstr_AccountingPoliciesIncomeStatementTitle" xlink:label="kvk-abstr_AccountingPoliciesIncomeStatementTitle_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../abstracts/kvk-abstracts.xsd#kvk-abstr_GrossMarginPolicyTitle" xlink:label="kvk-abstr_GrossMarginPolicyTitle_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/venj/items/venj-bw2-data.xsd#venj-bw2-i_GrossMarginPolicy" xlink:label="venj-bw2-i_GrossMarginPolicy_loc" xlink:type="locator"/>
+    <link:presentationArc order="17" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="kvk-abstr_AccountingPoliciesIncomeStatementTitle_loc" xlink:to="kvk-abstr_GrossMarginPolicyTitle_loc" xlink:type="arc"/>
+    <link:presentationArc order="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="kvk-abstr_GrossMarginPolicyTitle_loc" xlink:to="venj-bw2-i_GrossMarginPolicy_loc" xlink:type="arc"/>
+  </link:presentationLink>
+</link:linkbase>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:gen="http://xbrl.org/2008/generic" xmlns:sbr="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" xsi:schemaLocation="http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <link:arcroleRef xlink:href="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-arcroles.xsd#sbr_linkrole-order" arcroleURI="http://www.nltaxonomie.nl/2011/arcrole/linkrole-order" xlink:type="simple" />
+  <link:roleRef xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role" roleURI="http://www.xbrl.org/2008/role/link" xlink:type="simple" />
+  <link:roleRef xlink:href="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension.xsd#linkrole-info" roleURI="http://www.nltaxonomie.nl/2011/role/linkrole-info" xlink:type="simple" />
+  <gen:link xlink:role="http://www.xbrl.org/2008/role/link" xlink:type="extended">
+    <link:loc xlink:href="./bd-linkroles-pre.xsd#bd_1a2a4098d4464b8f8ef9ccdd5736b63f" xlink:label="bd_1a2a4098d4464b8f8ef9ccdd5736b63f_loc" xlink:type="locator" />
+    <sbr:linkroleOrder xlink:label="bd_1a2a4098d4464b8f8ef9ccdd5736b63f_res" xlink:role="http://www.nltaxonomie.nl/2011/role/linkrole-info" xlink:type="resource" id="bd_1a2a4098d4464b8f8ef9ccdd5736b63f_obsup001">01</sbr:linkroleOrder>
+    <gen:arc xlink:from="bd_1a2a4098d4464b8f8ef9ccdd5736b63f_loc" xlink:to="bd_1a2a4098d4464b8f8ef9ccdd5736b63f_res" xlink:arcrole="http://www.nltaxonomie.nl/2011/arcrole/linkrole-order" xlink:type="arc" />
+  </gen:link>
+</link:linkbase>

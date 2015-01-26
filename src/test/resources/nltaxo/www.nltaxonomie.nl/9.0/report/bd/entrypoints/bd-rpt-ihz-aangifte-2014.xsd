@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT,   Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+
+  ###
+  Dutch Tax Taxonomy: BD 9.0
+  Repository        : mda ma data bd 90
+  Generator         : MDA.NET-MA release 2014.10.03.1102  (  Generator nta2013.00 / profile nta2013.00)
+  Generated         : Fri, 14 Nov 2014 18:02:04 GMT
+  ###
+-->
+<xs:schema id="bd-rpt-ihz" targetNamespace="http://www.nltaxonomie.nl/9.0/report/bd/entrypoints/bd-rpt-ihz-aangifte-2014" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:bd-rpt-ihz="http://www.nltaxonomie.nl/9.0/report/bd/entrypoints/bd-rpt-ihz-aangifte-2014" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:href="../linkroles/bd-voorblad-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-voorblad-ihz-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-algemeen-deel-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-balans-resultatenrekening-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-balans-resultatenrekening-ihz-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-agrarische-activiteiten-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-investeringsaftrek-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-winst-uit-zeescheepvaart-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-buitenlandse-resultaten-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-buitenlandse-resultaten-ihz-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-ihz-winstberekening-toelichting-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-ihz-toelichting-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-ihz-aangifte-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-rpt-ihz-aangifte-2014-generic-linkrole-order.xml" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../../../domein/bd/linkroles/bd-dimension-domain-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-rpt-ihz-aangifte-2014-hypercube-dimension-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-rpt-ihz-aangifte-2014-lineitems-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../../../basis/bd/linkroles/bd-domain-member-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

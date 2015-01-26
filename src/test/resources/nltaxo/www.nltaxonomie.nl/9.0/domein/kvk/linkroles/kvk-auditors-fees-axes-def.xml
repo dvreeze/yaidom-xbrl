@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="urn:kvk:linkrole:auditors-fees-axis" xlink:href="kvk-linkroles-axes.xsd#kvk-dlra_AuditorsFeesAxis" xlink:type="simple"/>
+  <link:roleRef roleURI="urn:kvk:linkrole:auditors-fees-domain" xlink:href="../../../basis/kvk/linkroles/kvk-linkroles-domains.xsd#kvk-dlrd_AuditorsFeesDomain" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple"/>
+  <link:definitionLink xlink:role="urn:kvk:linkrole:auditors-fees-axis" xlink:type="extended">
+    <link:definitionArc order="1" xbrldt:targetRole="urn:kvk:linkrole:auditors-fees-domain" xbrldt:usable="false" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rj-dim_AuditorsFeesAxis_loc" xlink:to="rj-dm_AuditorsFeesDomain_loc" xlink:type="arc"/>
+    <link:loc xlink:href="../../rj/axes/rj-axes.xsd#rj-dim_AuditorsFeesAxis" xlink:label="rj-dim_AuditorsFeesAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="../../../basis/rj/domains/rj-domains.xsd#rj-dm_AuditorsFeesDomain" xlink:label="rj-dm_AuditorsFeesDomain_loc" xlink:type="locator"/>
+  </link:definitionLink>
+</link:linkbase>

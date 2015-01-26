@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema id="bd-asl-tuple" targetNamespace="http://www.nltaxonomie.nl/9.0/domein/bd/tuples/bd-asl-tuples" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:bd-asl-tuple="http://www.nltaxonomie.nl/9.0/domein/bd/tuples/bd-asl-tuples" xmlns:sbr="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" xmlns:bd-asl="http://www.nltaxonomie.nl/9.0/basis/bd/items/bd-aanslag" xmlns:bd-burg="http://www.nltaxonomie.nl/9.0/basis/bd/items/bd-burgers" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:href="./bd-asl-tuples-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import namespace="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension" schemaLocation="http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension.xsd" />
+  <xs:import namespace="http://www.nltaxonomie.nl/9.0/basis/bd/items/bd-aanslag" schemaLocation="../../../basis/bd/items/bd-aanslag.xsd" />
+  <xs:import namespace="http://www.nltaxonomie.nl/9.0/basis/bd/items/bd-burgers" schemaLocation="../../../basis/bd/items/bd-burgers.xsd" />
+  <xs:element id="bd-asl-tuple_CapitalHouseworkSpecification" name="CapitalHouseworkSpecification" substitutionGroup="sbr:specificationTuple" abstract="false" nillable="false">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element ref="bd-asl:CapitalGreenInvestmentAmount" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:CapitalPersonIdentifier" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:CapitalPersonName" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:CapitalSavingsAndInvestmentsBase" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:CapitalSpecialAmount" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element id="bd-asl-tuple_DayCareDataSpecification" name="DayCareDataSpecification" substitutionGroup="sbr:specificationTuple" abstract="false" nillable="false">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element ref="bd-asl:DayCareCenterAddressAbroad" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareCenterCountryCodeAbroad" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-burg:DayCareHourlyRate" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareHours" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareIdentificationNumber" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareInstitutionType" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareName" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareOCWCode" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCarePlaceOfResidence" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCarePostalCode" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareStreetName" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:DayCareType" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element id="bd-asl-tuple_MessageNotificationsSpecification" name="MessageNotificationsSpecification" substitutionGroup="sbr:specificationTuple" abstract="false" nillable="false">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="sbr:placeholder">
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element ref="bd-asl:CalculationYear" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:EstablishedIncome" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:MessageCauseText" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:NotificationNumberIncome" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:NotificationPersonIdentifier" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="bd-asl:NotificationPersonName" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

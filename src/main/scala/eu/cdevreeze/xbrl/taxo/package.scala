@@ -27,15 +27,32 @@ package object taxo {
 
   val XsNs = "http://www.w3.org/2001/XMLSchema"
   val XbrldtNs = "http://xbrl.org/2005/xbrldt"
+  val LinkNs = "http://www.xbrl.org/2003/linkbase"
+  val XLinkNs = "http://www.w3.org/1999/xlink"
 
   val XsSchemaEName = EName(XsNs, "schema")
   val XsElementEName = EName(XsNs, "element")
   val XsSimpleTypeEName = EName(XsNs, "simpleType")
   val XsComplexTypeEName = EName(XsNs, "complexType")
+  val XsImportEName = EName(XsNs, "import")
+  val XsIncludeEName = EName(XsNs, "include")
 
   val XbrldtTargetRoleEName = EName(XbrldtNs, "targetRole")
+
+  val LinkLinkbaseRefEName = EName(LinkNs, "linkbaseRef")
+  val LinkSchemaRefEName = EName(LinkNs, "schemaRef")
+  val LinkRoleRefEName = EName(LinkNs, "roleRef")
+  val LinkArcroleRefEName = EName(LinkNs, "arcroleRef")
+  val LinkLocEName = EName(LinkNs, "loc")
+
+  val XLinkHrefEName = EName(XLinkNs, "href")
 
   val TargetNamespaceEName = EName("targetNamespace")
   val NameEName = EName("name")
   val IdEName = EName("id")
+  val SubstitutionGroupEName = EName("substitutionGroup")
+  val SchemaLocationEName = EName("schemaLocation")
+  val RefEName = EName("ref")
+  val TypeEName = EName("type")
+  val BaseEName = EName("base")
 }

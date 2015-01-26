@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<xs:schema xmlns:kvk-dlra="http://www.nltaxonomie.nl/9.0/domein/kvk/linkroles/kvk-linkroles-axes" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nltaxonomie.nl/9.0/domein/kvk/linkroles/kvk-linkroles-axes">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="kvk-linkroles-axes-generic-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="kvk-linkroles-axes-generic-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="simple"/>
+      <link:roleType id="kvk-dlra_AuditorsFeesAxis" roleURI="urn:kvk:linkrole:auditors-fees-axis">
+        <link:definition>Accountantshonoraria [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_BasisOfPreparationAxis" roleURI="urn:kvk:linkrole:basis-of-preparation-axis">
+        <link:definition>Grondslag [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_BasisOfPreparationFiscalAxis" roleURI="urn:kvk:linkrole:basis-of-preparation-fiscal-axis">
+        <link:definition>Grondslag, fiscaal [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_EquityComponentsAxis" roleURI="urn:kvk:linkrole:equity-components-axis">
+        <link:definition>Eigen vermogen, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_FinancialAssetsComponentsAxis" roleURI="urn:kvk:linkrole:financial-assets-components-axis">
+        <link:definition>Financiële vaste activa, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_FinancialStatementsTypeAxis" roleURI="urn:kvk:linkrole:financial-statements-type-axis">
+        <link:definition>Type jaarrekening [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_FinancialStatementsTypeConsolidatedAxis" roleURI="urn:kvk:linkrole:financial-statements-type-consolidated-axis">
+        <link:definition>Type jaarrekening, geconsolideerd [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_IntangibleAssetsComponentsAxis" roleURI="urn:kvk:linkrole:intangible-assets-components-axis">
+        <link:definition>Immateriële vaste activa, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_NegativeGoodwillComponentsAxis" roleURI="urn:kvk:linkrole:negative-goodwill-components-axis">
+        <link:definition>Negatieve goodwill, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_PropertyPlantEquipmentComponentsAxis" roleURI="urn:kvk:linkrole:property-plant-equipment-components-axis">
+        <link:definition>Materiële vaste activa, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_ProvisionsComponentsAxis" roleURI="urn:kvk:linkrole:provisions-components-axis">
+        <link:definition>Voorzieningen, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_RevaluationReserveComponentsAxis" roleURI="urn:kvk:linkrole:revaluation-reserve-components-axis">
+        <link:definition>Herwaarderingsreserve, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_RightsGrantedNotYetExercisedComponentsAxis" roleURI="urn:kvk:linkrole:rights-granted-not-yet-exercised-components-axis">
+        <link:definition>Toegekende rechten, nog niet uitgeoefend, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_SegmentReportingAxis" roleURI="urn:kvk:linkrole:segment-reporting-axis">
+        <link:definition>Gesegmenteerde informatie [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_ShareCapitalComponentsAxis" roleURI="urn:kvk:linkrole:share-capital-components-axis">
+        <link:definition>Aandelenkapitaal, componenten [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="kvk-dlra_TimeAxis" roleURI="urn:kvk:linkrole:time-axis">
+        <link:definition>Tijd [as]</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

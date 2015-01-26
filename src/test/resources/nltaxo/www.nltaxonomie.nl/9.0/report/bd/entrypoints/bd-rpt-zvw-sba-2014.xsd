@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT,   Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+
+  ###
+  Dutch Tax Taxonomy: BD 9.0
+  Repository        : mda ma data bd 90
+  Generator         : MDA.NET-MA release 2014.10.03.1102  (  Generator nta2013.00 / profile nta2013.00)
+  Generated         : Fri, 14 Nov 2014 18:02:50 GMT
+  ###
+-->
+<xs:schema id="bd-rpt-zvw-sba" targetNamespace="http://www.nltaxonomie.nl/9.0/report/bd/entrypoints/bd-rpt-zvw-sba-2014" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:bd-rpt-zvw-sba="http://www.nltaxonomie.nl/9.0/report/bd/entrypoints/bd-rpt-zvw-sba-2014" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:href="../linkroles/bd-zvw-service-berichten-aanslag-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-rpt-zvw-sba-2014-hypercube-dimension-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+      <link:linkbaseRef xlink:href="../linkroles/bd-rpt-zvw-sba-2014-lineitems-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:type="simple" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

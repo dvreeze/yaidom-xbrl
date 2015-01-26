@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="venj-bw2-dim_BasisOfPreparationAxis_label_en" xlink:label="venj-bw2-dim_BasisOfPreparationAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Basis of preparation [axis]</link:label>
+    <link:label id="venj-bw2-dim_EquityComponentsAxis_label_en" xlink:label="venj-bw2-dim_EquityComponentsAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Equity, components [axis]</link:label>
+    <link:label id="venj-bw2-dim_FinancialAssetsComponentsAxis_label_en" xlink:label="venj-bw2-dim_FinancialAssetsComponentsAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Financial assets, components [axis]</link:label>
+    <link:label id="venj-bw2-dim_FinancialStatementsTypeAxis_label_en" xlink:label="venj-bw2-dim_FinancialStatementsTypeAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Financial statements type [axis]</link:label>
+    <link:label id="venj-bw2-dim_IntangibleAssetsComponentsAxis_label_en" xlink:label="venj-bw2-dim_IntangibleAssetsComponentsAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Intangible assets, components [axis]</link:label>
+    <link:label id="venj-bw2-dim_PropertyPlantEquipmentComponentsAxis_label_en" xlink:label="venj-bw2-dim_PropertyPlantEquipmentComponentsAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Property, plant and equipment, components [axis]</link:label>
+    <link:label id="venj-bw2-dim_RevaluationReserveComponentsAxis_label_en" xlink:label="venj-bw2-dim_RevaluationReserveComponentsAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Revaluation reserve, components [axis]</link:label>
+    <link:label id="venj-bw2-dim_ShareCapitalComponentsAxis_label_en" xlink:label="venj-bw2-dim_ShareCapitalComponentsAxis_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Share capital, components [axis]</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_BasisOfPreparationAxis_loc" xlink:to="venj-bw2-dim_BasisOfPreparationAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_EquityComponentsAxis_loc" xlink:to="venj-bw2-dim_EquityComponentsAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_FinancialAssetsComponentsAxis_loc" xlink:to="venj-bw2-dim_FinancialAssetsComponentsAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_FinancialStatementsTypeAxis_loc" xlink:to="venj-bw2-dim_FinancialStatementsTypeAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_IntangibleAssetsComponentsAxis_loc" xlink:to="venj-bw2-dim_IntangibleAssetsComponentsAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_PropertyPlantEquipmentComponentsAxis_loc" xlink:to="venj-bw2-dim_PropertyPlantEquipmentComponentsAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_RevaluationReserveComponentsAxis_loc" xlink:to="venj-bw2-dim_RevaluationReserveComponentsAxis_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="venj-bw2-dim_ShareCapitalComponentsAxis_loc" xlink:to="venj-bw2-dim_ShareCapitalComponentsAxis_label_en" xlink:type="arc"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_BasisOfPreparationAxis" xlink:label="venj-bw2-dim_BasisOfPreparationAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_EquityComponentsAxis" xlink:label="venj-bw2-dim_EquityComponentsAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_FinancialAssetsComponentsAxis" xlink:label="venj-bw2-dim_FinancialAssetsComponentsAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_FinancialStatementsTypeAxis" xlink:label="venj-bw2-dim_FinancialStatementsTypeAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_IntangibleAssetsComponentsAxis" xlink:label="venj-bw2-dim_IntangibleAssetsComponentsAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_PropertyPlantEquipmentComponentsAxis" xlink:label="venj-bw2-dim_PropertyPlantEquipmentComponentsAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_RevaluationReserveComponentsAxis" xlink:label="venj-bw2-dim_RevaluationReserveComponentsAxis_loc" xlink:type="locator"/>
+    <link:loc xlink:href="venj-bw2-axes.xsd#venj-bw2-dim_ShareCapitalComponentsAxis" xlink:label="venj-bw2-dim_ShareCapitalComponentsAxis_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

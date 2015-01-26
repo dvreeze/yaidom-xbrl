@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xsi:schemaLocation="http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <link:arcroleRef xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label" arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:type="simple" />
+  <link:roleRef xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role" roleURI="http://www.xbrl.org/2008/role/link" xlink:type="simple" />
+  <link:roleRef xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label" roleURI="http://www.xbrl.org/2008/role/label" xlink:type="simple" />
+  <gen:link xlink:role="http://www.xbrl.org/2008/role/link" xlink:type="extended">
+    <label:label xlink:label="bd_7f13d615a792452e8b6eca2dfed2ff9c_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_7f13d615a792452e8b6eca2dfed2ff9c">Hypercube linkrole: dimension 'partydimension' with members 'declarant' 'holdingcompany' 'subsidiarycompany'</label:label>
+    <label:label xlink:label="bd_27528d16fd4f40759e88d394e19a1f10_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_27528d16fd4f40759e88d394e19a1f10">Hypercube linkrole: dimension 'partydimension' with members 'declarant'</label:label>
+    <label:label xlink:label="bd_58672dabe44b4e339d5e805dca80306d_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_58672dabe44b4e339d5e805dca80306d">Hypercube linkrole: dimension 'residencedimension' with members 'netherlands'</label:label>
+    <label:label xlink:label="bd_ea553f0dd0b14546bce346fdf2944633_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_ea553f0dd0b14546bce346fdf2944633">Hypercube linkrole: dimension 'timedimension' with members 'end'</label:label>
+    <label:label xlink:label="bd_83035d5a8ddb4730aa2c39d36b90a42f_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_83035d5a8ddb4730aa2c39d36b90a42f">Hypercube linkrole: dimension 'timedimension' with members 'begin'</label:label>
+    <label:label xlink:label="bd_5c8713a3f8554e67b43c6f89d5882b18_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_5c8713a3f8554e67b43c6f89d5882b18">Hypercube linkrole: dimension 'timedimension' with members 'begin' 'end'</label:label>
+    <label:label xlink:label="bd_1f752a9ab3124c9ab3adff41370799c8_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_1f752a9ab3124c9ab3adff41370799c8">Hypercube linkrole: dimension 'schemedimension' with members 'careallowance' 'childrelatedbudget' 'daycareallowance' 'rentallowance'</label:label>
+    <label:label xlink:label="bd_be7dffa6a686439ebceb8db2f8bab322_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_be7dffa6a686439ebceb8db2f8bab322">Hypercube linkrole: dimension 'partydimension' with members 'declarant' 'partner'</label:label>
+    <label:label xlink:label="bd_651e9b19f83c4d48a2e65d66a81198b6_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_651e9b19f83c4d48a2e65d66a81198b6">Hypercube linkrole: dimension 'partydimension' with members 'company'</label:label>
+    <label:label xlink:label="bd_33859d2883f84ac9bdbed49533d2152f_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_33859d2883f84ac9bdbed49533d2152f">Hypercube linkrole: dimension 'schemedimension' with members 'childrelatedbudget'</label:label>
+    <label:label xlink:label="bd_58d3d4869de34df99d81a39612aa9919_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_58d3d4869de34df99d81a39612aa9919">Hypercube linkrole: dimension 'partydimension' with members 'child'</label:label>
+    <label:label xlink:label="bd_5e8bf3304a0240d2a2d974aea2839213_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_5e8bf3304a0240d2a2d974aea2839213">Hypercube linkrole: dimension 'residencedimension' with members 'abroad'</label:label>
+    <label:label xlink:label="bd_fc9d4118b91e469d97229a2f961b1f30_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_fc9d4118b91e469d97229a2f961b1f30">Hypercube linkrole: dimension 'schemedimension' with members 'rentallowance'</label:label>
+    <label:label xlink:label="bd_8ac19adc998d440fa8ee4622411aac86_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_8ac19adc998d440fa8ee4622411aac86">Hypercube linkrole: dimension 'partydimension' with members 'subsidiarycompany'</label:label>
+    <label:label xlink:label="bd_a00f19d41d054684b509201cb5897134_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_a00f19d41d054684b509201cb5897134">Hypercube linkrole: dimension 'residencedimension' with members 'abroad' 'netherlands'</label:label>
+    <label:label xlink:label="bd_8246d6ee7fb047b49d533b4fe0266b4f_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_8246d6ee7fb047b49d533b4fe0266b4f">Hypercube linkrole: dimension 'partydimension' with members 'partner'</label:label>
+    <label:label xlink:label="bd_3854bb3cde0d451badb1c64d288b4faa_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_3854bb3cde0d451badb1c64d288b4faa">Hypercube linkrole: dimension 'partydimension' with members 'inhabitant'</label:label>
+    <label:label xlink:label="bd_4672ef5bba5a454da84bb334766280cd_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" id="bd_4672ef5bba5a454da84bb334766280cd">Hypercube linkrole: dimension 'schemedimension' with members 'daycareallowance'</label:label>
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pdhs" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pdhs_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pdhs_loc" xlink:to="bd_7f13d615a792452e8b6eca2dfed2ff9c_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pd" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pd_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pd_loc" xlink:to="bd_27528d16fd4f40759e88d394e19a1f10_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_19855f8aeb914729ac1517001cb236ba_rn" xlink:label="bd_19855f8aeb914729ac1517001cb236ba_rn_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_19855f8aeb914729ac1517001cb236ba_rn_loc" xlink:to="bd_58672dabe44b4e339d5e805dca80306d_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_c789fc6b8881464ca0be3ae42573564a_te" xlink:label="bd_c789fc6b8881464ca0be3ae42573564a_te_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_c789fc6b8881464ca0be3ae42573564a_te_loc" xlink:to="bd_ea553f0dd0b14546bce346fdf2944633_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_c789fc6b8881464ca0be3ae42573564a_tb" xlink:label="bd_c789fc6b8881464ca0be3ae42573564a_tb_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_c789fc6b8881464ca0be3ae42573564a_tb_loc" xlink:to="bd_83035d5a8ddb4730aa2c39d36b90a42f_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_c789fc6b8881464ca0be3ae42573564a_tbe" xlink:label="bd_c789fc6b8881464ca0be3ae42573564a_tbe_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_c789fc6b8881464ca0be3ae42573564a_tbe_loc" xlink:to="bd_5c8713a3f8554e67b43c6f89d5882b18_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_5da06c68198f4b41bde3f21fe167c60c_sdcacbdcra" xlink:label="bd_5da06c68198f4b41bde3f21fe167c60c_sdcacbdcra_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_5da06c68198f4b41bde3f21fe167c60c_sdcacbdcra_loc" xlink:to="bd_1f752a9ab3124c9ab3adff41370799c8_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pdp" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pdp_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pdp_loc" xlink:to="bd_be7dffa6a686439ebceb8db2f8bab322_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pc" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pc_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pc_loc" xlink:to="bd_651e9b19f83c4d48a2e65d66a81198b6_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_5da06c68198f4b41bde3f21fe167c60c_sdcb" xlink:label="bd_5da06c68198f4b41bde3f21fe167c60c_sdcb_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_5da06c68198f4b41bde3f21fe167c60c_sdcb_loc" xlink:to="bd_33859d2883f84ac9bdbed49533d2152f_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pch" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pch_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pch_loc" xlink:to="bd_58d3d4869de34df99d81a39612aa9919_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_19855f8aeb914729ac1517001cb236ba_ra" xlink:label="bd_19855f8aeb914729ac1517001cb236ba_ra_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_19855f8aeb914729ac1517001cb236ba_ra_loc" xlink:to="bd_5e8bf3304a0240d2a2d974aea2839213_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_5da06c68198f4b41bde3f21fe167c60c_sdra" xlink:label="bd_5da06c68198f4b41bde3f21fe167c60c_sdra_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_5da06c68198f4b41bde3f21fe167c60c_sdra_loc" xlink:to="bd_fc9d4118b91e469d97229a2f961b1f30_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_ps" xlink:label="bd_16e829b6125240299a86c15067cf94bb_ps_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_ps_loc" xlink:to="bd_8ac19adc998d440fa8ee4622411aac86_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_19855f8aeb914729ac1517001cb236ba_ran" xlink:label="bd_19855f8aeb914729ac1517001cb236ba_ran_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_19855f8aeb914729ac1517001cb236ba_ran_loc" xlink:to="bd_a00f19d41d054684b509201cb5897134_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pp" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pp_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pp_loc" xlink:to="bd_8246d6ee7fb047b49d533b4fe0266b4f_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_16e829b6125240299a86c15067cf94bb_pin" xlink:label="bd_16e829b6125240299a86c15067cf94bb_pin_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_16e829b6125240299a86c15067cf94bb_pin_loc" xlink:to="bd_3854bb3cde0d451badb1c64d288b4faa_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-linkroles-axes.xsd#bd_5da06c68198f4b41bde3f21fe167c60c_sddc" xlink:label="bd_5da06c68198f4b41bde3f21fe167c60c_sddc_loc" xlink:type="locator" />
+    <gen:arc xlink:from="bd_5da06c68198f4b41bde3f21fe167c60c_sddc_loc" xlink:to="bd_4672ef5bba5a454da84bb334766280cd_label_nl" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:type="arc" />
+  </gen:link>
+</link:linkbase>

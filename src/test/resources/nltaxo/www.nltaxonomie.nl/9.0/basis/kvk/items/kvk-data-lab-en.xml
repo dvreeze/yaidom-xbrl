@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy) 
+  Intellectual Property State of the Netherlands 
+  Version 9.0
+  Released by the Dutch SBR Programme 
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label id="kvk-i_LegalSizeCriteriaClassification_label_en" xlink:label="kvk-i_LegalSizeCriteriaClassification_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Classification of the legal entity based on the legal size criteria</link:label>
+    <link:label id="kvk-i_ContactType_label_en" xlink:label="kvk-i_ContactType_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Contact type</link:label>
+    <link:label id="kvk-i_DocumentInformation_label_en" xlink:label="kvk-i_DocumentInformation_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Document information</link:label>
+    <link:label id="kvk-i_IncomeTaxExpenseReconciliationToCorporateTaxReturnDisclosure_label_en" xlink:label="kvk-i_IncomeTaxExpenseReconciliationToCorporateTaxReturnDisclosure_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">Income tax expense, reconciliation to corporate tax return, disclosure</link:label>
+    <link:label id="kvk-i_SbiBusinessCode_label_en" xlink:label="kvk-i_SbiBusinessCode_label_en" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" xml:lang="en">SBI-code</link:label>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-i_ContactType_loc" xlink:to="kvk-i_ContactType_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-i_DocumentInformation_loc" xlink:to="kvk-i_DocumentInformation_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-i_IncomeTaxExpenseReconciliationToCorporateTaxReturnDisclosure_loc" xlink:to="kvk-i_IncomeTaxExpenseReconciliationToCorporateTaxReturnDisclosure_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-i_LegalSizeCriteriaClassification_loc" xlink:to="kvk-i_LegalSizeCriteriaClassification_label_en" xlink:type="arc"/>
+    <link:labelArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="kvk-i_SbiBusinessCode_loc" xlink:to="kvk-i_SbiBusinessCode_label_en" xlink:type="arc"/>
+    <link:loc xlink:href="kvk-data.xsd#kvk-i_ContactType" xlink:label="kvk-i_ContactType_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-data.xsd#kvk-i_DocumentInformation" xlink:label="kvk-i_DocumentInformation_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-data.xsd#kvk-i_IncomeTaxExpenseReconciliationToCorporateTaxReturnDisclosure" xlink:label="kvk-i_IncomeTaxExpenseReconciliationToCorporateTaxReturnDisclosure_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-data.xsd#kvk-i_LegalSizeCriteriaClassification" xlink:label="kvk-i_LegalSizeCriteriaClassification_loc" xlink:type="locator"/>
+    <link:loc xlink:href="kvk-data.xsd#kvk-i_SbiBusinessCode" xlink:label="kvk-i_SbiBusinessCode_loc" xlink:type="locator"/>
+  </link:labelLink>
+</link:linkbase>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:labelLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:label xlink:label="bd_ec730102afec4377a4a1d0fb20d9bcdf_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_ec730102afec4377a4a1d0fb20d9bcdf">Verblijfsdimensie</link:label>
+    <link:label xlink:label="bd_30c75ce1f9604363bd8b3fdac3566487_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_30c75ce1f9604363bd8b3fdac3566487">Regeling dimensie</link:label>
+    <link:label xlink:label="bd_8718b3d408d143fabb61dc5f0382c588_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_8718b3d408d143fabb61dc5f0382c588">Dimensie tijd</link:label>
+    <link:label xlink:label="bd_47753869bf8b43cb9e8a141b535028ef_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_47753869bf8b43cb9e8a141b535028ef">Dimensie bedrijf voor aangifte (volgnummer)</link:label>
+    <link:label xlink:label="bd_5785c6d2dbe24e7d9585c51f3ae734a1_label_nl" xml:lang="nl" xlink:role="http://www.xbrl.org/2003/role/label" xlink:type="resource" id="bd_5785c6d2dbe24e7d9585c51f3ae734a1">Dimensie partij</link:label>
+    <link:loc xlink:href="./bd-axes.xsd#bd-dim-dim_ResidenceDimension" xlink:label="bd-dim-dim_ResidenceDimension_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dim_ResidenceDimension_loc" xlink:to="bd_ec730102afec4377a4a1d0fb20d9bcdf_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-axes.xsd#bd-dim-dim_SchemeDimension" xlink:label="bd-dim-dim_SchemeDimension_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dim_SchemeDimension_loc" xlink:to="bd_30c75ce1f9604363bd8b3fdac3566487_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-axes.xsd#bd-dim-dim_TimeDimension" xlink:label="bd-dim-dim_TimeDimension_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dim_TimeDimension_loc" xlink:to="bd_8718b3d408d143fabb61dc5f0382c588_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-axes.xsd#bd-dim-dim_CompanySerialNumberDimension" xlink:label="bd-dim-dim_CompanySerialNumberDimension_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dim_CompanySerialNumberDimension_loc" xlink:to="bd_47753869bf8b43cb9e8a141b535028ef_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+    <link:loc xlink:href="./bd-axes.xsd#bd-dim-dim_PartyDimension" xlink:label="bd-dim-dim_PartyDimension_loc" xlink:type="locator" />
+    <link:labelArc xlink:from="bd-dim-dim_PartyDimension_loc" xlink:to="bd_5785c6d2dbe24e7d9585c51f3ae734a1_label_nl" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:type="arc" />
+  </link:labelLink>
+</link:linkbase>

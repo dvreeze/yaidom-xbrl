@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+  This file is part of the Nederlandse taxonomy (NT, Dutch Taxonomy)
+  Intellectual Property State of the Netherlands
+  Version 9.0
+  Released by the Dutch SBR Programme
+  Release date Mon Nov 17 18:00:00 2014
+-->
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase">
+  <link:roleRef xlink:href="./bd-linkroles-pre.xsd#bd_3e82cdd299b149e19ac9ee53f1f14411" roleURI="urn:bd:linkrole:bd-lr-pre_objectvrijstelling" xlink:type="simple" />
+  <link:presentationLink xlink:role="urn:bd:linkrole:bd-lr-pre_objectvrijstelling" xlink:type="extended">
+    <link:loc xlink:href="../../../domein/bd/tuples/bd-bedr-tuples.xsd#bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification" xlink:label="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_CountryForeignCompany" xlink:label="bd-bedr_CountryForeignCompany_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ForeignBusinessProfitEuroFunctionalCurrency" xlink:label="bd-bedr_ForeignBusinessProfitEuroFunctionalCurrency_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LossBefore1January2012ToOvertake" xlink:label="bd-bedr_LossBefore1January2012ToOvertake_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_LossCessationForeignCompany" xlink:label="bd-bedr_LossCessationForeignCompany_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ObjectExemptionForeignBusinessProfitPerCountry" xlink:label="bd-bedr_ObjectExemptionForeignBusinessProfitPerCountry_loc" xlink:type="locator" />
+    <link:loc xlink:href="../../../basis/bd/items/bd-bedrijven.xsd#bd-bedr_ForeignBusinessProfitBalanceCumulative" xlink:label="bd-bedr_ForeignBusinessProfitBalanceCumulative_loc" xlink:type="locator" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:to="bd-bedr_CountryForeignCompany_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="1" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:to="bd-bedr_ForeignBusinessProfitEuroFunctionalCurrency_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="2" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:to="bd-bedr_LossBefore1January2012ToOvertake_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="3" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:to="bd-bedr_LossCessationForeignCompany_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="4" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:to="bd-bedr_ObjectExemptionForeignBusinessProfitPerCountry_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="5" xlink:type="arc" />
+    <link:presentationArc xlink:from="bd-bedr-tuple_ObjectExemptionForeignBusinessProfitsSpecification_loc" xlink:to="bd-bedr_ForeignBusinessProfitBalanceCumulative_loc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" order="6" xlink:type="arc" />
+  </link:presentationLink>
+</link:linkbase>
