@@ -129,6 +129,14 @@ final class TaxonomyModel private[taxomodel] (
 
   def findAllSchemas: immutable.IndexedSeq[Schema] =
     findAllChildElemsOfType(classTag[Schema])
+
+  def globalElementDeclarationsByEName: Map[EName, GlobalElementDeclaration] = {
+    // Not efficient
+    findAllSchemas.foldLeft(Map[EName, GlobalElementDeclaration]()) {
+      case (acc, schema) =>
+        acc ++ schema.globalElementDeclarationsByEName
+    }
+  }
 }
 
 // Links

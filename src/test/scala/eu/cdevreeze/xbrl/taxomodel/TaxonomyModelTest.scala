@@ -21,8 +21,9 @@ import org.junit.runner.RunWith
 import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
 
+import QueryableTaxonomyModel.ToQueryableTaxonomyModel
 import eu.cdevreeze.yaidom.core.EName
-import eu.cdevreeze.yaidom.indexed
+import eu.cdevreeze.yaidom.core.QName
 import eu.cdevreeze.yaidom.parse.DocumentParserUsingSax
 import eu.cdevreeze.yaidom.simple.Document
 
@@ -68,5 +69,34 @@ class TaxonomyModelTest extends Suite {
     assertResult(true) {
       elemDeclENames.flatMap(_.namespaceUriOption).toSet.size >= 6
     }
+  }
+
+  @Test def testQueryPLinks(): Unit = {
+    val docParser = DocumentParserUsingSax.newInstance
+
+    val taxoFileUri = clazz.getResource("/bd-rpt-vpb-aangifte-2014.xml").toURI
+
+    val doc: Document =
+      docParser.parse(taxoFileUri)
+
+    val scope = doc.documentElement.scope
+    import scope._
+
+    import QueryableTaxonomyModel._
+
+    val taxoModel: QueryableTaxonomyModel =
+      TaxonomyModel.build(doc.documentElement).queryable
+
+    val elr = "urn:bd:linkrole:bd-lr-pre_aandeelhouders"
+
+    val startConcept = QName("bd-abstr:ShareholdersTitle").res
+
+    val parentChildChains = taxoModel.findOutgoingParentChildArcChains(startConcept, elr)
+
+    assertResult(Set(QName("bd-bedr-tuple:ShareholderSpecification").res)) {
+      parentChildChains.flatMap(_.arcs.drop(1).headOption.map(_.sourceConcept)).toSet
+    }
+
+    parentChildChains.foreach(e => println(e.arcs.map(_.targetConcept.localPart)))
   }
 }

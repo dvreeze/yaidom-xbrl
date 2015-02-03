@@ -29,7 +29,7 @@ import org.junit.runner.RunWith
 import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
 
-import TaxonomyQueryApi.ToTaxonomyQueryApi
+import QueryableTaxonomyModel.ToQueryableTaxonomyModel
 import eu.cdevreeze.xbrl.taxo.Taxonomy
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Scope
@@ -91,14 +91,14 @@ class LargeTaxonomyModelTest extends Suite {
     val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-rpt-investeringsstatistiek-klein-2014.xml").toURI)
     val doc = docParser.parse(taxoModelFile.toURI)
 
-    implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
-    import TaxonomyQueryApi._
+    import QueryableTaxonomyModel._
+    val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
 
     assertResult(true) {
-      taxoModel.findAllDefinitionLinks.size >= 10
+      taxoModel.model.findAllDefinitionLinks.size >= 10
     }
     assertResult(true) {
-      taxoModel.findAllElemsOfType(classTag[Arc]).flatMap(_.attributeAsResolvedQNameOption(EName(YatmNs, "from"))).toSet.
+      taxoModel.model.findAllElemsOfType(classTag[Arc]).flatMap(_.attributeAsResolvedQNameOption(EName(YatmNs, "from"))).toSet.
         contains(EName("http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items", "AccommodationCostsBuildingTaxes"))
     }
 
@@ -112,10 +112,10 @@ class LargeTaxonomyModelTest extends Suite {
     // Finding P-links ending with concrete concepts
 
     def findConcretePLinkChildren(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
-      val chains = concept.findOutgoingParentChildArcChains(elr)
+      val chains = taxoModel.findOutgoingParentChildArcChains(concept, elr)
       val concepts = chains.map(_.targetConcept).distinct
 
-      val elemDecls = concepts.flatMap(_.asOptionalGlobalElementDeclaration)
+      val elemDecls = concepts.flatMap(c => taxoModel.model.globalElementDeclarationsByEName.get(c))
       elemDecls.filter(e => !e.isAbstract).map(_.targetEName)
     }
 
@@ -136,7 +136,7 @@ class LargeTaxonomyModelTest extends Suite {
     // Finding P-links ending with given concepts
 
     def findUltimatePLinkParents(concept: EName, elr: String): immutable.IndexedSeq[EName] = {
-      val chains = concept.findIncomingParentChildArcChains(elr)
+      val chains = taxoModel.findIncomingParentChildArcChains(concept, elr)
       chains.map(_.sourceConcept).distinct
     }
 
@@ -155,15 +155,18 @@ class LargeTaxonomyModelTest extends Suite {
     // Finding concept labels
 
     val nlLabels =
-      islpt.filterOutgoingArcs(classTag[LabelArc])(arc => arc.getLabel.langOption == Some("nl")) map { arc =>
+      taxoModel.filterOutgoingArcs(islpt, classTag[LabelArc])(arc => arc.getLabel.langOption == Some("nl")) map { arc =>
         arc.getLabel
       }
 
     assertResult(true) {
       nlLabels.map(_.text).contains("Investeringsstatistiek voor kleine bedrijven [titel]")
     }
+
+    val islptElemDecl = taxoModel.model.globalElementDeclarationsByEName(islpt)
+
     assertResult(true) {
-      islpt.asGlobalElementDeclaration.substitutionGroupOption ==
+      islptElemDecl.substitutionGroupOption ==
         Some(EName("{http://www.nltaxonomie.nl/2011/xbrl/xbrl-syntax-extension}presentationItem"))
     }
   }
@@ -174,13 +177,13 @@ class LargeTaxonomyModelTest extends Suite {
     val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/cbs-rpt-investeringsstatistiek-klein-2014.xml").toURI)
     val doc = docParser.parse(taxoModelFile.toURI)
 
-    implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
-    import TaxonomyQueryApi._
+    import QueryableTaxonomyModel._
+    implicit val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
 
     val cbsBedrItemsNs = "http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
 
     val hasHypercubes =
-      taxoModel.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
+      taxoModel.model.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
     val elrs = hasHypercubes.map(_.linkRole).toSet
 
     assertResult(3) {
@@ -195,7 +198,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     assertResult(true) {
       hasHypercubes forall { hasHypercube =>
-        !hasHypercube.sourceConcept.filterOutgoingArcs(classTag[DefinitionArc])(arc => arc.isDomainMember && arc.linkRole == hasHypercube.linkRole).isEmpty
+        !taxoModel.filterOutgoingArcs(hasHypercube.sourceConcept, classTag[DefinitionArc])(arc => arc.isDomainMember && arc.linkRole == hasHypercube.linkRole).isEmpty
       }
     }
 
@@ -212,7 +215,7 @@ class LargeTaxonomyModelTest extends Suite {
     }
 
     val domMemChains =
-      primary.findOutgoingArcChains(classTag[DefinitionArc]) { arc =>
+      taxoModel.findOutgoingArcChains(primary, classTag[DefinitionArc]) { arc =>
         arc.isDomainMember && arc.linkRole == hasHypercube.linkRole
       } {
         case (chain, arc) =>
@@ -231,7 +234,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     def findInheritanceChains(concept: EName, elr: String): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
       val chains =
-        concept.findIncomingArcChains(classTag[DefinitionArc]) { arc =>
+        taxoModel.findIncomingArcChains(concept, classTag[DefinitionArc]) { arc =>
           arc.isDomainMember
         } {
           case (chain, arc) =>
@@ -312,7 +315,7 @@ class LargeTaxonomyModelTest extends Suite {
       val result =
         findInheritanceChains(inheritingConcept, elr) flatMap { ch =>
           val hasHypercubes =
-            ch.sourceConcept.filterOutgoingArcs(classTag[DefinitionArc])(arc => arc.isHasHypercube && arc.linkRole == elr)
+            taxoModel.filterOutgoingArcs(ch.sourceConcept, classTag[DefinitionArc])(arc => arc.isHasHypercube && arc.linkRole == elr)
           hasHypercubes.flatMap(hasHypercube => findDimensionalChains(hasHypercube)).distinct
         }
       result.distinct
@@ -342,11 +345,11 @@ class LargeTaxonomyModelTest extends Suite {
     val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/bd-rpt-ihz-aangifte-2014.xml").toURI)
     val doc = docParser.parse(taxoModelFile.toURI)
 
-    implicit val taxoModel = TaxonomyModel.build(doc.documentElement)
-    import TaxonomyQueryApi._
+    import QueryableTaxonomyModel._
+    val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
 
     val hasHypercubes =
-      taxoModel.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
+      taxoModel.model.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
     val elrs = hasHypercubes.map(_.linkRole).toSet
 
     assertResult(true) {
@@ -362,11 +365,11 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
-  private def findDimensionalChains(hasHypercube: DefinitionArc)(implicit taxonomy: TaxonomyModel): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
-    import TaxonomyQueryApi._
+  private def findDimensionalChains(hasHypercube: DefinitionArc)(implicit taxonomy: QueryableTaxonomyModel): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+    import QueryableTaxonomyModel._
 
     val chains =
-      hasHypercube.sourceConcept.findOutgoingArcChains(classTag[DefinitionArc]) { arc =>
+      taxonomy.findOutgoingArcChains(hasHypercube.sourceConcept, classTag[DefinitionArc]) { arc =>
         arc == hasHypercube
       } {
         case (chain, arc) =>
