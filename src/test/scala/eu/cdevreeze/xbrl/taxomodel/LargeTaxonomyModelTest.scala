@@ -178,7 +178,7 @@ class LargeTaxonomyModelTest extends Suite {
     val doc = docParser.parse(taxoModelFile.toURI)
 
     import QueryableTaxonomyModel._
-    implicit val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
+    val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
 
     val cbsBedrItemsNs = "http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
 
@@ -257,7 +257,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     // Perform queries for a specific has-hypercube linkrole, at the dimensional tree side ("the right-hand side")
 
-    val dimChains = findDimensionalChains(hasHypercube)
+    val dimChains = findDimensionalChains(hasHypercube)(taxoModel)
 
     assertResult(true) {
       dimChains.forall(_.arcs.head == hasHypercube)
@@ -316,7 +316,7 @@ class LargeTaxonomyModelTest extends Suite {
         findInheritanceChains(inheritingConcept, elr) flatMap { ch =>
           val hasHypercubes =
             taxoModel.filterOutgoingArcs(ch.sourceConcept, classTag[DefinitionArc])(arc => arc.isHasHypercube && arc.linkRole == elr)
-          hasHypercubes.flatMap(hasHypercube => findDimensionalChains(hasHypercube)).distinct
+          hasHypercubes.flatMap(hasHypercube => findDimensionalChains(hasHypercube)(taxoModel)).distinct
         }
       result.distinct
     }
@@ -365,7 +365,7 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
-  private def findDimensionalChains(hasHypercube: DefinitionArc)(implicit taxonomy: QueryableTaxonomyModel): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+  private def findDimensionalChains(hasHypercube: DefinitionArc)(taxonomy: QueryableTaxonomyModel): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
     import QueryableTaxonomyModel._
 
     val chains =
