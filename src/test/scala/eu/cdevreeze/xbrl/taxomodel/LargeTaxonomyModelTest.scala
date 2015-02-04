@@ -183,7 +183,7 @@ class LargeTaxonomyModelTest extends Suite {
     val cbsBedrItemsNs = "http://www.nltaxonomie.nl/9.0/basis/cbs/items/cbs-bedr-items"
 
     val hasHypercubes =
-      taxoModel.model.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
+      taxoModel.model.findAllDefinitionLinks.flatMap(_.findAllArcsOfType(classTag[HasHypercubeArc]))
     val elrs = hasHypercubes.map(_.linkRole).toSet
 
     assertResult(3) {
@@ -198,7 +198,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     assertResult(true) {
       hasHypercubes forall { hasHypercube =>
-        !taxoModel.filterOutgoingArcs(hasHypercube.sourceConcept, classTag[DefinitionArc])(arc => arc.isDomainMember && arc.linkRole == hasHypercube.linkRole).isEmpty
+        !taxoModel.filterOutgoingArcs(hasHypercube.sourceConcept, classTag[DomainMemberArc])(arc => arc.linkRole == hasHypercube.linkRole).isEmpty
       }
     }
 
@@ -215,8 +215,8 @@ class LargeTaxonomyModelTest extends Suite {
     }
 
     val domMemChains =
-      taxoModel.findOutgoingArcChains(primary, classTag[DefinitionArc]) { arc =>
-        arc.isDomainMember && arc.linkRole == hasHypercube.linkRole
+      taxoModel.findOutgoingArcChains(primary, classTag[DomainMemberArc]) { arc =>
+        arc.linkRole == hasHypercube.linkRole
       } {
         case (chain, arc) =>
           ArcChain.areConsecutiveDimensionalArcs(chain.arcs.last, arc) && !chain.append(arc).hasCycle
@@ -232,14 +232,15 @@ class LargeTaxonomyModelTest extends Suite {
         EName(cbsBedrItemsNs, "InvestmentsTransportEquipmentOnTrack")).subsetOf(concepts.toSet)
     }
 
-    def findInheritanceChains(concept: EName, elr: String): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+    def findInheritanceChains(concept: EName, elr: String): immutable.IndexedSeq[ArcChain[DimensionalArc]] = {
       val chains =
-        taxoModel.findIncomingArcChains(concept, classTag[DefinitionArc]) { arc =>
-          arc.isDomainMember
+        taxoModel.findIncomingArcChains(concept, classTag[DimensionalArc]) {
+          case arc: DomainMemberArc => true
+          case arc: DimensionalArc => false
         } {
-          case (arc, chain) =>
-            arc.isDomainMember &&
-              ArcChain.areConsecutiveDimensionalArcs(arc, chain.arcs.head) && !chain.prepend(arc).hasCycle
+          case (arc: DomainMemberArc, chain) =>
+            ArcChain.areConsecutiveDimensionalArcs(arc, chain.arcs.head) && !chain.prepend(arc).hasCycle
+          case (arc, chain) => false
         }
       chains.filter(_.arcs.head.linkRole == elr)
     }
@@ -267,11 +268,11 @@ class LargeTaxonomyModelTest extends Suite {
       dimChains forall {
         case ch =>
           ch.arcs exists {
-            case arc: DefinitionArc =>
-              arc.isHypercubeDimension &&
-                arc.linkRole == elr &&
+            case arc: HypercubeDimensionArc =>
+              arc.linkRole == elr &&
                 arc.sourceConcept == EName("http://www.nltaxonomie.nl/9.0/report/cbs/tables/cbs-tables", "ValidationTable") &&
                 arc.targetConcept == EName("http://www.nltaxonomie.nl/9.0/domein/cbs/axes/cbs-axes", "NewUsedSelfProducedAxis")
+            case _ => false
           }
       }
     }
@@ -280,11 +281,11 @@ class LargeTaxonomyModelTest extends Suite {
       dimChains forall {
         case ch =>
           ch.arcs exists {
-            case arc: DefinitionArc =>
-              arc.isDimensionDomain &&
-                arc.linkRole == "urn:cbs:linkrole:new-used-selfproduced-axis" &&
+            case arc: DimensionDomainArc =>
+              arc.linkRole == "urn:cbs:linkrole:new-used-selfproduced-axis" &&
                 arc.sourceConcept == EName("http://www.nltaxonomie.nl/9.0/domein/cbs/axes/cbs-axes", "NewUsedSelfProducedAxis") &&
                 arc.targetConcept == EName("http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestment", "NewUsedSelfProducedDomain")
+            case _ => false
           }
       }
     }
@@ -293,10 +294,10 @@ class LargeTaxonomyModelTest extends Suite {
       dimChains forall {
         case ch =>
           ch.arcs exists {
-            case arc: DefinitionArc =>
-              arc.isDomainMember &&
-                arc.linkRole == "urn:cbs:linkrole:natureofinvestment-domain" &&
+            case arc: DomainMemberArc =>
+              arc.linkRole == "urn:cbs:linkrole:natureofinvestment-domain" &&
                 arc.sourceConcept == EName("http://www.nltaxonomie.nl/9.0/basis/cbs/domains/cbs-domains-natureofinvestment", "NewUsedSelfProducedDomain")
+            case _ => false
           }
       }
     }
@@ -311,11 +312,11 @@ class LargeTaxonomyModelTest extends Suite {
 
     // Perform queries from concrete concepts via has-hypercubes to the members
 
-    def findInheritedDimensionalChains(inheritingConcept: EName): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+    def findInheritedDimensionalChains(inheritingConcept: EName): immutable.IndexedSeq[ArcChain[DimensionalArc]] = {
       val result =
         findInheritanceChains(inheritingConcept, elr) flatMap { ch =>
           val hasHypercubes =
-            taxoModel.filterOutgoingArcs(ch.sourceConcept, classTag[DefinitionArc])(arc => arc.isHasHypercube && arc.linkRole == elr)
+            taxoModel.filterOutgoingArcs(ch.sourceConcept, classTag[HasHypercubeArc])(arc => arc.linkRole == elr)
           hasHypercubes.flatMap(hasHypercube => findDimensionalChains(hasHypercube)(taxoModel)).distinct
         }
       result.distinct
@@ -349,7 +350,7 @@ class LargeTaxonomyModelTest extends Suite {
     val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
 
     val hasHypercubes =
-      taxoModel.model.findAllDefinitionLinks.flatMap(_.findAllDefinitionArcs).filter(_.isHasHypercube)
+      taxoModel.model.findAllDefinitionLinks.flatMap(_.findAllArcsOfType(classTag[HasHypercubeArc]))
     val elrs = hasHypercubes.map(_.linkRole).toSet
 
     assertResult(true) {
@@ -365,11 +366,11 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
-  private def findDimensionalChains(hasHypercube: DefinitionArc)(taxonomy: QueryableTaxonomyModel): immutable.IndexedSeq[ArcChain[DefinitionArc]] = {
+  private def findDimensionalChains(hasHypercube: HasHypercubeArc)(taxonomy: QueryableTaxonomyModel): immutable.IndexedSeq[ArcChain[DimensionalArc]] = {
     import QueryableTaxonomyModel._
 
     val chains =
-      taxonomy.findOutgoingArcChains(hasHypercube.sourceConcept, classTag[DefinitionArc]) { arc =>
+      taxonomy.findOutgoingArcChains(hasHypercube.sourceConcept, classTag[DimensionalArc]) { arc =>
         arc == hasHypercube
       } {
         case (chain, arc) =>

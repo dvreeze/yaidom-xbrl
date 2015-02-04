@@ -19,6 +19,7 @@ package eu.cdevreeze.xbrl.taxomodel
 import scala.BigDecimal
 import scala.collection.immutable
 import scala.reflect.classTag
+import scala.reflect.ClassTag
 import eu.cdevreeze.xbrl.taxo.SubstitutionGroupEName
 import eu.cdevreeze.xbrl.taxo.XbrldtTargetRoleEName
 import eu.cdevreeze.xbrl.taxo.BaseEName
@@ -41,7 +42,8 @@ import eu.cdevreeze.yaidom.utils.SimpleTextENameExtractor
 import eu.cdevreeze.yaidom.utils.TextENameExtractor
 
 /**
- * Read-only YATM taxonomy element, backed by a simple Elem (so without context).
+ * Read-only YATM taxonomy element, backed by a simple Elem (so without context). Dimensional arcs have also
+ * been modelled.
  *
  * Having no ancestry context, the taxonomy elements must be sufficiently stand-alone to be of any use.
  * For example, relationships know the link role of the containing link, and global element declarations know
@@ -152,13 +154,21 @@ abstract class Link private[taxomodel] (
 
   final def findAllArcs: immutable.IndexedSeq[Arc] =
     findAllChildElemsOfType(classTag[Arc])
+
+  final def findAllArcsOfType[A <: Arc](arcType: ClassTag[A]) = {
+    filterArcsOfType(arcType)(_ => true)
+  }
+
+  final def filterArcsOfType[A <: Arc](arcType: ClassTag[A])(p: A => Boolean) = {
+    filterChildElemsOfType(arcType)(p)
+  }
 }
 
 abstract class StandardLink private[taxomodel] (
   simpleElem: simple.Elem,
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends Link(simpleElem, childElems) {
 
-  def findAllStandardArcs: immutable.IndexedSeq[StandardArc] =
+  final def findAllStandardArcs: immutable.IndexedSeq[StandardArc] =
     findAllChildElemsOfType(classTag[StandardArc])
 }
 
@@ -270,35 +280,67 @@ final class ReferenceArc private[taxomodel] (
   def getReference: Reference = getChildElemOfType(classTag[Reference])(anyElem)
 }
 
-final class DefinitionArc private[taxomodel] (
+class DefinitionArc private[taxomodel] (
   simpleElem: simple.Elem,
   childElems: immutable.IndexedSeq[TaxonomyElem]) extends InterConceptArc(simpleElem, childElems) {
 
   require(simpleElem.resolvedName == YatmDefinitionArcEName)
+}
 
-  def isDimensional: Boolean =
-    isHasHypercube || isHypercubeDimension || isDimensionDomain || isDomainMember || isDimensionDefault
+abstract class DimensionalArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends DefinitionArc(simpleElem, childElems) {
 
-  def isHasHypercube: Boolean =
-    (arcrole == "http://xbrl.org/int/dim/arcrole/all") || (arcrole == "http://xbrl.org/int/dim/arcrole/notAll")
-
-  def isHypercubeDimension: Boolean =
-    (arcrole == "http://xbrl.org/int/dim/arcrole/hypercube-dimension")
-
-  def isDimensionDomain: Boolean =
-    (arcrole == "http://xbrl.org/int/dim/arcrole/dimension-domain")
-
-  def isDomainMember: Boolean =
-    (arcrole == "http://xbrl.org/int/dim/arcrole/domain-member")
-
-  def isDimensionDefault: Boolean =
-    (arcrole == "http://xbrl.org/int/dim/arcrole/dimension-default")
-
-  def effectiveTargetRole: String = {
-    if (isDimensional) {
-      attributeOption(XbrldtTargetRoleEName).getOrElse(linkRole)
-    } else linkRole
+  final def effectiveTargetRole: String = {
+    attributeOption(XbrldtTargetRoleEName).getOrElse(linkRole)
   }
+}
+
+abstract class HasHypercubeArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends DimensionalArc(simpleElem, childElems) {
+}
+
+final class AllArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends HasHypercubeArc(simpleElem, childElems) {
+
+  require(arcrole == "http://xbrl.org/int/dim/arcrole/all")
+}
+
+final class NotAllArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends HasHypercubeArc(simpleElem, childElems) {
+
+  require(arcrole == "http://xbrl.org/int/dim/arcrole/notAll")
+}
+
+final class HypercubeDimensionArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends DimensionalArc(simpleElem, childElems) {
+
+  require(arcrole == "http://xbrl.org/int/dim/arcrole/hypercube-dimension")
+}
+
+final class DimensionDomainArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends DimensionalArc(simpleElem, childElems) {
+
+  require(arcrole == "http://xbrl.org/int/dim/arcrole/dimension-domain")
+}
+
+final class DomainMemberArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends DimensionalArc(simpleElem, childElems) {
+
+  require(arcrole == "http://xbrl.org/int/dim/arcrole/domain-member")
+}
+
+final class DimensionDefaultArc private[taxomodel] (
+  simpleElem: simple.Elem,
+  childElems: immutable.IndexedSeq[TaxonomyElem]) extends DimensionalArc(simpleElem, childElems) {
+
+  require(arcrole == "http://xbrl.org/int/dim/arcrole/dimension-default")
 }
 
 final class PresentationArc private[taxomodel] (
@@ -485,7 +527,15 @@ object TaxonomyElem {
     case YatmCalculationLinkEName => new CalculationLink(simpleElem, childElems)
     case YatmLabelArcEName => new LabelArc(simpleElem, childElems)
     case YatmReferenceArcEName => new ReferenceArc(simpleElem, childElems)
-    case YatmDefinitionArcEName => new DefinitionArc(simpleElem, childElems)
+    case YatmDefinitionArcEName => simpleElem.attributeOption(YatmArcroleEName).getOrElse("") match {
+      case "http://xbrl.org/int/dim/arcrole/all" => new AllArc(simpleElem, childElems)
+      case "http://xbrl.org/int/dim/arcrole/notAll" => new NotAllArc(simpleElem, childElems)
+      case "http://xbrl.org/int/dim/arcrole/hypercube-dimension" => new HypercubeDimensionArc(simpleElem, childElems)
+      case "http://xbrl.org/int/dim/arcrole/dimension-domain" => new DimensionDomainArc(simpleElem, childElems)
+      case "http://xbrl.org/int/dim/arcrole/domain-member" => new DomainMemberArc(simpleElem, childElems)
+      case "http://xbrl.org/int/dim/arcrole/dimension-default" => new DimensionDefaultArc(simpleElem, childElems)
+      case _ => new DefinitionArc(simpleElem, childElems)
+    }
     case YatmPresentationArcEName => new PresentationArc(simpleElem, childElems)
     case YatmCalculationArcEName => new CalculationArc(simpleElem, childElems)
     case YatmLabelEName => new Label(simpleElem, childElems)

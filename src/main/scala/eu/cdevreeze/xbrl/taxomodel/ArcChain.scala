@@ -73,13 +73,13 @@ object ArcChain {
   def areConsecutiveDimensionalArcs[A <: InterConceptArc](arc1: A, arc2: A): Boolean = {
     haveMatchingConcepts(arc1, arc2) && {
       (arc1, arc2) match {
-        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isHasHypercube && arc2.isHypercubeDimension =>
+        case (arc1: HasHypercubeArc, arc2: HypercubeDimensionArc) =>
           arc1.effectiveTargetRole == arc2.linkRole
-        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isHypercubeDimension && arc2.isDimensionDomain =>
+        case (arc1: HypercubeDimensionArc, arc2: DimensionDomainArc) =>
           arc1.effectiveTargetRole == arc2.linkRole
-        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isDimensionDomain && arc2.isDomainMember =>
+        case (arc1: DimensionDomainArc, arc2: DomainMemberArc) =>
           arc1.effectiveTargetRole == arc2.linkRole
-        case (arc1: DefinitionArc, arc2: DefinitionArc) if arc1.isDomainMember && arc2.isDomainMember =>
+        case (arc1: DomainMemberArc, arc2: DomainMemberArc) =>
           arc1.effectiveTargetRole == arc2.linkRole
         case (arc1, arc2) => false
       }
