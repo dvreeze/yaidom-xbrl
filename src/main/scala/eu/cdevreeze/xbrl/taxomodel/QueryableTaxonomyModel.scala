@@ -27,6 +27,8 @@ import eu.cdevreeze.yaidom.core.EName
  */
 final class QueryableTaxonomyModel(val model: TaxonomyModel) extends ArcQueryApi with PresentationArcQueryApi {
 
+  val standardArcs: immutable.IndexedSeq[StandardArc] = model.standardArcs
+
   val standardArcsBySource: Map[EName, immutable.IndexedSeq[StandardArc]] =
     model.standardArcsBySource
 

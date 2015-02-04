@@ -31,6 +31,11 @@ import eu.cdevreeze.yaidom.core.EName
 trait AbstractArcQueryApi {
 
   /**
+   * Filters the standard arcs of the given arc type obeying the given arc predicate.
+   */
+  def filterStandardArcs[A <: StandardArc](arcType: ClassTag[A])(p: A => Boolean): immutable.IndexedSeq[A]
+
+  /**
    * Finds all arcs of the given arc type having the source concept passed as first parameter.
    *
    * This method must be equivalent to:

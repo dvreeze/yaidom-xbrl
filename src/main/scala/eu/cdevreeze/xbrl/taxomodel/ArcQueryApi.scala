@@ -30,6 +30,11 @@ import eu.cdevreeze.yaidom.core.EName
 trait ArcQueryApi extends AbstractArcQueryApi {
 
   /**
+   * Finds all standard arcs.
+   */
+  def standardArcs: immutable.IndexedSeq[StandardArc]
+
+  /**
    * Finds the standard arcs grouped by source concept. This must be a very fast method, in order for the query
    * API to be fast.
    */
@@ -40,6 +45,11 @@ trait ArcQueryApi extends AbstractArcQueryApi {
    * API to be fast.
    */
   def interConceptArcsByTarget: Map[EName, immutable.IndexedSeq[InterConceptArc]]
+
+  final def filterStandardArcs[A <: StandardArc](arcType: ClassTag[A])(p: A => Boolean): immutable.IndexedSeq[A] = {
+    implicit val arcClassTag = arcType
+    standardArcs collect { case arc: A => arc }
+  }
 
   final def findOutgoingArcs[A <: StandardArc](concept: EName, arcType: ClassTag[A]): immutable.IndexedSeq[A] = {
     filterOutgoingArcs(concept, arcType)(_ => true)
@@ -62,20 +72,20 @@ trait ArcQueryApi extends AbstractArcQueryApi {
   final def findOutgoingArcChains[A <: InterConceptArc](concept: EName, arcType: ClassTag[A])(first: A => Boolean)(succ: (ArcChain[A], A) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
     val nextArcs = filterOutgoingArcs(concept, arcType)(first)
 
-    val arcChains = nextArcs.flatMap(arc => findAllLongestArcChainsStartingWith(ArcChain.from(arc), arcType)(succ))
+    val arcChains = nextArcs.flatMap(arc => findLongestArcChainsStartingWith(ArcChain.from(arc), arcType)(succ))
     arcChains
   }
 
   final def findIncomingArcChains[A <: InterConceptArc](concept: EName, arcType: ClassTag[A])(last: A => Boolean)(pred: (A, ArcChain[A]) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
     val prevArcs = filterIncomingArcs(concept, arcType)(last)
 
-    val arcChains = prevArcs.flatMap(arc => findAllLongestArcChainsEndingWith(ArcChain.from(arc), arcType)(pred))
+    val arcChains = prevArcs.flatMap(arc => findLongestArcChainsEndingWith(ArcChain.from(arc), arcType)(pred))
     arcChains
   }
 
   // Private implementation methods
 
-  private def findAllLongestArcChainsStartingWith[A <: InterConceptArc](chain: ArcChain[A], arcType: ClassTag[A])(p: (ArcChain[A], A) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
+  private def findLongestArcChainsStartingWith[A <: InterConceptArc](chain: ArcChain[A], arcType: ClassTag[A])(p: (ArcChain[A], A) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
     val concept = chain.targetConcept
     val nextArcs = filterOutgoingArcs(concept, arcType)(arc => p(chain, arc))
 
@@ -87,14 +97,14 @@ trait ArcQueryApi extends AbstractArcQueryApi {
         val nextChain = chain.append(arc)
 
         // Recursive calls
-        val nextArcChains = findAllLongestArcChainsStartingWith(nextChain, arcType)(p)
+        val nextArcChains = findLongestArcChainsStartingWith(nextChain, arcType)(p)
         nextArcChains
       }
       arcChains
     }
   }
 
-  private def findAllLongestArcChainsEndingWith[A <: InterConceptArc](chain: ArcChain[A], arcType: ClassTag[A])(p: (A, ArcChain[A]) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
+  private def findLongestArcChainsEndingWith[A <: InterConceptArc](chain: ArcChain[A], arcType: ClassTag[A])(p: (A, ArcChain[A]) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
     val concept = chain.sourceConcept
     val prevArcs = filterIncomingArcs(concept, arcType)(arc => p(arc, chain))
 
@@ -106,7 +116,7 @@ trait ArcQueryApi extends AbstractArcQueryApi {
         val prevChain = chain.prepend(arc)
 
         // Recursive calls
-        val prevArcChains = findAllLongestArcChainsEndingWith(prevChain, arcType)(p)
+        val prevArcChains = findLongestArcChainsEndingWith(prevChain, arcType)(p)
         prevArcChains
       }
       arcChains
