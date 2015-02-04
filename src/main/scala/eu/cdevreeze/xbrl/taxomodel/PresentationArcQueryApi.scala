@@ -43,7 +43,7 @@ trait PresentationArcQueryApi extends ArcQueryApi with AbstractPresentationArcQu
   final def findIncomingParentChildArcChains(concept: EName, elr: String): immutable.IndexedSeq[ArcChain[PresentationArc]] = {
     def hasCorrectElr(arc: PresentationArc): Boolean = arc.linkRole == elr
 
-    def hasCorrectElrAndNoCycles(ch: ArcChain[PresentationArc], arc: PresentationArc): Boolean = {
+    def hasCorrectElrAndNoCycles(arc: PresentationArc, ch: ArcChain[PresentationArc]): Boolean = {
       hasCorrectElr(arc) && !ch.prepend(arc).hasCycle
     }
 

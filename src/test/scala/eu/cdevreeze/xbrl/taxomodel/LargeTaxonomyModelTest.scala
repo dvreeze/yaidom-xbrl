@@ -237,7 +237,7 @@ class LargeTaxonomyModelTest extends Suite {
         taxoModel.findIncomingArcChains(concept, classTag[DefinitionArc]) { arc =>
           arc.isDomainMember
         } {
-          case (chain, arc) =>
+          case (arc, chain) =>
             arc.isDomainMember &&
               ArcChain.areConsecutiveDimensionalArcs(arc, chain.arcs.head) && !chain.prepend(arc).hasCycle
         }

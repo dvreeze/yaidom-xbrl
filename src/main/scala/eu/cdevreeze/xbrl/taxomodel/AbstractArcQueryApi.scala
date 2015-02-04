@@ -86,5 +86,5 @@ trait AbstractArcQueryApi {
    * When using this method, keep in mind that a combinatorial explosion is possible. Even non-termination is
    * possible, if there are arc cycles, and `pred` does not return false on cycle detection.
    */
-  def findIncomingArcChains[A <: InterConceptArc](concept: EName, arcType: ClassTag[A])(last: A => Boolean)(pred: (ArcChain[A], A) => Boolean): immutable.IndexedSeq[ArcChain[A]]
+  def findIncomingArcChains[A <: InterConceptArc](concept: EName, arcType: ClassTag[A])(last: A => Boolean)(pred: (A, ArcChain[A]) => Boolean): immutable.IndexedSeq[ArcChain[A]]
 }

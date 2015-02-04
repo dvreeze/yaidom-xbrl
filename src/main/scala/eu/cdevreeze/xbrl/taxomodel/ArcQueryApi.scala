@@ -66,7 +66,7 @@ trait ArcQueryApi extends AbstractArcQueryApi {
     arcChains
   }
 
-  final def findIncomingArcChains[A <: InterConceptArc](concept: EName, arcType: ClassTag[A])(last: A => Boolean)(pred: (ArcChain[A], A) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
+  final def findIncomingArcChains[A <: InterConceptArc](concept: EName, arcType: ClassTag[A])(last: A => Boolean)(pred: (A, ArcChain[A]) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
     val prevArcs = filterIncomingArcs(concept, arcType)(last)
 
     val arcChains = prevArcs.flatMap(arc => findAllLongestArcChainsEndingWith(ArcChain.from(arc), arcType)(pred))
@@ -94,9 +94,9 @@ trait ArcQueryApi extends AbstractArcQueryApi {
     }
   }
 
-  private def findAllLongestArcChainsEndingWith[A <: InterConceptArc](chain: ArcChain[A], arcType: ClassTag[A])(p: (ArcChain[A], A) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
+  private def findAllLongestArcChainsEndingWith[A <: InterConceptArc](chain: ArcChain[A], arcType: ClassTag[A])(p: (A, ArcChain[A]) => Boolean): immutable.IndexedSeq[ArcChain[A]] = {
     val concept = chain.sourceConcept
-    val prevArcs = filterIncomingArcs(concept, arcType)(arc => p(chain, arc))
+    val prevArcs = filterIncomingArcs(concept, arcType)(arc => p(arc, chain))
 
     if (prevArcs.isEmpty) {
       Vector(chain)
