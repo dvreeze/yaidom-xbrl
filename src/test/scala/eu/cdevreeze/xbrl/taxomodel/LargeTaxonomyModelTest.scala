@@ -258,7 +258,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     // Perform queries for a specific has-hypercube linkrole, at the dimensional tree side ("the right-hand side")
 
-    val dimChains = findDimensionalChains(hasHypercube)(taxoModel)
+    val dimChains = taxoModel.findOutgoingDimensionalArcChains(hasHypercube.sourceConcept, hasHypercube.linkRole)
 
     assertResult(true) {
       dimChains.forall(_.arcs.head == hasHypercube)
@@ -312,17 +312,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     // Perform queries from concrete concepts via has-hypercubes to the members
 
-    def findInheritedDimensionalChains(inheritingConcept: EName): immutable.IndexedSeq[ArcChain[DimensionalArc]] = {
-      val result =
-        findInheritanceChains(inheritingConcept, elr) flatMap { ch =>
-          val hasHypercubes =
-            taxoModel.filterOutgoingArcs(ch.sourceConcept, classTag[HasHypercubeArc])(arc => arc.linkRole == elr)
-          hasHypercubes.flatMap(hasHypercube => findDimensionalChains(hasHypercube)(taxoModel)).distinct
-        }
-      result.distinct
-    }
-
-    val foundDimChains = findInheritedDimensionalChains(concepts(0))
+    val foundDimChains = taxoModel.findInheritedDimensionalArcChains(concepts(0))
 
     assertResult(dimChains.map(_.targetConcept).toSet) {
       foundDimChains.map(_.targetConcept).toSet
@@ -330,7 +320,7 @@ class LargeTaxonomyModelTest extends Suite {
 
     assertResult(true) {
       concepts forall { concept =>
-        findInheritedDimensionalChains(concept).map(_.arcs.map(_.targetConcept)).toSet ==
+        taxoModel.findInheritedDimensionalArcChains(concept).map(_.arcs.map(_.targetConcept)).toSet ==
           foundDimChains.map(_.arcs.map(_.targetConcept)).toSet
       }
     }
@@ -364,19 +354,6 @@ class LargeTaxonomyModelTest extends Suite {
     assertResult(Set(EName("{http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts}ValidationTable"))) {
       hasHypercubes.map(_.targetConcept).toSet
     }
-  }
-
-  private def findDimensionalChains(hasHypercube: HasHypercubeArc)(taxonomy: QueryableTaxonomyModel): immutable.IndexedSeq[ArcChain[DimensionalArc]] = {
-    import QueryableTaxonomyModel._
-
-    val chains =
-      taxonomy.findOutgoingArcChains(hasHypercube.sourceConcept, classTag[DimensionalArc]) { arc =>
-        arc == hasHypercube
-      } {
-        case (chain, arc) =>
-          ArcChain.areConsecutiveDimensionalArcs(chain.arcs.last, arc) && !chain.append(arc).hasCycle
-      }
-    chains
   }
 
   private def findFiles(root: File, fileFilter: File => Boolean): Vector[File] = {
