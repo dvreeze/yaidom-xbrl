@@ -356,6 +356,31 @@ class LargeTaxonomyModelTest extends Suite {
     }
   }
 
+  @Test def testQueryKvKDimensions(): Unit = {
+    val docParser = DocumentParserUsingSax.newInstance
+
+    val taxoModelFile = new File(classOf[LargeTaxonomyModelTest].getResource("/kvk-rpt-grote-rechtspersoon-model-a-e-indirect-2014.xml").toURI)
+    val doc = docParser.parse(taxoModelFile.toURI)
+
+    import QueryableTaxonomyModel._
+    val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
+
+    val treesByConceptAndElr = taxoModel.findInheritedDimensionalArcChainsGroupedByConceptAndElr()
+
+    assertResult(true) {
+      treesByConceptAndElr.keySet.size >= 100
+    }
+
+    val elrs = treesByConceptAndElr.values.flatMap(_.keySet).toSet
+
+    assertResult(true) {
+      Set(
+        "urn:kvk:linkrole:financial-statements-type-table",
+        "urn:kvk:linkrole:intangible-assets-movement-schedule-table",
+        "urn:kvk:linkrole:financial-statements-type-table").subsetOf(elrs)
+    }
+  }
+
   private def findFiles(root: File, fileFilter: File => Boolean): Vector[File] = {
     // Recursive calls
     root.listFiles.toVector flatMap {
