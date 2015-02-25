@@ -63,19 +63,22 @@ trait DimensionalArcQueryApi extends ArcQueryApi with AbstractDimensionalArcQuer
     findIncomingArcChains(concept, classTag[DomainMemberArc])(isMatchingDomainMember)(precedes)
   }
 
-  final def findInheritedDimensionalArcChains(concept: EName): immutable.IndexedSeq[ArcChain[DimensionalArc]] = {
+  final def findInheritedDimensionalArcChainsGroupedByElr(concept: EName): DimChainsByElr = {
     val incomingChains = findIncomingDomainMemberArcChains(concept)
 
-    incomingChains flatMap {
-      case ch =>
-        val startConcept = ch.arcs.head.sourceConcept
-        val elr = ch.arcs.head.linkRole
+    val ungroupedResult =
+      incomingChains flatMap {
+        case ch =>
+          val startConcept = ch.arcs.head.sourceConcept
+          val elr = ch.arcs.head.linkRole
 
-        findOutgoingDimensionalArcChains(startConcept, elr)
-    }
+          findOutgoingDimensionalArcChains(startConcept, elr)
+      }
+
+    ungroupedResult.groupBy(_.arcs.head.linkRole)
   }
 
-  final def findInheritedDimensionalArcChainsGroupedByConceptAndElr(): Map[EName, Map[String, immutable.IndexedSeq[ArcChain[DimensionalArc]]]] = {
+  final def findAllInheritedDimensionalArcChainsGroupedByConceptAndElr(): DimChainsByElrByInheritingConcept = {
     val hasHypercubesByConceptAndElr =
       filterStandardArcs(classTag[HasHypercubeArc])(_ => true).groupBy(hh => (hh.sourceConcept, hh.linkRole))
 

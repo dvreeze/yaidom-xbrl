@@ -312,20 +312,24 @@ class LargeTaxonomyModelTest extends Suite {
 
     // Perform queries from concrete concepts via has-hypercubes to the members
 
-    val foundDimChains = taxoModel.findInheritedDimensionalArcChains(concepts(0))
+    val foundDimChainsByElr = taxoModel.findInheritedDimensionalArcChainsGroupedByElr(concepts(0))
 
     assertResult(dimChains.map(_.targetConcept).toSet) {
+      val foundDimChains = foundDimChainsByElr.values.flatten.toVector
       foundDimChains.map(_.targetConcept).toSet
     }
 
     assertResult(true) {
       concepts forall { concept =>
-        taxoModel.findInheritedDimensionalArcChains(concept).map(_.arcs.map(_.targetConcept)).toSet ==
+        val foundDimChains = foundDimChainsByElr.values.flatten.toVector
+
+        taxoModel.findInheritedDimensionalArcChainsGroupedByElr(concept).values.flatten.map(_.arcs.map(_.targetConcept)).toSet ==
           foundDimChains.map(_.arcs.map(_.targetConcept)).toSet
       }
     }
 
     assertResult(dimChains.map(_.arcs.map(_.targetConcept)).toSet) {
+      val foundDimChains = foundDimChainsByElr.values.flatten.toVector
       foundDimChains.map(_.arcs.map(_.targetConcept)).toSet
     }
   }
@@ -365,7 +369,7 @@ class LargeTaxonomyModelTest extends Suite {
     import QueryableTaxonomyModel._
     val taxoModel = TaxonomyModel.build(doc.documentElement).queryable
 
-    val treesByConceptAndElr = taxoModel.findInheritedDimensionalArcChainsGroupedByConceptAndElr()
+    val treesByConceptAndElr = taxoModel.findAllInheritedDimensionalArcChainsGroupedByConceptAndElr()
 
     assertResult(true) {
       treesByConceptAndElr.keySet.size >= 100

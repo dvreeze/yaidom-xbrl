@@ -16,6 +16,10 @@
 
 package eu.cdevreeze.xbrl
 
+import scala.collection.immutable
+
+import eu.cdevreeze.xbrl.taxomodel.ArcChain
+import eu.cdevreeze.xbrl.taxomodel.DimensionalArc
 import eu.cdevreeze.yaidom.core.EName
 
 /**
@@ -30,6 +34,16 @@ import eu.cdevreeze.yaidom.core.EName
  * @author Chris de Vreeze
  */
 package object taxomodel {
+
+  /**
+   * Dimensional arc chains, starting with a has-hypercube, by ELR.
+   */
+  type DimChainsByElr = Map[String, immutable.IndexedSeq[ArcChain[DimensionalArc]]]
+
+  /**
+   * Dimensional arc chains by ELR, by inheriting concept.
+   */
+  type DimChainsByElrByInheritingConcept = Map[EName, DimChainsByElr]
 
   val YatmNs = "https://github.com/dvreeze/yaidom-xbrl/taxonomy"
   val YatmXsNs = "https://github.com/dvreeze/yaidom-xbrl/xmlschema"

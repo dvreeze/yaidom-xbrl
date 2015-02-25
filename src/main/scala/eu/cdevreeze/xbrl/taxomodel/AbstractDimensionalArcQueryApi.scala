@@ -50,10 +50,12 @@ trait AbstractDimensionalArcQueryApi extends AbstractArcQueryApi {
 
   /**
    * Returns the inherited dimensional arc chains, starting with has-hypercubes, inherited by the given concept.
+   * The result is returned as a Map from ELRs to collections of arc chains.
+   *
    * That is, combines `findIncomingDomainMemberArcChains` and `findOutgoingDimensionalArcChains`, via
-   * matching has-hypercubes.
+   * matching has-hypercubes, and returns the result grouped by ELR.
    */
-  def findInheritedDimensionalArcChains(concept: EName): immutable.IndexedSeq[ArcChain[DimensionalArc]]
+  def findInheritedDimensionalArcChainsGroupedByElr(concept: EName): DimChainsByElr
 
   /**
    * Returns per concept and has-hypercube ELR the inherited dimensional arc chains, starting with has-hypercubes,
@@ -62,5 +64,5 @@ trait AbstractDimensionalArcQueryApi extends AbstractArcQueryApi {
    * The method returns a Map from concept ENames to ELRs to "dimensional trees". This is a "bulk version" of method
    * `findInheritedDimensionalArcChains`, except that the implementation is more efficient.
    */
-  def findInheritedDimensionalArcChainsGroupedByConceptAndElr(): Map[EName, Map[String, immutable.IndexedSeq[ArcChain[DimensionalArc]]]]
+  def findAllInheritedDimensionalArcChainsGroupedByConceptAndElr(): DimChainsByElrByInheritingConcept
 }
