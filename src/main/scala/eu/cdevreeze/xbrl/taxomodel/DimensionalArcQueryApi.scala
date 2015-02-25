@@ -96,8 +96,9 @@ trait DimensionalArcQueryApi extends ArcQueryApi with AbstractDimensionalArcQuer
         val incomingChains = findIncomingDomainMemberArcChains(concept)
         val keys = incomingChains.map(ch => (ch.sourceConcept -> ch.arcs.head.linkRole)).distinct
 
-        val treesByElr =
-          (keys map { case (startConcept, elr) => (elr -> dimTreesByConceptAndElr((startConcept, elr))) }).toMap
+        val trees = keys flatMap { case (startConcept, elr) => dimTreesByConceptAndElr((startConcept, elr)) }
+
+        val treesByElr = trees.groupBy(tree => tree.arcs.head.linkRole)
         (concept -> treesByElr)
       }
 
