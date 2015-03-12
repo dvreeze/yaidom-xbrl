@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema 
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:eg="http://xbrl.org/formula/conformance/example" 
+  xmlns:my-stuff="http://xbrl.org/formula/conformance/example/myStuff" 
+  xmlns:formula="http://xbrl.org/2008/formula" 
+  xmlns:variable="http://xbrl.org/2008/variable" 
+  xmlns:label="http://xbrl.org/2008/label" 
+  targetNamespace="http://xbrl.org/formula/conformance/example" 
+  elementFormDefault="qualified" 
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+
+  <attribute
+    id="a1s"
+    name="a1s"
+    type="xs:string" />
+
+  <attribute
+    id="a2s"
+    name="a2s"
+    type="xs:string" />
+
+  <attribute
+    id="a3qn"
+    name="a3qn"
+    type="xs:QName" />
+
+  <element 
+    id="c1" 
+    name="c1" 
+    type="xbrli:stringItemType" 
+    substitutionGroup="xbrli:item" 
+    xbrli:periodType="instant" 
+    nillable="true" 
+    eg:a1s="aaa001"
+    eg:a2s="bbb001"
+    eg:a3qn="my-stuff:my-c1" 
+  />
+
+  <element 
+    id="c1_2" 
+    name="c1_2" 
+    type="xbrli:stringItemType" 
+    substitutionGroup="xbrli:item" 
+    xbrli:periodType="instant" 
+    nillable="true" 
+    eg:a1s="aaa002"
+    eg:a2s="bbb003"
+    eg:a3qn="my-stuff:my-c4" 
+  />
+
+  <element 
+    id="c2" 
+    name="c2" 
+    type="xbrli:stringItemType" 
+    substitutionGroup="xbrli:item" 
+    xbrli:periodType="instant" 
+    nillable="true" 
+  />
+
+  <element id="t1" name="t1" substitutionGroup="xbrli:tuple" nillable="true"
+    eg:a1s="ttt001"
+    eg:a2s="ttt002"
+    eg:a3qn="my-stuff:my-t1" 
+  >
+    <complexType>
+      <complexContent>
+        <restriction base="anyType">
+          <sequence>
+            <any maxOccurs="unbounded"/>
+          </sequence>
+          <attribute name="id" type="ID" />
+        </restriction>
+      </complexContent>
+    </complexType>
+  </element>
+
+</schema>

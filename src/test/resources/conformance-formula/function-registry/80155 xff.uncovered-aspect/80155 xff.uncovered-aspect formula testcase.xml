@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xff="http://www.xbrl.org/2010/function/formula"
+  xmlns:xffe="http://www.xbrl.org/2010/function/formula/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xbrl.org/2008/conformance  ../../infrastructure/test.xsd">
+  <creator>
+    <name>Herm Fischer</name>
+    <email>fischer@markv.com</email>
+  </creator>
+
+  <number>80155</number>
+
+  <name>xff:uncovered-aspects</name>
+
+  <description>
+    Tests xff:uncovered-aspects function which can only be executed in value/consistency assertion and formula XPath expressions.
+  </description>
+
+  <variation id="V-01">
+    <name>Test of uncovered concept aspect in a formula</name>
+    <description>
+        A formula tests that the uncovered concept aspect is the concept QName, obtaining
+        its local name value.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>concept-uncovered-formula1.xml</linkbase>
+      <instance readMeFirst="true">concept-uncovered-instance1.xml</instance>
+    </data>
+    <result>
+      <instance>concept-uncovered-result1.xml</instance>
+    </result>
+  </variation>
+
+  <variation id="V-02">
+    <name>Test of uncovered concept aspect in a consistency assertion</name>
+    <description>
+        A consistency assertion uses the uncovered concept aspect in its radius expression.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>concept-uncovered-formula2.xml</linkbase>
+      <instance readMeFirst="true">concept-uncovered-instance2.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="2"
+         countNotSatisfied="0" />
+      <instance>concept-uncovered-result2.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-03">
+    <name>Test of uncovered concept aspect in an existence assertion</name>
+    <description>
+        A existence assertion erroneously uses the uncovered concept aspect in its test expression.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>concept-uncovered-formula3.xml</linkbase>
+      <instance readMeFirst="true">concept-uncovered-instance3.xml</instance>
+    </data>
+    <result>
+      <error>xffe:invalidFunctionUse</error>
+    </result>
+  </variation>
+
+  <variation id="V-04">
+    <name>Test of uncovered concept aspect in a value assertion</name>
+    <description>
+        A value assertion uses the uncovered concept aspect in its test expression.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>concept-uncovered-formula4.xml</linkbase>
+      <instance readMeFirst="true">concept-uncovered-instance4.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="2"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-05">
+    <name>Test of uncovered concept aspect when implicit filtering is false</name>
+    <description>
+        A value assertion uses the uncovered concept aspect in its test expression, 
+        but implicit-filtering is 'false', so an error must be raised for invalid use.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>invalid-use-without-implicit-filtering-formula.xml</linkbase>
+      <instance readMeFirst="true">invalid-use-without-implicit-filtering-instance.xml</instance>
+    </data>
+    <result>
+      <error>xffe:invalidFunctionUse</error>
+    </result>
+  </variation>
+  
+  <variation id="V-11">
+    <name>Test of uncovered entity-identifier aspect in a formula</name>
+    <description>
+        A formula tests that the uncovered entity-identifier aspect is the identifier element, obtaining
+        its identifier and scheme attribute values.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>entity-uncovered-formula1.xml</linkbase>
+      <instance readMeFirst="true">entity-uncovered-instance1.xml</instance>
+    </data>
+    <result>
+      <instance>entity-uncovered-result1.xml</instance>
+    </result>
+  </variation>
+
+  <variation id="V-21">
+    <name>Test of uncovered location aspect in a value assertion</name>
+    <description>
+        A value assertion uses the uncovered location aspect in its test expression.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>location-uncovered-formula1.xml</linkbase>
+      <instance readMeFirst="true">location-uncovered-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="2" />
+    </result>
+  </variation>
+  
+  <variation id="V-31">
+    <name>Test of a value assertion with period uncovered</name>
+    <description>
+        A value assertion has a fact variable, period uncovered, and tests that the
+        day of the instant time of the period equals the fact's value.  Note that
+        each instant period is specified as day in the context, so that the dateTime's day
+        number is the next day, eg., Dec 31st has a day number of 1 (for midnight Jan 1).
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>period-uncovered-formula1.xml</linkbase>
+      <instance readMeFirst="true">period-uncovered-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="3"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-32">
+    <name>Test of a value assertion with period uncovered but absent</name>
+    <description>
+        A value assertion has a fact variable, period uncovered. Tests that when the
+        matched fact is a tuple then the value returned for the period aspect is the 
+        empty sequence.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>period-uncovered-absent-formula.xml</linkbase>
+      <instance readMeFirst="true">period-uncovered-absent-instance.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="1" />
+    </result>
+  </variation>
+
+  <variation id="V-41">
+    <name>Test of uncovered unit aspect in a value assertion</name>
+    <description>
+        A value assertion tests that the uncovered unit aspect is the unit element, obtaining
+        its child measure element and assuring there's only one measure element of the proper
+        data type (QName) and value.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>unit-uncovered-formula1.xml</linkbase>
+      <instance readMeFirst="true">unit-uncovered-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="2"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+
+  <variation id="V-42">
+    <name>Test of a value assertion with unit covered</name>
+    <description>
+        A value assertion has a string and numeric fact variable, unit covered, so unit aspect
+        must be empty sequence.
+     </description>
+      
+    <data>
+      <schema>uncovered-aspect-tests.xsd</schema>
+      <linkbase>string-numeric-unit-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">string-numeric-unit-cover-instance.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+
+  <variation id="V-71">
+    <name>Test of uncovered non-XDT-segment aspect in a value assertion</name>
+    <description>
+        A value assertion tests that the uncovered non-XDT-segment aspect is s-equal
+        to the segment of the factVariable that has all aspects uncovered.
+     </description>
+      
+    <data>
+      <schema>uncovered-dimension-value.xsd</schema>
+      <linkbase>uncovered-dimension-value-definition.xml</linkbase>
+      <linkbase>uncovered-nonXDT-segment-formula1.xml</linkbase>
+      <instance readMeFirst="true">uncovered-nonXDT-segment-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="10"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+
+  <variation id="V-91">
+    <name>Test of uncovered dimension aspects formula</name>
+    <description>
+        A formula tests the uncovered explicit and typed dimension values, including some
+        facts that don't have the explicit dimension aspect.
+     </description>
+      
+    <data>
+      <schema>uncovered-dimension-value.xsd</schema>
+      <linkbase>uncovered-dimension-value-definition.xml</linkbase>
+      <linkbase>uncovered-dimension-formula1.xml</linkbase>
+      <instance readMeFirst="true">uncovered-dimension-value-instance1.xml</instance>
+    </data>
+    <result>
+      <instance>uncovered-dimension-value-result1.xml</instance>
+    </result>
+  </variation>
+
+</testcase>
+
+

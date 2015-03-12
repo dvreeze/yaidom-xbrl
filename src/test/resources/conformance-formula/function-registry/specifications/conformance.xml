@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xbrlspec/stylesheet.xsl"?>
+<spec 
+xmlns="http://xbrl.org/specification/2007" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xbrl.org/specification/2007 ../../specifications/xbrlspec/schema.xsd">
+
+  <header>
+    <wg>FWG</wg>
+    <title>Conformance test definition</title>
+    <id>conformance</id>
+    <feedback>formula-feedback@xbrl.org</feedback>
+    <namespaces>
+      <namespace 
+      id="ns-normative-schema" 
+      value="http://xbrl.org/2008/conformance" 
+      prefix="conf"
+      url="http://www.xbrl.org/2008/conformance.xsd">
+        The namespace of the normative schema.
+      </namespace>
+      <namespace 
+      id="ns-errors" 
+      value="http://xbrl.org/2008/conformance/error" 
+      prefix="confe">
+        The namespace for errors defined in this specification.
+      </namespace>
+    </namespaces>
+    <version>1.0</version>
+    <date year="2009" month="06" day="22" />
+    <status>REC</status>
+    <authors xmlns="http://xbrl.org/specification/2007">
+      <person id="person-geoff">
+        <name >Geoff Shuetrim</name>
+        <affiliation>Galexy</affiliation>
+        <email>geoff@galexy.net</email>
+      </person>
+    </authors>
+    <abstract>
+      <p>
+        This specification defines a syntax for a generic conformance suite
+        test.  Specific types of tests will need to customise this generic
+        conformance suite test to support documentation of the specific inputs 
+        and outputs being tested.
+      </p>
+    </abstract>
+  </header>
+
+  <body>
+    
+    <section id="sec-intro">
+      <head>Introduction</head>
+      <p>
+        This specification defines a syntax for a generic conformance suite
+        test.  Specific types of tests will need to customise this generic
+        conformance suite test to support documentation of the specific inputs 
+        and outputs being tested.
+      </p>
+
+      <section id="sec-background">
+        <head>Background</head>
+        <p>
+          This specification is intended to support the creation, maintenance,
+          and publication of XBRL conformance suites.
+        </p>
+      </section>
+
+      <section id="sec-relationship-to-other-work">
+        <head>Relationship to other work</head>
+        This specification works with the XBRL registry specification.
+      </section>
+      
+      <section id="sec-language">
+        <head>Language independence</head>
+        <p>
+          The official language of XBRL International's own work
+          products is English and the preferred spelling convention is
+          UK English.
+        </p>
+      </section>
+      <section id="sec-terminology">
+        <head>Terminology</head>
+
+        <p>
+          This specification is consistent with the definitions of any of the
+          terms defined in specifications that it depends on.
+        </p>
+
+      </section>
+
+      <section id="sec-document-conventions">
+        <head>Document conventions (non-normative)</head>
+        
+        <p>
+          <xtermref bibref="VARIABLES" idref="sec-document-conventions">
+          Documentation conventions</xtermref> follow those set out in
+          the XBRL Variables Specification <bibref ref="VARIABLES"/>.
+        </p>
+
+      </section>
+
+      <section id="sec-namespaces">
+        <head>Namespaces and namespace prefixes</head>
+
+        <p>
+          Namespace prefixes <bibref ref="XMLNAMES"/> will be used 
+          for elements and attributes in
+          the form <code>ns:name</code> where <val>ns</val> is the 
+          namespace prefix and <val>name</val> is the local name. 
+          Throughout this specification, the mappings
+          from namespace prefixes to actual namespaces is consistent
+          with <tableref ref="table-namespaces"/>.
+        </p>
+        
+        <p>
+          The prefix column in <tableref ref="table-namespaces"/> is non normative. 
+          The namespace URI column is normative.
+        </p>        
+        <table id="table-namespaces">
+          <caption>Namespaces and namespace prefixes</caption>
+          <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Namespace URI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><val><namespaceref ref="ns-normative-schema" use="prefix"/></val></td>
+              <td><val><namespaceref ref="ns-normative-schema" use="namespace"/></val></td>
+            </tr>
+            <tr>
+              <td><val><namespaceref ref="ns-errors" use="prefix"/></val></td>
+              <td><val><namespaceref ref="ns-errors" use="namespace"/></val></td>
+            </tr>
+            <tr>
+              <td><val>xml</val></td>
+              <td><val>http://www.w3.org/XML/1998/namespace</val></td>
+            </tr>
+            <tr>
+              <td><val>xlink</val></td>
+              <td><val>http://www.w3.org/1999/xlink</val></td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </section>
+      
+    </section>
+    
+    <section id="sec-syntax">
+      <head>Syntax</head>
+
+      <p>
+        This specification only provides a textual declaration of syntax
+        constraints when those constraints are not expressed by the
+        normative schema supplied with this specification.
+      </p>
+      <p>
+        Explanations of elements and attributes are only supplied when
+        explanations are not already provided in other
+        specifications.
+      </p>
+      <p>
+        Unless explicitly stated otherwise, a reference to a specific
+        element <rfc2119>MUST</rfc2119> be read as a reference to that 
+        element or to any element in its 
+        <xtermref bibref="XMLSCHEMA-STRUCTURES" idref="key-equivalenceClass">
+        substitution group
+        </xtermref>.
+      </p>
+
+      <section id="sec-xml-attributes">
+        <head>Attributes in the XML namespace</head>
+
+        <p>
+          Any attribute in the XML namespace (<val>http://www.w3.org/XML/1998/namespace</val>) <rfc2119>MAY</rfc2119> be
+          used on any element within a <termref ref="term-test-case">test case</termref>.
+        </p>
+
+        <p>
+          The <att>xml:lang</att> attribute <rfc2119>MAY</rfc2119> be used to indicate the language used to express
+          information in the test case, as per the XML Specification <bibref ref="XML"/>.
+        </p>
+
+        <p>
+          The <att>xml:base</att> attribute <rfc2119>MAY</rfc2119> be used when resolving URIs 
+          as per the XML Base Specification <bibref ref="XMLBASE"/>.
+        </p>
+
+      </section>
+
+      <section id="sec-test-case">
+        <head>Element: testcase</head>
+
+        <p>
+          <definition id="term-test-case" term="test case">
+            A <term>test case</term> is an XML resource with the 
+            <xmlref ref="xml-testcase"><elt>conf:testcase</elt></xmlref> element 
+            as its root.
+          </definition>
+        </p>
+
+        <section id="sec-owners">
+          <head>Element: owners</head>
+
+          <p>
+            The optional <xmlref ref="xml-owners"><elt>conf:owners</elt></xmlref> element 
+            contains one or more <elt>reg:owner</elt> elements, as defined in
+            the XBRL registry specification <bibref ref="REGISTRY"/>.
+          </p>
+          
+          <p>
+            Each owner is a person with responsibility for maintaining the
+            test case.  Without using this element, test case history relies upon 
+            information in the source control system being used.
+          </p>
+
+        </section>
+
+        <section id="sec-number">
+          <head>Element: number</head>
+
+          <p>
+            The <xmlref ref="xml-number"><elt>conf:number</elt></xmlref> element 
+            contains the identifying number of the conformance suite test.
+            That number <rfc2119>SHOULD</rfc2119> be unique among all tests in the entire suite.
+          </p>
+          
+        </section>
+        
+        <section id="sec-name">
+          <head>Element: name</head>
+
+          <p>
+            The <xmlref ref="xml-name"><elt>conf:name</elt></xmlref> element 
+            contains a brief name of the test case
+          </p>
+          
+        </section>
+
+        <section id="sec-documentation">
+          <head>Element: documentation</head>
+
+          <p>
+            The <xmlref ref="xml-documentation"><elt>reg:documentation</elt></xmlref> element 
+            contains either a URL that resolves to documentation of the test case or it contains
+            XHTML <bibref ref="XHTML"/> markup documenting the test case.
+          </p>
+
+        </section>
+
+        <section id="sec-reference">
+          <head>Element: reference</head>
+
+          <p>
+            The <xmlref ref="xml-reference"><elt>conf:reference</elt></xmlref> element 
+            contains a link to a a part of a specification that is relevant to the test case.
+          </p>
+
+          <p>
+            The <elt>conf:reference</elt> element 
+            contains an <att>xlink:type</att> attribute that equals <val>simple</val> and
+            an <att>xlink:href</att> attribute that contains a URI that <rfc2119>MUST</rfc2119> 
+            resolve to the part of the specification being referenced.
+          </p>
+
+          <p>
+            The <elt>conf:reference</elt> element <rfc2119>MAY</rfc2119> contain string content documenting
+            the nature of the resource that the URL is linking to.
+          </p>
+
+          <p>
+            A test case <rfc2119>MAY</rfc2119> contain several references, if the test
+            case addresses several aspects of a specification or several specifications.
+          </p>
+
+        </section>
+
+        <section id="sec-variation">
+          <head>Element: variation</head>
+
+          <p>
+            <definition id="term-test-case-variation" term="test case variation">
+              A <term>test case variation </term> is an XML resource with the 
+              <xmlref ref="xml-variation"><elt>conf:variation</elt></xmlref> element 
+              as its root.
+            </definition>
+          </p>
+
+          <p>
+            The <xmlref ref="xml-variation"><elt>conf:variation</elt></xmlref> element 
+            contains the information about a specific variation of the test case.
+          </p>
+
+          <p>
+            A test case variation contains many of the same elements as a test case.
+            In particular, it <rfc2119>MAY</rfc2119> contain its own elements documenting
+            the owners, its number and name, its own documentation, and its references to normative
+            specifications.  All of these except for the documentation are optional.  The syntax for
+            all of this information matches that for the same information at the level of the test case.
+          </p>
+          
+          <p>
+            Each test case variation also documents its specific inputs and expected outputs.
+          </p>
+
+          <section id="sec-inputs">
+            <head>Element: inputs</head>
+  
+            <p>
+              The <xmlref ref="xml-inputs"><elt>conf:inputs</elt></xmlref> element 
+              contains a list of elements, one per input to the test case variation.
+            </p>
+            
+            <p>
+              Each element in a <elt>conf:inputs</elt> element <rfc2119>MUST</rfc2119> be 
+              in the substitution group for the abstract <elt>conf:input</elt> element.
+              This enables different kinds of conformance suites to specify appropriate kinds
+              of inputs.
+            </p>
+            
+            <p>
+              The syntax for the input files is defined as part of the generic conformance test
+              syntax because input files are common to a broad range of conformance suite tests.
+            </p>
+            
+            <section id="sec-input-files">
+              <head>Input files</head>
+              
+              <p>
+                Three different kinds of input files are defined as inputs to function test
+                case variations.  Input schema files are identified by a <elt>conf:schema</elt>
+                element; input linkbase files are identified by a <elt>conf:linkbase</elt>; and input
+                instance files are identified by a <elt>conf:linkbase</elt> element.
+              </p>
+              
+              <p>
+                All three of these elements have the same content model.
+              </p>
+              
+              <p>
+                The <att>id</att> attribute
+                is required on all of them to enable them to be referenced by other parts of the test 
+                case variation.
+              </p>
+
+              <p>
+                If the elements have a
+                <att>readMeFirst</att> attribute equal to <val>true</val> then they are 
+                a starting point for the DTS discovery process that <rfc2119>MUST</rfc2119> occur
+                as part of initialising the software to perform the test case variation.  Otherwise
+                the file <rfc2119>MUST NOT</rfc2119> be used as a starting point for the 
+                DTS discovery process.
+              </p>
+
+              <p>
+                The elements also contain an <att>xlink:type</att> attribute that equals <val>simple</val> and
+                an <att>xlink:href</att> attribute that contains a URI that <rfc2119>MUST</rfc2119> 
+                resolve to the file that it identifies.
+              </p>
+
+              <p>
+                The elements <rfc2119>MAY</rfc2119> contain string content documenting
+                the nature of the resource that the URL is linking to.
+              </p>
+
+            </section>
+
+          </section>
+  
+          <section id="sec-outputs">
+            <head>Element: outputs</head>
+  
+            <p>
+              The <xmlref ref="xml-outputs"><elt>conf:outputs</elt></xmlref> element 
+              contains a list of elements, one per output from the test case variation.
+            </p>
+  
+            <p>
+              Each element in a <elt>conf:outputs</elt> element <rfc2119>MUST</rfc2119> be 
+              in the substitution group for the abstract <elt>conf:output</elt> element.
+              This enables different kinds of conformance suites to specify appropriate kinds
+              of outputs.
+            </p>
+
+            <section id="sec-error-codes">
+              <head>Output error codes</head>
+              
+              <p>
+                Syntax for an output QName error code is provided as part of the generic conformance test
+                syntax because of the general need for such codes.
+              </p>
+
+              <p>
+                Output error codes are expressed by the <elt>conf:error</elt> element.  Its QName value is the
+                QName of the error code that <rfc2119>MUST</rfc2119> be produced by software running the conformance
+                suite test if the software is to pass the test.
+              </p>
+
+            </section> <!--  Error codes -->
+
+          </section> <!--  Outputs -->
+
+        </section> <!-- Variations -->
+        
+        <section id="sec-revisions">
+          <head>Element: revisions</head>
+
+          <p>
+            The optional <elt>reg:revisions</elt> element 
+            conforms to the XBRL registry specification <bibref ref="REGISTRY"/>.  It provides
+            a syntax for tracking explanations of changes to the conformance suite tests.  This is 
+            intended to augment the information captured in source control systems, should 
+            such augmentation be required.
+          </p>
+
+        </section>
+
+      </section> <!-- Test cases -->
+
+    </section><!-- Syntax -->
+
+  </body>
+  
+  <back>
+
+    <section id="sec-schema">
+
+      <head>Normative schema</head>
+      
+      <p>
+        The following is the XML schema provided as part of this
+        specification. This is normative. Non-normative versions (which
+        should be identical to these except for appropriate comments
+        indicating their non-normative status) are also provided as
+        separate files for convenience of users of the specification.
+      </p>
+      
+      <p>
+        NOTE: (non-normative) Following the schema maintenance policy of
+        XBRL International, it is the intent (but is not guaranteed)
+        that the location of non-normative versions of these schemas on
+        the web will be as follows:
+      </p>
+      
+      <olist>
+        <item>
+          While any schema is the most current RECOMMENDED version and
+          until it is superseded by any additional errata corrections a
+          non-normative version will reside on the web in the directory
+          <code>http://www.xbrl.org/2008/</code> - during the drafting process for
+          this specification this directory should contain a copy of the
+          most recent published version of the schema at
+          <namespaceref ref="ns-normative-schema" use="url"/>.
+        </item>
+        <item>
+          A non-normative version of each schema as corrected by any
+          update to the RECOMMENDATION will be archived in perpetuity on
+          the web in a directory that will contain a unique
+          identification indicating the date of the update.
+        </item>
+      </olist>
+      <p role="xml-normative">
+        <verbatim>
+          <includeChunk ref="../schemas/conformance.xsd"/>
+        </verbatim>
+      </p>
+    </section>
+
+    <section id="sec-references">
+
+      <head>References</head>
+
+      <bibliography>
+          <includeChunk ref="../../specifications/boilerplate/references/REGISTRY.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/VARIABLES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XML.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLBASE.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLNAMES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XHTML.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLSCHEMA-STRUCTURES.xml"/>
+    	</bibliography>
+
+      </section>
+
+      <section id="sec-ip-status" xmlns="http://xbrl.org/specification/2007">
+        <head>Intellectual property status (non-normative)</head>
+        
+        <p>
+          This document and translations of it may be copied and
+          furnished to others, and derivative works that comment on or
+          otherwise explain it or assist in its implementation may be
+          prepared, copied, published and distributed, in whole or in
+          part, without restriction of any kind, provided that the above
+          copyright notice and this paragraph are included on all such
+          copies and derivative works. However, this document itself may
+          not be modified in any way, such as by removing the copyright
+          notice or references to XBRL International or XBRL
+          organizations, except as required to translate it into
+          languages other than English. Members of XBRL International
+          agree to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<xref ref="http://www.xbrl.org/legal">www.xbrl.org/legal</xref>).
+        </p>
+      
+      
+        <p>
+          This document and the information contained herein is provided
+          on an "AS IS" basis and XBRL INTERNATIONAL DISCLAIMS ALL
+          WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+          ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+          INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+          MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+        </p>
+      
+        <p>
+          The attention of users of this document is directed to the
+          possibility that compliance with or adoption of XBRL
+          International specifications may require use of an invention
+          covered by patent rights. XBRL International shall not be
+          responsible for identifying patents for which a license may be
+          required by any XBRL International specification, or for
+          conducting legal inquiries into the legal validity or scope of
+          those patents that are brought to its attention. XBRL
+          International specifications are prospective and advisory
+          only. Prospective users are responsible for protecting
+          themselves against liability for infringement of patents. XBRL
+          International takes no position regarding the validity or
+          scope of any intellectual property or other rights that might
+          be claimed to pertain to the implementation or use of the
+          technology described in this document or the extent to which
+          any license under such rights might or might not be available;
+          neither does it represent that it has made any effort to
+          identify any such rights. Members of XBRL International agree
+          to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<xref ref="http://www.xbrl.org/legal">www.xbrl.org/legal</xref>).
+        </p>
+      </section>
+
+      <section id="sec-acknowledgements" xmlns="http://xbrl.org/specification/2007">
+        <head>Acknowledgements (non-normative)</head>
+        <p>
+          This document could not have been written without the
+          contributions of many people including the participants in the
+          <wgref/>.
+        </p>
+      
+      </section>
+    
+    <section id="sec-history">
+      <head>Document history (non-normative)</head>
+      
+      <revisions>
+
+        <revision ref="person-geoff"
+        day="29" month="01" year="2008">
+          <p>
+            First internal working draft created.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="30" month="01" year="2008">
+          <p>
+            Fixed up various XML Schema errors.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="31" month="01" year="2008">
+          <p>
+            Adapted hyperlinks to use XLink simple link syntax.
+          </p>
+          <p>
+            Added revision tracking.
+          </p>
+        </revision>
+
+      </revisions>
+
+    </section>
+
+    <section id="sec-corrections" xmlns="http://xbrl.org/specification/2007">
+      <head>Errata corrections in this document</head>
+      
+      <p>
+        This appendix contains a list of the errata that have been
+        incorporated into this document. This represents all those
+        errata corrections that have been approved by the XBRL
+        International <wgref/> up to and
+        including <dateref style="DD Month YYYY"/>. 
+        Hyperlinks to relevant e-mail threads may
+        only be followed by those who have access to the relevant
+        mailing lists. Access to internal XBRL mailing lists is
+        restricted to members of XBRL International Inc.
+      </p>
+
+      <errata/>
+
+    </section>
+
+  </back>
+</spec>

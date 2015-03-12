@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<xbrl 
+xmlns="http://www.xbrl.org/2003/instance" 
+xmlns:concept="http://xbrl.org/formula/conformance/example" 
+xmlns:link="http://www.xbrl.org/2003/linkbase" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+>
+
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:href="precision-test.xsd"/>
+
+  <context id="context">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">earth</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+
+  <unit id="monetary">
+    <measure>iso4217:USD</measure>
+  </unit>
+
+  <unit id="pure">
+    <measure>pure</measure>
+  </unit>
+
+  <concept:c1 contextRef="context">hello earthling</concept:c1>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="0">400</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="INF">400</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" precision="0">400</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" precision="4">400</concept:c2>
+  <concept:c3 contextRef="context" unitRef="pure">
+    <numerator>1</numerator>
+    <denominator>3</denominator>
+  </concept:c3>
+  <concept:c4/>
+
+  <!-- Example 13 from V2.1 spec -->
+  <concept:c2 contextRef="context" unitRef="pure" decimals="2">123</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="2">123.456</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="-3">123e5</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="-3">123.4e5</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="5">0.1e-2</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="5">0.001E-2</concept:c2>
+  <concept:c2 contextRef="context" unitRef="pure" decimals="4">0.001e-3</concept:c2>
+</xbrl>

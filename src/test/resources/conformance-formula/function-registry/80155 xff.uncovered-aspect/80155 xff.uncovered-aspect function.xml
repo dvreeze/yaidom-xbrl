@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2009 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xff="http://www.xbrl.org/2010/function/formula" 
+  xmlns:xffe="http://www.xbrl.org/2010/function/formula/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2009-11-19T22:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+       <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2009-11-19T22:00:00" />
+    </reg:owner>
+    <reg:owner id="rna">
+       <reg:name>Richard Ashby</reg:name>
+       <reg:affiliation>CoreFiling Ltd</reg:affiliation>
+       <reg:email>rna@corefiling.com</reg:email>
+       <reg:assumedOwnership moment="2011-09-08T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns the specified uncovered aspect for use in XPath expressions of a consistency assertion, value assertion, formula aspect rule, or generic message XPath expression.  The function is not applicable to variable-set variable evaluation and filter expressions.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2006-12-18.htm#_Toc156209162">
+    XBRL 2.1 Section 4.7.3
+  </reference>
+  
+  <signature name="xff:uncovered-aspect">
+    <input name="aspect" type="xs:token">
+      <xhtml:p>
+        The aspect value MUST be one of:
+      </xhtml:p>
+      <xhtml:ul>
+        <xhtml:li>concept</xhtml:li>
+        <xhtml:li>entity-identifier</xhtml:li>
+        <xhtml:li>location</xhtml:li>
+        <xhtml:li>period</xhtml:li>
+        <xhtml:li>unit</xhtml:li>
+        <xhtml:li>complete-segment</xhtml:li>
+        <xhtml:li>complete-scenario</xhtml:li>
+        <xhtml:li>non-XDT-segment</xhtml:li>
+        <xhtml:li>non-XDT-scenario</xhtml:li>
+        <xhtml:li>dimension</xhtml:li>
+      </xhtml:ul>
+      <xhtml:p>
+        See output, below, for the value of the function for each aspect.
+      </xhtml:p>
+    </input>
+    <input name="dimension" type="xs:QName?">
+      <xhtml:p>
+        For a dimension aspect, this parameter MUST be provided and is the QName of the dimension.
+        For other aspects, this parameter may be omitted, or may be supplied as an empty sequence. 
+      </xhtml:p>
+    </input>
+    <output type="xs:anyType?">
+      <xhtml:p>
+        Returns the uncovered aspect requested, or an empty sequence if not applicable.  The following paragraphs
+        provide the output type for each aspect (where present).
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'concept' then the output MUST be of type xs:QName and is the uncovered concept
+        aspect value.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'entity-identifier' then the output MUST be of type element(xbrli:identifier) 
+        and is the uncovered entity identifier element aspect value.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'location' then the output MUST be of type element() 
+        and is the uncovered location aspect value.  This element() MUST be a fact item or tuple that is a
+        descendant of the xbrli:xbrl instance element.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'period' then the output MUST be of type element(xbrli:period) 
+        and is the uncovered period element aspect value. If there is no such aspect then an empty
+        sequence is output.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'unit' then the output MUST be of type element(xbrli:unit)? 
+        and is the uncovered unit element aspect value.  If there is no such aspect then an empty
+        sequence is output.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'complete-segment' then the output MUST be of type element(xbrli:segment)? 
+        and is the uncovered complete-segment element aspect value, in which the elements and their descendant nodes 
+        have the appropriate type based on the Post Schema Validation Infoset.
+        If there is no such aspect then an empty sequence is output.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'complete-scenario' then the output MUST be of type element(xbrli:scenario)? 
+        and is the uncovered complete-scenario element aspect value, in which the elements and their descendant nodes 
+        have the appropriate type based on the Post Schema Validation Infoset.
+        If there is no such aspect then an empty sequence is output.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'non-XDT-segment' then the output MUST be of type element()* 
+        and is the uncovered non-XDT-segment element nodes, in which those non-XDT segment
+        element nodes and their descendant nodes 
+        have the appropriate type based on the Post Schema Validation Infoset.
+        Note that complete-segment returns the segment node and non-XDT-segment returns a collection
+        of non-XDT child nodes of the segment.
+        If there is no such aspect then an empty sequence is output.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'non-XDT-scenario' then the output MUST be of type element()* 
+        and is the uncovered non-XDT-scenario element nodes, in which those non-XDT scenario
+        element nodes and their descendant nodes 
+        have the appropriate type based on the Post Schema Validation Infoset.
+        Note that complete-scenario returns the scenario node and non-XDT-scenario returns a collection
+        of non-XDT child nodes of the scenario.
+        If there is no such aspect then an empty sequence is output.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'dimension', and the dimension is an explicit dimension,
+        then the output MUST be of type xs:QName and is the member of the uncovered explicit dimension
+        aspect value.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'dimension', and the dimension is a typed dimension,
+        then the output MUST be of type element(xbrldi:typedMember)? and is 
+        the child element of the segment or scenario that contains the typed dimension value
+        if there is a value for the dimension in either the segment or scenario bound to the
+        uncovered aspect and returns the
+        empty sequence otherwise.
+        The data type of the child and its descendant elements have the appropriate type 
+        based on the Post Schema Validation Infoset.
+      </xhtml:p>
+      <xhtml:p>
+        If the aspect value is 'dimension' and either there are no dimensional aspects, or
+        the dimension QName input is an empty sequence, or it does not represent a dimension
+        aspect that is uncovered, then an empty sequence is output.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xffe:invalidFunctionUse">
+    <xhtml:p>
+      This error MUST be thrown if the this function is referenced in an XPath expression invoked
+      in variable-set variable evaluation, such as by a generalVariable or filter XPath expression.
+    </xhtml:p>
+    <xhtml:p>
+      A formula processor MAY detect this error as a static compilation-time error if it this
+      function is referenced in variable-set evaluation expressions (by generalVariable or filters).
+    </xhtml:p>
+    <xhtml:p>
+      A formula processor MUST detect this error as a dynamic run-time error if it this
+      function is referenced in variable-set evaluation expressions (by generalVariable or filters),
+      such as during execution of an XPath or other language implementation of custom functions
+      that were invoked dynamically in variable-set evaluation expressions (by generalVariable or filters).
+    </xhtml:p>
+    <xhtml:p>
+      This error MUST be thrown if the this function is referenced in an XPath expression invoked
+      in an XPath function related to an existence assertion, including if referenced in an XPath
+      expression from generic messages relating to an existence assertion.
+    </xhtml:p>
+    <xhtml:p>
+      This error MUST be thrown if implicit filtering is 'false'.
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="80155 xff.uncovered-aspect function testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2009-11-19T22:00:00" by="herm">
+      <xhtml:p>
+        Defined the function
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2009-12-13T22:00:00" by="herm">
+      <xhtml:p>
+        Changed prefix to xff, namespace to function/formula from function/instance, per wiki &amp; WG discussions.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-09-07T00:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura.
+        Added error conditions when function is referenced in relation to an existence assertion, and implicit filtering 'false'.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-10-27T00:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura.
+        Modified entity-identifier aspect to return the xbrli:identifier element, for consistency with variables spec description of this aspect.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2011-07-08T00:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Victor Morilla by improving summary statement wording.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2011-09-08T00:00:00" by="rna">
+      <xhtml:p>
+        Erratum addition to documentation. Function returns empty sequence for period aspect value when evaluation binds to tuple, which has no period.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

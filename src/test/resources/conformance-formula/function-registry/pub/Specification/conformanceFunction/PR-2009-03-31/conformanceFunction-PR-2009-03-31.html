@@ -1,0 +1,473 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:s="http://xbrl.org/specification/2007" xmlns:diff="http://xbrl.org/specification/2007/diff"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Function conformance test inputs and outputs 1.0</title><link rel="stylesheet" type="text/css" href="styles.css"></head><body>
+
+  <div class="head">
+<h1><a name="title" id="title"></a>Function conformance test inputs and outputs 1.0</h1>
+<h2>Proposed Recommendation 31 March 2009</h2><p>Copyright ©2009 XBRL International Inc., All Rights Reserved.</p><dl><dt>This version:</dt><dd><a href="http://www.xbrl.org/Specification/conformanceFunction/PR-2009-03-31/conformanceFunction-PR-2009-03-31.html">&lt;http://www.xbrl.org/Specification/conformanceFunction/PR-2009-03-31/conformanceFunction-PR-2009-03-31.html&gt;</a></dd><dt>Editor:</dt><dd><a name="person-geoff" id="person-geoff"></a>
+            Geoff Shuetrim,
+  
+             Galexy
+             <a href="mailto:geoff@galexy.net">&lt;geoff@galexy.net&gt;</a>
+         </dd></dl><hr><div><h2><a name="status" id="status"></a>Status</h2><p>Circulation of this  Proposed Recommendation is unrestricted. This document is normative. 
+            Other documents may supersede this document. 
+          
+          Recipients are invited to submit comments to
+        <a href="mailto:formula-feedback@xbrl.org">formula-feedback@xbrl.org</a>,
+        
+          and to submit notification of any relevant patent rights 
+          of which they are aware and provide supporting 
+          documentation.
+        </p></div><div>
+<h2><a name="abstract" id="abstract"></a>Abstract</h2>
+         <p>
+        This specification defines syntax for the inputs and outputs of
+        function registry conformance suite tests.
+      </p>
+      </div></div>
+
+  <div class="toc">
+<h2><a name="contents" id="contents"></a>Table of Contents</h2><p class="toc">1 <a href="#sec-intro">Introduction</a><br>
+   1.1 <a href="#sec-background">Background</a><br>
+   1.2 <a href="#sec-relationship-to-other-work">Relationship to other work</a><br>
+   1.3 <a href="#sec-language">Language independence</a><br>
+   1.4 <a href="#sec-terminology">Terminology</a><br>
+   1.5 <a href="#sec-document-conventions">Document conventions (non-normative)</a><br>
+   1.6 <a href="#sec-namespaces">Namespaces and namespace prefixes</a><br>
+2 <a href="#sec-syntax">Syntax</a><br>
+   2.1 <a href="#sec-inputs">Inputs</a><br>
+      2.1.1 <a href="#sec-input-function-call">Input function call</a><br>
+   2.2 <a href="#sec-outputs">Outputs</a><br>
+      2.2.1 <a href="#sec-output-tests">Output tests</a><br>
+</p>
+<h3><a name="appendices" id="appendices"></a>Appendices</h3><p class="toc">A <a href="#sec-schema">Normative schema</a><br>
+B <a href="#sec-references">References</a><br>
+C <a href="#sec-ip-status">Intellectual property status (non-normative)</a><br>
+D <a href="#sec-acknowledgements">Acknowledgements (non-normative)</a><br>
+E <a href="#sec-history">Document history (non-normative)</a><br>
+F <a href="#sec-corrections">Errata corrections in this document</a><br>
+</p><h3><a name="examples" id="examples"></a>Table</h3><p class="toc">1 <a href="#table-namespaces">Namespaces and namespace prefixes</a><br></p></div><hr><div class="body">
+    
+      <div class="div1"><a name="sec-intro" id="sec-intro"></a>
+         <h1>1 Introduction</h1>
+         <p>
+        This specification defines syntax for the inputs and outputs of
+        function registry conformance suite tests.
+      </p>
+
+         <div class="div2"><a name="sec-background" id="sec-background"></a>
+            <h2>1.1 Background</h2>
+            <p>
+          This specification is intended to support the creation, maintenance,
+          and publication of XBRL function conformance suites.
+        </p>
+         </div>
+
+         <div class="div2"><a name="sec-relationship-to-other-work" id="sec-relationship-to-other-work"></a>
+            <h2>1.2 Relationship to other work</h2>
+        This specification works with the XBRL conformance test specification.
+      </div>
+      
+         <div class="div2"><a name="sec-language" id="sec-language"></a>
+            <h2>1.3 Language independence</h2>
+            <p>
+          The official language of XBRL International's own work
+          products is English and the preferred spelling convention is
+          UK English.
+        </p>
+         </div>
+         <div class="div2"><a name="sec-terminology" id="sec-terminology"></a>
+            <h2>1.4 Terminology</h2>
+
+            <p>
+          This specification is consistent with the definitions of any of the
+          terms defined in specifications that it depends on.
+        </p>
+
+         </div>
+
+
+         <div class="div2"><a name="sec-document-conventions" id="sec-document-conventions"></a>
+            <h2>1.5 Document conventions (non-normative)</h2>
+        
+            <p><a href="../../variables/PR-2009-03-31/variables-PR-2009-03-31.html#sec-document-conventions">
+          Documentation conventions</a> follow those set out in
+          the XBRL Variables Specification <a href="#VARIABLES">[VARIABLES]</a>.
+        </p>
+
+         </div>
+
+         <div class="div2"><a name="sec-namespaces" id="sec-namespaces"></a>
+            <h2>1.6 Namespaces and namespace prefixes</h2>
+
+            <p>
+          Namespace prefixes <a href="#XMLNAMES">[XML NAMES]</a> will be used 
+          for elements and attributes in
+          the form <code>ns:name</code> where <code class="value">ns</code> is the 
+          namespace prefix and <code class="value">name</code> is the local name. 
+          Throughout this specification, the mappings
+          from namespace prefixes to actual namespaces is consistent
+          with <a href="#table-namespaces"><b>
+        Table
+        1</b></a>.
+        </p>
+        
+            <p>
+          The prefix column in <a href="#table-namespaces"><b>
+        Table
+        1</b></a> is non normative. 
+          The namespace URI column is normative.
+        </p>        
+            <div class="chunkHeading"><a name="table-namespaces" id="table-namespaces"></a>Table 1: Namespaces and namespace prefixes</div><table>
+               
+               <thead>
+                  <tr>
+                     <th>Prefix</th>
+                     <th>Namespace URI</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>
+                        <code class="value">
+                           cfcn
+                        </code>
+                     </td>
+                     <td>
+                        <code class="value">
+                           http://xbrl.org/2008/conformance/function
+                        </code>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <code class="value">
+                           cfcne
+                        </code>
+                     </td>
+                     <td>
+                        <code class="value">
+                           http://xbrl.org/2008/conformance/function/error
+                        </code>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <code class="value">xml</code>
+                     </td>
+                     <td>
+                        <code class="value">http://www.w3.org/XML/1998/namespace</code>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+        
+         </div>
+      
+      </div>
+    
+      <div class="div1"><a name="sec-syntax" id="sec-syntax"></a>
+         <h1>2 Syntax</h1>
+
+         <p>
+        This specification only provides a textual declaration of syntax
+        constraints when those constraints are not expressed by the
+        normative schema supplied with this specification.
+      </p>
+         <p>
+        Explanations of elements and attributes are only supplied when
+        explanations are not already provided in other
+        specifications.
+      </p>
+         <p>
+        Unless explicitly stated otherwise, a reference to a specific
+        element <strong>MUST</strong> be read as a reference to that 
+        element or to any element in its 
+        <a href="http://www.w3.org/TR/xmlschema-1/#key-equivalenceClass">
+        substitution group
+        </a>.
+      </p>
+
+         <div class="div2"><a name="sec-inputs" id="sec-inputs"></a>
+            <h2>2.1 Inputs</h2>
+        
+            <p>
+          Function conformance suite tests <strong>MAY</strong> have input files, and input
+          XPath expressions selecting information from the input files to use as function parameter values.
+        </p>
+
+            <p>
+          The syntax for the input files is defined in the Conformance Specification <a href="#CONFORMANCE">[CONFORMANCE]</a>.
+        </p>
+
+            <div class="div3"><a name="sec-input-function-call" id="sec-input-function-call"></a>
+               <h3>2.1.1 Input function call</h3>
+
+               <p>
+            The syntax for the input function call is provided by the 
+            <a href="#xml-call"><code class="element">
+      &lt;cfcn:call&gt;
+    </code></a> element.
+          </p>
+          
+               <p>
+            If provided, the <code class="attribute">
+      @file</code> attribute <strong>MUST</strong> contain the ID of 
+            one of the test case variation's input files.
+          </p>
+
+               <p>
+            The content of a <code class="element">
+      &lt;cfcn:call&gt;
+    </code> is interpreted as an XPath expression that
+            is expected to be evaluated using a context that is an empty sequence if there is no 
+            <code class="attribute">
+      @file</code> attribute and that is the root element of the specified input file otherwise.
+          </p>
+
+               <p>
+            The XPath expression will generally call the function being tested.
+          </p>
+
+               <p>
+            A function test case variation <strong>MUST</strong> have exactly one input function call among its
+            inputs.
+          </p>
+
+
+            </div>
+
+         </div>
+
+         <div class="div2"><a name="sec-outputs" id="sec-outputs"></a>
+            <h2>2.2 Outputs</h2>
+
+            <p>
+          Function conformance suite tests <strong>MAY</strong> have error codes as outputs.  
+          They <strong>MAY</strong> also produce results that are expected to fulfil certain conditions
+          that can be tested for by executing XPath expressions and requiring the result to be an effective
+          Boolean value of <code class="value">true</code>.  The syntax for error code outputs is defined in the XBRL
+          Conformance Specification <a href="#CONFORMANCE">[CONFORMANCE]</a>.
+        </p>
+
+            <div class="div3"><a name="sec-output-tests" id="sec-output-tests"></a>
+               <h3>2.2.1 Output tests</h3>
+
+               <p>
+            The syntax for the output tests is provided by the 
+            <a href="#xml-test"><code class="element">
+      &lt;cfcn:test&gt;
+    </code></a> element.
+          </p>
+
+               <p>
+            The content of a <code class="element">
+      &lt;cfcn:test&gt;
+    </code> is interpreted as an XPath expression that
+            is expected to be evaluated using a context that is the result of evaluating the 
+            XPath expression that provided as an input to the test case variation.
+          </p>
+          
+               <p>
+            The XPath expression in the <code class="element">
+      &lt;cfcn:test&gt;
+    </code> element 
+            <strong>MAY</strong> contain a reference to the variable <code class="value">$result</code> 
+            that is equal to the result of evaluating the XPath expression
+            provided as an input to the test case variation.
+          </p>
+          
+               <p>
+            The result of evaluating the output test XPath expression <strong>MUST</strong> be an effective
+            Boolean value of <code class="value">true</code> if the test is to be considered passed.
+          </p>
+
+               <p>
+            A test case variation <strong>MAY</strong> contain more than one output test.
+          </p>
+
+            </div>
+         </div>
+
+      </div>
+      
+
+  </div>
+  
+  <div class="back">
+
+      <div class="div1"><a name="sec-schema" id="sec-schema"></a>
+
+         <h1>Appendix A Normative schema</h1>
+      
+         <p>
+        The following is the XML schema provided as part of this
+        specification. This is normative. Non-normative versions (which
+        should be identical to these except for appropriate comments
+        indicating their non-normative status) are also provided as
+        separate files for convenience of users of the specification.
+      </p>
+      
+         <p>
+        NOTE: (non-normative) Following the schema maintenance policy of
+        XBRL International, it is the intent (but is not guaranteed)
+        that the location of non-normative versions of these schemas on
+        the web will be as follows:
+      </p>
+      
+         <ol>
+            <li>
+          While any schema is the most current RECOMMENDED version and
+          until it is superseded by any additional errata corrections a
+          non-normative version will reside on the web in the directory
+          <code>http://www.xbrl.org/2008/</code> - during the drafting process for
+          this specification this directory should contain a copy of the
+          most recent published version of the schema at
+          <a href="http://www.xbrl.org/2008/conformanceFunction.xsd">http://www.xbrl.org/2008/conformanceFunction.xsd</a>.
+        </li>
+            <li>
+          A non-normative version of each schema as corrected by any
+          update to the RECOMMENDATION will be archived in perpetuity on
+          the web in a directory that will contain a unique
+          identification indicating the date of the update.
+        </li>
+         </ol>
+         <div class="xml-normative"><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">schema</span> <span class="verbatim"><span class="verbatim-namespace-name"> xmlns:conf</span>="<span class="verbatim-namespace-uri">http://xbrl.org/2008/conformance</span>"</span> <span class="verbatim"><span class="verbatim-namespace-name"> xmlns:xs</span>="<span class="verbatim-namespace-uri">http://www.w3.org/2001/XMLSchema</span>"</span> <span class="verbatim"><span class="verbatim-namespace-name"> xmlns</span>="<span class="verbatim-namespace-uri">http://xbrl.org/2008/conformance/function</span>"</span> <span class="verbatim"><span class="verbatim-namespace-name"> xmlns:reg</span>="<span class="verbatim-namespace-uri">http://xbrl.org/2008/registry</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">targetNamespace</span>="<span class="verbatim-attribute-content">http://xbrl.org/2008/conformance/function</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">elementFormDefault</span>="<span class="verbatim-attribute-content">qualified</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">attributeFormDefault</span>="<span class="verbatim-attribute-content">unqualified</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">import</span> <span class="verbatim"><span class="verbatim-attribute-name">namespace</span>="<span class="verbatim-attribute-content">http://xbrl.org/2008/conformance</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">schemaLocation</span>="<span class="verbatim-attribute-content">conformance.xsd</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">import</span> <span class="verbatim"><span class="verbatim-attribute-name">namespace</span>="<span class="verbatim-attribute-content">http://xbrl.org/2008/registry</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">schemaLocation</span>="<span class="verbatim-attribute-content">registry.xsd</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-call" id="xml-call"></a>id</span>="<span class="verbatim-attribute-content">xml-call</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">call</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">input.call.elt.type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">substitutionGroup</span>="<span class="verbatim-attribute-content">conf:input</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">input.call.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">simpleContent</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">extension</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">xs:string</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">file</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">xs:IDREF</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">use</span>="<span class="verbatim-attribute-content">optional</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">extension</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">simpleContent</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-test" id="xml-test"></a>id</span>="<span class="verbatim-attribute-content">xml-test</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">test</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">output.test.elt.type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">substitutionGroup</span>="<span class="verbatim-attribute-content">conf:output</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">output.test.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">simpleContent</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">extension</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">xs:string</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">extension</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">simpleContent</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">complexType</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-nsprefix">xs</span>:<span class="verbatim-element-name">schema</span>&gt;</span></div></div>
+      </div>
+
+      <div class="div1"><a name="sec-references" id="sec-references"></a>
+
+         <h1>Appendix B References</h1>
+
+    	    <dl>
+            
+            
+            
+            
+    	    <dt class="label"><a name="CONFORMANCE" id="CONFORMANCE"></a>CONFORMANCE</dt><dd>XBRL International Inc.. "Conformance test definition 1.0"<br>Geoff Shuetrim.<br>(See <a href="conformance-PR-2009-03-31.html">conformance-PR-2009-03-31.html</a>)</dd><dt class="label"><a name="VARIABLES" id="VARIABLES"></a>VARIABLES</dt><dd>XBRL International Inc.. "XBRL Variables 1.0"<br>Phillip Engel, Herm Fischer, Victor Morilla, Jim Richards, Geoff Shuetrim, David vun Kannon, and Hugh Wallis.<br>(See <a href="../../../../../specifications/pub/Specification/variables/PR-2009-03-31/variables-PR-2009-03-31.html">../../../../../specifications/pub/Specification/variables/PR-2009-03-31/variables-PR-2009-03-32.html</a>)</dd><dt class="label"><a name="XMLNAMES" id="XMLNAMES"></a>XML NAMES</dt><dd>W3C (World Wide Web Consortium). "Namespaces in XML 1.0 (Second Edition)"<br>Tim Bray, Dave Hollander, Andrew Layman, and Richard Tobin.<br>(See <a href="http://www.w3.org/TR/REC-xml-names/">http://www.w3.org/TR/REC-xml-names/</a>)</dd><dt class="label"><a name="XMLSCHEMA-STRUCTURES" id="XMLSCHEMA-STRUCTURES"></a>XML SCHEMA STRUCTURES</dt><dd>W3C (World Wide Web Consortium). "XML Schema Part 1: Structures Second Edition"<br>Henry S. Thompson, David Beech, Murray Maloney, and Noah Mendelsohn.<br>(See <a href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</a>)</dd></dl>
+
+      </div>
+
+      <div class="div1"><a name="sec-ip-status" id="sec-ip-status"></a>
+        <h1>Appendix C Intellectual property status (non-normative)</h1>
+        
+        <p>
+          This document and translations of it may be copied and
+          furnished to others, and derivative works that comment on or
+          otherwise explain it or assist in its implementation may be
+          prepared, copied, published and distributed, in whole or in
+          part, without restriction of any kind, provided that the above
+          copyright notice and this paragraph are included on all such
+          copies and derivative works. However, this document itself may
+          not be modified in any way, such as by removing the copyright
+          notice or references to XBRL International or XBRL
+          organizations, except as required to translate it into
+          languages other than English. Members of XBRL International
+          agree to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<a href="http://www.xbrl.org/legal">www.xbrl.org/legal</a>).
+        </p>
+      
+      
+        <p>
+          This document and the information contained herein is provided
+          on an "AS IS" basis and XBRL INTERNATIONAL DISCLAIMS ALL
+          WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+          ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+          INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+          MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+        </p>
+      
+        <p>
+          The attention of users of this document is directed to the
+          possibility that compliance with or adoption of XBRL
+          International specifications may require use of an invention
+          covered by patent rights. XBRL International shall not be
+          responsible for identifying patents for which a license may be
+          required by any XBRL International specification, or for
+          conducting legal inquiries into the legal validity or scope of
+          those patents that are brought to its attention. XBRL
+          International specifications are prospective and advisory
+          only. Prospective users are responsible for protecting
+          themselves against liability for infringement of patents. XBRL
+          International takes no position regarding the validity or
+          scope of any intellectual property or other rights that might
+          be claimed to pertain to the implementation or use of the
+          technology described in this document or the extent to which
+          any license under such rights might or might not be available;
+          neither does it represent that it has made any effort to
+          identify any such rights. Members of XBRL International agree
+          to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<a href="http://www.xbrl.org/legal">www.xbrl.org/legal</a>).
+        </p>
+      </div>
+
+      <div class="div1"><a name="sec-acknowledgements" id="sec-acknowledgements"></a>
+        <h1>Appendix D Acknowledgements (non-normative)</h1>
+        <p>
+          This document could not have been written without the
+          contributions of many people including the participants in the
+          FWG.
+        </p>
+      
+      </div>
+    
+      <div class="div1"><a name="sec-history" id="sec-history"></a>
+         <h1>Appendix E Document history (non-normative)</h1>
+      
+         <table class="revisions"><tr><th>Date</th><th>Author</th><th>Details</th></tr>
+
+            <tr><td>29 January 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            First internal working draft created.
+          </p>
+            </td></tr>
+
+            <tr><td>30 January 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            Simplified the syntax for the input XPath expressions in function tests by
+            including an explicit function call in the XPath expression rather than generating
+            one XPath expression per input parameter of the function being called.
+          </p>
+               <p class="revision">
+            Fixed up various XML Schema errors.
+          </p>
+            </td></tr>
+
+            <tr><td>09 April 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            Introduced the <code class="value">$result</code> variable for output 
+            XPath expressions to be able to refer to the result of
+            evaluating the input XPath expression.
+          </p>
+               <p class="revision">
+            Fixed up various XML Schema errors.
+          </p>
+            </td></tr>
+
+         </table>
+
+      </div>
+
+      <div class="div1"><a name="sec-corrections" id="sec-corrections"></a>
+         <h1>Appendix F Errata corrections in this document</h1>
+      
+         <p>
+        This appendix contains a list of the errata that have been
+        incorporated into this document. This represents all those
+        errata corrections that have been approved by the XBRL
+        International FWG up to and
+        including 31 March 2009. 
+        Hyperlinks to relevant e-mail threads may
+        only be followed by those who have access to the relevant
+        mailing lists. Access to internal XBRL mailing lists is
+        restricted to members of XBRL International Inc.
+      </p>
+
+         <p>No errata have been incorporated into this document.</p>
+
+      </div>
+
+  </div>
+</body></html>

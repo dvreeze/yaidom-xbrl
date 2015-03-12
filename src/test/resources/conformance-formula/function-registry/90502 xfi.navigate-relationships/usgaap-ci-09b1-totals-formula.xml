@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+
+<link:linkbase
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  xmlns:va="http://xbrl.org/2008/assertion/value"
+  xmlns:variable="http://xbrl.org/2008/variable"
+  xmlns:cf="http://xbrl.org/2008/filter/concept"
+  xmlns:gf="http://xbrl.org/2008/filter/general"
+  xmlns:pf="http://xbrl.org/2008/filter/period"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:label="http://xbrl.org/2008/label"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:ci="http://www.UBmatrix.com/Patterns/MovementsAnalysis"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic ../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/assertion/value http://www.xbrl.org/2008/value-assertion.xsd
+  http://xbrl.org/2008/variable ../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2008/filter/concept ../../core_schemas/2008/concept-filter.xsd
+  http://xbrl.org/2008/filter/period ../../core_schemas/2008/period-filter.xsd
+  http://xbrl.org/2008/filter/general ../../core_schemas/2008/general-filter.xsd
+  http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd
+  ">
+  
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-filter" xlink:href="../../core_schemas/2008/variable.xsd#variable-filter" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label/satisfied" xlink:href="../formula-roles.xsd#label-satisfied" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label/notSatisfied" xlink:href="../formula-roles.xsd#label-not-satisfied" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2008/role/link">
+
+    <va:valueAssertion xlink:type="resource" 
+      xlink:label="total-assertion"
+      id="total-assertion"
+      aspectModel="non-dimensional" implicitFiltering="false" 
+      test="abs(sum($total) - 
+            sum(for $c in $items return
+                if (xfi:concept-balance(node-name($c)) eq 'credit') then -$c
+                else $c)
+                ) lt 1.00" />
+
+    <!-- Label for the assertions when not successful -->
+    <label:label xlink:type="resource" xlink:label="total-assertion-message" 
+      xlink:role="http://www.xbrl.org/2008/role/label/notSatisfied" 
+      xml:lang="en">The total in {$linkRoleDef} of {xfi:concept-label(total,'','','en-US')} in context {$total/@contextRef} is out of balance by {
+              abs(sum($total) + 
+                  sum(for $c in $items return
+                           if (xfi:concept-balance(node-name($c)) eq 'credit') then -$c
+                           else $c)
+                  )
+              }</label:label>
+                                                                        
+    <!-- Label for the assertions when successful -->
+    <label:label xlink:type="resource" xlink:label="total-assertion-message" 
+      xlink:role="http://www.xbrl.org/2008/role/label/satisfied" 
+      xml:lang="en">The total in {$linkRoleDef} of {xfi:concept-label($total,'','','en-US')} in context {$total/@contextRef} is ok.</label:label>   
+                                                                        
+    <generic:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label"
+      xlink:from="total-assertion" xlink:to="total-assertion-message" order="1.0"/>
+
+    <!-- function xfi:navigate-relationships -->
+    <variable:function xlink:type="resource" xlink:label="navigate-relationships"
+       name="xfi:navigate-relationships"
+       output="xs:anyAtomicType*">
+         <!-- source concept to begin navigation -->
+         <variable:input type="xs:QName" />
+         <!-- link role -->
+         <variable:input type="xs:anyURI" />
+         <!-- arc role -->
+         <variable:input type="xs:anyURI" />
+         <!-- axis (child, parent, etc) -->
+         <variable:input type="xs:string" />
+         <!-- generations limit or zero for unlimited -->
+         <variable:input type="xs:integer" />
+    </variable:function>
+
+    <variable:function xlink:type="resource" xlink:label="navigate-relationships"
+       name="xfi:navigate-relationships"
+       output="xs:anyAtomicType*">
+         <!-- source concept to begin navigation -->
+         <variable:input type="xs:QName" />
+         <!-- link role -->
+         <variable:input type="xs:anyURI" />
+         <!-- arc role -->
+         <variable:input type="xs:anyURI" />
+         <!-- axis (child, parent, etc) -->
+         <variable:input type="xs:string" />
+         <!-- generations limit or zero for unlimited -->
+         <variable:input type="xs:integer" />
+         <!-- qnames of arc attributes -->
+         <variable:input type="xs:QName*" />
+    </variable:function>
+
+    <!-- function xfi:role-definition -->
+    <variable:function xlink:type="resource" xlink:label="concept-label"
+       name="xfi:role-definition"
+       output="xs:string">
+         <!-- role -->
+         <variable:input type="xs:anyURI" />
+    </variable:function>
+
+    <!-- function xfi:concept-label -->
+    <variable:function xlink:type="resource" xlink:label="concept-label"
+       name="xfi:concept-label"
+       output="xs:string">
+         <!-- concept having the label -->
+         <variable:input type="xs:QName" />
+         <!-- extended link role -->
+         <variable:input type="xs:anyURI" />
+         <!-- label resource role -->
+         <variable:input type="xs:anyURI" />
+         <!-- language code (eg "en") -->
+         <variable:input type="xs:language" />
+    </variable:function>
+
+    <!-- (1) general variable iterates linkURIs of presentation links -->
+    <variable:generalVariable xlink:type="resource" xlink:label="linkRole" bindAsSequence="false"
+      select="xfi:linkbase-link-roles('http://www.xbrl.org/2003/arcrole/parent-child')"  />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="linkRole" order="1.0"
+      name="linkRole" />
+
+    <!-- (2) general variable is linkrole definition (if there is one) otherwise its URI -->
+    <variable:generalVariable xlink:type="resource" xlink:label="linkRoleDef" bindAsSequence="false"
+      select="(xfi:role-definition($linkRole),$linkRole)[1]"  />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="linkRoleDef" order="1.0"
+      name="linkRoleDef" />
+
+    <!-- (3) general variable is QNames of totals (where preferred label role is total) -->
+    <variable:generalVariable xlink:type="resource" xlink:label="totalRels" bindAsSequence="true"
+      select="xfi:navigate-relationships(
+                QName('http://www.xbrl.org/2008/function/instance','root'),
+                $linkRole,
+                'http://www.xbrl.org/2003/arcrole/parent-child',
+                'descendant',
+                8,
+                (QName('','preferredLabel')))" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="totalRels" order="1.0"
+      name="totalRels" />
+
+    <!-- (4) general variable is first subsequence, of totalQNames -->
+    <variable:generalVariable xlink:type="resource" xlink:label="totalQNames" bindAsSequence="true"
+      select="for $c in (count($totalRels) idiv 2) return subsequence($totalRels,1,$c)" /> 
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="totalQNames" order="1.0"
+      name="totalQNames" />
+
+    <!-- (5) general variable is second subsequence, of totalPreferredLabels -->
+    <variable:generalVariable xlink:type="resource" xlink:label="totalPreferredLabels" bindAsSequence="true"
+      select="for $c in (count($totalRels) idiv 2) return subsequence($totalRels,$c+1,$c)" /> 
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="totalPreferredLabels" order="1.0"
+      name="totalPreferredLabels" />
+
+    <!-- (6) fact variable is total items -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_total" bindAsSequence="false" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="v_total" order="1.0"
+      name="total" />
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="true"
+      xlink:from="v_total" xlink:to="f_total" order="1.0"/>
+    <cf:conceptDataType strict="false" xlink:type="resource" xlink:label="f_total">
+      <cf:type><cf:qname>xs:decimal</cf:qname></cf:type>
+    </cf:conceptDataType>
+    <gf:general xlink:type="resource" xlink:label="f_total"
+      test="some $r in index-of($totalQNames,node-name()) satisfies
+               $totalPreferredLabels[$r] eq 'http://www.xbrl.org/2003/role/totalLabel'"  />
+
+    <!-- (7) general variable is QNames of items contributing total -->
+    <variable:generalVariable xlink:type="resource" xlink:label="itemRels" bindAsSequence="true"
+      select="xfi:navigate-relationships(
+                node-name($total),
+                $linkRole,
+                'http://www.xbrl.org/2003/arcrole/parent-child',
+                'sibling-or-abstract-descendant',
+                8,
+                (QName('','preferredLabel')))"  />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="itemRels" order="1.0"
+      name="itemRels" />
+
+    <!-- (8) general variable is first subsequence, of itemQNames -->
+    <variable:generalVariable xlink:type="resource" xlink:label="itemQNames" bindAsSequence="true"
+      select="for $c in (count($itemRels) idiv 2) return subsequence($itemRels,1,$c)" /> 
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="itemQNames" order="1.0"
+      name="itemQNames" />
+
+    <!-- (9) general variable is second subsequence, of itemPreferredLabels -->
+    <variable:generalVariable xlink:type="resource" xlink:label="itemPreferredLabels" bindAsSequence="true"
+      select="for $c in (count($itemRels) idiv 2) return subsequence($itemRels,$c+1,$c)" /> 
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="itemPreferredLabels" order="1.0"
+      name="itemPreferredLabels" />
+
+    <!-- (10) fact variable is items contributing to total -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_items" bindAsSequence="true" fallbackValue="()" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="total-assertion" xlink:to="v_items" order="1.0"
+      name="items" />
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="true"
+      xlink:from="v_items" xlink:to="f_items" order="1.0"/>
+    <cf:conceptDataType strict="false" xlink:type="resource" xlink:label="f_items">
+      <cf:type><cf:qname>xs:decimal</cf:qname></cf:type>
+    </cf:conceptDataType>
+    <gf:general xlink:type="resource" xlink:label="f_items"
+      test="some $r in index-of($itemQNames,node-name()) satisfies
+               $itemPreferredLabels[$r] ne 'http://www.xbrl.org/2003/role/totalLabel'"  />
+
+  </generic:link>
+
+</link:linkbase>

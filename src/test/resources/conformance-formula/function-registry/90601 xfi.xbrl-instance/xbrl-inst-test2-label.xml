@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Taxonomy Label Links linkbase based on XBRL standard Version 2.1.
+Created by UBmatrix Taxonomy Designer 1.0.0.0 (2008-10-25 16:26).  
+Contact www.ubmatrix.com
+Copyright (c) 2002-2008 UBmatrix inc., All Rights Reserved
+Produced on 2008-12-12 09:52:02
+-->
+<linkbase
+  xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+    http://www.xbrl.org/2003/linkbase 
+      http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+    ">
+  <labelLink xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2003/role/link">
+    <loc xlink:type="locator"
+      xlink:label="test_A111"
+      xlink:href="xbrl-inst-test2.xsd#test_A111" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A111" xlink:to="test_A111_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A111_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a111</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A112"
+      xlink:href="xbrl-inst-test2.xsd#test_A112" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A112" xlink:to="test_A112_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A112_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a112</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A113"
+      xlink:href="xbrl-inst-test2.xsd#test_A113" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A113" xlink:to="test_A113_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A113_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a113</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A11"
+      xlink:href="xbrl-inst-test2.xsd#test_A11" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A11" xlink:to="test_A11_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A11_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a11</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A121"
+      xlink:href="xbrl-inst-test2.xsd#test_A121" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A121" xlink:to="test_A121_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A121_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a121</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A122"
+      xlink:href="xbrl-inst-test2.xsd#test_A122" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A122" xlink:to="test_A122_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A122_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a122</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A12"
+      xlink:href="xbrl-inst-test2.xsd#test_A12" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A12" xlink:to="test_A12_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A12_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a12</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A13"
+      xlink:href="xbrl-inst-test2.xsd#test_A13" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A13" xlink:to="test_A13_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A13_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a13</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A1"
+      xlink:href="xbrl-inst-test2.xsd#test_A1" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A1" xlink:to="test_A1_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A1_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a1</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A211"
+      xlink:href="xbrl-inst-test2.xsd#test_A211" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A211" xlink:to="test_A211_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A211_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a211</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A21"
+      xlink:href="xbrl-inst-test2.xsd#test_A21" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A21" xlink:to="test_A21_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A21_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a21</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A2"
+      xlink:href="xbrl-inst-test2.xsd#test_A2" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A2" xlink:to="test_A2_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A2_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a2</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A3"
+      xlink:href="xbrl-inst-test2.xsd#test_A3" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A3" xlink:to="test_A3_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A3_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a3</label>
+    <loc xlink:type="locator"
+      xlink:label="test_A"
+      xlink:href="xbrl-inst-test2.xsd#test_A" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_A" xlink:to="test_A_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_A_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2a</label>
+    <loc xlink:type="locator"
+      xlink:label="test_B1"
+      xlink:href="xbrl-inst-test2.xsd#test_B1" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_B1" xlink:to="test_B1_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_B1_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2b1</label>
+    <loc xlink:type="locator"
+      xlink:label="test_B"
+      xlink:href="xbrl-inst-test2.xsd#test_B" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_B" xlink:to="test_B_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_B_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2b</label>
+    <loc xlink:type="locator"
+      xlink:label="test_C1"
+      xlink:href="xbrl-inst-test2.xsd#test_C1" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_C1" xlink:to="test_C1_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_C1_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2c1</label>
+    <loc xlink:type="locator"
+      xlink:label="test_C"
+      xlink:href="xbrl-inst-test2.xsd#test_C" />
+    <labelArc xlink:type="arc"
+      xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label"
+      xlink:from="test_C" xlink:to="test_C_lbl" />
+    <label xlink:type="resource"
+      xlink:label="test_C_lbl" xml:lang="en"
+      xlink:role="http://www.xbrl.org/2003/role/label">2c</label>
+  </labelLink>
+</linkbase>

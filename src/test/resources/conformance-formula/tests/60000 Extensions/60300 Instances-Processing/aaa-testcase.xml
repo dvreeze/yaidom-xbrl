@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../../infrastructure/test.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xbrl.org/2008/conformance ../../../infrastructure/test.xsd"
+  xmlns:xbrlfe="http://xbrl.org/2008/formula/error"
+  xmlns:binding="http://xbrl.org/2008/binding/errors"
+  xmlns:label="http://xbrl.org/2008/label/errors"
+  xmlns:reference="http://xbrl.org/2008/reference/errors"  
+  xmlns:i="http://abc.com/instance-resource-name"
+  >
+  <creator>
+    <name>Herm Fischer</name>
+    <email>fischer@markv.com</email>
+  </creator>
+  <number>60300</number>
+  <name>Instances examples</name>
+  <description>
+    Examples of multi-instance and chaining processing.
+  </description>
+
+  <variation id="V-01">
+    <name>
+        2 input instances, one per variable, same taxonomy and aspects, no fallback, implicitly filtered items summed.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance1b.xml</instance>  
+      <linkbase>abc-formula1.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-1-result1.xml</instance> 
+    </result>
+  </variation>
+<!--
+
+  <variation id="V-02">
+    <name>
+        2 input instances, one per variable, same taxonomy and aspects, with fallback, implicitly filtered items summed.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance2a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance2b.xml</instance>  
+      <linkbase>abc-formula2.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-1-result2.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-03">
+    <name>
+        Same as v-01 but 3 input instances, fallbacks on inst-b and inst-c
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance3a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance3b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance3c.xml</instance>  
+      <linkbase>abc-formula3.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-1-result3.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-04">
+    <name>
+        Same as v-03 but each instance has different taxonomy namespace
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance4a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance4c.xml</instance>  
+      <linkbase>abc-formula4.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-1-result4.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-05">
+    <name>
+        Same as v-03 but each instance has different period, match inst a to inst b prior year to inst c prior-2nd-year
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance5a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance5b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance5c.xml</instance>  
+      <linkbase>abc-formula5.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-1-result5.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-06">
+    <name>
+        Same as v-05 but dimensional, each year different dimensions.  Tests implicit filtering with linkbase changes by year.  No fallback situations.
+    </name>
+    <description>
+        The taxonomy for current, prior 1 year and prior 2 year have same xsd but linkbases have different member hierarchy.  Each year of these taxonomy/linkbases in separate subdirectories.  Implicit filtering by dimension and member.
+    </description>
+    <data>
+      <schema>dim-1-current-yr/dim-1.xsd</schema>
+      <instance readMeFirst="true">dim-1-instance1-currentyr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">dim-1-instance1-prior1yr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">dim-1-instance1-prior2yr.xml</instance>  
+      <linkbase>dim-1-formula1.xml</linkbase>
+    </data>
+    <result>
+      <instance>dim-1-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-07">
+    <name>
+        Same as v-06 but summing descendants with different member hierarchy per year, to test that common xsd and separate linkbases are loaded for each instance.
+    </name>
+    <description>
+        The dimension members are current yr: m1-m2-m3, prior-1-yr: m2-m3-m1, prior-2-yr: m3-m1-m2, filters only on m1 and m1 descendants to test that each year takes the right linkbase for the different year even though the same xsd is shared for all years.  Details of calculation in comments of result instance file.
+    </description>
+    <data>
+      <schema>dim-1-current-yr/dim-1.xsd</schema>
+      <instance readMeFirst="true">dim-1-instance2-currentyr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">dim-1-instance1-prior1yr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">dim-1-instance1-prior2yr.xml</instance>  
+      <linkbase>dim-1-formula2.xml</linkbase>
+    </data>
+    <result>
+      <instance>dim-1-result2.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-08">
+    <name>
+        3 input instances sharing one variable, same taxonomy and aspects, no fallback, implicitly filtered items summed in single variable sequence (that mixes fact items of the three instances).
+    </name>
+    <description>
+        The variables have same aspects in all sequences, so the evaluations are
+          (test1:a, "c1", "u1")   sum(1001, 2001, 3001)  = 6003,
+          (test1:a, "c2", "u1")   sum(1010, 2010, 3010)  = 6030,
+          (test1:b, "c1", "u1")   sum(1002, 2002, 3002)  = 6006,
+          (test1:b, "c2", "u1")   sum(1020, 2020, 3020)  = 6060,
+          (test1:c, "c1", "u1")   sum(1003, 2003, 3003)  = 6009,
+          (test1:c, "c2", "u1")   sum(2030, 3030)        = 5060, and
+          (test1:c, "c2", "u2")   sum(1030)              = 1030.
+        This could be a pattern for a variable that produces a sum or average over previous
+        quarterly returns. 
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-8-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-8-instance1b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-8-instance1c.xml</instance>  
+      <linkbase>abc-formula8.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-8-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-09">
+    <name>
+        Same as V-08 but each instance has a DTS with taxonomy of different namespace. 
+        The evaluations here are: 
+        sum( inst-a test1:a + inst-b test2:a + inst-c test3:a, context c1, unit EUR ), 
+        sum( inst-a test1:a, context c2, unit JPY ), and
+        sum( inst-a test1:a + inst-b test2:a + inst-c test3:a, context c2, unit EUR ).
+        Use case typical of multi-period reports that have changes to the taxonomy in 
+        each period.
+    </name>
+    <description>
+        The output is a sum of localname "a" variables, in the DTS of the standard instance. 
+        This could be a pattern for a variable that produces a sum or average over previous
+        quarterly returns. 
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-9-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-9-instance1b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-9-instance1c.xml</instance>  
+      <linkbase>abc-formula9.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-9-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-10">
+    <name>
+        Same as V-09 but formula is written using a general variable to demonstrate that
+        the context of the variables (fact and general) is the sequence of &lt;xbrli:xbrl&gt;
+        elements of the three sequences
+    </name>
+    <description>
+        The output is a sum of local-name "a" variables, in the DTS of the standard instance. 
+        This is just a test case and a really dumb bad way to access fact items, although it is legal,
+        please don't use this as a pattern for real formulas accessing fact items. 
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-10-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-10-instance1b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-10-instance1c.xml</instance>  
+      <linkbase>abc-formula10.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-10-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-11">
+    <name>
+        Based on v-06 but dimensions have defaults, each year's default is a different member, all facts use default member.
+    </name>
+    <description>
+        The taxonomy for current, prior 1 year and prior 2 year have same xsd but linkbases have different member hierarchy,
+        each linkbase has a different member that is the default member.  Implicit filtering by dimension and member.
+        Goal is for the default-member facts to get implicitly matched up.  There are no non-default facts in this variation.
+    </description>
+    <data>
+      <schema>dim-1-current-yr/dim-2.xsd</schema>
+      <instance readMeFirst="true">dim-1-instance3-currentyr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">dim-1-instance3-prior1yr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">dim-1-instance3-prior2yr.xml</instance>  
+      <linkbase>dim-1-formula1.xml</linkbase>
+    </data>
+    <result>
+      <instance>dim-1-result3.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-12">
+    <name>
+        Based on v-11, but 3rd instance has no dimensions to show matching to default dimensions in other two instances.
+    </name>
+    <description>
+        The taxonomy for current and prior 1 year have same xsd but linkbases have different member hierarchy,
+        prior 2 year has no dimensions at all (but should match defaults in other two).  Implicit filtering by dimension and member.
+        Goal is for the default-member facts to get implicitly matched up.  There are no non-default facts in this variation.
+    </description>
+    <data>
+      <schema>dim-1-current-yr/dim-2.xsd</schema>
+      <instance readMeFirst="true">dim-1-instance3-currentyr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">dim-1-instance4-prior1yr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">dim-1-instance4-prior2yr.xml</instance>  
+      <linkbase>dim-1-formula1.xml</linkbase>
+    </data>
+    <result>
+      <instance>dim-1-result4.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-13">
+    <name>
+        Based on v-06 but dimensions have defaults, each year's default is a different member, has 
+        facts with non-default members.
+    </name>
+    <description>
+        This variation has non-default dimension member facts as well as the default facts, so implicit filtering
+        will, in each instance, grab not only the default matches of the other instances, but also the facts of
+        the other instances where the explicit dimension that is not defaulted matches.  It's sort of whimsical
+        or crazy in how the combinations mix up, but this meets the spec (in an absurd manner).
+    </description>
+    <data>
+      <schema>dim-1-current-yr/dim-2.xsd</schema>
+      <instance readMeFirst="true">dim-1-instance5-currentyr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">dim-1-instance5-prior1yr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">dim-1-instance5-prior2yr.xml</instance>  
+      <linkbase>dim-1-formula1.xml</linkbase>
+    </data>
+    <result>
+      <instance>dim-1-result5.xml</instance> 
+    </result>
+  </variation>
+-->
+<!-- FWG proposes to drop instance-assertion relationship if no use case is found, so it is commented out for now
+
+  <variation id="V-51">
+    <name>
+        V-01 but with a consistency assertion,
+        2 input instances, one per variable, same taxonomy and aspects, no fallback, implicitly filtered items summed,
+        everything nice and consistent.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance51a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance1b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result">abc-1-result1.xml</instance>  
+      <linkbase>abc-formula51.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="5"
+         countNotSatisfied="0" />      
+    </result>
+  </variation>
+
+  <variation id="V-52">
+    <name>
+        Same as V-51 but
+        one of the facts of the consistency assertion input instance was changed to make it inconsistent.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance51a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance1b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result">abc-1-result1-inconsistent.xml</instance>  
+      <linkbase>abc-formula51.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="4"
+         countNotSatisfied="1" />      
+    </result>
+  </variation>
+
+  <variation id="V-53">
+    <name>
+        Same as V-04 where each instance has a different namespace, but as a consistency assertion.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance53a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance4c.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result">abc-1-result53.xml</instance>  
+      <linkbase>abc-formula53.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="6"
+         countNotSatisfied="0" />      
+    </result>
+  </variation>
+
+  <variation id="V-54">
+    <name>
+        Same as V-53, but one fact item is inconsistent, another is missing.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance53a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance4c.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result">abc-1-result54.xml</instance>  
+      <linkbase>abc-formula53.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="4"
+         countNotSatisfied="2" />      
+    </result>
+  </variation>
+
+  <variation id="V-55">
+    <name>
+        Same as V-54 but multiple consistency input instances, the consistency matching
+        fact items are split to different files consistency is not strict.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance55a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance4c.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result1of3">abc-1-result55a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result2of3">abc-1-result55b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result3of3">abc-1-result55c.xml</instance>  
+      <linkbase>abc-formula55.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="6"
+         countNotSatisfied="0" />      
+    </result>
+  </variation>
+
+  <variation id="V-55a">
+    <name>
+        Same as V-55 but consistency is strict.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance55aa.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">abc-1-instance4c.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result1of3">abc-1-result55a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result2of3">abc-1-result55b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result3of3">abc-1-result55c.xml</instance>  
+      <linkbase>abc-formula55a.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="6"
+         countNotSatisfied="12" />      
+    </result>
+  </variation>
+
+  <variation id="V-56">
+    <name>
+        Same as V-55 but the multiple consistency matching input instances each have different namespaces.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-1-instance56a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4b.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-1-instance4c.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result1of2">abc-1-result55a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-expected-result2of2">abc-1-result56b.xml</instance>  
+      <linkbase>abc-formula56.xml</linkbase>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="6"
+         countNotSatisfied="0" />      
+    </result>
+  </variation>
+
+end of commented out instance-assertion test variations -->
+
+<!--
+  <variation id="V-71">
+    <name>
+        2 input instances, checks xfi:facts-in-instance for standard and second input instance.
+        Instance reference is by the name on a variable-set relationship from the parameter.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-71-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-71-instance1b.xml</instance>  
+      <linkbase>abc-formula71.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-71-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-71a">
+    <name>
+        Same as V-71, but instance reference is by the global parameter name instead of the 
+        name on a variable-set relationship from the parameter.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-71-instance1aa.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-71-instance1b.xml</instance>  
+      <linkbase>abc-formula71a.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-71-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-72">
+    <name>
+        2 input instances, checks xfi:items-in-instance for standard and second input instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-72-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-71-instance1b.xml</instance>  
+      <linkbase>abc-formula72.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-71-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-73">
+    <name>
+        2 input instances, checks xfi:tuples-in-instance for standard and second input instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-73-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-73-instance1b.xml</instance>  
+      <linkbase>abc-formula73.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-71-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-74">
+    <name>
+        2 input instances, checks xfi:non-nil-in-instance for standard and second input instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-74-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-74-instance1b.xml</instance>  
+      <linkbase>abc-formula74.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-71-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-75">
+    <name>
+        2 input instances, checks xfi:concept-label for standard and second input instance.
+        Both instance have same xsd but different linkbases, to assure that the instance
+        associates with the correct linkbase.  The linkbases have different labels to distinguish
+        that the indicated label linkbase was associated with the expected instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-1.xsd</schema>
+      <instance readMeFirst="true">abc-75-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-75-instance1b.xml</instance>  
+      <linkbase>abc-formula75.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-75-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-76">
+    <name>
+        2 input instances, checks xfi:arcrole-definition for standard and second input instance.
+        Each instance has a different taxonomy file but with the same target namespace and arcrole
+        of the same arcroleURI, but the definition is different in each.  This reflects a use case
+        where a financial reporting taxonomy is reissued (with different file name but same
+        namespace) and the arcrole definitions differ on each separate release.  The test assures
+        that each instance has the correct DTS of the schemaRef'ed files, and is not sharing with the
+        other instance (with xsd of same target namespace but different schemaRef file name).
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-76a.xsd</schema>
+      <instance readMeFirst="true">abc-76-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-76-instance1b.xml</instance>  
+      <linkbase>abc-formula76.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-76-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-77">
+    <name>
+        Like V-76, but checks xfi:role-definition for standard and second input instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-76a.xsd</schema>
+      <instance readMeFirst="true">abc-77-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-76-instance1b.xml</instance>  
+      <linkbase>abc-formula77.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-77-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-78">
+    <name>
+        2 input instances, checks xfi:fact-footnotes for standard and second input instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-78.xsd</schema>
+      <instance readMeFirst="true">abc-78-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-78-instance1b.xml</instance>  
+      <linkbase>abc-formula78.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-78-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-79">
+    <name>
+        3 input instances, tests xfi:concept-relationships for standard and other input instances. 
+    </name>
+    <description>
+        The taxonomy for current, prior 1 year and prior 2 year have same xsd but linkbases have different member hierarchy.  Each year of these taxonomy/linkbases in separate subdirectories.  Implicit filtering by dimension and member.
+    </description>
+    <data>
+      <schema>dim-1-current-yr/dim-1.xsd</schema>
+      <instance readMeFirst="true">dim-79-instance1-currentyr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">dim-79-instance1-prior1yr.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-c">dim-79-instance1-prior2yr.xml</instance>  
+      <linkbase>dim-79-formula1.xml</linkbase>
+    </data>
+    <result>
+      <instance>dim-79-result1.xml</instance> 
+    </result>
+  </variation>
+
+  <variation id="V-80">
+    <name>
+        2 input instances, checks xfi:linkbase-link-roles for standard and second input instance.
+    </name>
+    <description>
+    </description>
+    <data>
+      <schema>abc-80.xsd</schema>
+      <instance readMeFirst="true">abc-80-instance1a.xml</instance>  
+      <instance readMeFirst="true" name="i:inst-b">abc-80-instance1b.xml</instance>  
+      <linkbase>abc-formula80.xml</linkbase>
+    </data>
+    <result>
+      <instance>abc-80-result1.xml</instance> 
+    </result>
+  </variation>
+-->
+
+</testcase>
+
+
+
+
+

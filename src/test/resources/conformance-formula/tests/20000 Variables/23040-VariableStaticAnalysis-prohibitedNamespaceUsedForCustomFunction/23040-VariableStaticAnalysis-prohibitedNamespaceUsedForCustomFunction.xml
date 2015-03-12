@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" 
+href="../../../infrastructure/test.xsl"?>
+<testcase
+xmlns="http://xbrl.org/2008/conformance" 
+xmlns:xbrlve="http://xbrl.org/2008/variable/error"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+  http://xbrl.org/2008/conformance 
+  ../../../infrastructure/test.xsd">
+  <creator>
+    <name>Peter Cowan</name>
+    <email>prc@corefiling.com</email>
+  </creator>
+  <number>23040</number>
+  <name>Use of prohibited namespaces in custom function definition</name>
+  <description>
+    If a custom function uses the reserved namespace http://www.xbrl.org/2008/function/instance,
+    an error must be thrown.
+  </description>
+  <reference specification="VARIABLES" id="error-custom-function-using-prohibited-namespace"/>
+  <variation id="V-01">
+    <name>Custom function uses reserved namespace</name>
+    <description>
+      The custom function uses http://www.xbrl.org/2008/function/instance as its namespace.
+    </description>
+    <data>
+      <schema readMeFirst="true">23040-prohibitedNamespace-concepts.xsd</schema>
+       <linkbase>23040-prohibitedNamespace-formulae.xml</linkbase>
+    </data>
+    <result>
+      <error>xbrlve:noProhibitedNamespaceForCustomFunction</error>
+    </result>
+  </variation>
+  
+</testcase>

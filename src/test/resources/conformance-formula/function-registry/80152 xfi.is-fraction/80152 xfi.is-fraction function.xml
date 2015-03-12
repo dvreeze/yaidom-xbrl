@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2008-01-23T00:00:00" />
+
+  <owners>
+    <reg:owner id="geoff">
+       <reg:name>Geoff Shuetrim</reg:name>
+       <reg:affiliation>Galexy</reg:affiliation>
+       <reg:email>geoff@galexy.net</reg:email>
+       <reg:assumedOwnership moment="2008-02-08T18:49:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns true if the concept has a data type that is the
+    xbrli:fractionItemType or that is derived from the 
+    xbrli:fractionItemType.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2006-12-18.htm#_Toc156209183">
+  XBRL 2.1 Section 5.1.1.3
+  </reference>
+
+  <signature name="xfi:is-fraction">
+    <input name="concept" type="xs:QName">
+      <xhtml:p>
+        The QName of the concept being tested.
+      </xhtml:p>
+    </input>
+    <output type="xs:boolean">
+      <xhtml:p>
+        Returns true if the concept has a data type that is the
+        xbrli:fractionItemType or that is derived from the 
+        xbrli:fractionItemType and the function returns false otherwise.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <conformanceTest xlink:type="simple" xlink:href="80152 xfi.is-fraction testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-02-08T18:55:00" by="geoff">
+      <xhtml:p>
+        Defined the function.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

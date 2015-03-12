@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/conformanceFunction.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:fcn="http://xbrl.org/2008/function"
+  xmlns:cfcn="http://xbrl.org/2008/conformance/function"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:concept="http://xbrl.org/formula/conformance/example" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  http://xbrl.org/2008/conformance ../schemas/conformance.xsd
+  http://xbrl.org/2008/conformance/function ../schemas/conformanceFunction.xsd
+  ">
+  <owners>
+    <reg:owner id="herm">
+      <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+      <reg:email>fischer@markv.com</reg:email>
+     <reg:assumedOwnership moment="2008-02-19T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <number>90105</number>
+
+  <name>Function test xfi:tuples-in-tuple</name>
+
+  <documentation>
+    <xhtml:p>
+      Tests of xfi:tuples-in-tuple($instance as element(xbrli:tuple)) as schema-element(xbrli:item)*
+    </xhtml:p>
+  </documentation>
+
+  <variation id="V-01">
+    <name>Works for an instance with tuples.</name>
+    <documentation>
+      <xhtml:p>
+        Tests that the function returns the correct facts for an instance with tuples.  This instance includes
+        nil tuples and tuples within tuples and items within tuples.
+      </xhtml:p>
+     </documentation>
+    <inputs>
+      <schema xlink:type="simple" xlink:href="facts-in-tuple.xsd"/>
+      <instance readMeFirst="true" id="V01" xlink:type="simple" xlink:href="tuple-instance.xml"/>
+      <cfcn:call file="V01">
+        xfi:tuples-in-tuple(//concept:t1[@id eq 'i1'])
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         count( $result ) eq 1 and
+         local-name( $result ) eq 't1' and
+         namespace-uri( $result ) eq 'http://xbrl.org/formula/conformance/example' and
+         $result/@id eq 'i2'
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-02">
+    <name>Works for an instance with tuples.</name>
+    <documentation>
+      <xhtml:p>
+        Tests that the function returns the correct facts for an instance with tuples.  This instance includes
+        nil tuples and tuples within tuples and items within tuples.
+      </xhtml:p>
+     </documentation>
+    <inputs>
+      <schema xlink:type="simple" xlink:href="facts-in-tuple.xsd"/>
+      <instance readMeFirst="true" id="V02" xlink:type="simple" xlink:href="tuple-instance.xml"/>
+      <cfcn:call file="V02">
+        xfi:tuples-in-tuple(//concept:t1[@id eq 'i3'])
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         count( $result ) eq 1 and
+         local-name( $result ) eq 't1' and
+         namespace-uri( $result ) eq 'http://xbrl.org/formula/conformance/example' and
+         $result/@id eq 'i4'
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-03">
+    <name>Works for an instance with tuples.</name>
+    <documentation>
+      <xhtml:p>
+        Tests that the function returns the correct facts for an instance with tuples.  This instance includes
+        nil tuples and tuples within tuples and items within tuples.
+      </xhtml:p>
+     </documentation>
+    <inputs>
+      <schema xlink:type="simple" xlink:href="facts-in-tuple.xsd"/>
+      <instance readMeFirst="true" id="V03" xlink:type="simple" xlink:href="tuple-instance.xml"/>
+      <cfcn:call file="V03">
+        xfi:tuples-in-tuple(//concept:t1[@id eq 'i4'])
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         count( $result ) eq 0
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-04">
+    <name>Wrong node to function</name>
+    <documentation>
+      <xhtml:p>
+        XBRL-defined error for node type incorrect.
+      </xhtml:p>
+    </documentation>
+    <inputs>
+      <schema xlink:type="simple" xlink:href="facts-in-tuple.xsd"/>
+      <instance readMeFirst="true" id="V04" xlink:type="simple" xlink:href="tuple-instance.xml"/>
+      <cfcn:call file="V04">
+        xfi:tuples-in-tuple(//concept:c1[@id eq 'i9'])
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <error>xqt-err:XPTY0004</error>
+    </outputs>
+  </variation>  
+
+  <revisions>
+    <reg:revision on="2008-01-30T00:00:00" by="herm">
+      <xhtml:p>
+        Created the test case.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+  
+</testcase>

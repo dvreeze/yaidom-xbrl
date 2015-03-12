@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xbrlspec/stylesheet.xsl"?>
+<spec 
+xmlns="http://xbrl.org/specification/2007" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xbrl.org/specification/2007 ../../specifications/xbrlspec/schema.xsd">
+
+  <header>
+    <wg>FWG</wg>
+    <title>Function conformance test inputs and outputs</title>
+    <id>conformanceFunction</id>
+    <feedback>formula-feedback@xbrl.org</feedback>
+    <namespaces>
+      <namespace 
+      id="ns-normative-schema" 
+      value="http://xbrl.org/2008/conformance/function" 
+      prefix="cfcn"
+      url="http://www.xbrl.org/2008/conformanceFunction.xsd">
+        The namespace of the normative schema.
+      </namespace>
+      <namespace 
+      id="ns-errors" 
+      value="http://xbrl.org/2008/conformance/function/error" 
+      prefix="cfcne">
+        The namespace for errors defined in this specification.
+      </namespace>
+    </namespaces>
+    <version>1.0</version>
+    <errataoriginaldate day="22" month="06" year="2009"/>
+    <date day="16" month="03" year="2011"/>
+    <status>REC</status>
+    <authors xmlns="http://xbrl.org/specification/2007">
+      <person id="person-geoff">
+        <name >Geoff Shuetrim</name>
+        <affiliation>Galexy</affiliation>
+        <email>geoff@galexy.net</email>
+      </person>
+    </authors>
+    <contributors xmlns="http://xbrl.org/specification/2007">
+      <person id="person-herm">
+        <name>Herm Fischer</name>
+        <affiliation>Mark V Systems (formerly with UBmatrix)</affiliation>
+        <email>fischer@markv.com</email>
+      </person>
+      <person id="person-davidNorth">
+        <name>David North</name>
+        <affiliation>CoreFiling</affiliation>
+        <email>dtn@corefiling.com</email>
+      </person>
+    </contributors>
+    <abstract>
+      <p>
+        This specification defines syntax for the inputs and outputs of
+        function registry conformance suite tests.
+      </p>
+    </abstract>
+  </header>
+
+  <body>
+    
+    <section id="sec-intro">
+      <head>Introduction</head>
+      <p>
+        This specification defines syntax for the inputs and outputs of
+        function registry conformance suite tests.
+      </p>
+
+      <section id="sec-background">
+        <head>Background</head>
+        <p>
+          This specification is intended to support the creation, maintenance,
+          and publication of XBRL function conformance suites.
+        </p>
+      </section>
+
+      <section id="sec-relationship-to-other-work">
+        <head>Relationship to other work</head>
+        This specification works with the XBRL conformance test specification.
+      </section>
+      
+      <section id="sec-language">
+        <head>Language independence</head>
+        <p>
+          The official language of XBRL International's own work
+          products is English and the preferred spelling convention is
+          UK English.
+        </p>
+      </section>
+      <section id="sec-terminology">
+        <head>Terminology</head>
+
+        <p>
+          This specification is consistent with the definitions of any of the
+          terms defined in specifications that it depends on.
+        </p>
+
+      </section>
+
+
+      <section id="sec-document-conventions">
+        <head>Document conventions (non-normative)</head>
+        
+        <p>
+          <xtermref bibref="VARIABLES" idref="sec-document-conventions">
+          Documentation conventions</xtermref> follow those set out in
+          the XBRL Variables Specification <bibref ref="VARIABLES"/>.
+        </p>
+
+      </section>
+
+      <section id="sec-namespaces">
+        <head>Namespaces and namespace prefixes</head>
+
+        <p>
+          Namespace prefixes <bibref ref="XMLNAMES"/> will be used 
+          for elements and attributes in
+          the form <code>ns:name</code> where <val>ns</val> is the 
+          namespace prefix and <val>name</val> is the local name. 
+          Throughout this specification, the mappings
+          from namespace prefixes to actual namespaces is consistent
+          with <tableref ref="table-namespaces"/>.
+        </p>
+        
+        <p>
+          The prefix column in <tableref ref="table-namespaces"/> is non normative. 
+          The namespace URI column is normative.
+        </p>        
+        <table id="table-namespaces">
+          <caption>Namespaces and namespace prefixes</caption>
+          <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Namespace URI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><val><namespaceref ref="ns-normative-schema" use="prefix"/></val></td>
+              <td><val><namespaceref ref="ns-normative-schema" use="namespace"/></val></td>
+            </tr>
+            <tr>
+              <td><val><namespaceref ref="ns-errors" use="prefix"/></val></td>
+              <td><val><namespaceref ref="ns-errors" use="namespace"/></val></td>
+            </tr>
+            <tr>
+              <td><val>xml</val></td>
+              <td><val>http://www.w3.org/XML/1998/namespace</val></td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </section>
+      
+    </section>
+    
+    <section id="sec-syntax">
+      <head>Syntax</head>
+
+      <p>
+        This specification only provides a textual declaration of syntax
+        constraints when those constraints are not expressed by the
+        normative schema supplied with this specification.
+      </p>
+      <p>
+        Explanations of elements and attributes are only supplied when
+        explanations are not already provided in other
+        specifications.
+      </p>
+      <p>
+        Unless explicitly stated otherwise, a reference to a specific
+        element <rfc2119>MUST</rfc2119> be read as a reference to that 
+        element or to any element in its 
+        <xtermref bibref="XMLSCHEMA-STRUCTURES" idref="key-equivalenceClass">
+        substitution group
+        </xtermref>.
+      </p>
+
+      <section id="sec-inputs">
+        <head>Inputs</head>
+        
+        <p>
+          Function conformance suite tests <rfc2119>MAY</rfc2119> have input files, and input
+          XPath expressions selecting information from the input files to use as function parameter values.
+        </p>
+
+        <p>
+          The syntax for the input files is defined in the Conformance Specification <bibref ref="CONFORMANCE"/>.
+        </p>
+
+        <section id="sec-input-function-call">
+          <head>Input function call</head>
+
+          <p>
+            The syntax for the input function call is provided by the 
+            <xmlref ref="xml-call"><elt>cfcn:call</elt></xmlref> element.
+          </p>
+          
+          <p>
+            If provided, the <att>file</att> attribute <rfc2119>MUST</rfc2119> contain the ID of 
+            one of the test case variation's input files.
+          </p>
+
+          <p>
+            The content of a <elt>cfcn:call</elt> is interpreted as an XPath expression that
+            is expected to be evaluated using a context that is an empty sequence if there is no 
+            <att>file</att> attribute and that is the root element of the specified input file otherwise.
+          </p>
+
+          <p>
+            The XPath expression will generally call the function being tested.
+          </p>
+
+          <p>
+            A function test case variation <rfc2119>MUST</rfc2119> have exactly one input function call among its
+            inputs.
+          </p>
+
+
+        </section>
+
+      </section>
+
+      <section id="sec-outputs">
+        <head>Outputs</head>
+
+        <p>
+          Function conformance suite tests <rfc2119>MAY</rfc2119> have error codes as outputs.  
+          They <rfc2119>MAY</rfc2119> also produce results that are expected to fulfil certain conditions
+          that can be tested for by executing XPath expressions and requiring the result to be an effective
+          Boolean value of <val>true</val>.  The syntax for error code outputs is defined in the XBRL
+          Conformance Specification <bibref ref="CONFORMANCE"/>.
+        </p>
+
+        <section id="sec-output-tests">
+          <head>Output tests</head>
+
+          <p>
+            The syntax for the output tests is provided by the 
+            <xmlref ref="xml-test"><elt>cfcn:test</elt></xmlref> element.
+          </p>
+
+          <p>
+            The content of a <elt>cfcn:test</elt> is interpreted as an XPath expression that
+            is expected to be evaluated using a context that is the first item, if any, of the result sequence of evaluating the 
+            XPath expression that provided as an input to the test case variation.
+          </p>
+          
+          <p>
+            The XPath expression in the <elt>cfcn:test</elt> element 
+            <rfc2119>MAY</rfc2119> contain a reference to the variable <val>$result</val> 
+            that is equal to the result of evaluating the XPath expression
+            provided as an input to the test case variation.
+          </p>
+          
+          <p>
+            The result of evaluating the output test XPath expression <rfc2119>MUST</rfc2119> be an effective
+            Boolean value of <val>true</val> if the test is to be considered passed.
+          </p>
+
+          <p>
+            A test case variation <rfc2119>MAY</rfc2119> contain more than one output test.
+          </p>
+
+        </section>
+      </section>
+
+    </section><!-- Syntax -->
+
+  </body>
+  
+  <back>
+
+    <section id="sec-schema">
+
+      <head>Normative schema</head>
+      
+      <p>
+        The following is the XML schema provided as part of this
+        specification. This is normative. Non-normative versions (which
+        should be identical to these except for appropriate comments
+        indicating their non-normative status) are also provided as
+        separate files for convenience of users of the specification.
+      </p>
+      
+      <p>
+        NOTE: (non-normative) Following the schema maintenance policy of
+        XBRL International, it is the intent (but is not guaranteed)
+        that the location of non-normative versions of these schemas on
+        the web will be as follows:
+      </p>
+      
+      <olist>
+        <item>
+          While any schema is the most current RECOMMENDED version and
+          until it is superseded by any additional errata corrections a
+          non-normative version will reside on the web in the directory
+          <code>http://www.xbrl.org/2008/</code> - during the drafting process for
+          this specification this directory should contain a copy of the
+          most recent published version of the schema at
+          <namespaceref ref="ns-normative-schema" use="url"/>.
+        </item>
+        <item>
+          A non-normative version of each schema as corrected by any
+          update to the RECOMMENDATION will be archived in perpetuity on
+          the web in a directory that will contain a unique
+          identification indicating the date of the update.
+        </item>
+      </olist>
+      <p role="xml-normative">
+        <verbatim>
+          <includeChunk ref="../schemas/conformanceFunction.xsd"/>
+        </verbatim>
+      </p>
+    </section>
+
+    <section id="sec-references">
+
+      <head>References</head>
+
+    	<bibliography>
+          <includeChunk ref="../../specifications/boilerplate/references/CONFORMANCE.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/VARIABLES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLNAMES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLSCHEMA-STRUCTURES.xml"/>
+    	</bibliography>
+
+      </section>
+
+      <section id="sec-ip-status" xmlns="http://xbrl.org/specification/2007">
+        <head>Intellectual property status (non-normative)</head>
+        
+        <p>
+          This document and translations of it may be copied and
+          furnished to others, and derivative works that comment on or
+          otherwise explain it or assist in its implementation may be
+          prepared, copied, published and distributed, in whole or in
+          part, without restriction of any kind, provided that the above
+          copyright notice and this paragraph are included on all such
+          copies and derivative works. However, this document itself may
+          not be modified in any way, such as by removing the copyright
+          notice or references to XBRL International or XBRL
+          organizations, except as required to translate it into
+          languages other than English. Members of XBRL International
+          agree to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<xref ref="http://www.xbrl.org/legal">www.xbrl.org/legal</xref>).
+        </p>
+      
+      
+        <p>
+          This document and the information contained herein is provided
+          on an "AS IS" basis and XBRL INTERNATIONAL DISCLAIMS ALL
+          WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+          ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+          INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+          MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+        </p>
+      
+        <p>
+          The attention of users of this document is directed to the
+          possibility that compliance with or adoption of XBRL
+          International specifications may require use of an invention
+          covered by patent rights. XBRL International shall not be
+          responsible for identifying patents for which a license may be
+          required by any XBRL International specification, or for
+          conducting legal inquiries into the legal validity or scope of
+          those patents that are brought to its attention. XBRL
+          International specifications are prospective and advisory
+          only. Prospective users are responsible for protecting
+          themselves against liability for infringement of patents. XBRL
+          International takes no position regarding the validity or
+          scope of any intellectual property or other rights that might
+          be claimed to pertain to the implementation or use of the
+          technology described in this document or the extent to which
+          any license under such rights might or might not be available;
+          neither does it represent that it has made any effort to
+          identify any such rights. Members of XBRL International agree
+          to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<xref ref="http://www.xbrl.org/legal">www.xbrl.org/legal</xref>).
+        </p>
+      </section>
+
+      <section id="sec-acknowledgements" xmlns="http://xbrl.org/specification/2007">
+        <head>Acknowledgements (non-normative)</head>
+        <p>
+          This document could not have been written without the
+          contributions of many people including the participants in the
+          <wgref/>.
+        </p>
+      
+      </section>
+    
+    <section id="sec-history">
+      <head>Document history (non-normative)</head>
+      
+      <revisions>
+
+        <revision ref="person-geoff"
+        day="29" month="01" year="2008">
+          <p>
+            First internal working draft created.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="30" month="01" year="2008">
+          <p>
+            Simplified the syntax for the input XPath expressions in function tests by
+            including an explicit function call in the XPath expression rather than generating
+            one XPath expression per input parameter of the function being called.
+          </p>
+          <p>
+            Fixed up various XML Schema errors.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="09" month="04" year="2008">
+          <p>
+            Introduced the <val>$result</val> variable for output 
+            XPath expressions to be able to refer to the result of
+            evaluating the input XPath expression.
+          </p>
+          <p>
+            Fixed up various XML Schema errors.
+          </p>
+        </revision>
+
+      </revisions>
+
+    </section>
+
+    <section id="sec-corrections" xmlns="http://xbrl.org/specification/2007">
+      <head>Errata corrections in this document</head>
+      
+      <p>
+        This appendix contains a list of the errata that have been
+        incorporated into this document. This represents all those
+        errata corrections that have been approved by the XBRL
+        International <wgref/> up to and
+        including <dateref style="DD Month YYYY"/>. 
+        Hyperlinks to relevant e-mail threads may
+        only be followed by those who have access to the relevant
+        mailing lists. Access to internal XBRL mailing lists is
+        restricted to members of XBRL International Inc.
+      </p>
+
+      <errata>
+        <erratum ref="person-herm" day="17" month="08" year="2011">
+          <sectionref ref="sec-output-tests"/>
+           <p>
+            Corrected test context to be the first item, if any, in the result sequence,
+            as suggested by <personref ref="person-davidNorth"/>.
+          </p>
+        </erratum>
+
+      </errata>
+
+    </section>
+
+  </back>
+</spec>

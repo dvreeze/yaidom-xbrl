@@ -142,6 +142,9 @@ final class XbrlInstance private[xbrl] (
   val allTopLevelItems: immutable.IndexedSeq[ItemFact] =
     findAllChildElemsOfType(classTag[ItemFact])
 
+  val allTopLevelNumericItems: immutable.IndexedSeq[NumericItemFact] =
+    findAllChildElemsOfType(classTag[NumericItemFact])
+
   val allTopLevelTuples: immutable.IndexedSeq[TupleFact] =
     findAllChildElemsOfType(classTag[TupleFact])
 
@@ -150,6 +153,9 @@ final class XbrlInstance private[xbrl] (
 
   val allTopLevelItemsByEName: Map[EName, immutable.IndexedSeq[ItemFact]] =
     allTopLevelItems groupBy (_.resolvedName)
+
+  val allTopLevelNumericItemsByEName: Map[EName, immutable.IndexedSeq[NumericItemFact]] =
+    allTopLevelNumericItems groupBy (_.resolvedName)
 
   val allTopLevelTuplesByEName: Map[EName, immutable.IndexedSeq[TupleFact]] =
     allTopLevelTuples groupBy (_.resolvedName)

@@ -1,0 +1,720 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:s="http://xbrl.org/specification/2007" xmlns:diff="http://xbrl.org/specification/2007/diff"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>XBRL Registry Specification 1.0</title><link rel="stylesheet" type="text/css" href="styles.css"></head><body>
+
+  <div class="head">
+<h1><a name="title" id="title"></a>XBRL Registry Specification 1.0</h1>
+<h2>Recommendation 22 June 2009</h2><p>Copyright ©2009 XBRL International Inc., All Rights Reserved.</p><dl><dt>This version:</dt><dd><a href="http://www.xbrl.org/Specification/registry/REC-2009-06-22/registry-REC-2009-06-22.html">&lt;http://www.xbrl.org/Specification/registry/REC-2009-06-22/registry-REC-2009-06-22.html&gt;</a></dd><dt>Editor:</dt><dd><a name="person-geoff" id="person-geoff"></a>
+            Geoff Shuetrim,
+  
+             Galexy
+             <a href="mailto:geoff@galexy.net">&lt;geoff@galexy.net&gt;</a>
+         </dd></dl><hr><div><h2><a name="status" id="status"></a>Status</h2><p>Circulation of this  Recommendation is unrestricted. This document is normative. 
+          Recipients are invited to submit comments to
+        <a href="mailto:formula-feedback@xbrl.org">formula-feedback@xbrl.org</a>,
+        
+          and to submit notification of any relevant patent rights 
+          of which they are aware and provide supporting 
+          documentation.
+        </p></div><div>
+<h2><a name="abstract" id="abstract"></a>Abstract</h2>
+         <p>
+        This specification is defines a syntax for an XML document that
+        contains location information about entries in a registry.
+      </p>
+      </div></div>
+
+  <div class="toc">
+<h2><a name="contents" id="contents"></a>Table of Contents</h2><p class="toc">1 <a href="#sec-intro">Introduction</a><br>
+   1.1 <a href="#sec-background">Background</a><br>
+   1.2 <a href="#sec-relationship-to-other-work">Relationship to other work</a><br>
+   1.3 <a href="#sec-language">Language independence</a><br>
+   1.4 <a href="#sec-terminology">Terminology</a><br>
+   1.5 <a href="#sec-document-conventions">Document conventions (non-normative)</a><br>
+   1.6 <a href="#sec-namespaces">Namespaces and namespace prefixes</a><br>
+2 <a href="#sec-syntax">Syntax</a><br>
+   2.1 <a href="#sec-xml-attributes">Attributes in the XML namespace</a><br>
+   2.2 <a href="#sec-registry">Element: registry</a><br>
+      2.2.1 <a href="#sec-last-updated">Element: lastUpdated</a><br>
+      2.2.2 <a href="#sec-name">Element: name</a><br>
+      2.2.3 <a href="#sec-documentation">Element: documentation</a><br>
+      2.2.4 <a href="#sec-registry-entry">Element: entry</a><br>
+         2.2.4.1 <a href="#sec-added">Element: added</a><br>
+         2.2.4.2 <a href="#sec-status">Element: status</a><br>
+         2.2.4.3 <a href="#sec-url">Element: url</a><br>
+   2.3 <a href="#sec-owner">Element: owner</a><br>
+      2.3.1 <a href="#sec-owner-name">Element: name</a><br>
+      2.3.2 <a href="#sec-affiliation">Element: affiliation</a><br>
+      2.3.3 <a href="#sec-email">Element: email</a><br>
+      2.3.4 <a href="#sec-assumed-ownership">Element: assumedOwnership</a><br>
+      2.3.5 <a href="#sec-relinquished-ownership">Element: relinquishedOwnership</a><br>
+   2.4 <a href="#sec-revision">Element: revision</a><br>
+   2.5 <a href="#sec-test">Element: test</a><br>
+</p>
+<h3><a name="appendices" id="appendices"></a>Appendices</h3><p class="toc">A <a href="#sec-schema">Normative schema</a><br>
+B <a href="#sec-references">References</a><br>
+C <a href="#sec-ip-status">Intellectual property status (non-normative)</a><br>
+D <a href="#sec-acknowledgements">Acknowledgements (non-normative)</a><br>
+E <a href="#sec-history">Document history (non-normative)</a><br>
+F <a href="#sec-corrections">Errata corrections in this document</a><br>
+</p><h3><a name="examples" id="examples"></a>Table</h3><p class="toc">1 <a href="#table-namespaces">Namespaces and namespace prefixes</a><br></p>
+<h3><a name="definitions" id="definitions"></a>Definitions</h3><p class="toc"><a href="#term-registry">registry</a><br><a href="#term-registry-entry">registry entry</a><br></p></div><hr><div class="body">
+
+      <div class="div1"><a name="sec-intro" id="sec-intro"></a>
+         <h1>1 Introduction</h1>
+         <p>
+        This specification is defines a syntax for an XML document that
+        contains location information about entries in a registry.
+      </p>
+
+         <div class="div2"><a name="sec-background" id="sec-background"></a>
+            <h2>1.1 Background</h2>
+            <p>
+          This specification is intended to support the creation maintenance and publication
+          of XBRL-related registries, including the XBRL function registry.
+        </p>
+         </div>
+
+         <div class="div2"><a name="sec-relationship-to-other-work" id="sec-relationship-to-other-work"></a>
+            <h2>1.2 Relationship to other work</h2>
+            <p>
+          This specification does not depend on any other XBRL specification.
+        </p>
+         </div>
+      
+         <div class="div2"><a name="sec-language" id="sec-language"></a>
+            <h2>1.3 Language independence</h2>
+            <p>
+          The official language of XBRL International's own work
+          products is English and the preferred spelling convention is
+          UK English.
+        </p>
+         </div>
+         <div class="div2"><a name="sec-terminology" id="sec-terminology"></a>
+            <h2>1.4 Terminology</h2>
+
+            <p>
+          This specification is consistent with the definitions of any of the
+          terms defined in specifications that it depends on.
+        </p>
+
+         </div>
+
+         <div class="div2"><a name="sec-document-conventions" id="sec-document-conventions"></a>
+            <h2>1.5 Document conventions (non-normative)</h2>
+        
+            <p><a href="http://www.xbrl.org/Specification/variables/REC-2009-06-22/variables-REC-2009-06-22.html#sec-document-conventions">
+          Documentation conventions</a> follow those set out in
+          the XBRL Variables Specification <a href="#VARIABLES">[VARIABLES]</a>.
+        </p>
+      
+         </div>
+      
+         <div class="div2"><a name="sec-namespaces" id="sec-namespaces"></a>
+            <h2>1.6 Namespaces and namespace prefixes</h2>
+
+            <p>
+          Namespace prefixes <a href="#XMLNAMES">[XML NAMES]</a> will be used 
+          for elements and attributes in
+          the form <code>ns:name</code> where <code class="value">ns</code> is the 
+          namespace prefix and <code class="value">name</code> is the local name. 
+          Throughout this specification, the mappings
+          from namespace prefixes to actual namespaces is consistent
+          with <a href="#table-namespaces"><b>
+        Table
+        1</b></a>.
+        </p>
+        
+            <p>
+          The prefix column in <a href="#table-namespaces"><b>
+        Table
+        1</b></a> is non normative. 
+          The namespace URI column is normative.
+        </p>        
+            <div class="chunkHeading"><a name="table-namespaces" id="table-namespaces"></a>Table 1: Namespaces and namespace prefixes</div><table>
+               
+               <thead>
+                  <tr>
+                     <th>Prefix</th>
+                     <th>Namespace URI</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>
+                        <code class="value">
+                           reg
+                        </code>
+                     </td>
+                     <td>
+                        <code class="value">
+                           http://xbrl.org/2008/registry
+                        </code>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <code class="value">
+                           rege
+                        </code>
+                     </td>
+                     <td>
+                        <code class="value">
+                           http://xbrl.org/2008/registry/error
+                        </code>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <code class="value">xml</code>
+                     </td>
+                     <td>
+                        <code class="value">http://www.w3.org/XML/1998/namespace</code>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <code class="value">xlink</code>
+                     </td>
+                     <td>
+                        <code class="value">http://www.w3.org/1999/xlink</code>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+        
+         </div>
+      
+      </div>
+    
+      <div class="div1"><a name="sec-syntax" id="sec-syntax"></a>
+         <h1>2 Syntax</h1>
+
+         <p>
+        This specification only provides a textual declaration of syntax
+        constraints when those constraints are not expressed by the
+        normative schema supplied with this specification.
+      </p>
+         <p>
+        Explanations of elements and attributes are only supplied when
+        explanations are not already provided in other
+        specifications.
+      </p>
+         <p>
+        Unless explicitly stated otherwise, a reference to a specific
+        element <strong>MUST</strong> be read as a reference to that 
+        element or to any element in its 
+        <a href="http://www.w3.org/TR/xmlschema-1/#key-equivalenceClass">
+        substitution group
+        </a>.
+      </p>
+
+         <div class="div2"><a name="sec-xml-attributes" id="sec-xml-attributes"></a>
+            <h2>2.1 Attributes in the XML namespace</h2>
+
+            <p>
+          Any attribute in the XML namespace (<code class="value">http://www.w3.org/XML/1998/namespace</code>) <strong>MAY</strong> be
+          used on any element within a <a href="#term-registry">registry</a> or within an XML
+          resource that is referenced by a <a href="#term-registry-entry">registry entry</a>.
+        </p>
+
+            <p>
+          The <code class="attribute">
+      @xml:lang</code> attribute <strong>MAY</strong> be used to indicate the language used to express
+          information in the registry, as per the XML Specification <a href="#XML">[XML]</a>.
+        </p>
+
+            <p>
+          The <code class="attribute">
+      @xml:base</code> attribute <strong>MAY</strong> be used when resolving URIs 
+          as per the XML Base Specification <a href="#XMLBASE">[XMLBASE]</a>.
+        </p>
+
+         </div>
+
+         <div class="div2"><a name="sec-registry" id="sec-registry"></a>
+            <h2>2.2 Element: registry</h2>
+
+            <p>
+          The <a href="#xml-registry"><code class="element">
+      &lt;reg:registry&gt;
+    </code></a> element 
+          is the root element of a registry.
+        </p>
+
+            <p><span class="definition"><a name="term-registry" id="term-registry" title="registry"></a>
+            A <span class="term">registry</span> is a <code class="element">
+      &lt;reg:registry&gt;
+    </code> element
+            containing a list of zero or more <a href="#term-registry-entry">registry entries</a></span></p>
+
+            <div class="div3"><a name="sec-last-updated" id="sec-last-updated"></a>
+               <h3>2.2.1 Element: lastUpdated</h3>
+
+               <p>
+            The <a href="#xml-last-updated"><code class="element">
+      &lt;reg:lastUpdated&gt;
+    </code></a> element 
+            contains a <code class="attribute">
+      @moment</code> attribute whose value is the 
+            instant on which an entry in the registry was last updated.
+          </p>
+
+            </div>
+
+            <div class="div3"><a name="sec-name" id="sec-name"></a>
+               <h3>2.2.2 Element: name</h3>
+
+               <p>
+            The <a href="#xml-name"><code class="element">
+      &lt;reg:name&gt;
+    </code></a> element 
+            contains the name of the registry.
+          </p>
+
+            </div>
+
+
+            <div class="div3"><a name="sec-documentation" id="sec-documentation"></a>
+               <h3>2.2.3 Element: documentation</h3>
+
+               <p>
+            The <a href="#xml-documentation"><code class="element">
+      &lt;reg:documentation&gt;
+    </code></a> element 
+            contains either a URL that resolves to documentation of the registry or it contains
+            XHTML <a href="#XHTML">[XHTML]</a> markup documenting the registry.
+          </p>
+
+               <p>
+            If the documentation is provided as a URL, then the URL is specified using a 
+            <code class="element">
+      &lt;reg:url&gt;
+    </code> element that follows the syntax rules specified in 
+            <a href="#sec-url"><b>
+            Section
+            2.2.4.3</b></a>.
+          </p>
+
+            </div>
+
+            <div class="div3"><a name="sec-registry-entry" id="sec-registry-entry"></a>
+               <h3>2.2.4 Element: entry</h3>
+
+               <p>
+            The <a href="#xml-entry"><code class="element">
+      &lt;reg:entry&gt;
+    </code></a> element 
+            is an abstract element that serves as a placeholder for concrete
+            registry entries.
+          </p>
+
+               <p><span class="definition"><a name="term-registry-entry" id="term-registry-entry" title="registry entry"></a>
+              A <span class="term">registry entry</span> is an element in the substitution group
+              for the <code class="element">
+      &lt;reg:entry&gt;
+    </code> element that is a child of a
+              a <a href="#term-registry">registry</a>.
+            </span></p>
+
+               <div class="div4"><a name="sec-added" id="sec-added"></a>
+                  <h4>2.2.4.1 Element: added</h4>
+
+                  <p>
+              The <a href="#xml-entry-added"><code class="element">
+      &lt;reg:added&gt;
+    </code></a> element 
+              contains a <code class="attribute">
+      @moment</code> attribute whose value is the 
+              instant on which an entry in the registry was last updated.
+            </p>
+
+               </div>
+
+               <div class="div4"><a name="sec-status" id="sec-status"></a>
+                  <h4>2.2.4.2 Element: status</h4>
+
+                  <p>
+              The <a href="#xml-entry-status"><code class="element">
+      &lt;reg:status&gt;
+    </code></a> element 
+              contains one of the following values to indicate a particular status
+              of the entry in the registry:
+            </p>
+
+                  <ul>
+                     <li><code class="value">IWD</code> - Internal working draft</li>
+                     <li><code class="value">DPWD</code> - Draft public working draft</li>
+                     <li><code class="value">PWD</code> - Public working draft</li>
+                     <li><code class="value">CR</code> - Candidate recommendation</li>
+                     <li><code class="value">REC</code> - Recommendation</li>
+                  </ul>
+            
+                  <p>
+              When published in the public domain, a registry <strong>MUST</strong> only contain 
+              entries that have a status of <code class="value">PWD</code>, <code class="value">CR</code> 
+              or <code class="value">REC</code>.  All other entries will be removed from the registry
+              prior to publication.
+            </p>
+
+               </div>
+
+               <div class="div4"><a name="sec-url" id="sec-url"></a>
+                  <h4>2.2.4.3 Element: url</h4>
+
+                  <p>
+              The <a href="#xml-entry-url"><code class="element">
+      &lt;reg:url&gt;
+    </code></a> element 
+              contains an <code class="attribute">
+      @xlink:type</code> attribute that equals <code class="value">simple</code> and
+              an <code class="attribute">
+      @xlink:href</code> attribute that contains a URI that <strong>MUST</strong> 
+              resolve to the resource that identified by the registry entry.
+            </p>
+            
+                  <p>
+              The <code class="element">
+      &lt;reg:url&gt;
+    </code> element <strong>MAY</strong> contain string content documenting
+              the nature of the resource that the URL is linking to.
+            </p>
+
+               </div>
+
+            </div>
+
+         </div>
+
+         <div class="div2"><a name="sec-owner" id="sec-owner"></a>
+            <h2>2.3 Element: owner</h2>
+        
+            <p>
+          Registry entries can include a list of one or more owners.
+        </p>
+        
+            <p>
+          The <a href="#xml-owner"><code class="element">
+      &lt;reg:owner&gt;
+    </code></a> element 
+          contains information about an owner of a resource that can have 
+          <a href="#term-registry-entry">registry entry</a>.
+        </p>
+          
+            <p>
+          The mandatory <code class="attribute">
+      @id</code> attribute on a <code class="element">
+      &lt;reg:owner&gt;
+    </code> element
+          is used to reference the owner from the revision history for a resource that 
+          is referenced by a registry entry.
+        </p>
+
+            <div class="div3"><a name="sec-owner-name" id="sec-owner-name"></a>
+               <h3>2.3.1 Element: name</h3>
+
+               <p>
+            The <a href="#xml-owner-name"><code class="element">
+      &lt;reg:name&gt;
+    </code></a> element 
+            contains the name of the owner.
+          </p>
+
+            </div>
+
+            <div class="div3"><a name="sec-affiliation" id="sec-affiliation"></a>
+               <h3>2.3.2 Element: affiliation</h3>
+
+               <p>
+            The <a href="#xml-owner-affiliation"><code class="element">
+      &lt;reg:affiliation&gt;
+    </code></a> element 
+            contains the affiliation of the owner.
+          </p>
+
+            </div>
+
+            <div class="div3"><a name="sec-email" id="sec-email"></a>
+               <h3>2.3.3 Element: email</h3>
+
+               <p>
+            The <a href="#xml-owner-email"><code class="element">
+      &lt;reg:email&gt;
+    </code></a> element 
+            contains the email address of the owner.
+          </p>
+
+            </div>
+
+            <div class="div3"><a name="sec-assumed-ownership" id="sec-assumed-ownership"></a>
+               <h3>2.3.4 Element: assumedOwnership</h3>
+
+               <p>
+            The <a href="#xml-owner-assumed-ownership"><code class="element">
+      &lt;reg:assumedOwnership&gt;
+    </code></a> element 
+            contains a <code class="attribute">
+      @moment</code> attribute that is the instant that the owner
+            assumed ownership of the resource.
+          </p>
+
+            </div>
+
+            <div class="div3"><a name="sec-relinquished-ownership" id="sec-relinquished-ownership"></a>
+               <h3>2.3.5 Element: relinquishedOwnership</h3>
+
+               <p>
+            The <a href="#xml-owner-relinquished-ownership"><code class="element">
+      &lt;reg:relinquishedOwnership&gt;
+    </code></a> element 
+            contains a <code class="attribute">
+      @moment</code> attribute that is the instant that the owner
+            relinquished ownership of the resource.
+          </p>
+
+            </div>
+  
+         </div>
+
+         <div class="div2"><a name="sec-revision" id="sec-revision"></a>
+            <h2>2.4 Element: revision</h2>
+
+            <p>
+          The <a href="#xml-revision"><code class="element">
+      &lt;reg:revision&gt;
+    </code></a> element 
+          contains information about a revision to a resource that can have 
+          <a href="#term-registry-entry">registry entry</a>.
+        </p>
+
+            <p>
+          A <code class="element">
+      &lt;reg:revision&gt;
+    </code> element 
+          contains either a URL that resolves to documentation of the registry or it contains
+          XHTML <a href="#XHTML">[XHTML]</a> markup documenting the nature of the revision.
+        </p>
+
+            <p>
+          All <code class="element">
+      &lt;reg:revision&gt;
+    </code> elements have an <code class="attribute">
+      @on</code> attribute that records
+          the moment at which the revision was finalised.
+        </p>
+
+            <p>
+          All <code class="element">
+      &lt;reg:revision&gt;
+    </code> elements have a <code class="attribute">
+      @by</code> attribute
+          that contains an IDREF to the ID of the owner responsible for making the revision.
+        </p>
+
+         </div>
+
+         <div class="div2"><a name="sec-test" id="sec-test"></a>
+            <h2>2.5 Element: test</h2>
+
+            <p>
+          The <a href="#xml-test"><code class="element">
+      &lt;reg:test&gt;
+    </code></a> element 
+          is abstract.
+        </p>
+
+            <p>
+          All conformance suite test resources that are referenced
+          from within the XML resources that have entries in an XBRL registry
+          <strong>MUST</strong> be in the substitution group for the 
+          <code class="element">
+      &lt;reg:test&gt;
+    </code> element.
+        </p>
+
+         </div>
+
+      </div>
+      
+
+  </div>
+  
+  <div class="back">
+
+      <div class="div1"><a name="sec-schema" id="sec-schema"></a>
+
+         <h1>Appendix A Normative schema</h1>
+      
+         <p>
+        The following is the XML schema provided as part of this
+        specification. This is normative. Non-normative versions (which
+        should be identical to these except for appropriate comments
+        indicating their non-normative status) are also provided as
+        separate files for convenience of users of the specification.
+      </p>
+      
+         <p>
+        NOTE: (non-normative) Following the schema maintenance policy of
+        XBRL International, it is the intent (but is not guaranteed)
+        that the location of non-normative versions of these schemas on
+        the web will be as follows:
+      </p>
+      
+         <ol>
+            <li>
+          While any schema is the most current RECOMMENDED version and
+          until it is superseded by any additional errata corrections a
+          non-normative version will reside on the web in the directory
+          <code>http://www.xbrl.org/2008/</code> - during the drafting process for
+          this specification this directory should contain a copy of the
+          most recent published version of the schema at
+          <a href="http://www.xbrl.org/2008/registry.xsd">http://www.xbrl.org/2008/registry.xsd</a>.
+        </li>
+            <li>
+          A non-normative version of each schema as corrected by any
+          update to the RECOMMENDATION will be archived in perpetuity on
+          the web in a directory that will contain a unique
+          identification indicating the date of the update.
+        </li>
+         </ol>
+         <div class="xml-normative"><div class="verbatim">&lt;<span class="verbatim-element-name">schema</span> <span class="verbatim"></span> <span class="verbatim"><span class="verbatim-namespace-name"><br> xmlns:xsi</span>="<span class="verbatim-namespace-uri">http://www.w3.org/2001/XMLSchema-instance</span>"</span> <span class="verbatim"><span class="verbatim-namespace-name"><br> xmlns</span>="<span class="verbatim-namespace-uri">http://www.w3.org/2001/XMLSchema</span>"</span> <span class="verbatim"><span class="verbatim-namespace-name"><br> xmlns:reg</span>="<span class="verbatim-namespace-uri">http://xbrl.org/2008/registry</span>"</span> <span class="verbatim"><span class="verbatim-namespace-name"><br> xmlns:xlink</span>="<span class="verbatim-namespace-uri">http://www.w3.org/1999/xlink</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">targetNamespace</span>="<span class="verbatim-attribute-content">http://xbrl.org/2008/registry</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">elementFormDefault</span>="<span class="verbatim-attribute-content">qualified</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">xsi:schemaLocation</span>="<span class="verbatim-attribute-content">http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">import</span> <span class="verbatim"><span class="verbatim-attribute-name">namespace</span>="<span class="verbatim-attribute-content">http://www.w3.org/1999/xlink</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">schemaLocation</span>="<span class="verbatim-attribute-content">http://www.xbrl.org/2003/xlink-2003-12-31.xsd</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-registry" id="xml-registry"></a>id</span>="<span class="verbatim-attribute-content">xml-registry</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">registry</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">sequence</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-last-updated" id="xml-last-updated"></a>id</span>="<span class="verbatim-attribute-content">xml-last-updated</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">lastUpdated</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:date.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-name" id="xml-name"></a>id</span>="<span class="verbatim-attribute-content">xml-name</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">name</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:string.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-documentation" id="xml-documentation"></a>id</span>="<span class="verbatim-attribute-content">xml-documentation</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">documentation</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:documentation.elt.type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">minOccurs</span>="<span class="verbatim-attribute-content">0</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">sequence</span> <span class="verbatim"><span class="verbatim-attribute-name">maxOccurs</span>="<span class="verbatim-attribute-content">unbounded</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-entry" id="xml-entry"></a>id</span>="<span class="verbatim-attribute-content">xml-entry</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">entry</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:entry.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">sequence</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">sequence</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">element</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">date.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:date.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">entry.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">sequence</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-entry-added" id="xml-entry-added"></a>id</span>="<span class="verbatim-attribute-content">xml-entry-added</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">added</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:date.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;!--<span class="verbatim-comment"> URL MUST be resolved against the effective xml:base to get an absolute URI </span>--&gt;</div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-entry-status" id="xml-entry-status"></a>id</span>="<span class="verbatim-attribute-content">xml-entry-status</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">status</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:status.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-entry-url" id="xml-entry-url"></a>id</span>="<span class="verbatim-attribute-content">xml-entry-url</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">url</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:url.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">sequence</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">string.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">simpleContent</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">extension</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">string</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">extension</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">simpleContent</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">url.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">simpleContent</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">extension</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">string</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">xlink:type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">use</span>="<span class="verbatim-attribute-content">required</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">fixed</span>="<span class="verbatim-attribute-content">simple</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">xlink:href</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">use</span>="<span class="verbatim-attribute-content">required</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">extension</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">simpleContent</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">status.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">simpleContent</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">extension</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">reg:status.simple.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">extension</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">simpleContent</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">simpleType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">status.simple.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">restriction</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">token</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">enumeration</span> <span class="verbatim"><span class="verbatim-attribute-name">value</span>="<span class="verbatim-attribute-content">IWD</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">enumeration</span> <span class="verbatim"><span class="verbatim-attribute-name">value</span>="<span class="verbatim-attribute-content">DPWD</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">enumeration</span> <span class="verbatim"><span class="verbatim-attribute-name">value</span>="<span class="verbatim-attribute-content">PWD</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">enumeration</span> <span class="verbatim"><span class="verbatim-attribute-name">value</span>="<span class="verbatim-attribute-content">CR</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">enumeration</span> <span class="verbatim"><span class="verbatim-attribute-name">value</span>="<span class="verbatim-attribute-content">REC</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">restriction</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">simpleType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">date.attribute.group</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">moment</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">dateTime</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">attributeGroup</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">common.attribute.group</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">id</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">ID</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">anyAttribute</span> <span class="verbatim"><span class="verbatim-attribute-name">namespace</span>="<span class="verbatim-attribute-content">http://www.w3.org/XML/1998/namespace</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">processContents</span>="<span class="verbatim-attribute-content">lax</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">attributeGroup</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">documentation.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">choice</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">url</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:url.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">any</span> <span class="verbatim"><span class="verbatim-attribute-name">namespace</span>="<span class="verbatim-attribute-content">http://www.w3.org/1999/xhtml</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">processContents</span>="<span class="verbatim-attribute-content">skip</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">minOccurs</span>="<span class="verbatim-attribute-content">0</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">maxOccurs</span>="<span class="verbatim-attribute-content">unbounded</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">choice</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">owners.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">sequence</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">owner</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:owner.elt.type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">maxOccurs</span>="<span class="verbatim-attribute-content">unbounded</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">sequence</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-owner" id="xml-owner"></a>id</span>="<span class="verbatim-attribute-content">xml-owner</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">owner.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">sequence</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-owner-name" id="xml-owner-name"></a>id</span>="<span class="verbatim-attribute-content">xml-owner-name</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">name</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:string.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-owner-affiliation" id="xml-owner-affiliation"></a>id</span>="<span class="verbatim-attribute-content">xml-owner-affiliation</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">affiliation</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:string.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-owner-email" id="xml-owner-email"></a>id</span>="<span class="verbatim-attribute-content">xml-owner-email</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">email</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:string.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-owner-assumed-ownership" id="xml-owner-assumed-ownership"></a>id</span>="<span class="verbatim-attribute-content">xml-owner-assumed-ownership</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">assumedOwnership</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:date.elt.type</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-owner-relinquished-ownership" id="xml-owner-relinquished-ownership"></a>id</span>="<span class="verbatim-attribute-content">xml-owner-relinquished-ownership</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">relinquishedOwnership</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:date.elt.type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">minOccurs</span>="<span class="verbatim-attribute-content">0</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">sequence</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">revisions.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">sequence</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">revision</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">reg:revision.elt.type</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">maxOccurs</span>="<span class="verbatim-attribute-content">unbounded</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">sequence</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attributeGroup</span> <span class="verbatim"><span class="verbatim-attribute-name">ref</span>="<span class="verbatim-attribute-content">reg:common.attribute.group</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">complexType</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-revision" id="xml-revision"></a>id</span>="<span class="verbatim-attribute-content">xml-revision</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">revision.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">complexContent</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">extension</span> <span class="verbatim"><span class="verbatim-attribute-name">base</span>="<span class="verbatim-attribute-content">reg:documentation.elt.type</span>"</span><span class="verbatim">&gt;</span><div class="verbatim">&lt;<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">on</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">dateTime</span>"</span><span class="verbatim">/&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">attribute</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">by</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">type</span>="<span class="verbatim-attribute-content">IDREF</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">extension</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexContent</span>&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">complexType</span>&gt;</span></div><div class="verbatim">&lt;<span class="verbatim-element-name">element</span> <span class="verbatim"><span class="verbatim-attribute-name"><a name="xml-test" id="xml-test"></a>id</span>="<span class="verbatim-attribute-content">xml-test</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">name</span>="<span class="verbatim-attribute-content">test</span>"</span> <span class="verbatim"><span class="verbatim-attribute-name">abstract</span>="<span class="verbatim-attribute-content">true</span>"</span><span class="verbatim">/&gt;</span></div><span class="verbatim">&lt;/<span class="verbatim-element-name">schema</span>&gt;</span></div></div>
+      </div>
+
+      <div class="div1"><a name="sec-references" id="sec-references"></a>
+
+         <h1>Appendix B References</h1>
+
+    	    <dl>
+            
+            
+            
+            
+            
+            
+    	    <dt class="label"><a name="VARIABLES" id="VARIABLES"></a>VARIABLES</dt><dd>XBRL International Inc.. "XBRL Variables 1.0"<br>Phillip Engel, Herm Fischer, Victor Morilla, Jim Richards, Geoff Shuetrim, David vun Kannon, and Hugh Wallis.<br>(See <a href="http://www.xbrl.org/Specification/variables/REC-2009-06-22/variables-REC-2009-06-22.html">http://www.xbrl.org/Specification/variables/REC-2009-06-22/variables-REC-2009-06-22.html</a>)</dd><dt class="label"><a name="XHTML" id="XHTML"></a>XHTML</dt><dd>W3C (World Wide Web Consortium). " XHTML™ 1.0 The Extensible HyperText Markup Language (Second Edition)"<br>(See <a href="http://www.w3.org/TR/xhtml1/">http://www.w3.org/TR/xhtml1/</a>)</dd><dt class="label"><a name="XML" id="XML"></a>XML</dt><dd>W3C (World Wide Web Consortium). "Extensible Markup Language (XML) 1.0 (Fourth Edition)"<br>Tim Bray, Jean Paoli, C. M. Sperberg-McQueen, Eve Maler, and François Yergeau.<br>(See <a href="http://www.w3.org/TR/REC-xml/">http://www.w3.org/TR/REC-xml/</a>)</dd><dt class="label"><a name="XMLNAMES" id="XMLNAMES"></a>XML NAMES</dt><dd>W3C (World Wide Web Consortium). "Namespaces in XML 1.0 (Second Edition)"<br>Tim Bray, Dave Hollander, Andrew Layman, and Richard Tobin.<br>(See <a href="http://www.w3.org/TR/REC-xml-names/">http://www.w3.org/TR/REC-xml-names/</a>)</dd><dt class="label"><a name="XMLSCHEMA-STRUCTURES" id="XMLSCHEMA-STRUCTURES"></a>XML SCHEMA STRUCTURES</dt><dd>W3C (World Wide Web Consortium). "XML Schema Part 1: Structures Second Edition"<br>Henry S. Thompson, David Beech, Murray Maloney, and Noah Mendelsohn.<br>(See <a href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</a>)</dd><dt class="label"><a name="XMLBASE" id="XMLBASE"></a>XMLBASE</dt><dd>W3C (World Wide Web Consortium). "XML Base"<br>Johnathan Marsh.<br>(See <a href="http://www.w3.org/TR/xmlbase/">http://www.w3.org/TR/xmlbase/</a>)</dd></dl>
+
+      </div>
+
+      <div class="div1"><a name="sec-ip-status" id="sec-ip-status"></a>
+        <h1>Appendix C Intellectual property status (non-normative)</h1>
+        
+        <p>
+          This document and translations of it may be copied and
+          furnished to others, and derivative works that comment on or
+          otherwise explain it or assist in its implementation may be
+          prepared, copied, published and distributed, in whole or in
+          part, without restriction of any kind, provided that the above
+          copyright notice and this paragraph are included on all such
+          copies and derivative works. However, this document itself may
+          not be modified in any way, such as by removing the copyright
+          notice or references to XBRL International or XBRL
+          organizations, except as required to translate it into
+          languages other than English. Members of XBRL International
+          agree to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<a href="http://www.xbrl.org/legal">www.xbrl.org/legal</a>).
+        </p>
+
+        <p>
+          This document and the information contained herein is provided
+          on an "AS IS" basis and XBRL INTERNATIONAL DISCLAIMS ALL
+          WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+          ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+          INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+          MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+        </p>
+      
+        <p>
+          The attention of users of this document is directed to the
+          possibility that compliance with or adoption of XBRL
+          International specifications may require use of an invention
+          covered by patent rights. XBRL International shall not be
+          responsible for identifying patents for which a license may be
+          required by any XBRL International specification, or for
+          conducting legal inquiries into the legal validity or scope of
+          those patents that are brought to its attention. XBRL
+          International specifications are prospective and advisory
+          only. Prospective users are responsible for protecting
+          themselves against liability for infringement of patents. XBRL
+          International takes no position regarding the validity or
+          scope of any intellectual property or other rights that might
+          be claimed to pertain to the implementation or use of the
+          technology described in this document or the extent to which
+          any license under such rights might or might not be available;
+          neither does it represent that it has made any effort to
+          identify any such rights. Members of XBRL International agree
+          to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<a href="http://www.xbrl.org/legal">www.xbrl.org/legal</a>).
+        </p>
+      </div>
+
+      <div class="div1"><a name="sec-acknowledgements" id="sec-acknowledgements"></a>
+        <h1>Appendix D Acknowledgements (non-normative)</h1>
+        <p>
+          This document could not have been written without the
+          contributions of many people including the participants in the
+          FWG.
+        </p>
+      
+      </div>
+
+      <div class="div1"><a name="sec-history" id="sec-history"></a>
+         <h1>Appendix E Document history (non-normative)</h1>
+      
+         <table class="revisions"><tr><th>Date</th><th>Author</th><th>Details</th></tr>
+
+            <tr><td>17 January 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            First internal working draft created.
+          </p>
+            </td></tr>
+
+            <tr><td>29 January 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            Incorporated element definitions and explanations based
+            on the normative schema.
+          </p>
+            </td></tr>
+
+            <tr><td>30 January 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            Fixed XML Schema errors for simple content model type definitions.
+          </p>
+               <p class="revision">
+            Fixed the incorrect element name for the child elements in the owners
+            content model.
+          </p>
+            </td></tr>
+
+            <tr><td>31 January 2008</td><td>Geoff Shuetrim</td><td>
+               <p class="revision">
+            Adapted hyperlinks to use XLink simple link syntax.
+          </p>
+            </td></tr>
+
+         </table>
+
+      </div>
+
+      <div class="div1"><a name="sec-corrections" id="sec-corrections"></a>
+         <h1>Appendix F Errata corrections in this document</h1>
+      
+         <p>
+        This appendix contains a list of the errata that have been
+        incorporated into this document. This represents all those
+        errata corrections that have been approved by the XBRL
+        International FWG up to and
+        including 22 June 2009. 
+        Hyperlinks to relevant e-mail threads may
+        only be followed by those who have access to the relevant
+        mailing lists. Access to internal XBRL mailing lists is
+        restricted to members of XBRL International Inc.
+      </p>
+
+         <p>No errata have been incorporated into this document.</p>
+
+      </div>
+
+  </div>
+</body></html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linkbase
+  xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:test="http://abc.com/test"
+  xsi:schemaLocation="
+    http://www.xbrl.org/2003/linkbase 
+      http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+    http://abc.com/test
+      min-reported-precision.xsd
+    ">
+	<roleRef xlink:type="simple" 
+      xlink:href="min-reported-precision.xsd#min-precision-link-role" 
+      roleURI="http://abc.com/role/min-precision-link-role"/>
+	<arcroleRef xlink:type="simple" 
+      xlink:href="min-reported-precision.xsd#min-precision-arc-role" 
+      arcroleURI="http://abc.com/arcrole/min-precision-arc-role"/>
+      
+	<test:minPrecisionLink xlink:type="extended" 
+      xlink:role="http://abc.com/role/min-precision-link-role">
+		<loc xlink:type="locator" 
+          xlink:href="min-reported-precision.xsd#MinPrecisionHeadElement" 
+          xlink:label="headElement"/>
+		<loc xlink:type="locator" 
+          xlink:href="min-reported-precision.xsd#A" 
+          xlink:label="a"/>
+		<loc xlink:type="locator" 
+          xlink:href="min-reported-precision.xsd#B" 
+          xlink:label="b"/>
+		<loc xlink:type="locator" 
+          xlink:href="min-reported-precision.xsd#C" 
+          xlink:label="c"/>
+		<test:minPrecisionArc xlink:type="arc" 
+          xlink:arcrole="http://abc.com/arcrole/min-precision-arc-role"
+          xlink:from="headElement" xlink:to="a" order="1" 
+          test:minRequiredPrecision="-3" />
+		<test:minPrecisionArc xlink:type="arc" 
+          xlink:arcrole="http://abc.com/arcrole/min-precision-arc-role"
+          xlink:from="headElement" xlink:to="b" order="1" 
+          test:minRequiredPrecision="0" />
+		<test:minPrecisionArc xlink:type="arc" 
+          xlink:arcrole="http://abc.com/arcrole/min-precision-arc-role"
+          xlink:from="headElement" xlink:to="c" order="1" 
+          test:minRequiredPrecision="4" />
+	</test:minPrecisionLink>
+</linkbase>
+
+
+

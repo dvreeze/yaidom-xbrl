@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/conformanceFunction.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:fcn="http://xbrl.org/2008/function"
+  xmlns:cfcn="http://xbrl.org/2008/conformance/function"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:t="http://xbrl.org/formula/conformance/example" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  http://xbrl.org/2008/conformance ../schemas/conformance.xsd
+  http://xbrl.org/2008/conformance/function ../schemas/conformanceFunction.xsd
+  ">
+
+  <owners>
+    <reg:owner id="wojciech">
+       <reg:name>Wojciech Diakowski</reg:name>
+       <reg:affiliation>Fingo</reg:affiliation>
+       <reg:email>wojtekd@fingo.pl</reg:email>
+       <reg:assumedOwnership moment="2012-06-07T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <number>90312</number>
+
+  <name>xfi:fact-typed-dimensions</name>
+
+  <documentation>
+  </documentation>
+
+  <reference
+    xlink:type="simple"
+    xlink:href="90312 xfi.fact-typed-dimensions function.xml">
+    function definition
+  </reference>
+  
+  <variation id="V-01">
+    <name>Test height dimension for Mount Kilimanjaro for Mount Kilimanjaro</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+      
+    <inputs>
+      <schema xlink:type="simple" xlink:href="fact-explicit-dimension-value.xsd"/>
+      <linkbase xlink:type="simple" xlink:href="fact-explicit-dimension-value-definition.xml"/>
+      <instance readMeFirst="true" id="V01" xlink:type="simple" xlink:href="fact-explicit-dimension-value-instance1.xml"/>
+      <cfcn:call file="V01">
+        xfi:fact-typed-dimensions(
+          /xbrli:xbrl/t:Peak[./text() eq 'Mount Kilimanjaro']
+          )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:QName* and
+         count( $result ) eq 1 and
+         $result eq QName('http://xbrl.org/formula/conformance/example','t:HeightDimension')
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-02">
+   <name>Height dimension for pre-eruption volcano (whose hypercube lacks the location dimension because the volcano is not erupted yet, but it has alternate link roles allowing height to be added later after erupting)</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+      
+    <inputs>
+      <schema xlink:type="simple" xlink:href="fact-explicit-dimension-value.xsd"/>
+      <linkbase xlink:type="simple" xlink:href="fact-explicit-dimension-value-definition.xml"/>
+      <instance readMeFirst="true" id="V02" xlink:type="simple" xlink:href="fact-explicit-dimension-value-instance1.xml"/>
+      <cfcn:call file="V02">
+        xfi:fact-typed-dimensions(
+          /xbrli:xbrl/t:Peak[./text() eq 'Pre-eruption volcano']
+          )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         empty( $result )
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-03">
+   <name>Height dimension for SpacePhenomenon concept Wormhole (whose hypercube for space warping can never have the height dimension)</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+      
+    <inputs>
+      <schema xlink:type="simple" xlink:href="fact-explicit-dimension-value.xsd"/>
+      <linkbase xlink:type="simple" xlink:href="fact-explicit-dimension-value-definition.xml"/>
+      <instance readMeFirst="true" id="V03" xlink:type="simple" xlink:href="fact-explicit-dimension-value-instance1.xml"/>
+      <cfcn:call file="V03">
+        xfi:fact-typed-dimensions(
+          /xbrli:xbrl/t:SpacePhenomenon[1]
+          )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         empty( $result )
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-04">
+   <name>Dimension can be located in either segment or scenario, for this variation appears in the segment.</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+      
+    <inputs>
+      <schema xlink:type="simple" xlink:href="bi-locational-dim-concepts.xsd"/>
+      <linkbase xlink:type="simple" xlink:href="bi-locational-dim-definition.xml"/>
+      <instance readMeFirst="true" id="V04" xlink:type="simple" xlink:href="bi-locational-seg-typed-instance.xml"/>
+      <cfcn:call file="V04">
+        xfi:fact-typed-dimensions(
+          /xbrli:xbrl/t:PriItem1[1]) 
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:QName? and
+         count( $result ) eq 1 and
+         $result eq QName('http://xbrl.org/formula/conformance/example','t:TypedDim1')
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-05">
+   <name>Dimension can be located in either segment or scenario but for this variation appears in the scenario instead of segment, to test that function is looking in either location for value.</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+      
+    <inputs>
+      <schema xlink:type="simple" xlink:href="bi-locational-dim-concepts.xsd"/>
+      <linkbase xlink:type="simple" xlink:href="bi-locational-dim-definition.xml"/>
+      <instance readMeFirst="true" id="V05" xlink:type="simple" xlink:href="bi-locational-scen-typed-instance.xml"/>
+      <cfcn:call file="V05">
+        xfi:fact-typed-dimensions(
+          /xbrli:xbrl/t:PriItem1[1]) 
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:QName? and
+         count( $result ) eq 1 and
+         $result eq QName('http://xbrl.org/formula/conformance/example','t:TypedDim1')
+      </cfcn:test>
+    </outputs>
+  </variation>
+  
+  <variation id="V-06">
+   <name>Test no dimensions for fact.</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+      
+    <inputs>
+      <schema xlink:type="simple" xlink:href="simple-concepts.xsd"/>
+      <instance readMeFirst="true" id="V06" xlink:type="simple" xlink:href="simple-instance.xml"/>
+      <cfcn:call file="V06">
+        xfi:fact-typed-dimensions(
+          /xbrli:xbrl/t:c1[2]) 
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         empty( $result )
+      </cfcn:test>
+    </outputs>
+  </variation>
+  
+    <variation id="V-07">
+    <name>Wrong node to function</name>
+    <documentation>
+      <xhtml:p>
+        XPath-defined error for node type incorrect.
+      </xhtml:p>
+     </documentation>
+    <inputs>
+      <schema xlink:type="simple" xlink:href="simple-concepts.xsd"/>
+      <instance readMeFirst="true" id="V07" xlink:type="simple" xlink:href="simple-instance.xml"/>
+      <cfcn:call file="V07">
+         xfi:fact-typed-dimensions( /xbrli:xbrl )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <error>xqt-err:XPTY0004</error>
+    </outputs>
+  </variation>
+
+  <variation id="V-08">
+    <name>A sequence of items as argument</name>
+    <documentation>
+      <xhtml:p>
+        XPath-defined error for node type incorrect arity of arguments.
+      </xhtml:p>
+     </documentation>
+    <inputs>
+      <schema xlink:type="simple" xlink:href="simple-concepts.xsd"/>
+      <instance readMeFirst="true" id="V08" xlink:type="simple" xlink:href="simple-instance.xml"/>
+      <cfcn:call file="V08">
+         xfi:fact-typed-dimensions( /xbrli:xbrl/t:c1 )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <error>xqt-err:XPTY0004</error>
+    </outputs>
+  </variation>
+
+  <revisions>
+    <reg:revision on="2012-06-07T00:00:00" by="wojciech">
+      <xhtml:p>
+        Created the test case.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</testcase>

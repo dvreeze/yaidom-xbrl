@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<xbrl 
+xmlns="http://www.xbrl.org/2003/instance" 
+xmlns:eg="http://xbrl.org/xdt/dimension-equality-test" 
+xmlns:link="http://www.xbrl.org/2003/linkbase" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.xbrl.org/2003/instance http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd
+http://xbrl.org/2006/xbrldi http://www.xbrl.org/2006/xbrldi-2006.xsd
+http://xbrl.org/xdt/dimension-equality-test simpleDecimalValue.xsd"
+>
+  
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:href="simpleDecimalValue.xsd"/>
+
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">entity1</identifier>
+      <segment>
+        <xbrldi:typedMember dimension="eg:dimension">
+          <eg:domain>3.14159265</eg:domain>
+        </xbrldi:typedMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+
+  <context id="c2">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">entity2</identifier>
+      <segment>
+        <xbrldi:typedMember dimension="eg:dimension">
+          <eg:domain>3.14159265</eg:domain>
+        </xbrldi:typedMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+
+  <eg:concept contextRef="c1">abc</eg:concept>
+  <eg:concept contextRef="c2">def</eg:concept>
+
+</xbrl>

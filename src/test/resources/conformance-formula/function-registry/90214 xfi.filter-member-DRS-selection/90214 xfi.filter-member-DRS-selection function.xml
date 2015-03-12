@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2011-07-18T11:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>Mark V Systems (formerly UBmatrix)</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2011-07-18T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns a sequence containing a select set of dimension member
+    QNames for the specified explicit dimension considering
+    only those members that have the specified relationship axis
+    to the specified origin member 
+    in the network of effective relationships with the specified link role 
+    for the specified arc role.  
+    The set of dimension member QNames is in an arbitrary order (not
+    necessarily that of effective tree relationships order).
+  </summary>
+
+  <documentation>
+    <xhtml:p>
+    Note that the relationships considered by this function are those expressed
+    by an arc elements that conform to the requirements set out 
+    in the XBRL Dimensions specification. 
+    </xhtml:p>
+  </documentation>
+
+  <signature name="xfi:filter-member-DRS-selection">
+
+    <input name="dimension" type="xs:QName">
+      <xhtml:p>
+        The QName of the dimension. This input is provided so that the function can check that the members selected from the network are members of the dimension, and only return those that are.
+      </xhtml:p>
+    </input>
+
+    <input name="primary-item-concept" type="xs:QName">
+      <xhtml:p>
+        The QName of the primary item concept that has or inherits hypercube relationships in the base set of the DRS
+        for which member relationships are to be found.
+      </xhtml:p>
+    </input>
+
+    <input name="member" type="xs:QName">
+      <xhtml:p>
+        The QName of the dimension member that the selection criteria specified by the axis
+        parameter are going to be applied relative to.
+      </xhtml:p>
+    </input>
+
+    <input name="linkrole" type="xs:string?">
+      <xhtml:p>
+        If a linkrole parameter is provided, then it specifies the base set in which the primary items
+        are associated to the combination of hypercubes that is the 'head' of the DRS, e.g., the relationship source
+        primary item concept is the DRS head primary item or inherits hypercubes from it, and the effective domain is 
+        consecutively related to that base set's hypercubes.
+        The linkrole may be omitted
+        by providing an empty sequence or an empty string value for this parameter.  When
+        it is omitted, all DRS members of the specified axis are provided, for all base
+        sets in which the primary item is related to hypercubes.
+      </xhtml:p>
+    </input>
+
+    <input name="axis" type="xs:string">
+      <xhtml:p>
+        The axis value MUST be one of:
+      </xhtml:p>
+      <xhtml:ul>
+        <xhtml:li>DRS-descendant</xhtml:li>
+        <xhtml:li>DRS-child</xhtml:li>
+      </xhtml:ul>
+
+      <xhtml:p>
+        If the axis value is 'DRS-child' then the result includes those domain members in the explicit dimension domain that are targets of DRS relationships from the member identified by QName in the linkrole network (if provided) of the DRS from the primary item concept. 
+      </xhtml:p>
+
+      <xhtml:p>
+        If the axis value is 'DRS-descendant' then the filter-member set includes those domain members in the explicit dimension domain that are descendants of the member QName in the linkrole network (if provided) of the DRS from the primary item concept.
+      </xhtml:p>
+
+    </input>
+
+    <output type="xs:QName*">
+      <xhtml:p>
+        Returns a sequence which is the set of reportable dimension member QNames for the specified
+        explicit dimension per the inputs described above. (Note: the definition of a set
+        requires that it have distinct members.)
+      </xhtml:p>
+      <xhtml:p>
+        The relationship source is determined by the primary item concept QName and the dimension member QName.
+      </xhtml:p>
+      <xhtml:p>
+        If a linkrole parameter is provided, then it specifies the base set in which the primary items
+        are associated to the combination of hypercubes that is the 'head' of the DRS, e.g., the relationship source
+        primary item concept is the DRS head primary item or inherits hypercubes from it, and the effective domain is 
+        consecutively related to that base set's hypercubes.
+      </xhtml:p>
+      <xhtml:p>
+        If the linkrole parameter is absent (an empty sequence or an empty string is provided as parameter value), 
+        then all DRS link roles that connect the primary items and 
+        specified dimension's domain contribute to the effective domain.
+      </xhtml:p>
+      <xhtml:p>
+        An arcrole parameter is not relevant for DRS relationship axes.  The filter-member network is determined
+        by the DRS network arcroles, for the relationships from the primary items, to the 
+        relationship source and target dimension member.  If there are 
+      </xhtml:p>
+      <xhtml:p>
+      If the axis parameter is DRS-child,
+      then the filter-member set includes those domain members 
+      in the explicit dimension domain that are valid child consecutive-relationship targets.
+      </xhtml:p>
+       <xhtml:p>
+      If the axis parameter is DRS-descendant,
+      then the filter-member set includes those domain members 
+      in the explicit dimension domain that are valid descendant consecutive-relationship targets.
+      </xhtml:p>
+      <xhtml:p>
+        The filter member network includes all domain-member consecutive relationships (child or descendant)
+        in the effective domain, from the relationship source's dimension member (valid for the relationship source
+        primary item), to the relationship target's dimension member (valid for the context item fact's primary item).
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:invalidDimensionQName">
+    <xhtml:p>
+      This error MUST be thrown if the dimension is not in the reference
+      discoverable taxonomy set.
+    </xhtml:p>
+  </error>
+
+  <error code="xfie:invalidPrimaryItemConceptQName">
+    <xhtml:p>
+      This error MUST be thrown if the primary item concept QName is not in the reference
+      discoverable taxonomy set.  (The error is not thrown if the concept QName does not
+      have a primary item relationship to the dimension, or if it does not yield any
+      member results.)
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="90214 xfi.filter-member-DRS-selection testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2011-07-18T00:00:00" by="herm">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

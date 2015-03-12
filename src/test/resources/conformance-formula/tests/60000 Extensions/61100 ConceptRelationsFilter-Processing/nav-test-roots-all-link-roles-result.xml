@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<xbrl 
+  xmlns="http://www.xbrl.org/2003/instance" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+  xmlns:test="http://abc.com/test"
+  xsi:schemaLocation=""
+>
+  <link:schemaRef xlink:href="nav-rel-test1.xsd" xlink:type="simple" />
+  <context id="I-2000">
+    <entity>
+      <identifier scheme="http://abc.com">abc</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+  <unit id="U-Monetary">
+    <measure>iso4217:EUR</measure>
+  </unit>
+  <test:A    contextRef="I-2000" unitRef="U-Monetary" decimals="0">1000000</test:A> 
+  <test:B    contextRef="I-2000" unitRef="U-Monetary" decimals="0">2000000</test:B> 
+  <test:C    contextRef="I-2000" unitRef="U-Monetary" decimals="0">3000000</test:C> 
+</xbrl>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2012 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2013-07-20T14:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+       <reg:affiliation>Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2012-09-13T22:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Create an XML element in a "scratchpad" in-memory XML document, to behave like the results
+of an fn:doc() that would provide XML elements which can be consumed by formula typed
+dimension and OCC constructs.
+  </summary>
+
+  <documentation>
+The element may be created with attributes and value or descendant elements, as needed.
+Mixed content (value and descendant elements) is not supported.
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2006-12-18.htm#_Toc156209162">
+    XBRL 2.1 Section 4.7.3
+  </reference>
+  
+  <reference xlink:type="simple" xlink:href="https://github.com/Arelle/Arelle/blob/master/arelle/plugin/functionsXmlCreation.py">
+    Example implementation as a plug-in to Arelle.
+  </reference>
+
+  <signature name="xfi:create-element">
+    <input name="name" type="xs:QName">
+      <xhtml:p>
+        The qname of element to create.
+      </xhtml:p>
+    </input>
+    <input name="attributes" type="xs:anyAtomicType*">
+      <xhtml:p>
+        Sequence of name, value pairs for creating attributes (name can be an string, for an unqualified attribute name, or a QName, for a qualified attribute name). 
+      </xhtml:p>
+    </input>
+    <input name="value" type="xs:anyAtomicType?">
+      <xhtml:p>
+        Optional value, () or '' if none. This parameter can be omitted if neither value nor child elements.
+      </xhtml:p>
+    </input>
+    <input name="children" type="element()*">
+      <xhtml:p>
+        Optional sequence of child elements, this parameter can be omitted if no child elements.  If child elements are provided, then there must be no value argument (value must be () or '').
+      </xhtml:p>
+    </input>
+    <output type="element()">
+      <xhtml:p>
+        Returns an XML element, in a "scratchpad" in-memory XML document, to behave like the results
+of an fn:doc() that would provide XML elements which can be consumed by formula typed
+dimension and OCC constructs.
+      </xhtml:p>
+      <xhtml:p>
+        It is not specified whether the element should or can be validated when originally created (but when consumed by a formula output rule to create a typed dimension or OCC element then it must be valadatable in the output instance).
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:AttributesNotNameValuePairs">
+    <xhtml:p>
+      This error MUST be thrown if the attributes argument isn't 0 or more pairs of name (string or QName) and value.
+      This error MUST also be thrown if a string name of an attribute contains a colon, because qualified attribute
+      names must be provided by QNames (e.g., using the xs:QName constructor).
+    </xhtml:p>
+  </error>
+  
+  <error code="xfie:MixedContentError">
+    <xhtml:p>
+      This error MUST be thrown if the value argument provides a value and the children argument provides child elements.
+    </xhtml:p>
+  </error>
+  
+  <conformanceTest xlink:type="simple" xlink:href="90801 xfi.create-element function testcase.xml"/>
+
+  <documentation>
+A formula testcase is provided to test this function by formula rules creating an output instance with contexts using the function in rule elements for typed dimension and OCC element creation.
+  </documentation>
+
+  <revisions>
+    <reg:revision on="2012-09-13T22:00:00" by="herm">
+      <xhtml:p>
+        Defined the function
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2013-07-20T14:00:00" by="herm">
+      <xhtml:p>
+        Renamed function xfi:create-element from xfxc:element.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2013-08-14T14:00:00" by="herm">
+      <xhtml:p>
+        Clarified that attribute names are either unqualified string names, or if qualified must be a QName, and that xfie:AttributesNotNameValuePairs is to be raised if a string name contains a colon.
+        Added that mixed-content output (both value and child elements) is not supported, with error code xfie:MixedContentError.
+        Changed data type of children argument and output types from xs:element() to element() per Okumura-san 2013-07-22.
+        
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbrl 
+xmlns="http://www.xbrl.org/2003/instance" 
+xmlns:concept="http://xbrl.org/formula/conformance/example" 
+xmlns:link="http://www.xbrl.org/2003/linkbase" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+>
+  
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:href="aspect-cover-tests.xsd"/>
+
+  <link:linkbaseRef 
+    xlink:type="simple" 
+    xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" 
+    xlink:href="location-cover-formula.xml"/>
+  
+  <context id="context">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+    <scenario>
+       <concept:aString>abc</concept:aString>
+    </scenario>
+  </context>
+  
+  <unit id="unit">
+    <measure>pure</measure>
+  </unit>
+  
+  <concept:t>
+     <concept:t>
+        <concept:n1 contextRef="context" unitRef="unit" decimals="0">22</concept:n1>
+     </concept:t>
+     <concept:n1 contextRef="context" unitRef="unit" decimals="0">33</concept:n1>
+  </concept:t>
+  <concept:n1 contextRef="context" unitRef="unit" decimals="0">44</concept:n1>
+  
+</xbrl>

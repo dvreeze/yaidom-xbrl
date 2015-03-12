@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<xbrl 
+  xmlns="http://www.xbrl.org/2003/instance" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+  xmlns:test="http://abc.com/test1"
+  xsi:schemaLocation=""
+>
+  <link:schemaRef xlink:href="abc.xsd" xlink:type="simple" />
+  <link:linkbaseRef xlink:href="indirect-recursion-formula1.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"  />
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://abc.com">01</identifier>
+    </entity>
+    <period>
+      <instant>2000-12-31</instant>
+    </period>
+  </context>
+  <context id="c2">
+    <entity>
+      <identifier scheme="http://abc.com">02</identifier>
+    </entity>
+    <period>
+      <instant>2000-12-31</instant>
+    </period>
+  </context>
+
+  <unit id="u1">
+    <measure>pure</measure>
+  </unit>
+
+  <test:i    contextRef="c1" unitRef="u1" decimals="0">18</test:i> 
+    <!-- series computation:
+    fa(3) = 2 * fb(2) = 18
+    fb(2) = 5 + fa(1) + 9
+    fa(1) = 2 * fb(0) = 4
+    fb(0) = 2
+    -->
+  <test:i    contextRef="c2" unitRef="u1" decimals="0">342</test:i> 
+    <!-- series computation:
+    fa(10) = 2 * fb(9) = 342
+    fb(9) = 5 + fa(8) = 171
+    fa(8) = 2 * fb(7) = 166
+    fb(7) = 5 + fa(6) = 83
+    fa(8) = 2 * fb(5) = 78
+    fb(5) = 5 + fa(4) = 39
+    fa(4) = 2 * fb(3) = 34
+    fb(3) = 5 + fa(2) = 17
+    fa(2) = 2 * fb(1) = 12
+    fb(1) = 5 + fa(0) = 6
+    fa(0) = 1
+    -->
+</xbrl>
+
+

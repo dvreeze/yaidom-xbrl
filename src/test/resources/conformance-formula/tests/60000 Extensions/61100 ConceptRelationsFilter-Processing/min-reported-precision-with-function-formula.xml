@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+
+<link:linkbase
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  xmlns:va="http://xbrl.org/2008/assertion/value"
+  xmlns:variable="http://xbrl.org/2008/variable"
+  xmlns:cf="http://xbrl.org/2008/filter/concept"
+  xmlns:crf="http://xbrl.org/2010/filter/concept-relation"
+  xmlns:gf="http://xbrl.org/2008/filter/general"
+  xmlns:pf="http://xbrl.org/2008/filter/period"
+  xmlns:msg="http://xbrl.org/2010/message"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:test="http://abc.com/test"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic ../../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/assertion/value ../../../core_schemas/2008/value-assertion.xsd
+  http://xbrl.org/2008/variable ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2008/filter/concept ../../../core_schemas/2008/concept-filter.xsd
+  http://xbrl.org/2010/filter/concept-relation ../../../core_schemas/2010/concept-relation-filter.xsd
+  http://xbrl.org/2008/filter/period ../../../core_schemas/2008/period-filter.xsd
+  http://xbrl.org/2008/filter/general ../../../core_schemas/2008/general-filter.xsd
+  http://xbrl.org/2010/message ../../../core_schemas/2010/generic-message.xsd
+  ">
+  
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-filter" xlink:href="../../../core_schemas/2008/variable.xsd#variable-filter" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2010/role/message" xlink:href="../../../core_schemas/2010/generic-message.xsd#standard-message" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2010/assertion-satisfied-message" xlink:href="../../../core_schemas/2010/validation-message.xsd#assertion-satisfied-message" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:href="../../../core_schemas/2010/validation-message.xsd#assertion-unsatisfied-message" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2008/role/link">
+
+    <va:valueAssertion xlink:type="resource" 
+      xlink:label="min-required-precision-assertion"
+      id="min-required-precision-assertion"
+      aspectModel="non-dimensional" implicitFiltering="false" 
+      test="xfi:decimals($item) ge $minRequiredPrecision" />
+
+    <!-- Label for the assertions when not successful -->
+    <msg:message xlink:type="resource" xlink:label="min-required-precision-assertion-unsatisfied-message" 
+      xlink:role="http://www.xbrl.org/2010/role/message" 
+      xml:lang="en">The fact {
+      node-name($item)
+      } in context {
+      $item/@contextRef
+      } has decimals 
+      {
+      xfi:decimals($item)
+      } which does not meet the minimum precision of required decimals {
+      $minRequiredPrecision
+      }</msg:message>   
+
+    <generic:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message"
+      xlink:from="min-required-precision-assertion" xlink:to="min-required-precision-assertion-unsatisfied-message" order="1.0"/>
+
+    <msg:message xlink:type="resource" xlink:label="min-required-precision-assertion-satisfied-message" 
+      xlink:role="http://www.xbrl.org/2010/role/message" 
+      xml:lang="en">The fact {
+      node-name($item)
+      } in context {
+      $item/@contextRef
+      } has decimals 
+      {
+      xfi:decimals($item)
+      } which successfully meets the minimum precision of required decimals {
+      $minRequiredPrecision
+      }</msg:message>   
+
+    <generic:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-satisfied-message"
+      xlink:from="min-required-precision-assertion" xlink:to="min-required-precision-assertion-satisfied-message" order="1.0"/>
+
+    <!-- (1) fact variable iterates through all instance facts -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_item" bindAsSequence="false" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="min-required-precision-assertion" xlink:to="v_item" order="1.0"
+      name="item" />
+
+    <!-- (2) general variable is minimum required presicision -->
+    <variable:generalVariable xlink:type="resource" xlink:label="v_minRequiredPrecision" bindAsSequence="false"
+      select="xfi:relationship-attribute( 
+                  xfi:concept-relationships(
+                            node-name($item), 
+                            'http://abc.com/role/min-precision-link-role',
+                            'http://abc.com/arcrole/min-precision-arc-role',
+                            'ancestor')[1],
+                  QName('http://abc.com/test','minRequiredPrecision'))" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="min-required-precision-assertion" xlink:to="v_minRequiredPrecision" order="1.0"
+      name="minRequiredPrecision" />
+
+  </generic:link>
+
+</link:linkbase>

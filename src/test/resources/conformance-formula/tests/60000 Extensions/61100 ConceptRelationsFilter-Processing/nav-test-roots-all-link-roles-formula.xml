@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+
+<link:linkbase
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  xmlns:formula="http://xbrl.org/2008/formula"
+  xmlns:variable="http://xbrl.org/2008/variable"
+  xmlns:crf="http://xbrl.org/2010/filter/concept-relation"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:test="http://abc.com/test"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic ../../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/formula ../../../core_schemas/2008/formula.xsd
+  http://xbrl.org/2008/variable ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2010/filter/concept-relation ../../../core_schemas/2010/concept-relation-filter.xsd
+  ">
+  
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-filter" xlink:href="../../../core_schemas/2008/variable.xsd#variable-filter" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2008/role/link">
+
+    <formula:formula xlink:type="resource" xlink:label="formula" 
+      value="$roots"
+      source="roots"
+      aspectModel="non-dimensional" implicitFiltering="true">
+      <formula:decimals>0</formula:decimals>
+    </formula:formula>
+
+    <!--  General variable of the parent-child link roles, one by one -->
+    <variable:generalVariable xlink:type="resource" xlink:label="v_linkrole" bindAsSequence="false"
+      select="xfi:linkbase-link-roles('http://www.xbrl.org/2003/arcrole/parent-child')" />
+      
+    <!--  Fact variable of the roots in all the presentation link roles. -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_roots"   bindAsSequence="false" />
+
+    <!--  Arc from the formula to the variables it depends on -->
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="formula" xlink:to="v_linkrole" order="1.0"
+      name="linkrole" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="formula" xlink:to="v_roots" order="1.0"
+      name="roots" />
+
+    <!--  Arcs from variables to their concept filters -->
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="true"
+      xlink:from="v_roots" xlink:to="f_roots" order="1.0"/>
+
+    <!-- cover concept aspect to allow root facts to bind -->
+    <crf:conceptRelation xlink:type="resource" xlink:label="f_roots">
+       <crf:qname>xfi:root</crf:qname>
+       <crf:linkroleExpression>$linkrole</crf:linkroleExpression>
+       <crf:arcroleExpression>concat('http://www.xbrl.org/2003/arcrole/','parent-child')</crf:arcroleExpression>
+       <crf:axis>sibling</crf:axis>
+    </crf:conceptRelation>
+
+  </generic:link>
+
+</link:linkbase>

@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xbrlspec/stylesheet.xsl"?>
+<spec 
+xmlns="http://xbrl.org/specification/2007" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xbrl.org/specification/2007 ../../specifications/xbrlspec/schema.xsd">
+
+  <header>
+    <wg>FWG</wg>
+    <title>Function definition</title>
+    <id>functionDefinition</id>
+    <feedback>formula-feedback@xbrl.org</feedback>
+    <namespaces>
+      <namespace 
+      id="ns-normative-schema" 
+      value="http://xbrl.org/2008/function" 
+      prefix="fcn"
+      url="http://www.xbrl.org/2008/function.xsd">
+        The namespace of the normative schema.
+      </namespace>
+      <namespace 
+      id="ns-errors" 
+      value="http://www.w3.org/2005/xqt-errors" 
+      prefix="xqt-err">
+        The standard namespace for standard XPath 2.0 function and operator errors, as referenced in this specification.
+      </namespace>
+    </namespaces>
+    <version>1.0</version>
+    <date year="2011" month="10" day="24" />
+    <status>REC</status>
+    <authors xmlns="http://xbrl.org/specification/2007">
+      <person id="person-geoff">
+        <name >Geoff Shuetrim</name>
+        <affiliation>Galexy</affiliation>
+        <email>geoff@galexy.net</email>
+      </person>
+      <person id="person-herm">
+        <name >Herm Fischer</name>
+        <affiliation>UBMatrix / Mark V Systems</affiliation>
+        <email>fischer@markv.com</email>
+      </person>
+    </authors>
+    <contributors xmlns="http://xbrl.org/specification/2007">
+      <person id="person-richard">
+        <name>Richard Ashby</name>
+        <affiliation>CoreFiling</affiliation>
+        <email>rna@corefiling.com</email>
+      </person>
+    </contributors>
+
+    <abstract>
+      <p>
+        This specification is defines a syntax for an XML resource that
+        contains information about an XBRL function.  Such resources can be
+        referenced from the XBRL <xref ref="http://xbrl.org/functionregistry/functionregistry.xml">function registry</xref>.
+      </p>
+    </abstract>
+  </header>
+
+  <body>
+    
+    <section id="sec-intro">
+      <head>Introduction</head>
+      <p>
+        This specification is defines a syntax for an XML resource that
+        contains information about an XBRL function.  Such resources are
+        referenced from the XBRL <xref ref="http://xbrl.org/functionregistry/functionregistry.xml">function registry</xref>.
+        
+      </p>
+
+      <section id="sec-background">
+        <head>Background</head>
+        <p>
+          This specification is intended to support the creation, maintenance,
+          and publication of XBRL function definitions.
+        </p>
+      </section>
+
+      <section id="sec-relationship-to-other-work">
+        <head>Relationship to other work</head>
+        This specification works with the XBRL registry specification.
+      </section>
+      
+      <section id="sec-language">
+        <head>Language independence</head>
+        <p>
+          The official language of XBRL International's own work
+          products is English and the preferred spelling convention is
+          UK English.
+        </p>
+      </section>
+      <section id="sec-terminology">
+        <head>Terminology</head>
+
+        <p>
+          This specification is consistent with the definitions of any of the
+          terms defined in specifications that it depends on.
+        </p>
+
+      </section>
+
+      <section id="sec-document-conventions">
+        <head>Document conventions (non-normative)</head>
+
+        <p>
+          <xtermref bibref="VARIABLES" idref="sec-document-conventions">
+          Documentation conventions</xtermref> follow those set out in
+          the XBRL Variables Specification <bibref ref="VARIABLES"/>.
+        </p>
+
+      </section>
+
+      <section id="sec-namespaces">
+        <head>Namespaces and namespace prefixes</head>
+
+        <p>
+          Namespace prefixes <bibref ref="XMLNAMES"/> will be used 
+          for elements and attributes in
+          the form <code>ns:name</code> where <val>ns</val> is the 
+          namespace prefix and <val>name</val> is the local name. 
+          Throughout this specification, the mappings
+          from namespace prefixes to actual namespaces is consistent
+          with <tableref ref="table-namespaces"/>.
+        </p>
+
+        <p>
+          The prefix column in <tableref ref="table-namespaces"/> is non normative. 
+          The namespace URI column is normative.
+        </p>
+        <table id="table-namespaces">
+          <caption>Namespaces and namespace prefixes</caption>
+          <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Namespace URI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><val><namespaceref ref="ns-normative-schema" use="prefix"/></val></td>
+              <td><val><namespaceref ref="ns-normative-schema" use="namespace"/></val></td>
+            </tr>
+            <tr>
+              <td><val><namespaceref ref="ns-errors" use="prefix"/></val></td>
+              <td><val><namespaceref ref="ns-errors" use="namespace"/></val></td>
+            </tr>
+            <tr>
+              <td><val>xml</val></td>
+              <td><val>http://www.w3.org/XML/1998/namespace</val></td>
+            </tr>
+            <tr>
+              <td><val>xlink</val></td>
+              <td><val>http://www.w3.org/1999/xlink</val></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+    </section>
+
+    <section id="sec-syntax">
+      <head>Syntax</head>
+
+      <p>
+        This specification only provides a textual declaration of syntax
+        constraints when those constraints are not expressed by the
+        normative schema supplied with this specification.
+      </p>
+      <p>
+        Explanations of elements and attributes are only supplied when
+        explanations are not already provided in other
+        specifications.
+      </p>
+      <p>
+        Unless explicitly stated otherwise, a reference to a specific
+        element <rfc2119>MUST</rfc2119> be read as a reference to that 
+        element or to any element in its 
+        <xtermref bibref="XMLSCHEMA-STRUCTURES" idref="key-equivalenceClass">
+        substitution group
+        </xtermref>.
+      </p>
+
+      <section id="sec-function-registry-entry">
+        <head>Function definition</head>
+
+        <p>
+          <definition id="term-function-definition" term="function definition">
+          A <term>function definition</term> is an XML resource with the 
+          <xmlref ref="xml-function"><elt>fcn:function</elt></xmlref> element as its root.
+          </definition>
+        </p>
+
+        <p>
+          Function definitions are intended to be referenced by 
+          <xtermref bibref="REGISTRY" idref="term-registry-entry">registry entries</xtermref>.
+        </p>
+        
+        <p>
+          Any attribute in the XML namespace (<val>http://www.w3.org/XML/1998/namespace</val>) <rfc2119>MAY</rfc2119> be
+          used on any element within a <termref ref="term-function-definition">function definition</termref>.
+        </p>
+
+        <p>
+          The <att>xml:lang</att> attribute <rfc2119>MAY</rfc2119> be used to indicate the language used to express
+          information in the registry, as per the XML Specification <bibref ref="XML"/>.
+        </p>
+
+        <p>
+          The <att>xml:base</att> attribute <rfc2119>MAY</rfc2119> be used when resolving URIs 
+          as per the XML Base Specification <bibref ref="XMLBASE"/>.
+        </p>
+
+        <section id="sec-last-updated">
+          <head>Element: lastUpdated</head>
+
+          <p>
+            The <xmlref ref="xml-last-updated"><elt>fcn:lastUpdated</elt></xmlref> element 
+            contains a <att>moment</att> attribute whose value is the 
+            instant on which the function definition was last updated.
+          </p>
+
+        </section>
+
+        <section id="sec-owners">
+          <head>Element: owners</head>
+
+          <p>
+            The <xmlref ref="xml-owners"><elt>fcn:owners</elt></xmlref> element 
+            contains one or more <xtermref bibref="REGISTRY" idref="xml-owner"><elt>reg:owner</elt></xtermref> 
+            elements, as defined in the XBRL registry specification <bibref ref="REGISTRY"/>.
+          </p>
+
+          <p>
+            Each owner is a person with responsibility for maintaining the
+            function definition.
+          </p>
+
+        </section>
+
+        <section id="sec-summary">
+          <head>Element: summary</head>
+  
+          <p>
+            The <xmlref ref="xml-summary"><elt>fcn:summary</elt></xmlref> element 
+            contains a brief text summary of the function.
+          </p>
+
+        </section>
+
+        <section id="sec-documentation">
+          <head>Element: documentation</head>
+
+          <p>
+            The optional <xmlref ref="xml-documentation"><elt>fcn:documentation</elt></xmlref> element 
+            contains either a URL that resolves to documentation of the function or it contains
+            XHTML <bibref ref="XHTML"/> markup documenting the function.
+          </p>
+
+          <p>
+            If the documentation is provided as a URL, then the URL is specified using a 
+            <elt>reg:url</elt> element that conforms to 
+            <xtermref bibref="REGISTRY" idref="sec-url">the registry documentation syntax rules.</xtermref>.
+          </p>
+
+        </section>
+
+        <section id="sec-reference">
+          <head>Element: reference</head>
+
+          <p>
+            The <xmlref ref="xml-reference"><elt>fcn:reference</elt></xmlref> element 
+            contains a link to a a part of a specification that is relevant to the function
+            being defined.
+          </p>
+
+          <p>
+            The <elt>fcn:reference</elt> element 
+            contains an <att>xlink:type</att> attribute that equals <val>simple</val> and
+            an <att>xlink:href</att> attribute that contains a URI that <rfc2119>MUST</rfc2119> 
+            resolve to the part of the specification being referenced.
+          </p>
+
+          <p>
+            The <elt>fcn:reference</elt> element <rfc2119>MAY</rfc2119> contain string content documenting
+            the nature of the resource that the URL is linking to.
+          </p>
+
+          <p>
+            A function definition <rfc2119>MAY</rfc2119> contain several references, if the function is related
+            to several aspects of a specification or several specifications.
+          </p>
+
+        </section>
+
+        <section id="sec-signature">
+          <head>Element: signature</head>
+  
+          <p>
+            The <xmlref ref="xml-signature"><elt>fcn:signature</elt></xmlref> element 
+            contains the signature of the function being defined.
+          </p>
+
+          <p>
+            The <att>name</att> attribute on the function signature contains
+            the QName that uniquely identifies the function.
+          </p>
+
+          <p>
+            A function signature <rfc2119>MAY</rfc2119> also contain one or more
+            <elt>fcn:input</elt> elements that specify each 
+            of the function's parameters.  There <rfc2119>MUST</rfc2119> be one such
+            element for each parameter.  The document order of the elements 
+            <rfc2119>MUST</rfc2119> match the order of the parameters as they are used in
+            calls to the function being defined.
+          </p>
+
+          <p>
+              <error id="error-number-of-arguments-mismatch">
+                Error code <errorcode code="XPST0017"/>, the
+                <xtermref bibref="XPATH2" idref="ERRXPST0017">XPath 2.0 number of parameters error</xtermref>,                 
+                <rfc2119>MUST</rfc2119> be thrown
+                if the number of parameters used in a function call does not match the
+                number of <elt>fcn:input</elt> elements defined for the function, taking into account any optional parameters.
+              </error>
+          </p>        
+
+          <section id="sec-input">
+            <head>Element: input</head>
+
+            <p>
+              The <xmlref ref="xml-input"><elt>fcn:input</elt></xmlref> element 
+              summarises an input parameter for the function being defined.
+            </p>
+
+            <p>
+              The <att>name</att> attribute on the function signature contains
+              a name for the parameter.
+            </p>
+
+            <p>
+              The <att>type</att> attribute on the function signature contains
+              the parameter's data type.  This is expressed using the <xtermref bibref="XPATH2" idref="doc-xpath-SequenceType">XPath sequence type syntax</xtermref>.
+            </p>
+
+            <p>
+              XHTML content of the <elt>input</elt> element can be used to provided additional explanation
+              of the parameter.
+            </p>
+
+            <p>
+              <error id="error-input-type-mismatch">
+                Error code <errorcode code="XPTY0004"/>, the
+                <xtermref bibref="XPATH2" idref="ERRXPTY0004">XPath 2.0 type mismatch error</xtermref>, 
+                <rfc2119>MUST</rfc2119> be thrown
+                if an input has a type that does not match the parameter's data type.
+              </error>
+            </p>        
+          </section> <!-- Signature input -->
+
+          <section id="sec-output">
+            <head>Element: output</head>
+
+            <p>
+              The <xmlref ref="xml-output"><elt>fcn:output</elt></xmlref> element 
+              summarises the output of the function being defined.
+            </p>
+
+            <p>
+              The <att>type</att> attribute on the function signature contains
+              the parameter's data type. This is expressed using the <xtermref bibref="XPATH2" idref="doc-xpath-SequenceType">XPath sequence type syntax</xtermref>.
+            </p>
+
+            <p>
+              XHTML content of the <elt>output</elt> element can be used to provided additional explanation
+              of the function output.
+            </p>
+
+          </section>
+
+        </section>
+
+        <section id="sec-error">
+          <head>Element: error</head>
+
+          <p>
+            If a function is misused, it may be necessary to produce an error message.
+            These messages are defined by the <elt>fcn:error</elt> elements that follow the
+            function signature.
+          </p>
+
+          <p>
+            The <xmlref ref="xml-error"><elt>fcn:error</elt></xmlref> element 
+            contains information about an error that <rfc2119>MUST</rfc2119> be thrown under 
+            specific circumstances when a function is called.
+          </p>
+
+          <p>
+            The XHTML content of the <elt>fcn:error</elt> element defines the circumstances
+            under which the error is required to be thrown.
+          </p>
+
+          <p>
+            The <att>code</att> attribute contains the QName that uniquely identifies the error.
+          </p>
+
+        </section>
+
+        <section id="sec-example">
+          <head>Element: example</head>
+
+          <p>
+            The <xmlref ref="xml-example"><elt>fcn:example</elt></xmlref> element 
+            can be used to provide an example of function usage.
+          </p>
+
+          <p>
+            The <att>title</att> attribute contains the title of the example.
+          </p>
+
+          <p>
+            The <att>usage</att> attribute contains the example function usage.
+          </p>
+
+          <p>
+            The XHTML content of the <elt>fcn:example</elt> element explains the result of such usage.
+          </p>
+
+
+        </section>
+        <section id="sec-conformance-test">
+          <head>Element: conformance-test</head>
+
+          <p>
+            The <xmlref ref="xml-conformance-test"><elt>fcn:conformanceTest</elt></xmlref> element 
+            contains a link to a conformance suite test that <rfc2119>MUST</rfc2119> be passed
+            by software claiming to implement the function being defined.
+          </p>
+
+          <p>
+            The <xmlref ref="xml-conformance-test"><elt>fcn:conformanceTest</elt></xmlref> element 
+            contains an <att>xlink:type</att> attribute that equals <val>simple</val> and
+            an <att>xlink:href</att> attribute that contains a URI that <rfc2119>MUST</rfc2119> 
+            resolve to the conformance test resource.
+          </p>
+
+        </section>
+
+        <section id="sec-revisions">
+          <head>Element: revisions</head>
+
+          <p>
+            The <elt>reg:revisions</elt> element 
+            conforms to the XBRL registry specification <bibref ref="REGISTRY"/>.
+          </p>
+
+        </section>
+
+      </section>
+
+    </section><!-- Syntax -->
+
+  </body>
+
+  <back>
+
+    <section id="sec-schema">
+
+      <head>Normative schema</head>
+      
+      <p>
+        The following is the XML schema provided as part of this
+        specification. This is normative. Non-normative versions (which
+        should be identical to these except for appropriate comments
+        indicating their non-normative status) are also provided as
+        separate files for convenience of users of the specification.
+      </p>
+      
+      <p>
+        NOTE: (non-normative) Following the schema maintenance policy of
+        XBRL International, it is the intent (but is not guaranteed)
+        that the location of non-normative versions of these schemas on
+        the web will be as follows:
+      </p>
+      
+      <olist>
+        <item>
+          While any schema is the most current RECOMMENDED version and
+          until it is superseded by any additional errata corrections a
+          non-normative version will reside on the web in the directory
+          <code>http://www.xbrl.org/2008/</code> - during the drafting process for
+          this specification this directory should contain a copy of the
+          most recent published version of the schema at
+          <namespaceref ref="ns-normative-schema" use="url"/>.
+        </item>
+        <item>
+          A non-normative version of each schema as corrected by any
+          update to the RECOMMENDATION will be archived in perpetuity on
+          the web in a directory that will contain a unique
+          identification indicating the date of the update.
+        </item>
+      </olist>
+      <p role="xml-normative">
+        <verbatim>
+          <includeChunk ref="../schemas/function.xsd"/>
+        </verbatim>
+      </p>
+    </section>
+
+    <section id="sec-references">
+
+      <head>References</head>
+
+    	<bibliography>
+          <includeChunk ref="../../specifications/boilerplate/references/REGISTRY.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/VARIABLES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XML.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLBASE.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLNAMES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XHTML.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XMLSCHEMA-STRUCTURES.xml"/>
+          <includeChunk ref="../../specifications/boilerplate/references/XPATH2.xml"/>
+    	</bibliography>
+
+      </section>
+
+      <section id="sec-ip-status" xmlns="http://xbrl.org/specification/2007">
+        <head>Intellectual property status (non-normative)</head>
+        
+        <p>
+          This document and translations of it may be copied and
+          furnished to others, and derivative works that comment on or
+          otherwise explain it or assist in its implementation may be
+          prepared, copied, published and distributed, in whole or in
+          part, without restriction of any kind, provided that the above
+          copyright notice and this paragraph are included on all such
+          copies and derivative works. However, this document itself may
+          not be modified in any way, such as by removing the copyright
+          notice or references to XBRL International or XBRL
+          organizations, except as required to translate it into
+          languages other than English. Members of XBRL International
+          agree to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<xref ref="http://www.xbrl.org/legal">www.xbrl.org/legal</xref>).
+        </p>
+      
+      
+        <p>
+          This document and the information contained herein is provided
+          on an "AS IS" basis and XBRL INTERNATIONAL DISCLAIMS ALL
+          WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+          ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+          INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+          MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+        </p>
+      
+        <p>
+          The attention of users of this document is directed to the
+          possibility that compliance with or adoption of XBRL
+          International specifications may require use of an invention
+          covered by patent rights. XBRL International shall not be
+          responsible for identifying patents for which a license may be
+          required by any XBRL International specification, or for
+          conducting legal inquiries into the legal validity or scope of
+          those patents that are brought to its attention. XBRL
+          International specifications are prospective and advisory
+          only. Prospective users are responsible for protecting
+          themselves against liability for infringement of patents. XBRL
+          International takes no position regarding the validity or
+          scope of any intellectual property or other rights that might
+          be claimed to pertain to the implementation or use of the
+          technology described in this document or the extent to which
+          any license under such rights might or might not be available;
+          neither does it represent that it has made any effort to
+          identify any such rights. Members of XBRL International agree
+          to grant certain licenses under the XBRL International
+          Intellectual Property Policy 
+          (<xref ref="http://www.xbrl.org/legal">www.xbrl.org/legal</xref>).
+        </p>
+      </section>
+
+      <section id="sec-acknowledgements" xmlns="http://xbrl.org/specification/2007">
+        <head>Acknowledgements (non-normative)</head>
+        <p>
+          This document could not have been written without the
+          contributions of many people including the participants in the
+          <wgref/>.
+        </p>
+      
+      </section>
+    
+    <section id="sec-history">
+      <head>Document history (non-normative)</head>
+      
+      <revisions>
+
+        <revision ref="person-geoff"
+        day="17" month="01" year="2008">
+          <p>
+            First internal working draft created.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="29" month="01" year="2008">
+          <p>
+            Added in element documentation to the initial skeleton draft
+            based on the normative schema.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="30" month="01" year="2008">
+          <p>
+            Relaxed the requirement that data types for function signatures
+            be expressed as QNames given the need to deal in sequences.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="31" month="01" year="2008">
+          <p>
+            Adapted hyperlinks to use XLink simple link syntax.
+          </p>
+        </revision>
+
+        <revision ref="person-geoff"
+        day="04" month="02" year="2008">
+          <p>
+            Added error code details and created more structure for
+            information about input parameters of the function being
+            defined.
+          </p>
+        </revision>
+
+        <revision ref="person-herm"
+        day="12" month="06" year="2010">
+          <p>
+            Added XPath 2.0 error code references for wrong number of parameters
+            and mismatched type of parameter in function call, which have been in the conformance
+            suite since origin but not in this spec.
+          </p>
+        </revision>
+      <revision ref="person-richard"
+        day="13" month="11" year="2012">
+          <p>
+            Clarified validation rule for wrong number of parameters
+            to take into account that some parameters may be optional.
+          </p>
+          <p>
+            Added wording to specify that the @type attributes for fcn:input and fcn:output
+            elements use XPath sequence type syntax.
+          </p>
+          <p>
+            Removed incorrect reference to @output attribute on fcn:signature as
+            there is an output child element, not attribute, for this purpose.
+          </p>
+        </revision>
+
+      </revisions>
+
+    </section>
+
+    <section id="sec-corrections" xmlns="http://xbrl.org/specification/2007">
+      <head>Errata corrections in this document</head>
+      
+      <p>
+        This appendix contains a list of the errata that have been
+        incorporated into this document. This represents all those
+        errata corrections that have been approved by the XBRL
+        International <wgref/> up to and
+        including <dateref style="DD Month YYYY"/>. 
+        Hyperlinks to relevant e-mail threads may
+        only be followed by those who have access to the relevant
+        mailing lists. Access to internal XBRL mailing lists is
+        restricted to members of XBRL International Inc.
+      </p>
+
+      <errata/>
+
+    </section>
+
+  </back>
+</spec>

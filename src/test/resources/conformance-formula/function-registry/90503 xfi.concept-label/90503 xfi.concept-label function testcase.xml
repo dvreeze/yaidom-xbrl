@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/conformanceFunction.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:fcn="http://xbrl.org/2008/function"
+  xmlns:cfcn="http://xbrl.org/2008/conformance/function"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:concept="http://xbrl.org/formula/conformance/example" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  http://xbrl.org/2008/conformance ../schemas/conformance.xsd
+  http://xbrl.org/2008/conformance/function ../schemas/conformanceFunction.xsd
+  ">
+  <owners>
+    <reg:owner id="herm">
+      <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+      <reg:email>fischer@markv.com</reg:email>
+     <reg:assumedOwnership moment="2008-12-12T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <number>90503</number>
+
+  <name>Function test for xfi:concept-label</name>
+
+  <documentation>
+    <xhtml:p>
+      Tests of function xfi:concept-label($source as xs:QName, $linkrole as xs:string?, $labelrole as xs:string?, $lang as xs:string, $xbrlinstance as element(xbrli:xbrl)) as xs:string
+    </xhtml:p>
+    <xhtml:p>
+      Please see the examples and formula-testcase-based variations in the companion file, which is in the formula testcase format, <xhtml:a href="90503 xfi.concept-label formula testcase.xml">90503 xfi.concept-label formula testcase.xml</xhtml:a>
+    </xhtml:p>
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XF-PWD-2006-12-07.htm#_Toc152670666"/>
+
+  <variation id="V-01">
+    <name>Standard label</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+    <inputs>
+     <schema readMeFirst="true" id="V01" xlink:type="simple" xlink:href="concept-label-test1.xsd"/>
+     <cfcn:call file="V01">
+        xfi:concept-label(
+           QName('http://abc.com/test','A111'), 
+           '',
+           '',
+           'en')
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result eq 'a111'
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-02">
+    <name>Terse label</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+    <inputs>
+     <schema readMeFirst="true" id="V02" xlink:type="simple" xlink:href="concept-label-test1.xsd"/>
+     <cfcn:call file="V02">
+        xfi:concept-label(
+           QName('http://abc.com/test','A111'), 
+           'http://www.xbrl.org/2003/role/link',
+           'http://www.xbrl.org/2003/role/terseLabel',
+           'en')
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result eq 'a111 Terse Label'
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-03">
+    <name>No label</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+     </documentation>
+    <inputs>
+     <schema readMeFirst="true" id="V03" xlink:type="simple" xlink:href="concept-label-test1.xsd"/>
+     <cfcn:call file="V03">
+        xfi:concept-label(
+           QName('http://abc.com/test','A111'), 
+           'http://www.xbrl.org/2003/role/link',
+           'http://www.xbrl.org/2003/role/verboseLabel',
+           'en')
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result eq ''
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <revisions>
+    <reg:revision on="2008-12-12T00:00:00" by="herm">
+      <xhtml:p>
+        Created the test case.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-09-09T00:00:00" by="herm">
+      <xhtml:p>
+        Changed role URIs to strings for cast-less coding and to be similar to fn:QName's $paramURI, an xs:string.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</testcase>
+
+
+
+
+

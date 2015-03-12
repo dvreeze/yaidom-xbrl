@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2008-03-06T22:40:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+       <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-03-06T22:40:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns true if two nodes (each an item or tuple) are children of the identical parent.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2006-12-18.htm#_Toc156209172">
+  XBRL 2.1 Section 4.10
+  </reference>
+
+  <signature name="xfi:p-equal">
+    <input name="left" type="element()+">
+      <xhtml:p>
+        The first item or tuple.
+      </xhtml:p>
+    </input>
+    <input name="right" type="element()+">
+      <xhtml:p>
+        The second item or tuple.
+      </xhtml:p>
+    </input>
+    <output type="xs:boolean">
+      <xhtml:p>
+        Returns true if two sequences have items and tuples are each children of the identical parent as the corresponding item or tuple of the other sequence.
+      </xhtml:p>
+    </output>
+  </signature>
+
+    <error code="xfie:ElementIsNotXbrlConcept">
+      <xhtml:p>
+        A dynamic error must be raised if any input element is not derived from xbrli:item or xbrli:tuple.
+      </xhtml:p>
+    </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="80213 xfi.p-equal testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-03-06T22:40:00" by="herm">
+      <xhtml:p>
+        Defined the function
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2008-04-15T14:00:00" by="herm">
+      <xhtml:p>
+        Updated to take sequence of items/tuples for compatibility with other similar functions, and to raise exception if argument is neither item or tuple.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

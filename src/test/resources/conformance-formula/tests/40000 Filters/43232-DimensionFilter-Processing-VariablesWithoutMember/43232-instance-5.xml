@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<xbrl 
+xmlns="http://www.xbrl.org/2003/instance" 
+xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+xmlns:link="http://www.xbrl.org/2003/linkbase" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+xmlns:tst="http://example.org/test" 
+>
+  
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:href="taxonomy/43232-concepts.xsd"/>
+
+  <link:linkbaseRef 
+    xlink:type="simple" 
+    xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" 
+    xlink:href="43232-formula-5.xml"/>
+  
+  <context id="c-aus">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+    </entity>
+    <period>
+      <instant>2008-12-31</instant>
+    </period>
+    <scenario>
+      <xbrldi:explicitMember dimension="tst:Region">tst:Australia</xbrldi:explicitMember>
+    </scenario>
+  </context>
+  
+  <context id="c-eur">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+    </entity>
+    <period>
+      <instant>2008-12-31</instant>
+    </period>
+    <scenario>
+      <xbrldi:explicitMember dimension="tst:Region">tst:Europe</xbrldi:explicitMember>
+    </scenario>
+  </context>
+
+  <context id="c-eur2">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+    </entity>
+    <period>
+      <instant>2009-12-31</instant>
+    </period>
+    <scenario>
+      <xbrldi:explicitMember dimension="tst:Region">tst:Europe</xbrldi:explicitMember>
+    </scenario>
+  </context>
+
+  <context id="c-usa">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+    </entity>
+    <period>
+      <instant>2008-12-31</instant>
+    </period>
+    <scenario>
+      <xbrldi:explicitMember dimension="tst:Region">tst:USA</xbrldi:explicitMember>
+    </scenario>
+  </context>
+  
+  <context id="c-rest">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+    </entity>
+    <period>
+      <instant>2008-12-31</instant>
+    </period>
+     <scenario>
+      <xbrldi:explicitMember dimension="tst:Region">tst:RestOfWorld</xbrldi:explicitMember>
+    </scenario>
+  </context>
+  
+  
+  <unit id="unit">
+    <measure>iso4217:USD</measure>
+  </unit>
+
+  <tst:Sales contextRef="c-aus" unitRef="unit" decimals="0">1</tst:Sales>
+  <tst:Sales contextRef="c-rest" unitRef="unit" decimals="0">4</tst:Sales>
+
+  <tst:Sales contextRef="c-eur" unitRef="unit" decimals="0">2</tst:Sales>
+  <tst:Sales contextRef="c-usa" unitRef="unit" decimals="0">3</tst:Sales>
+  
+  <tst:TupleFact id="tuple"/>
+</xbrl>
+
+
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xff="http://www.xbrl.org/2010/function/formula"
+  xmlns:xffe="http://www.xbrl.org/2010/function/formula/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xbrl.org/2008/conformance  ../../infrastructure/test.xsd">
+  <creator>
+    <name>Herm Fischer</name>
+    <email>fischer@markv.com</email>
+  </creator>
+
+  <number>80156</number>
+
+  <name>xff:has-fallback-value</name>
+
+  <description>
+    Tests xff:has-fallback-value function which can only be executed in a variable set.
+  </description>
+
+  <variation id="V-01">
+    <name>Bound empty, no fallback</name>
+    <description>Tests that variable can bind to an empty sequence.  Fallback value is () so variable is bound to a fallback value.</description>
+    <reference specification="VARIABLES" id="sec-binding-to-empty-sequence"/>
+    <data>
+      <schema>bindEmpty-tests.xsd</schema>
+      <linkbase>empty-no-fallback-formula.xml</linkbase>
+      <instance readMeFirst="true">empty-no-fallback-instance.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>  
+
+  <variation id="V-02">
+    <name>Bound empty allowed but non-empty</name>
+    <description>Tests that variable can bind to an empty sequence but a fact is bound to, so function result is false.</description>
+    <reference specification="VARIABLES" id="sec-binding-to-empty-sequence"/>
+    <data>
+      <schema>bindEmpty-tests.xsd</schema>
+      <linkbase>empty-no-fallback-formula.xml</linkbase>
+      <instance readMeFirst="true">nonempty-no-fallback-instance.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="0"
+         countNotSatisfied="1" />
+    </result>
+  </variation>  
+
+  <variation id="V-03">
+    <name>Bound empty, with fallback to a scalar value</name>
+    <description>Tests that variable can bind to an empty sequence, and if so, with fallback specified, function returns true for a scalar binding.</description>
+    <reference specification="VARIABLES" id="sec-binding-to-empty-sequence"/>
+    <data>
+      <schema>bindEmpty-tests.xsd</schema>
+      <linkbase>empty-with-fallback-formula.xml</linkbase>
+      <instance readMeFirst="true">empty-with-fallback-instance.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>  
+
+  <variation id="V-04">
+    <name>Bound empty, with fallback to an instance document item</name>
+    <description>Tests that variable can bind to an empty sequence, and if so, with fallback specified to bind to an item in the instance document, function returns true for an item binding.</description>
+    <reference specification="VARIABLES" id="sec-binding-to-empty-sequence"/>
+    <data>
+      <schema>bindEmpty-tests.xsd</schema>
+      <linkbase>empty-with-fallback-formula2.xml</linkbase>
+      <instance readMeFirst="true">empty-with-fallback-instance2.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>  
+
+
+</testcase>
+
+

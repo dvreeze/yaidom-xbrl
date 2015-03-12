@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2008-04-05T12:12:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+       <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-04-05T12:12:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Return the actual or the inferred decimals of a numeric fact.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2006-12-18.htm#_Toc156209154">
+  XBRL 2.1 Section 4.6.5
+  </reference>
+
+  <signature name="xfi:decimals">
+    <input name="item" type="schema-element(xbrli:item)">
+      <xhtml:p>
+        The numeric item that precision is required for.
+      </xhtml:p>
+    </input>
+    <output type="xs:anyAtomicType">
+      <xhtml:p>
+        Return the actual or the inferred decimals of a numeric fact.  For "INF" the returned type is xs:string.  For numeric precision value, the returned type is xs:integer.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:ItemIsNotNumeric">
+    <xhtml:p>
+      This error is thrown if the item is not reported with a precision or decimals
+      attribute (except for fraction, which returns INF to correspond to base spec).
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="80154 xfi.decimals testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-04-05T12:12:00" by="herm">
+      <xhtml:p>
+        Defined the function.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

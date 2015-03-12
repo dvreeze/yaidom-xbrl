@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../../infrastructure/test.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xbrlacfe="http://xbrl.org/2010/filter/aspect-cover/error" 
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://xbrl.org/2008/conformance   ../../../infrastructure/test.xsd
+  ">
+  <creator>
+    <name>Herm Fischer</name>
+    <email>fischer@markv.com</email>
+  </creator>
+
+  <number>61000</number>
+
+  <name>Aspect cover filter</name>
+
+  <description>
+    Tests aspect cover filter.
+  </description>
+
+  <variation id="V-01">
+    <name>Unit aspect covered allowing binding of string with numeric variables</name>
+    <description>
+       String is unitless, numeric has unit, must cover unit for binding together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>string-numeric-unit-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">string-numeric-unit-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>string-numeric-unit-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-02">
+    <name>Same as V-01 but has two acf filters for same aspect with opposite cover attributes</name>
+    <description>
+       Error code must be thrown for inconsistent cover attributes for same aspect.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>string-numeric-unit-cover-conflict-formula.xml</linkbase>
+      <instance readMeFirst="true">string-numeric-unit-cover-conflict-instance.xml</instance>
+    </data>
+    <result>
+      <error>xbrlacfe:inconsistentAspectCoverFilters</error>
+    </result>
+  </variation>
+  
+  <variation id="V-03">
+    <name>Same as V-01 but has two acf filters for same aspect with same cover attributes</name>
+    <description>
+       It is ok to have duplicate acf filtering for same aspect with same cover attributes.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>string-numeric-unit-cover-dup-ok-formula.xml</linkbase>
+      <instance readMeFirst="true">string-numeric-unit-cover-dup-ok-instance.xml</instance>
+    </data>
+    <result>
+      <instance>string-numeric-unit-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-04">
+    <name>Concept aspect covered allowing binding of two different numeric items into same sequence</name>
+    <description>
+       Must cover concept for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>concept-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">concept-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>concept-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-05">
+    <name>Entity-identifier aspect covered allowing binding of two different numeric items into same sequence</name>
+    <description>
+       Must cover Entity-identifier for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>entity-identifier-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">entity-identifier-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>entity-identifier-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-06">
+    <name>Period aspect covered allowing binding of two different numeric items into same sequence</name>
+    <description>
+       Must cover period for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>period-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">period-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>period-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-07">
+    <name>Complete-segment aspect covered allowing binding of two different numeric items into same sequence</name>
+    <description>
+       Must cover segment for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>complete-segment-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">complete-segment-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>period-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-08">
+    <name>Complete-scenario aspect covered allowing binding of two different numeric items into same sequence</name>
+    <description>
+       Must cover scenario for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>complete-scenario-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">complete-scenario-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>period-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-09">
+    <name>Location aspect covered allowing binding of three numeric items into same sequence</name>
+    <description>
+       Must cover location for sequence to have three "concept:n1" fact items from different (tuple) locations together.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>location-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">location-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>location-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-10">
+    <name>all aspects covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover all aspects for sequence to have all ten fact items together in one sequence binding.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>all-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">all-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-11">
+    <name>multiple aspects covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover multiple enumerated aspects for sequence to have all ten fact items together in one sequence binding.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>multiple-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">multiple-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-12">
+    <name>nonXDT-segment aspect covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover nonXDT segment for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>nonXDT-segment-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">nonXDT-segment-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-13">
+    <name>nonXDT-scenario aspect covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover nonXDT scenario for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-scen-tests-definition.xml</linkbase>
+      <linkbase>nonXDT-scenario-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">nonXDT-scenario-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-14">
+    <name>dimensions aspects are covered allowing binding of nine different items into same sequence</name>
+    <description>
+       Must cover dimensions of the segment for sequence to have nine items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>dimensions-segment-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">dimensions-segment-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-15">
+    <name>same as V-13 except for scenario dimensions</name>
+    <description>
+       Same as V-13 but dimensions are in scenarios
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-scen-tests-definition.xml</linkbase>
+      <linkbase>dimensions-scenario-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">dimensions-scenario-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-16">
+    <name>typed qnamed dimension aspect is covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover typed qnamed dimension of the segment for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>typed-qnamed-dimension-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">typed-qnamed-dimension-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-16a">
+    <name>typed qnameExpression dimension aspect is covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover typed qnameExpression dimension of the segment for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>typed-qnameExpr-dimension-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">typed-qnameExpr-dimension-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-17">
+    <name>explicit dimension aspect is covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover explicit dimension of the segment for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>explicit-dimension-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">explicit-dimension-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-17a">
+    <name>dimensions excluding typed aspect are covered allowing binding of two different items into same sequence</name>
+    <description>
+       Must cover explicit dimension (by covering all excluding typed) of the segment for sequence to have two items together.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>exclude-dimension-cover-formula1.xml</linkbase>
+      <instance readMeFirst="true">exclude-dimension-cover-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <!-- under discussion by FWG
+  <variation id="V-18">
+    <name>A fact variable binds to a string and number, its unit aspect is covered allowing binding of two facts with and without unit into same sequence</name>
+    <description>
+       Tests issue of whether sub-partitioning segregates based on presence of unit, even if unit is covered.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>partition-seq-covered-unit-formula.xml</linkbase>
+      <instance readMeFirst="true">partition-seq-covered-unit-instance.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  
+  <variation id="V-19">
+    <name>A fact variable binds to two facts, one with and other without covered Location dimension.</name>
+    <description>
+       Tests issue of whether sub-partitioning segregates based on the presence/absence of a dimension aspect, even if it is covered.
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>aspect-dimension-seg-tests-definition.xml</linkbase>
+      <linkbase>partition-seq-cover-dimension-formula1.xml</linkbase>
+      <instance readMeFirst="true">partition-seq-cover-dimension-instance1.xml</instance>
+    </data>
+    <result>
+      <assertionTests 
+         assertionID="assertion"
+         countSatisfied="1"
+         countNotSatisfied="0" />
+    </result>
+  </variation>
+  -->
+  
+  <variation id="V-20">
+    <name>Same as V-01 but the aspect cover filter has @complement=true</name>
+    <description>
+       The complement attribute is ignored for aspect cover filters as it has no impact on the covering behaviour
+     </description>
+      
+    <data>
+      <schema>aspect-dimension-tests.xsd</schema>
+      <linkbase>complement-true-cover-formula.xml</linkbase>
+      <instance readMeFirst="true">complement-true-cover-instance.xml</instance>
+    </data>
+    <result>
+      <instance>string-numeric-unit-cover-result.xml</instance>
+    </result>
+  </variation>
+  
+  <!-- Error code not defined in REC edition of Spec, test disabled pending addition to PER.
+  <variation id="V-21">
+    <name>Same as V-01 but the aspect cover filter is a sub-filter of a boolean filter</name>
+    <description>
+       Error code must be thrown where an aspect cover filter is a sub-filter of a boolean filter.
+     </description>
+      
+    <data>
+      <schema>aspect-cover-tests.xsd</schema>
+      <linkbase>aspect-cover-subfilter-formula.xml</linkbase>
+      <instance readMeFirst="true">aspect-cover-subfilter-instance.xml</instance>
+    </data>
+    <result>
+      <error>xbrlacfe:aspectCoverSubfilterNotAllowed</error>
+    </result>
+  </variation>
+  -->
+  
+
+</testcase>
+
+

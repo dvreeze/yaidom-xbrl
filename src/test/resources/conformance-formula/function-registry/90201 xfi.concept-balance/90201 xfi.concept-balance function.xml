@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+
+  <lastUpdated moment="2010-02-04T08:00:00" />
+
+  <owners>
+    <reg:owner id="geoff">
+       <reg:name>Geoff Shuetrim</reg:name>
+       <reg:affiliation>Galexy</reg:affiliation>
+       <reg:email>geoff@galexy.net</reg:email>
+       <reg:assumedOwnership moment="2008-01-30T14:45:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Obtain the value of the xbrli:balance attribute on an XBRL concept.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <signature name="xfi:concept-balance">
+
+    <input name="concept-name" type="xs:QName"/>
+    <output type="xs:string">
+      <xhtml:p>
+        If the xbrli:balance attribute is omitted from the concept, then
+        the empty string is returned. Otherwise the value of the balance
+        attribute is returned as a string.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:invalidConceptQName">
+    <xhtml:p>
+      This error MUST be thrown if the concept name parameter contains a
+      QName that is not the QName of a concept in the reference discoverable
+      taxonomy set.
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="90201 xfi.concept-balance testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-01-23T00:00:00" by="geoff">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2010-02-04T08:00:00" by="herm">
+      <xhtml:p>
+        Fixed namespaces per e-mail from Muramoto-san.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>
+

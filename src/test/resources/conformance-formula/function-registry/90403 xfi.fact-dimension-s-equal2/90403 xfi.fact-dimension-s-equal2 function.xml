@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2008-01-23T13:37:00" />
+
+  <owners>
+    <reg:owner id="geoff">
+       <reg:name>Geoff Shuetrim</reg:name>
+       <reg:affiliation>Galexy</reg:affiliation>
+       <reg:email>geoff@galexy.net</reg:email>
+       <reg:assumedOwnership moment="2008-01-29T00:00:00" />
+    </reg:owner>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+       <reg:affiliation>UBmatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-09-02T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns true if both items have the same value (default or explicit) for the specified dimension (regardless of whether in segment or scenario).
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <signature name="xfi:fact-dimension-s-equal2">
+    <input name="left-item" type="schema-element(xbrli:item)">
+      <xhtml:p>
+        The item that the dimension value is to be retrieved for.
+      </xhtml:p>
+    </input>
+    <input name="right-item" type="schema-element(xbrli:item)">
+      <xhtml:p>
+        The item that the dimension value is to be retrieved for.
+      </xhtml:p>
+    </input>
+    <input name="dimension-name" type="xs:QName">
+      <xhtml:p>
+        The QName of the dimension for which the value is required.
+      </xhtml:p>
+    </input>
+    <output type="xs:boolean">
+      <xhtml:p>
+        If one of the items does not have a value for the dimension in either their segment or their scenario
+        but the other does, in either segment or scenario (not required to be in corresponding location), then the function returns false.
+      </xhtml:p>
+      <xhtml:p>
+        Otherwise, if both of the items do not have a value for the dimension in either their segment or scenario
+        then the function returns true.
+      </xhtml:p>
+      <xhtml:p>
+        Otherwise, if the values for the dimension (regardless of whether in segment or scenario) for both of the items are s-equal2, as defined
+        in the XBRL Dimensions Specification, then the function returns true.
+      </xhtml:p>
+      <xhtml:p>
+        Otherwise, the function returns false.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <conformanceTest xlink:type="simple" xlink:href="90403 xfi.fact-dimension-s-equal2 testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-02-05T13:40:00" by="geoff">
+      <xhtml:p>
+        Defined the function.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2008-03-04T13:40:00" by="geoff">
+      <xhtml:p>
+        Clarified treatment of default dimension values.
+      </xhtml:p>      
+    </reg:revision>
+    <reg:revision on="2008-09-02T00:00:00" by="herm">
+      <xhtml:p>
+        Adaptation for collapse of segment/scenario dimension aspects.
+      </xhtml:p>      
+    </reg:revision>
+  </revisions>
+
+</function>

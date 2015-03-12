@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<schema
+  targetNamespace="http://xbrl.org/xdt/dimension-equality-test"
+  xmlns:eg="http://xbrl.org/xdt/dimension-equality-test"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+  <annotation>
+    <appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="complexFloatValue-definition.xml"
+        xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+        xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" />
+	
+  <element id="concept" name="concept"
+    substitutionGroup="xbrli:item"
+    type="xbrli:stringItemType"
+    xbrli:periodType="instant"/>
+
+  <element id="hypercube" name="hypercube"
+    substitutionGroup="xbrldt:hypercubeItem"
+    type="xbrli:stringItemType"
+    abstract="true"
+    xbrli:periodType="instant"/>
+
+  <element id="dimension" name="dimension"
+    substitutionGroup="xbrldt:dimensionItem"
+    xbrldt:typedDomainRef="complexFloatValue.xsd#domain"   
+    type="xbrli:stringItemType"
+    abstract="true"
+    xbrli:periodType="instant"/>
+
+  <element id="domain" name="domain" type="eg:domainType" />
+  
+  <simpleType name="domainType">
+    <restriction base="float">
+      <enumeration value="1.4"/>
+      <enumeration value="+1.400E0"/>
+      <enumeration value="NaN"/>
+      <enumeration value="INF"/>
+      <enumeration value="-INF"/>
+    </restriction>
+  </simpleType>
+
+</schema>

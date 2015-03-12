@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<link:linkbase 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:generic="http://xbrl.org/2008/generic" 
+  xmlns:formula="http://xbrl.org/2008/formula" 
+  xmlns:variable="http://xbrl.org/2008/variable" 
+  xmlns:label="http://xbrl.org/2008/label" 
+  xmlns:eg="http://xbrl.org/formula/conformance/example" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase
+    http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic
+    ../../../core_schemas/2008/generic-link.xsd 
+  http://xbrl.org/2008/formula
+    ../../../core_schemas/2008/formula.xsd
+  http://xbrl.org/2008/variable
+    ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2008/label
+    ../../../core_schemas/2008/generic-label.xsd
+  http://xbrl.org/formula/conformance/example
+    21251-factVar-tests.xsd"
+  >
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended" xlink:role="http://www.xbrl.org/2008/role/link">
+    <formula:formula xlink:type="resource" xlink:label="formula1" 
+      value="$c1" 
+      source="c1"
+      aspectModel="dimensional" implicitFiltering="true" />
+
+    <variable:generalVariable xlink:type="resource" xlink:label="genvar1" bindAsSequence="false" select="1" />
+
+    <variable:generalVariable xlink:type="resource" xlink:label="genvar2" bindAsSequence="false" select="2" />
+
+    <variable:variableArc xlink:type="arc" xlink:to="genvar1" xlink:from="formula1" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" order="1" 
+      name="c1" />
+      
+    <variable:variableArc xlink:type="arc" xlink:to="genvar2" xlink:from="formula1" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" order="1" 
+      name="c1" />
+
+
+  </generic:link>
+</link:linkbase>
+
+
+
+

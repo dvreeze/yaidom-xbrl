@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../../infrastructure/test.xsl"?>
+<testcase
+xmlns="http://xbrl.org/2008/conformance"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+  http://xbrl.org/2008/conformance 
+  ../../../infrastructure/test.xsd">
+  <creator>
+    <name>David North</name>
+    <email>dtn@corefiling.com</email>
+  </creator>
+  <number>41221</number>
+  <name>Boolean Filter Processing with no children</name>
+  <description>
+    Tests the processing of boolean filters with no sub-filters.
+  </description>
+  <reference specification="BOOLEAN-FILTER" id="sec-or-filter"/>
+  <reference specification="BOOLEAN-FILTER" id="sec-and-filter"/>
+
+  <variation id="V-01">
+    <name>Test an "or filter" with no children</name>
+    <description>
+      The "or filter" has no children, so it should match no facts.
+    </description>
+    <reference specification="BOOLEAN-FILTER" id="sec-or-filter"/>
+    <data>
+      <schema>41221-concepts.xsd</schema>
+      <linkbase>41221-orFilter-no-children-formula.xml</linkbase>
+      <instance readMeFirst="true">41221-orFilter-instance.xml</instance>
+    </data>
+    <result>
+      <instance>41221-result.xml</instance>
+    </result>
+  </variation>
+
+  <variation id="V-02">
+    <name>Test an "and filter" with no children</name>
+    <description>
+      The "and filter" has no children, so it should match no facts.
+    </description>
+    <reference specification="BOOLEAN-FILTER" id="sec-and-filter"/>
+    <data>
+      <schema>41221-concepts.xsd</schema>
+      <linkbase>41221-andFilter-no-children-formula.xml</linkbase>
+      <instance readMeFirst="true">41221-andFilter-instance.xml</instance>
+    </data>
+    <result>
+      <instance>41221-result.xml</instance>
+    </result>
+  </variation>
+
+</testcase>
+

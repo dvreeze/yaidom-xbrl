@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<xbrl 
+  xmlns="http://www.xbrl.org/2003/instance" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+  xmlns:test="http://abc.com/test"
+  xsi:schemaLocation=""
+>
+  <link:schemaRef xlink:href="concept-label-test1.xsd" xlink:type="simple" />
+  <context id="I-2000">
+    <entity>
+      <identifier scheme="http://abc.com">abc</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+  <test:A    contextRef="I-2000">a</test:A> 
+  <test:A1   contextRef="I-2000">a1</test:A1> 
+  <test:A11  contextRef="I-2000">a11</test:A11> 
+  <test:A111 contextRef="I-2000">a111 Terse Label</test:A111> 
+  <test:A112 contextRef="I-2000">a112</test:A112> 
+  <test:A113 contextRef="I-2000">a113 Period End Label</test:A113> 
+  <test:A12  contextRef="I-2000">a12</test:A12> 
+  <test:A121 contextRef="I-2000">a121</test:A121> 
+  <test:A122 contextRef="I-2000">a122</test:A122> 
+  <test:A13  contextRef="I-2000">a13</test:A13> 
+  <test:A2   contextRef="I-2000">a2</test:A2> 
+  <test:A21  contextRef="I-2000">a21</test:A21> 
+  <test:A211 contextRef="I-2000">a211</test:A211> 
+  <test:A3   contextRef="I-2000">a3</test:A3> 
+  <test:B    contextRef="I-2000">b</test:B> 
+  <test:B1   contextRef="I-2000">b1 Verbose Label</test:B1> 
+  <test:C    contextRef="I-2000">c</test:C> 
+  <test:C1   contextRef="I-2000">c1</test:C1> 
+</xbrl>

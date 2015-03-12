@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<linkbase
+  xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+  xsi:schemaLocation="
+    http://www.xbrl.org/2003/linkbase 
+      http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+    http://xbrl.org/2005/xbrldt  http://www.xbrl.org/2005/xbrldt-2005.xsd
+    ">
+  <arcroleRef xlink:type="simple" 
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" 
+    arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/all" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" />
+  <definitionLink xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2003/role/link">
+    <loc xlink:type="locator"
+      xlink:label="x"
+      xlink:href="xyz_abc.xsd#x" />
+    <loc xlink:type="locator"
+      xlink:label="y"
+      xlink:href="xyz_abc.xsd#y" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="x" xlink:to="y"
+      order="1"
+      use="optional"
+      xbrldt:contextElement="segment" />
+    <loc xlink:type="locator"
+      xlink:label="z"
+      xlink:href="xyz_abc.xsd#z" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="x" xlink:to="z"
+      order="2"
+      use="optional"
+      xbrldt:contextElement="segment" />
+    <loc xlink:type="locator"
+      xlink:label="hc"
+      xlink:href="xyz_abc.xsd#hc" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/all"
+      xlink:from="x" xlink:to="hc"
+      order="3"
+      use="optional"
+      xbrldt:contextElement="scenario" />
+    <loc xlink:type="locator"
+      xlink:label="a"
+      xlink:href="xyz_abc.xsd#a" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="hc" xlink:to="a"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="b"
+      xlink:href="xyz_abc.xsd#b" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="hc" xlink:to="b"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="c"
+      xlink:href="xyz_abc.xsd#c" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="hc" xlink:to="c"
+      order="3"
+      use="optional" />
+  </definitionLink>
+</linkbase>

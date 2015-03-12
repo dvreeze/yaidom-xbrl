@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2009-12-13T00:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2009-12-13T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Provides an implementation of the XSLT 2.0 format-number function (which is not part of XPath2 functions), in a
+    manner that is compatible with XBRL processors.  
+      <reference xlink:type="simple" xlink:href="http://www.w3.org/TR/xslt20/#format-number">
+        The XSLT definition of format-number is at: http://www.w3.org/TR/xslt20/#format-number.
+      </reference>
+    The XSLT definition is applied to the xfi:format-number function except for XSLT's decimal format argument.  A
+    processor will obtain any non-default decimal format parameters from its invoking environment (such as the
+    operating system globalization parameters, or a processor invocation globalization parameters).  This
+    is to be compatible with generic-message, where the lang attribute selection matches the processor
+    environment settings (and not by specific coding of globalization choices in linkbase or other XBRL resources).
+  </summary>
+
+  <documentation>
+  </documentation>
+
+
+  <signature name="xfi:format-number">
+
+    <input name="value" type="numeric?">
+      <xhtml:p>
+        The value argument may be of any numeric data type (xs:double, xs:float, xs:decimal, or their subtypes including xs:integer). Note that if an xs:decimal is supplied, it is not automatically promoted to an xs:double, as such promotion can involve a loss of precision.
+      </xhtml:p>
+      <xhtml:p>
+If the supplied value of the value argument is an empty sequence, the function behaves as if the supplied value were the xs:double value NaN.
+      </xhtml:p>
+    </input>
+
+    <input name="picture" type="xs:string">
+      <xhtml:p>
+        The picture string is a sequence of characters, in which the characters assigned to the variables decimal-separator-sign, grouping-sign, zero-digit-sign, digit-sign and pattern-separator-sign are classified as active characters, and all other characters (including the percent-sign and per-mille-sign) are classified as passive characters.
+      </xhtml:p>
+      <xhtml:p>
+          <reference xlink:type="simple" xlink:href="http://www.w3.org/TR/xslt20/#processing-picture-string">
+           The rules for the picture string are provided in: http://www.w3.org/TR/xslt20/#processing-picture-string.
+          </reference>
+          <reference xlink:type="simple" xlink:href="http://www.w3.org/TR/xslt20/#analysing-picture-string">
+            The analyzing of the picture string is provided in: http://www.w3.org/TR/xslt20/#analysing-picture-string.
+          </reference>
+      </xhtml:p>
+    </input>
+
+    <output type="xs:string">
+      <xhtml:p>
+          <reference xlink:type="simple" xlink:href="http://www.w3.org/TR/xslt20/#formatting-the-number">
+            The formatted number, according to the processing description provided in:             http://www.w3.org/TR/xslt20/#formatting-the-number.
+          </reference>
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:invalidPictureSyntax">
+    <xhtml:p>
+      This error MUST be thrown if the picture string argument does not conform to the format-number rules provided in the XSLT reference above, paragraph 16.4.2, where this error is equivalent to XSLT error XDTE1310.
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="90701 xfi.format-number testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2009-12-13T00:00:00" by="herm">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

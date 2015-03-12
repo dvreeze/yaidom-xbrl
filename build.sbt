@@ -15,9 +15,9 @@ crossScalaVersions := Seq("2.11.5")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
-libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "1.3.3"
+libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "1.3.4"
 
-libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom-xlink" % "1.3.3"
+libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom-xlink" % "1.3.4"
 
 libraryDependencies += "net.sf.saxon" % "Saxon-HE" % "9.5.1-8"
 
@@ -28,6 +28,10 @@ libraryDependencies += ("org.joda" % "joda-convert" % "1.2").intransitive()
 libraryDependencies += "junit" % "junit" % "4.11" % "test"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.3" % "test"
+
+// resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
+
+// addCompilerPlugin("com.artima.supersafe" %% "supersafe" % "1.0.3")
 
 publishMavenStyle := true
 

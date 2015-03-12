@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xl="http://www.xbrl.org/2003/XLink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2013-06-18T14:00:00Z" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-09-01T00:00:00" />
+    </reg:owner>
+    <reg:owner id="rna">
+       <reg:name>Richard Ashby</reg:name>
+      <reg:affiliation>CoreFiling</reg:affiliation>
+       <reg:email>rna@corefiling.com</reg:email>
+       <reg:assumedOwnership moment="2013-06-18T14:00:00Z" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns a sequence containing the set of
+    effective relationships with the specified relationship
+    to the source concept.
+  </summary>
+
+  <documentation>
+      <xhtml:p>
+    An example of the use of this function to implement calculation linkbase validation
+    with weighted values summation is provided in the test case 61100 ConceptRelationsFilter Processing.xml v21.
+    The files of this test case are attached in this directory as an illustration of the concept-relationships
+    use.  The schema file is nav-rel-test1.xsd, the calc linkbase file is nav-rel-test1-detached-calculation.xml,
+    the formula assertion file is calc-lb-exact-sum-weighted-children-formula.xml, and an
+    instance file is calc-lb-exact-sum-weighted-children-instance-ok.xml.
+      </xhtml:p>
+      <xhtml:p>
+    Comments in the formula assertion file, calc-lb-exact-sum-weighted-children-formula.xml,
+    describe its operation.
+      </xhtml:p>
+      <xhtml:p>
+    The generalVariable, $linkRole, binds one-by-one to each link role that has summation-item arcs.
+      </xhtml:p>
+      <xhtml:p>
+    The factVariable, $parent, to every fact in instance.  (An alternative approach in calc-lb-exact-sum-weighted-children-formula2.xml
+    binds $parent only to concepts in $linkRole that are from-concepts on effective relationships).
+      </xhtml:p>
+      <xhtml:p>
+    The factVariable, $family, binds to the sequence of aspect-related facts (ignoring concept aspect).
+      </xhtml:p>
+      <xhtml:p>
+    The generalVariable, $rels, binds to the sequence of effective relationship arcs of children of $parent.
+      </xhtml:p>
+      <xhtml:p>
+    The factVariable, $weightedChildValues, binds to the sequence of child values multiplied by the weight
+    on the arc from $parent.
+      </xhtml:p>
+      
+  </documentation>
+
+  <signature name="xfi:concept-relationships">
+
+    <input name="source" type="xs:QName">
+      <xhtml:p>
+        The QName of the source concept from which to begin navigation. 
+      </xhtml:p>
+      <xhtml:p>
+        The special QName xfi:root is recognized when it is desired 
+        to retrieve relations to descendants from the 'root' level (who have no parents).
+      </xhtml:p>
+    </input>
+
+    <input name="linkrole" type="xs:string?">
+      <xhtml:p>
+        The linkrole value that specifies the network of effective
+        relationships on the specified
+        axis from the member used as the origin.
+      </xhtml:p>
+      <xhtml:p>
+        If omitted ("()" or "''") then the default link role is used. 
+      </xhtml:p>
+    </input>
+
+    <input name="arcrole" type="xs:string">
+      <xhtml:p>
+        The arcrole value that specifies the network of effective
+        relationships.
+      </xhtml:p>
+    </input>
+
+    <input name="axis" type="xs:string">
+      <xhtml:p>
+        The axis value MUST be one of:
+      </xhtml:p>
+      <xhtml:ul>
+        <xhtml:li>descendant</xhtml:li>
+        <xhtml:li>child</xhtml:li>
+        <xhtml:li>ancestor</xhtml:li>
+        <xhtml:li>parent</xhtml:li>
+        <xhtml:li>sibling</xhtml:li>
+        <xhtml:li>sibling-or-descendant</xhtml:li>
+      </xhtml:ul>
+
+      <xhtml:p>
+        If the axis value is 'descendant' then the relationships returned include those to concepts that are descendants of the source concept QName, in the linkrole network of arcrole effective relationships.  ('child' is the same as descendant and generations = 1.)  For the special source QName, xfi:root, descendants are those from the topmost level (where the source concepts have no parents).
+      </xhtml:p>
+
+      <xhtml:p>
+        If the axis value is 'ancestor' then the relationships returned include those from concepts that are ancestors of the source concept QName, in the linkrole network of arcrole effective relationships.  (For parent, use ancestor and generations = 1.)  Ancestors of a root concept is an empty result sequence, so a way to test that a concept is a root node is to test for an empty result set of parent relationships.
+      </xhtml:p>
+
+      <xhtml:p>
+        If the axis value is 'sibling' then the relationships returned include those concepts that are siblings of the parents as the source, in the linkrole network of arcrole effective relationships.  (A concept with multiple parent relationships has, as siblings, those concepts with the same parent relationships.) If the source concept is at root level (having no parent relationships), then its sibling concepts are other root concepts, but as these other root concepts have no parent relationships, there are no sibling relationships to any root concept, and an empty sequence is always produced for sibling relationships of a root concept.
+      </xhtml:p>
+
+      <xhtml:p>
+        If the axis value is 'sibling-or-descendant' then the result set includes siblings, per above, plus descendant relationships.  The generations count is the number of descendant generations, and generations=0 means
+        all descendants.
+      </xhtml:p>
+
+    </input>
+
+    <input name="generations" type="xs:nonNegativeInteger?">
+      <xhtml:p>
+        This parameter is optional.
+        The generations value specifies a limit of number of generations (for descendant or ancestor), or zero (if unlimited generations navigation is desired.  Generations=1 and descendant axis means obtain only children, generations=2 obtains children and grandchildren, and generations=0 means all descendants.
+      </xhtml:p>
+      <xhtml:p>
+        Generations must be omitted or 1 for a parent, child, or sibling axis.
+      </xhtml:p>
+      <xhtml:p>
+        Generations may be omitted for ancestor or descendant axes, in which case 0 (all ancestors or descendants) is
+        assumed.
+      </xhtml:p>
+      <xhtml:p>
+        In any case if a descendant or ancestor concept repeats in the path from the source, it is not navigated further for unlimited generations navigation (generations=0), but it is navigated further for limited generations navigation.  Thus it is not wise to put a high integer on generations count if directed cycles may exist.  A demonstration of this issue is in function test cases v-09 and V-09a. In V-09 navigation starts at A1, for descendants (not self) for unlimited generations.  In this case A1 is not included first in the output (because of missing '-or-self') but A1 is a descendant of A13 (A1-&gt;A13-&gt;A1) so the A1 occurence under A13 is included in the output, but no further navigation from the repeat (directed cycle) beneath A1 is navigated.  In V-09c 7 generations are requested, to show that the directed cycle is followed for 7 generations.
+      </xhtml:p>
+    </input>
+
+    <input name="linkname" type="xs:QName?">
+      <xhtml:p>
+        This parameter is optional.  If absent the arcrole and linkrole uniquely determine a base set, such as when
+        only standard link elements are used with standard arc elements and arc roles, or generic arcs have only one
+        possible link element that may contain them.  
+        If provided then generations must also be provided.
+        If provided then this parameter specifies the link element to be included in the result set.
+      </xhtml:p>
+      <xhtml:p>
+        If omitted, or "()", then the link element QName is not used to determine an applicable base set network. 
+      </xhtml:p>
+    </input>
+
+    <input name="arcname" type="xs:QName?">
+      <xhtml:p>
+        This parameter is optional.  If absent the arcrole and linkrole uniquely determine a base set, such as when
+        only standard arc elements are used with standard link elements and arc roles, or generic arcs have only one
+        possible arc element.  
+        If provided then link name and generations must also be provided.
+        If provided then this parameter specifies the arc element to be included in the result set.
+      </xhtml:p>
+      <xhtml:p>
+        If omitted, or "()", then the arc element QName is not used to determine an applicable base set network. 
+      </xhtml:p>
+    </input>
+
+    <output type="xfi:relationship.type*">
+      <xhtml:p>
+        Returns a sequence of effective relationships that are implementation-defined objects or relationship surrogates.  These
+        objects are opaque as they
+        may be used only as function arguments, but not for direct XPath navigation or value access.  The
+        implementation-defined objects or relationship surrogates are intended to be only used as parameters to other functions
+        such as xfi:relationship-from-concept, xfi:relationship-to-concept, xfi:relationship-attribute, 
+        xfi:relationship-element, xfi:link-attribute, and xfi:link-element.
+      </xhtml:p>
+      <xhtml:p>
+        The implementation-defined objects may be nodes or may be atomic elements, the consuming application should
+        allow both kinds of implementation strategies, but not access the content of such nodes or value of such elements.
+        xfi:relationship.type would be defined as xs:anyType.
+      </xhtml:p>
+      <xhtml:p>
+        The order is the effective relationships order after consideration of arc order value, prohibition, and override.
+      </xhtml:p>
+      <xhtml:p>
+        The tree-walk of multiple generations is in depth-first order (or the inverse for ancestors), a node's descendants are recursively inserted in the result subsequences prior to continuing with siblings.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <conformanceTest xlink:type="simple" xlink:href="90507 xfi.concept-relationships testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-12-12T00:00:00" by="herm">
+      <xhtml:p>
+        Created the predecessor xfi.navigate-relationships function definition.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2009-10-28T20:00:00" by="herm">
+      <xhtml:p>
+        Evolved this function definition from xfi.navigate-relationships.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2009-11-01T15:00:00" by="herm">
+      <xhtml:p>
+        Changed siblings with descendants axis to sibling-or-descendant.
+        Updated generations to be optional, with defaults as noted, per suggestion by Victor Morilla.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2009-12-12T00:00:00" by="herm">
+      <xhtml:p>
+        Removed reference to dynamically loaded instances from the xbrlinstance input.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-03-08T00:00:00" by="herm">
+      <xhtml:p>
+        Added optional linkname and arcname parameters due to base spec agreement that these element
+        names are required to determine base set when multiple link or arc elements may be used with the
+        same arc and link roles. 
+      </xhtml:p>
+      <xhtml:p>
+        Changed the returned objects to be implementation defined, opaque, and not specified to return xl:arc elements.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-09-07T00:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura.
+        Changed output type from xfi:relationship.type to xfi:relationship.type* to allow sequence results as described.
+        Changed input types to "?" for optional parameters linkrole, generations, linkname, arcname.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-09-09T00:00:00" by="herm">
+      <xhtml:p>
+        Changed role URIs to strings for cast-less coding and to be similar to fn:QName's $paramURI, an xs:string.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-10-16T00:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura, fixing typo, reference to "V-09A" changed to "V-09c" for 7-generations test.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2011-03-24T08:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura.
+        Changed generations parameter from xs:integer to xs:nonNegativeInteger to be same as conceptRelation filter.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2013-06-18T14:00:00Z" by="rna">
+      <xhtml:p>
+        As per agreement on FWG call 2013/06/13, removed optional instance parameter and created separate CR function that uses it.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

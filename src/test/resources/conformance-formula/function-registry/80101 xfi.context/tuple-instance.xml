@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<xbrl 
+xmlns="http://www.xbrl.org/2003/instance" 
+xmlns:concept="http://xbrl.org/formula/conformance/example" 
+xmlns:link="http://www.xbrl.org/2003/linkbase" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+>
+  
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:href="context-tests.xsd"/>
+
+  <context id="context-earth">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">earth</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+  
+  <context id="context-romulus">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">romulan-star-empire</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+  
+  <context id="context-vulcan">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">planet-vulcan</identifier>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>
+  
+  <concept:t>
+    <concept:c1 contextRef="context-earth">earth</concept:c1>
+    <concept:c1 contextRef="context-romulus">romulus</concept:c1>
+    <concept:c1 contextRef="context-vulcan">vulcan</concept:c1>
+  </concept:t>
+  
+</xbrl>

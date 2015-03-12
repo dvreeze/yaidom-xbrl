@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<schema
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:label="http://xbrl.org/2008/label"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  targetNamespace="http://xbrl.org/formula/conformance/roles"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+  <annotation>
+    <appinfo>
+      <link:roleType
+        roleURI="http://www.xbrl.org/2008/role/label/satisfied"
+        id="label-satisfied">
+        <link:usedOn>label:label</link:usedOn>
+      </link:roleType>
+      <link:roleType
+        roleURI="http://www.xbrl.org/2008/role/label/notSatisfied"
+        id="label-not-satisfied">
+        <link:usedOn>label:label</link:usedOn>
+      </link:roleType>
+    </appinfo>
+  </annotation>
+  <import
+    namespace="http://www.xbrl.org/2003/instance"
+    schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <import
+    namespace="http://xbrl.org/2008/generic"
+    schemaLocation="http://www.xbrl.org/2008/generic-link.xsd" />
+  <import
+    namespace="http://xbrl.org/2008/label"
+    schemaLocation="http://www.xbrl.org/2008/generic-label.xsd" />
+</schema>

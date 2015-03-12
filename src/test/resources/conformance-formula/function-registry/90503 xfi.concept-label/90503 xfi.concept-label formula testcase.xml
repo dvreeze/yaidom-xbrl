@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xbrl.org/2008/conformance  ../../infrastructure/test.xsd">
+  <creator>
+    <name>Herm Fischer</name>
+    <email>fischer@markv.com</email>
+  </creator>
+
+  <number>90503</number>
+
+  <name>xfi:concept-label</name>
+
+  <description>
+      Tests concept-label function.
+  </description>
+
+  <variation id="V-01">
+    <name>Concept label using preferredLabel resource role on arc from parent</name>
+    <description>
+    </description>
+    <data>
+      <schema>concept-label-test1.xsd</schema>
+      <linkbase>concept-label-formula-1.xml</linkbase>
+      <instance readMeFirst="true">concept-label-instance-1.xml</instance>
+    </data>
+    <result>
+      <instance>concept-label-result-1.xml</instance>
+    </result>
+  </variation>
+
+  <variation id="V-02">
+    <name>Same as V-01 but using default link role</name>
+    <description>
+    </description>
+    <data>
+      <schema>concept-label-test1.xsd</schema>
+      <linkbase>concept-label-formula-2.xml</linkbase>
+      <instance readMeFirst="true">concept-label-instance-2.xml</instance>
+    </data>
+    <result>
+      <instance>concept-label-result-2.xml</instance>
+    </result>
+  </variation>
+
+
+</testcase>
+
+

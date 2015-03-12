@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2008-09-02T00:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-09-01T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Tests whether the fact reports a value for a dimension
+    in either the segment or scenario of the supplied item.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <signature name="xfi:fact-has-explicit-dimension">
+
+    <input name="item" type="schema-element(xbrli:item)">
+      <xhtml:p>
+        The item that the dimension is to be reported for.
+      </xhtml:p>
+    </input>
+
+    <input name="dimension" type="xs:QName">
+      <xhtml:p>
+        The QName of the dimension being tested for.
+      </xhtml:p>
+    </input>
+
+    <output type="xs:boolean">
+      <xhtml:p>
+        Returns true if the fact reports a value for 
+        the given dimension in either segment, scenario, or as a
+        default dimension member.
+      </xhtml:p>
+      <xhtml:p>
+        This function does not raise an exception if the dimension
+        or member does not apply to the fact, but instead returns
+        false if so.
+      </xhtml:p>
+      <!-- changed 2011-03-18
+      <xhtml:p>
+        A dimension is considered reported when an explicit
+        dimension reportable for the fact is absent from its context, and the
+        default value pertains (either due to a closed hypercube
+        specifying the dimension for the fact's primary item or
+        due to the primary item having open hypercube). 
+      </xhtml:p>
+      -->
+      <xhtml:p>
+        The dimension default is deemed applicable when the dimension is not reported for the item, regardless of
+        the dimensional validity of this default value for the item (e.g., the default is reported even when the primary item
+        concept, of an item lacking the dimension, is in a closed hypercube that does not allow the dimension or does not allow the default member).
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:invalidExplicitDimensionQName">
+    <xhtml:p>
+      This error MUST be thrown the dimension QName is not a
+      explicit dimension in the reference discoverable taxonomy set.
+      This error is only raised if the QName is not that of a dimension.
+      If the dimension is valid and inapplicable to the fact, then
+      the fact does not have that dimension, and false is returned.
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="90306 xfi.fact-has-explicit-dimension testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-09-01T00:00:00" by="herm">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2008-09-02T00:00:00" by="herm">
+      <xhtml:p>
+        Renamed has-explicit-dimension and separated has-typed-dimension to be a separate function.  Renumbered subsequent directories.  Reverted error code invalidExplicitDimensionQName to have explicit in its name.
+      </xhtml:p>
+    </reg:revision>
+    <reg:revision on="2011-03-18T16:00:00" by="herm">
+      <xhtml:p>
+        Clarified that dimension default values are reported for a dimension without respect to such a default value's
+        validity for a given primary item.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>
+
+
+
+

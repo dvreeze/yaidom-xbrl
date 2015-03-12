@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Taxonomy based on XBRL standard Version 2.1.
+Created by UBmatrix Taxonomy Designer 1.0.0.0 (2008-02-04 15:32).  
+Contact www.ubmatrix.com
+Copyright (c) 2002-2008 UBmatrix inc., All Rights Reserved
+Produced on 2008-02-07 00:51:15
+-->
+<schema
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:t="http://xbrl.org/formula/conformance/example"
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+  targetNamespace="http://xbrl.org/formula/conformance/example"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <import
+    namespace="http://www.xbrl.org/2003/instance"
+    schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+
+  <element
+    id="name"
+    name="name"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="duration"
+    nillable="true" />
+  <element
+    id="gross"
+    name="gross"
+    type="xbrli:monetaryItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="duration"
+    nillable="true" />
+  <element
+    id="returns"
+    name="returns"
+    type="xbrli:monetaryItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="duration"
+    nillable="true" />
+  <element
+    id="net"
+    name="net"
+    type="xbrli:monetaryItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="duration"
+    nillable="true" />
+  <element
+    id="totalGross"
+    name="totalGross"
+    type="xbrli:monetaryItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="duration"
+    nillable="true" />
+
+  <element id="analysis" name="analysis" substitutionGroup="xbrli:tuple" nillable="true">
+    <complexType>
+      <complexContent>
+        <restriction base="anyType">
+          <sequence>
+            <any maxOccurs="unbounded"/>
+          </sequence>
+          <attribute name="id" type="ID" />
+        </restriction>
+      </complexContent>
+    </complexType>
+  </element>
+
+  <element id="customer" name="customer" substitutionGroup="xbrli:tuple" nillable="true">
+    <complexType>
+      <complexContent>
+        <restriction base="anyType">
+          <sequence>
+            <any maxOccurs="unbounded"/>
+          </sequence>
+          <attribute name="id" type="ID" />
+        </restriction>
+      </complexContent>
+    </complexType>
+  </element>
+
+</schema>

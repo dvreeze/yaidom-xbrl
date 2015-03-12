@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<link:linkbase 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:generic="http://xbrl.org/2008/generic" 
+  xmlns:formula="http://xbrl.org/2008/formula" 
+  xmlns:variable="http://xbrl.org/2008/variable" 
+  xmlns:label="http://xbrl.org/2008/label" 
+  xmlns:eg="http://xbrl.org/formula/conformance/example" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:va="http://xbrl.org/2008/assertion/value"
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase
+    http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic
+    ../../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/assertion/value ../../../core_schemas/2008/value-assertion.xsd 
+  http://xbrl.org/2008/formula
+    ../../../core_schemas/2008/formula.xsd
+  http://xbrl.org/2008/variable
+    ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2008/label
+    ../../../core_schemas/2008/generic-label.xsd
+  http://xbrl.org/formula/conformance/example
+    21251-factVar-tests.xsd"
+  >
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended" xlink:role="http://www.xbrl.org/2008/role/link">
+    <va:valueAssertion xlink:type="resource" xlink:label="assertion" 
+        id="assertion"
+        aspectModel="dimensional" implicitFiltering="true"
+        test="$g1 eq 1"/>
+        
+    <va:valueAssertion xlink:type="resource" xlink:label="assertion2" 
+        id="assertion2"
+        aspectModel="dimensional" implicitFiltering="true"
+        test="$g1 eq 2"/>
+        
+    <variable:generalVariable xlink:type="resource" xlink:label="genvar1" select="1" bindAsSequence="true"/>
+    
+    <variable:generalVariable xlink:type="resource" xlink:label="genvar2" select="2" bindAsSequence="true"/>
+    
+      
+    <variable:variableArc xlink:type="arc" xlink:to="genvar1" xlink:from="assertion" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" order="1" 
+      name="g1" />
+    
+    <variable:variableArc xlink:type="arc" xlink:to="genvar2" xlink:from="assertion2" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" order="1" 
+      name="g1" />
+        
+  </generic:link>
+</link:linkbase>
+
+
+
+

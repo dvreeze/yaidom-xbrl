@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2008-09-02T00:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-09-01T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Tests whether the fact reports a value for a dimension
+    in either the segment or scenario of the supplied item.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <signature name="xfi:fact-has-typed-dimension">
+
+    <input name="item" type="schema-element(xbrli:item)">
+      <xhtml:p>
+        The item that the dimension is to be reported for.
+      </xhtml:p>
+    </input>
+
+    <input name="dimension" type="xs:QName">
+      <xhtml:p>
+        The QName of the dimension being tested for.
+      </xhtml:p>
+    </input>
+
+    <output type="xs:boolean">
+      <xhtml:p>
+        Returns true if the given dimension is a typed dimension and the
+        fact reports a value for it in either segment, scenario.
+      </xhtml:p>
+      <xhtml:p>
+        This function does not raise an exception if the dimension
+        does not apply to the
+        primary item of the fact, but instead returns
+        false if so.
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <error code="xfie:invalidTypedDimensionQName">
+    <xhtml:p>
+      This error MUST be thrown the dimension QName is not a
+      typed dimension in the discoverable taxonomy set.
+      If the dimension inapplicable to the fact, then false is returned.
+    </xhtml:p>
+  </error>
+
+  <conformanceTest xlink:type="simple" xlink:href="90307 xfi.fact-has-typed-dimension testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-09-02T00:00:00" by="herm">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

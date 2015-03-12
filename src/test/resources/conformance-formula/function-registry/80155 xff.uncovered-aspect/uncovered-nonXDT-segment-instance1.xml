@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+<xbrl 
+xmlns="http://www.xbrl.org/2003/instance" 
+xmlns:t="http://xbrl.org/formula/conformance/example" 
+xmlns:link="http://www.xbrl.org/2003/linkbase" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="
+  http://xbrl.org/2006/xbrldi http://www.xbrl.org/2006/xbrldi-2006.xsd
+"
+>
+  
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" 
+    xlink:href="uncovered-dimension-value.xsd"/>
+
+  <link:linkbaseRef 
+    xlink:type="simple" 
+    xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" 
+    xlink:href="uncovered-nonXDT-segment-formula1.xml"/>
+
+  <context id="c-everest">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <t:nonXbrlElement>everest non xdt element 1</t:nonXbrlElement>
+        <xbrldi:explicitMember dimension="t:Location">t:Nepal</xbrldi:explicitMember>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>8850</t:peakHeight>
+        </xbrldi:typedMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-aconcagua">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="t:Location">t:Argentina</xbrldi:explicitMember>
+        <t:nonXbrlElement>aconcagua non xdt element 1</t:nonXbrlElement>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>6962</t:peakHeight>
+        </xbrldi:typedMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-mckinley">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <t:nonXbrlElement>mckinley non xdt element 1</t:nonXbrlElement>
+        <xbrldi:explicitMember dimension="t:Location">t:UnitedStates</xbrldi:explicitMember>
+        <t:nonXbrlElement>mckinley non xdt element 2</t:nonXbrlElement>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>6194</t:peakHeight>
+        </xbrldi:typedMember>
+        <t:nonXbrlElement>mckinley non xdt element 3</t:nonXbrlElement>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-kilimanjaro">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="t:Location">t:Tanzania</xbrldi:explicitMember>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>5963</t:peakHeight>
+        </xbrldi:typedMember>
+        <t:nonXbrlElement>kilimanjaro non xdt element 1</t:nonXbrlElement>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-elbrus">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="t:Location">t:Russia</xbrldi:explicitMember>
+        <t:nonXbrlElement>elbrus non xdt element 1</t:nonXbrlElement>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>5642</t:peakHeight>
+        </xbrldi:typedMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-puncakjaya">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="t:Location">t:Indonesia</xbrldi:explicitMember>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>4884</t:peakHeight>
+        </xbrldi:typedMember>
+        <t:nonXbrlElement>puncatjaya non xdt element 1</t:nonXbrlElement>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-vinson">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="t:Location">t:Antarctica</xbrldi:explicitMember>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>4897</t:peakHeight>
+        </xbrldi:typedMember>
+        <t:nonXbrlElement>vinson non xdt element 1</t:nonXbrlElement>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-aurora-borealis">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <t:nonXbrlElement>northern lights are cool</t:nonXbrlElement>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>2500000</t:peakHeight>
+        </xbrldi:typedMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <context id="c-ozone-hole">
+    <entity>
+      <identifier scheme="http://xbrl.org/entity/identification/scheme">01</identifier>
+      <segment>
+        <xbrldi:typedMember dimension="t:HeightDimension">
+          <t:peakHeight>20000</t:peakHeight>
+        </xbrldi:typedMember>
+        <t:nonXbrlElement>use lots of suntan lotion near south pole</t:nonXbrlElement>
+      </segment>
+    </entity>
+    <period>
+      <instant>2007-12-31</instant>
+    </period>
+  </context>  
+  
+  <t:Peak contextRef="c-everest">Mount Everest</t:Peak>
+  <t:Peak contextRef="c-aconcagua">Aconcagua</t:Peak>
+  <t:Peak contextRef="c-mckinley">Mount McKinley</t:Peak>
+  <t:Peak contextRef="c-kilimanjaro">Mount Kilimanjaro</t:Peak>
+  <t:Peak contextRef="c-elbrus">Mount Elbrus</t:Peak>
+  <t:Peak contextRef="c-puncakjaya">Puncak Jaya</t:Peak>
+  <t:Peak contextRef="c-vinson">Vinson Massif</t:Peak>
+  <t:Peak contextRef="c-aurora-borealis">Aurora Borealis</t:Peak>
+  <t:AtmosphericPhenomenon contextRef="c-aurora-borealis">Aurora Borealis</t:AtmosphericPhenomenon>
+  <t:AtmosphericPhenomenon contextRef="c-ozone-hole">Ozone Hole</t:AtmosphericPhenomenon>
+</xbrl>
+
+

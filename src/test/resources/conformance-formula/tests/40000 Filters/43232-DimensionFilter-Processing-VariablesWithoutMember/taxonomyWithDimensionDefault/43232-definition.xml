@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" xlink:type="simple"/>
+   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all" xlink:type="simple"/>
+   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple"/>
+   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple"/>
+   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple"/>
+   <link:roleRef roleURI="http://example.org/test/hypercubes/SalesByRegion" xlink:href="43232-concepts.xsd#salesByRegion" xlink:type="simple"/>
+   <link:definitionLink xlink:role="http://example.org/test/hypercubes/SalesByRegion" xlink:type="extended">
+      <link:loc xlink:href="43232-concepts.xsd#tst_PrimaryItemsForSalesByRegion" xlink:label="lbl_PrimaryItemsForSalesByRegion" xlink:type="locator"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_Sales" xlink:label="lbl_Sales" xlink:type="locator"/>
+      <link:definitionArc order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="lbl_PrimaryItemsForSalesByRegion" xlink:to="lbl_Sales" xlink:type="arc"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_Region" xlink:label="lbl_Region" xlink:type="locator"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_Europe" xlink:label="lbl_Europe" xlink:type="locator"/>
+      <link:definitionArc order="2.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="lbl_Region" xlink:to="lbl_Europe" xlink:type="arc"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_USA" xlink:label="lbl_USA" xlink:type="locator"/>
+      <link:definitionArc order="3.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="lbl_Region" xlink:to="lbl_USA" xlink:type="arc"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_Australia" xlink:label="lbl_Australia" xlink:type="locator"/>
+      <link:definitionArc order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="lbl_Region" xlink:to="lbl_Australia" xlink:type="arc"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_RestOfWorld" xlink:label="lbl_RestOfWorld" xlink:type="locator"/>
+      <link:definitionArc order="4.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="lbl_Region" xlink:to="lbl_RestOfWorld" xlink:type="arc"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_SalesAndCostsByRegion" xlink:label="lbl_SalesAndCostsByRegion" xlink:type="locator"/>
+      <link:definitionArc order="1.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="lbl_PrimaryItemsForSalesByRegion" xlink:to="lbl_SalesAndCostsByRegion" xlink:type="arc"/>
+      <link:definitionArc order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="lbl_SalesAndCostsByRegion" xlink:to="lbl_Region" xlink:type="arc"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_Costs" xlink:label="lbl_Costs" xlink:type="locator"/>
+      <link:definitionArc order="2.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="lbl_PrimaryItemsForSalesByRegion" xlink:to="lbl_Costs" xlink:type="arc"/>
+   </link:definitionLink>
+   <link:definitionLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+      <link:loc xlink:href="43232-concepts.xsd#tst_RestOfWorld" xlink:label="lbl_RestOfWorld" xlink:type="locator"/>
+      <link:loc xlink:href="43232-concepts.xsd#tst_Region" xlink:label="lbl_Region" xlink:type="locator"/>
+      <link:definitionArc order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="lbl_Region" xlink:to="lbl_RestOfWorld" xlink:type="arc"/>
+   </link:definitionLink>
+</link:linkbase>

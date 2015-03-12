@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<linkbase
+  xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+  xsi:schemaLocation="
+    http://www.xbrl.org/2003/linkbase 
+      http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+    http://xbrl.org/2005/xbrldt  http://www.xbrl.org/2005/xbrldt-2005.xsd
+    ">
+  <roleRef xlink:type="simple"
+    xlink:href="fact-explicit-dimension-value.xsd#primaryItems"
+    roleURI="http://xbrl.org/formula/conformance/example/role/primaryItems" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/all" />
+  <roleRef xlink:type="simple"
+    xlink:href="fact-explicit-dimension-value.xsd#hypercubes"
+    roleURI="http://xbrl.org/formula/conformance/example/role/hypercubes" />
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/primaryItems">
+    <loc xlink:type="locator"
+      xlink:label="t_AtmosphericPhenomenon"
+      xlink:href="fact-explicit-dimension-value.xsd#AtmosphericPhenomenon" />
+    <loc xlink:type="locator"
+      xlink:label="t_AtmosphericHypercube"
+      xlink:href="fact-explicit-dimension-value.xsd#AtmosphericHypercube" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/all"
+      xlink:from="t_AtmosphericPhenomenon" xlink:to="t_AtmosphericHypercube"
+      order="1"
+      use="optional"
+      priority="2"
+      xbrldt:closed="true"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/hypercubes"
+      xbrldt:contextElement="segment" />
+  </definitionLink>
+</linkbase>

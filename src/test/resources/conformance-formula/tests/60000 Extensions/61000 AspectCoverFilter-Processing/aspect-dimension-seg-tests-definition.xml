@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<linkbase
+  xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+  xsi:schemaLocation="
+    http://www.xbrl.org/2003/linkbase 
+      http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+    http://xbrl.org/2005/xbrldt  http://www.xbrl.org/2005/xbrldt-2005.xsd
+    ">
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#primaryItems"
+    roleURI="http://xbrl.org/formula/conformance/example/role/primaryItems" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/all" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#hypercubes"
+    roleURI="http://xbrl.org/formula/conformance/example/role/hypercubes" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#regions"
+    roleURI="http://xbrl.org/formula/conformance/example/role/regions" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" />
+  <arcroleRef xlink:type="simple"
+    xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"
+    arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#americas"
+    roleURI="http://xbrl.org/formula/conformance/example/role/americas" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#oceania"
+    roleURI="http://xbrl.org/formula/conformance/example/role/oceania" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#africa"
+    roleURI="http://xbrl.org/formula/conformance/example/role/africa" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#asia"
+    roleURI="http://xbrl.org/formula/conformance/example/role/asia" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#europe"
+    roleURI="http://xbrl.org/formula/conformance/example/role/europe" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#polar"
+    roleURI="http://xbrl.org/formula/conformance/example/role/polar" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#primaryItems2"
+    roleURI="http://xbrl.org/formula/conformance/example/role/primaryItems2" />
+  <roleRef xlink:type="simple"
+    xlink:href="aspect-dimension-tests.xsd#hypercubes2"
+    roleURI="http://xbrl.org/formula/conformance/example/role/hypercubes2" />
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/primaryItems">
+    <loc xlink:type="locator"
+      xlink:label="t_AtmosphericPhenomenon"
+      xlink:href="aspect-dimension-tests.xsd#AtmosphericPhenomenon" />
+    <loc xlink:type="locator"
+      xlink:label="t_AtmosphericHypercube"
+      xlink:href="aspect-dimension-tests.xsd#AtmosphericHypercube" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/all"
+      xlink:from="t_AtmosphericPhenomenon" xlink:to="t_AtmosphericHypercube"
+      order="1"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/hypercubes"
+      xbrldt:contextElement="segment" />
+    <loc xlink:type="locator"
+      xlink:label="t_Peak"
+      xlink:href="aspect-dimension-tests.xsd#Peak" />
+    <loc xlink:type="locator"
+      xlink:label="t_SummitHypercube"
+      xlink:href="aspect-dimension-tests.xsd#SummitHypercube" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/all"
+      xlink:from="t_Peak" xlink:to="t_SummitHypercube"
+      order="1"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/hypercubes"
+      xbrldt:contextElement="segment" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/hypercubes">
+    <loc xlink:type="locator"
+      xlink:label="t_AtmosphericHypercube"
+      xlink:href="aspect-dimension-tests.xsd#AtmosphericHypercube" />
+    <loc xlink:type="locator"
+      xlink:label="t_HeightDimension"
+      xlink:href="aspect-dimension-tests.xsd#HeightDimension" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="t_AtmosphericHypercube" xlink:to="t_HeightDimension"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_SummitHypercube"
+      xlink:href="aspect-dimension-tests.xsd#SummitHypercube" />
+    <loc xlink:type="locator"
+      xlink:label="t_Location"
+      xlink:href="aspect-dimension-tests.xsd#Location" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="t_SummitHypercube" xlink:to="t_Location"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Regions"
+      xlink:href="aspect-dimension-tests.xsd#Regions" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain"
+      xlink:from="t_Location" xlink:to="t_Regions"
+      order="1"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/regions" />
+    <loc xlink:type="locator"
+      xlink:label="t_Antarctica"
+      xlink:href="aspect-dimension-tests.xsd#Antarctica" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="t_SummitHypercube" xlink:to="t_HeightDimension"
+      order="2"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/regions">
+    <loc xlink:type="locator"
+      xlink:label="t_Regions"
+      xlink:href="aspect-dimension-tests.xsd#Regions" />
+    <loc xlink:type="locator"
+      xlink:label="t_America"
+      xlink:href="aspect-dimension-tests.xsd#America" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Regions" xlink:to="t_America"
+      order="1"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/americas" />
+    <loc xlink:type="locator"
+      xlink:label="t_Oceania"
+      xlink:href="aspect-dimension-tests.xsd#Oceania" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Regions" xlink:to="t_Oceania"
+      order="2"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/oceania" />
+    <loc xlink:type="locator"
+      xlink:label="t_Africa"
+      xlink:href="aspect-dimension-tests.xsd#Africa" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Regions" xlink:to="t_Africa"
+      order="3"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/africa" />
+    <loc xlink:type="locator"
+      xlink:label="t_Asia"
+      xlink:href="aspect-dimension-tests.xsd#Asia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Regions" xlink:to="t_Asia"
+      order="4"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/asia" />
+    <loc xlink:type="locator"
+      xlink:label="t_Europe"
+      xlink:href="aspect-dimension-tests.xsd#Europe" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Regions" xlink:to="t_Europe"
+      order="5"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/europe" />
+    <loc xlink:type="locator"
+      xlink:label="t_Polar"
+      xlink:href="aspect-dimension-tests.xsd#Polar" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Regions" xlink:to="t_Polar"
+      order="6"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/polar" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/americas">
+    <loc xlink:type="locator"
+      xlink:label="t_America"
+      xlink:href="aspect-dimension-tests.xsd#America" />
+    <loc xlink:type="locator"
+      xlink:label="t_NorthAmerica"
+      xlink:href="aspect-dimension-tests.xsd#NorthAmerica" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_America" xlink:to="t_NorthAmerica"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_UnitedStates"
+      xlink:href="aspect-dimension-tests.xsd#UnitedStates" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_NorthAmerica" xlink:to="t_UnitedStates"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Mexico"
+      xlink:href="aspect-dimension-tests.xsd#Mexico" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_NorthAmerica" xlink:to="t_Mexico"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Canada"
+      xlink:href="aspect-dimension-tests.xsd#Canada" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_NorthAmerica" xlink:to="t_Canada"
+      order="3"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_SouthAmerica"
+      xlink:href="aspect-dimension-tests.xsd#SouthAmerica" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_America" xlink:to="t_SouthAmerica"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Argentina"
+      xlink:href="aspect-dimension-tests.xsd#Argentina" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_SouthAmerica" xlink:to="t_Argentina"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Brazil"
+      xlink:href="aspect-dimension-tests.xsd#Brazil" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_SouthAmerica" xlink:to="t_Brazil"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Peru"
+      xlink:href="aspect-dimension-tests.xsd#Peru" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_SouthAmerica" xlink:to="t_Peru"
+      order="3"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/oceania">
+    <loc xlink:type="locator"
+      xlink:label="t_Oceania"
+      xlink:href="aspect-dimension-tests.xsd#Oceania" />
+    <loc xlink:type="locator"
+      xlink:label="t_Australasia"
+      xlink:href="aspect-dimension-tests.xsd#Australasia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Oceania" xlink:to="t_Australasia"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Australia"
+      xlink:href="aspect-dimension-tests.xsd#Australia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Australasia" xlink:to="t_Australia"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_NewZealand"
+      xlink:href="aspect-dimension-tests.xsd#NewZealand" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Australasia" xlink:to="t_NewZealand"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Melanesia"
+      xlink:href="aspect-dimension-tests.xsd#Melanesia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Oceania" xlink:to="t_Melanesia"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Indonesia"
+      xlink:href="aspect-dimension-tests.xsd#Indonesia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Melanesia" xlink:to="t_Indonesia"
+      order="1"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/africa">
+    <loc xlink:type="locator"
+      xlink:label="t_Africa"
+      xlink:href="aspect-dimension-tests.xsd#Africa" />
+    <loc xlink:type="locator"
+      xlink:label="t_Tanzania"
+      xlink:href="aspect-dimension-tests.xsd#Tanzania" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Africa" xlink:to="t_Tanzania"
+      order="1"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/asia">
+    <loc xlink:type="locator"
+      xlink:label="t_Asia"
+      xlink:href="aspect-dimension-tests.xsd#Asia" />
+    <loc xlink:type="locator"
+      xlink:label="t_SouthAsia"
+      xlink:href="aspect-dimension-tests.xsd#SouthAsia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Asia" xlink:to="t_SouthAsia"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Nepal"
+      xlink:href="aspect-dimension-tests.xsd#Nepal" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_SouthAsia" xlink:to="t_Nepal"
+      order="1"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/europe">
+    <loc xlink:type="locator"
+      xlink:label="t_Europe"
+      xlink:href="aspect-dimension-tests.xsd#Europe" />
+    <loc xlink:type="locator"
+      xlink:label="t_Austria"
+      xlink:href="aspect-dimension-tests.xsd#Austria" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Europe" xlink:to="t_Austria"
+      order="1"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Russia"
+      xlink:href="aspect-dimension-tests.xsd#Russia" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Europe" xlink:to="t_Russia"
+      order="2"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Spain"
+      xlink:href="aspect-dimension-tests.xsd#Spain" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Europe" xlink:to="t_Spain"
+      order="3"
+      use="optional" />
+    <loc xlink:type="locator"
+      xlink:label="t_Switzerland"
+      xlink:href="aspect-dimension-tests.xsd#Switzerland" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Europe" xlink:to="t_Switzerland"
+      order="4"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/polar">
+    <loc xlink:type="locator"
+      xlink:label="t_Polar"
+      xlink:href="aspect-dimension-tests.xsd#Polar" />
+    <loc xlink:type="locator"
+      xlink:label="t_Antarctica"
+      xlink:href="aspect-dimension-tests.xsd#Antarctica" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member"
+      xlink:from="t_Polar" xlink:to="t_Antarctica"
+      order="1"
+      use="optional" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/primaryItems2">
+    <loc xlink:type="locator"
+      xlink:label="t_Peak"
+      xlink:href="aspect-dimension-tests.xsd#Peak" />
+    <loc xlink:type="locator"
+      xlink:label="t_SummitHypercube"
+      xlink:href="aspect-dimension-tests.xsd#SummitHypercube" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/all"
+      xlink:from="t_Peak" xlink:to="t_SummitHypercube"
+      order="1"
+      use="optional"
+      xbrldt:targetRole="http://xbrl.org/formula/conformance/example/role/hypercubes2"
+      xbrldt:contextElement="segment" />
+  </definitionLink>
+  <definitionLink xlink:type="extended"
+    xlink:role="http://xbrl.org/formula/conformance/example/role/hypercubes2">
+    <loc xlink:type="locator"
+      xlink:label="t_SummitHypercube"
+      xlink:href="aspect-dimension-tests.xsd#SummitHypercube" />
+    <loc xlink:type="locator"
+      xlink:label="t_HeightDimension"
+      xlink:href="aspect-dimension-tests.xsd#HeightDimension" />
+    <definitionArc xlink:type="arc"
+      xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+      xlink:from="t_SummitHypercube" xlink:to="t_HeightDimension"
+      order="1"
+      use="optional" />
+  </definitionLink>
+</linkbase>

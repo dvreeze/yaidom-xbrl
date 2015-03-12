@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+
+<link:linkbase
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  xmlns:va="http://xbrl.org/2008/assertion/value"
+  xmlns:variable="http://xbrl.org/2008/variable"
+  xmlns:cf="http://xbrl.org/2008/filter/concept"
+  xmlns:crf="http://xbrl.org/2010/filter/concept-relation"
+  xmlns:pf="http://xbrl.org/2008/filter/period"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfi-ext="http://www.xbrl.org/2008/function/instance/extension" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:test="http://abc.com/test"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic ../../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/assertion/value ../../../core_schemas/2008/value-assertion.xsd
+  http://xbrl.org/2008/variable ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2008/filter/concept ../../core_schemas/2008/concept-filter.xsd
+  http://xbrl.org/2010/filter/concept-relation ../../../core_schemas/2010/concept-relation-filter.xsd
+  http://xbrl.org/2008/filter/period ../../core_schemas/2008/period-filter.xsd
+  ">
+  
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-filter" xlink:href="../../../core_schemas/2008/variable.xsd#variable-filter" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2008/role/link">
+
+    <va:valueAssertion xlink:type="resource" id="movement-analysis" xlink:label="movement-analysis" 
+      test="abs( $endingBalance - $beginningBalance - sum($changes) ) lt 1.0"
+      aspectModel="dimensional" implicitFiltering="true" />
+
+
+    <!-- find all ending balances (use ending balance as the independent variable) -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_endingBalance"   bindAsSequence="false" />
+    <crf:conceptRelation xlink:type="resource" xlink:label="f_endingBalance"
+        test="xfi:relationship-attribute(.,QName('','preferredLabel')) eq 'http://www.xbrl.org/2003/role/periodEndLabel'">
+       <crf:variable>xfi:root</crf:variable>
+       <crf:linkrole>http://www.eg.com/eg/role/statement/ShareholdersEquity</crf:linkrole>
+       <crf:arcrole>http://www.xbrl.org/2003/arcrole/parent-child</crf:arcrole>
+       <crf:axis>descendant</crf:axis>
+    </crf:conceptRelation>
+    <!-- period is covered on the ending and beginning balances -->
+    <pf:period xlink:type="resource" xlink:label="f_endingBalance" test="true()" />
+
+    <!-- find sibling beginning balances of same concept as ending balance concept, 
+         fallback allows binding when no beginning balance -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_beginningBalance"   bindAsSequence="false" 
+      fallbackValue="0" />
+    <crf:conceptRelation xlink:type="resource" xlink:label="f_beginningBalance"
+        test="xfi:relationship-attribute(.,QName('','preferredLabel')) eq 'http://www.xbrl.org/2003/role/periodStartLabel' and
+              xfi:relationship-to-concept(.) eq node-name($endingBalance)">
+       <crf:variable>endingBalance</crf:variable>
+       <crf:linkrole>http://www.eg.com/eg/role/statement/ShareholdersEquity</crf:linkrole>
+       <crf:arcrole>http://www.xbrl.org/2003/arcrole/parent-child</crf:arcrole>
+       <crf:axis>sibling</crf:axis>
+    </crf:conceptRelation>
+    <!-- period is covered on the ending and beginning balances -->
+    <!-- if there were no $changes, filter for a prior-year beginning balance -->
+    <pf:period xlink:type="resource" xlink:label="f_beginningBalance" 
+      test="xfi:period-instant(xfi:period(.)) eq 
+            ( if ( exists( $changes ) )
+              then xfi:period-start(xfi:period( $changes[1] ))
+              else (xfi:period-instant(xfi:period($endingBalance)) - xs:yearMonthDuration('P1Y')))" />
+              
+    <!-- for quarterly reports, to acomodate multiple beginning balances prior 1Q, 2Q, 3Q, 4Q use this
+         if there is one starting balance in a report:
+    
+    <pf:period xlink:type="resource" xlink:label="f_beginningBalance" 
+      test="if ( exists( $changes ) )
+              then (xfi:period-instant(xfi:period(.)) eq 
+                       xfi:period-start(xfi:period( $changes[1] )))
+              else (some $qtr in ('P3M', 'P6M', 'P9M', 'P1Y') satisfies
+                    xfi:period-instant(xfi:period(.)) eq
+                    (xfi:period-instant(xfi:period($endingBalance)) - xs:yearMonthDuration($qtr)))" />
+    -->
+
+    <!-- find sibling sibling or descendant changes (if any)
+         no preferredLabel (e.g., neither beginning, ending, nor total label)
+         must have matching unit and dimensions to ending (& beginning) balance -->
+    <variable:factVariable xlink:type="resource" xlink:label="v_changes"   bindAsSequence="true"
+       fallbackValue="()" />
+    <crf:conceptRelation xlink:type="resource" xlink:label="f_changes_covered"
+        test="empty( xfi:relationship-attribute(.,QName('','preferredLabel')) )" >
+       <crf:variable>endingBalance</crf:variable>
+       <crf:linkrole>http://www.eg.com/eg/role/statement/ShareholdersEquity</crf:linkrole>
+       <crf:arcrole>http://www.xbrl.org/2003/arcrole/parent-child</crf:arcrole>
+       <crf:axis>sibling-or-descendant</crf:axis>
+    </crf:conceptRelation>
+    <cf:conceptPeriodType xlink:type="resource" xlink:label="f_changes_covered"
+      periodType="duration"/>
+    <!-- period is not covered on changes so all changes are period-matched -->
+    <pf:period xlink:type="resource" xlink:label="f_changes_not_covered" 
+      test="xfi:period-end(xfi:period(.)) eq xfi:period-instant(xfi:period($endingBalance))" />
+
+    <!-- this step inverts credit changes for summing with debit changes -->
+    <variable:generalVariable xlink:type="resource" xlink:label="v_weightedChanges"   bindAsSequence="true" 
+      select=" for $change in $changes return
+                if ( xfi:concept-balance( node-name( $change) eq 'credit' ) )
+                then -$change
+                else $change"/>
+
+    <!--  Arc from the formula to the variables it depends on -->
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="movement-analysis" xlink:to="v_beginningBalance" order="1.0"
+      name="beginningBalance" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="movement-analysis" xlink:to="v_changes" order="1.0"
+      name="changes" />
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="movement-analysis" xlink:to="v_weightedChanges" order="1.0"
+      name="weightedChanges" />
+
+    <!--  Arcs from variables to their concept filters -->
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="true"
+      xlink:from="v_beginningBalance" xlink:to="f_beginningBalance" order="1.0"/>
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="true"
+      xlink:from="v_endingBalance" xlink:to="f_endingBalance" order="1.0"/>
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="true"
+      xlink:from="v_changes" xlink:to="f_changes_covered" order="1.0"/>
+    <variable:variableFilterArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" 
+      complement="false" cover="false"
+      xlink:from="v_changes" xlink:to="f_changes_not_covered" order="1.0"/>
+
+  </generic:link>
+
+</link:linkbase>

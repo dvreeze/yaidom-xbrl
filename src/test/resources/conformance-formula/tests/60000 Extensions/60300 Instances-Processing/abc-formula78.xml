@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+
+<link:linkbase
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  xmlns:formula="http://xbrl.org/2008/formula"
+  xmlns:variable="http://xbrl.org/2008/variable"
+  xmlns:instance="http://xbrl.org/2010/variable/instance"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:test1="http://abc.com/test1"
+  xmlns:i="http://abc.com/instance-resource-name"
+
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/generic ../../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/formula ../../../core_schemas/2008/formula.xsd
+  http://xbrl.org/2008/variable ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2010/variable/instance ../../../core_schemas/2010/variable-instance.xsd
+  ">
+  
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="../../../core_schemas/2008/generic-label.xsd#element-label" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+
+
+  <generic:link xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2008/role/link">
+
+    <!-- input xbrl instance b -->
+    <instance:instance name="i:inst-b" xlink:type="resource" xlink:label="inst-b" />
+
+    <!-- formula produces an output for a single evaluation 
+         facts-in-instance results in the fact item nodes of tuples in inst-a and inst-b
+         they are atomized to strings for string-join sequence -->
+    <formula:formula xlink:type="resource" xlink:label="formula1" 
+      value="string-join( (
+                for $inst in (., $inst-b), 
+                    $fact in (xfi:items-in-instance($inst) | () )
+                return
+                    xfi:fact-footnotes($fact, 'http://abc.com/role/link1','','','en')
+                           ), ',')"
+      aspectModel="non-dimensional" implicitFiltering="true" >
+      <formula:aspects>
+        <formula:concept>
+           <formula:qname>test1:s</formula:qname>
+        </formula:concept>
+        <formula:entityIdentifier
+          scheme="'http://abc.com'"
+          value="'01'"/>
+        <formula:period>
+          <formula:instant value="xs:date('2000-12-31')"/>
+        </formula:period>
+      </formula:aspects>
+    </formula:formula>
+
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      name="inst-b" xlink:from="formula1" xlink:to="inst-b" order="1.0"/>
+
+    <!--  No fact variables.  -->
+
+  </generic:link>
+
+</link:linkbase>

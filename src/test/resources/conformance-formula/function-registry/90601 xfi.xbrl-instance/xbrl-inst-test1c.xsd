@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Taxonomy based on XBRL standard Version 2.1.
+Created by UBmatrix Taxonomy Designer 1.0.0.0 (2008-10-25 16:26).  
+Contact www.ubmatrix.com
+Copyright (c) 2002-2008 UBmatrix inc., All Rights Reserved
+Produced on 2008-12-12 10:06:29
+-->
+<schema
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:test="http://abc.com/test"
+  targetNamespace="http://abc.com/test"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+  <!-- targetNamespace is same between instance 1 and instance 2 -->
+  <annotation>
+    <appinfo>
+    </appinfo>
+  </annotation>
+  <import
+    namespace="http://www.xbrl.org/2003/instance"
+    schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <element
+    id="test_A"
+    name="A"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A1"
+    name="A1"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A11"
+    name="A11"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A111"
+    name="A111"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A112"
+    name="A112"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A113"
+    name="A113"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A12"
+    name="A12"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A121"
+    name="A121"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A122"
+    name="A122"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A13"
+    name="A13"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A2"
+    name="A2"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A21"
+    name="A21"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A211"
+    name="A211"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_A3"
+    name="A3"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_B"
+    name="B"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_B1"
+    name="B1"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_C"
+    name="C"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+  <element
+    id="test_C1"
+    name="C1"
+    type="xbrli:stringItemType"
+    substitutionGroup="xbrli:item"
+    xbrli:periodType="instant"
+    nillable="true" />
+</schema>

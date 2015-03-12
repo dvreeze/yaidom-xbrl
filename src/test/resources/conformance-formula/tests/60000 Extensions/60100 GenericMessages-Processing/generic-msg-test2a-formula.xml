@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2007 XBRL International. All Rights Reserved. -->
+
+<link:linkbase
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:generic="http://xbrl.org/2008/generic"
+  xmlns:va="http://xbrl.org/2008/assertion/value"
+  xmlns:variable="http://xbrl.org/2008/variable"
+  xmlns:msg="http://xbrl.org/2010/message"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xff="http://www.xbrl.org/2010/function/formula" 
+  xmlns:label="http://xbrl.org/2008/label"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:test="http://abc.com/test"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+
+  xsi:schemaLocation="
+  http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
+  http://xbrl.org/2008/assertion/value ../../../core_schemas/2008/value-assertion.xsd
+  http://xbrl.org/2008/generic ../../../core_schemas/2008/generic-link.xsd
+  http://xbrl.org/2008/formula ../../../core_schemas/2008/formula.xsd
+  http://xbrl.org/2008/variable ../../../core_schemas/2008/variable.xsd
+  http://xbrl.org/2010/message ../../../core_schemas/2010/generic-message.xsd
+  http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd
+  ">
+  
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="../../../core_schemas/2008/variable.xsd#variable-set" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/variable-filter" xlink:href="../../../core_schemas/2008/variable.xsd#variable-filter" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="../../../core_schemas/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2010/role/message" xlink:href="../../../core_schemas/2010/generic-message.xsd#standard-message" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2010/assertion-satisfied-message" xlink:href="../../../core_schemas/2010/validation-message.xsd#assertion-satisfied-message" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:href="../../../core_schemas/2010/validation-message.xsd#assertion-unsatisfied-message" xlink:type="simple"/>
+
+  <generic:link xlink:type="extended"
+    xlink:role="http://www.xbrl.org/2008/role/link">
+
+    <va:valueAssertion xlink:type="resource" 
+      xlink:label="test-assertion"
+      id="test-assertion"
+      aspectModel="non-dimensional" implicitFiltering="false" 
+      test="$var eq 987654321" />
+
+    <!-- Messsage for the assertion results with period dateTimes reconverted into ordinary dates -->
+    <msg:message xlink:type="resource" xlink:label="test-assertion-unsatisfied-message" 
+      xlink:role="http://www.xbrl.org/2010/role/message" 
+      xml:lang="en">Not satisfied error: Fact {
+          xff:uncovered-aspect('concept')
+      } in context {
+          $var/@contextRef
+      }, reported value {
+          $var
+      }, for the period starting {
+          xs:date( xfi:period-start( xff:uncovered-aspect('period') ) )
+      } and ending {
+          xs:date( xfi:period-end( xff:uncovered-aspect('period')) ) - xs:dayTimeDuration('P1D') 
+      }</msg:message>   
+
+    <msg:message xlink:type="resource" xlink:label="test-assertion-satisfied-message" 
+      xlink:role="http://www.xbrl.org/2010/role/message" 
+      xml:lang="en">Satisfied: Fact {
+          xff:uncovered-aspect('concept')
+      } in context {
+          $var/@contextRef
+      }, reported value {
+          $var
+      }, for the period starting {
+          xs:date( xfi:period-start( xff:uncovered-aspect('period') ) )
+      } and ending {
+          xs:date( xfi:period-end( xff:uncovered-aspect('period')) ) - xs:dayTimeDuration('P1D') 
+      }</msg:message>   
+                                                                        
+    <generic:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-satisfied-message"
+      xlink:from="test-assertion" xlink:to="test-assertion-satisfied-message" order="1.0"/>
+
+    <generic:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message"
+      xlink:from="test-assertion" xlink:to="test-assertion-unsatisfied-message" order="1.0"/>
+
+    <!--  Fact variables.  Note that no general variables are used in this calc-linkbase-assertion. -->
+    <variable:factVariable xlink:type="resource" xlink:label="var"   bindAsSequence="false" />
+
+    <!--  Arc from the assertion to the variables it depends on -->
+    <variable:variableArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" 
+      xlink:from="test-assertion" xlink:to="var" order="1.0"
+      name="var" />
+
+  </generic:link>
+
+</link:linkbase>

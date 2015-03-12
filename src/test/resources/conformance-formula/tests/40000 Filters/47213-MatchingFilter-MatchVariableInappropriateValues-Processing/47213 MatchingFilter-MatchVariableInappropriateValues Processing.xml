@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2011 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../../../infrastructure/test.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xbrl.org/2008/conformance ../../../infrastructure/test.xsd"
+  xmlns:xbrlfe="http://xbrl.org/2008/formula/error"
+  xmlns:binding="http://xbrl.org/2008/binding/errors"
+  xmlns:label="http://xbrl.org/2008/label/error"
+  xmlns:reference="http://xbrl.org/2008/reference/error"  
+  >
+  <creator>
+    <name>David North</name>
+    <email>dtn@corefiling.com</email>
+  </creator>
+  <number>47213</number>
+  <name>Match filters test: Matched variable binding to inappropriate values.</name>
+  <description>
+    Tests what happens when match filters' matched variable is not bound to exactly one fact.
+  </description>
+  <reference specification="MATCH-FILTER" id="sec-syntax"/>
+
+  <variation id="V-01">
+    <name>Matched variable is bound to fallback value</name>
+    <description>The matched variable is bound to a fallback value, so the filter matches no facts.</description>
+    <data>
+      <schema>47213-concepts.xsd</schema>
+      <linkbase>47213-formula-1.xml</linkbase>
+      <instance readMeFirst="true">47213-instance-1.xml</instance>
+    </data>
+    <result>
+      <instance>47213-result-1.xml</instance>
+    </result>
+  </variation>
+
+  <variation id="V-01a">
+    <name>Matched variable is a general variable</name>
+    <description>The matched variable is a general variable, so the filter matches no facts.</description>
+    <data>
+      <schema>47213-concepts.xsd</schema>
+      <linkbase>47213-formula-1a.xml</linkbase>
+      <instance readMeFirst="true">47213-instance-1a.xml</instance>
+    </data>
+    <result>
+      <instance>47213-result-1.xml</instance>
+    </result>
+  </variation>
+  
+  <variation id="V-01b">
+    <name>Matched variable is a parameter</name>
+    <description>The matched variable is a parameter, so the filter matches no facts.</description>
+    <data>
+      <schema>47213-concepts.xsd</schema>
+      <linkbase>47213-formula-1b.xml</linkbase>
+      <instance readMeFirst="true">47213-instance-1b.xml</instance>
+    </data>
+    <result>
+      <instance>47213-result-1.xml</instance>
+    </result>
+  </variation>
+
+  <variation id="V-02">
+    <name>Matched variable is bound to sequence with consistent value for matched aspect</name>
+    <description>The matched variable is bound to a sequence, but it has consistent a value for the matched aspect, so this value is matched to by the filter.</description>
+    <data>
+      <schema>47213-concepts.xsd</schema>
+      <linkbase>47213-formula-2.xml</linkbase>
+      <instance readMeFirst="true">47213-instance-2.xml</instance>
+    </data>
+    <result>
+      <instance>47213-result-2.xml</instance>
+    </result>
+  </variation> 
+
+  <variation id="V-03">
+    <name>Matched variable is bound to sequence with inconsistent values for matched aspect</name>
+    <description>The matched variable is bound to a sequence, and it has inconsistent values for the matched aspect, so an error is raised.</description>
+    <data>
+      <schema>47213-concepts.xsd</schema>
+      <linkbase>47213-formula-3.xml</linkbase>
+      <instance readMeFirst="true">47213-instance-3.xml</instance>
+    </data>
+    <result>
+      <error xmlns:xbrlmfe="http://xbrl.org/2008/filter/match/error">xbrlmfe:inconsistentMatchedVariableSequence</error>
+    </result>
+  </variation>
+</testcase>

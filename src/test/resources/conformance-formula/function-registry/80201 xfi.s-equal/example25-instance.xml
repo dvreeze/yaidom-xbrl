@@ -1,0 +1,82 @@
+<xbrl xmlns="http://www.xbrl.org/2003/instance"
+      xmlns:s="http://xbrl.org/formula/conformance/example"
+      xmlns:xbrli="http://www.xbrl.org/2003/instance"
+      xmlns:link="http://www.xbrl.org/2003/linkbase" 
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <link:schemaRef 
+    xlink:type="simple" 
+    xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" 
+    xlink:href="example25.xsd"/>
+
+<s:analysis id='aAnalysis'>
+  <s:customer id='bCustomer'>
+    <s:name id='bName' contextRef="np3">Acme</s:name>
+    <s:gross id='bGross' unitRef="u3" contextRef="np3" precision="4">3001</s:gross>
+    <s:returns id='bReturns' unitRef="u3" contextRef="np3" 
+               precision="3">100</s:returns>
+    <s:net unitRef="u3" contextRef="np3" precision="4">2900</s:net>
+  </s:customer>
+  <s:customer id='cCustomer'>
+    <s:name id='cName' contextRef="Xnnp3X">Acme</s:name>
+    <s:gross id='cGross' unitRef="u3" contextRef="np3" precision="3">3000</s:gross>
+    <s:returns unitRef="u3" contextRef="np3" 
+               precision="3">100</s:returns>
+    <s:net unitRef="u3" contextRef="np3" precision="4">2900</s:net>
+  </s:customer>
+  <s:customer id='dCustomer'>
+    <s:name contextRef="np3">Acme</s:name>
+    <s:gross unitRef="u3" contextRef="np3" precision="4">3000</s:gross>
+    <s:returns id='dReturns' unitRef="u3" contextRef="np3" precision="3">500</s:returns>
+    <s:net unitRef="u3" contextRef="np3" precision="4">2500</s:net>
+  </s:customer>
+  <s:customer id='eCustomer'>
+    <s:name id='fName' contextRef="np3">Bree</s:name>
+    <s:name id='gName' contextRef="Xnnp3X">Bree</s:name>
+    <s:gross unitRef="u3" contextRef="np3" precision="4">3000</s:gross>
+    <s:returns unitRef="u3" contextRef="np3" 
+               precision="3">200</s:returns>
+    <s:net unitRef="u3" contextRef="np3" precision="4">2800</s:net>
+  </s:customer>
+ <s:totalGross id='hTotalGross' unitRef="u3" contextRef="np3" 
+               precision="3">12000</s:totalGross>
+
+</s:analysis>
+
+<s:analysis id='iAnalysis'>
+  <s:customer id='jCustomer'>
+    <s:name id='kName' contextRef="np3">Acme</s:name>
+    <s:gross id='lGross' unitRef="u3" contextRef="np3" precision="4">3001</s:gross>
+    <s:gross id='mGross' unitRef="u3" contextRef="Xnnp3X" precision="3">3000</s:gross>
+    <s:returns id='nReturns' unitRef="u3" contextRef="np3" 
+               precision="3">100</s:returns>
+    <s:net unitRef="u3" contextRef="np3" precision="4">2900</s:net>
+  </s:customer>
+
+</s:analysis>
+<!-- One Redundant Context Xnnp3X = period,2003 -->
+<context id="np3">
+  <entity>
+    <identifier scheme="http://www.nasdaq.com">SAMP</identifier>
+  </entity>
+<period>
+  <startDate>2003-01-01</startDate>
+    <endDate>2003-12-31</endDate>
+  </period>
+</context>
+
+<unit id="u3"><measure>iso4217:USD</measure></unit>
+
+<context id="Xnnp3X">
+  <entity>
+    <identifier scheme="http://www.nasdaq.com">SAMP</identifier>
+  </entity>
+  <period>
+    <startDate>2003-01-01</startDate>
+    <endDate>2003-12-31</endDate>
+  </period>
+</context>
+
+</xbrl>

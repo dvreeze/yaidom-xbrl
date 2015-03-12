@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/conformanceFunction.xsl"?>
+<testcase
+  xmlns="http://xbrl.org/2008/conformance"
+  xmlns:reg="http://xbrl.org/2008/registry"
+  xmlns:fcn="http://xbrl.org/2008/function"
+  xmlns:cfcn="http://xbrl.org/2008/conformance/function"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance"
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error"
+  xmlns:xqt-err="http://www.w3.org/2005/xqt-errors"
+  xmlns:concept="http://xbrl.org/formula/conformance/example" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  http://xbrl.org/2008/conformance ../schemas/conformance.xsd
+  http://xbrl.org/2008/conformance/function ../schemas/conformanceFunction.xsd
+  ">
+  <owners>
+    <reg:owner id="herm">
+      <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+      <reg:email>fischer@markv.com</reg:email>
+     <reg:assumedOwnership moment="2008-02-19T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <number>80217</number>
+
+  <name>Function test xfi:start-equal</name>
+
+  <documentation>
+    <xhtml:p>
+      Tests of function xfi:start-equal
+      </xhtml:p>
+  </documentation>
+
+  <reference xlink:type="simple" xlink:href="http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2006-12-18.htm#_Toc156209161"/>
+
+  <variation id="V-01">
+    <name>Returns start-equality of dates that are equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V01" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V01">
+         xfi:start-equal( //concept:a[@id eq 'd1'],
+                      //concept:a[@id eq 'd2'] )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq true()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-02">
+    <name>Returns start-inequality of dates that are not equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V02" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V02">
+         xfi:start-equal( //concept:a[@id eq 'd1'],
+                      //concept:a[@id eq 'd3'] )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq false()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-03">
+    <name>Returns start-equality of date and constant that are equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V03" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V03">
+         xfi:start-equal( //concept:a[@id eq 'd1'],
+                          xs:date('2008-02-28') )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq true()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-04">
+    <name>Returns start-equality of date and dateTime that are equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V04" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V04">
+         xfi:start-equal( //concept:a[@id eq 'd1'],
+                      //concept:a[@id eq 'd4'] )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq true()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-05">
+    <name>Returns start-equality of date and dateTime that are equal, reversed arguments</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V05" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V05">
+         xfi:start-equal( //concept:a[@id eq 'd4'],
+                      //concept:a[@id eq 'd1'] )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq true()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-06">
+    <name>Returns start-equality of date and dateTime constant that are equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V06" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V06">
+         xfi:start-equal( xs:dateTime('2008-02-28T00:00:00'),
+                      //concept:a[@id eq 'd1'])
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq true()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-07">
+    <name>Returns start-equality of date and dateTime that are not equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V07" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V07">
+         xfi:start-equal( //concept:a[@id eq 'd5'],
+                      //concept:a[@id eq 'd1'] )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq false()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-08">
+    <name>Returns start-equality of dateTimes that are not equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V08" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V08">
+         xfi:start-equal( //concept:a[@id eq 'd6'],
+             xfi:period-instant( xfi:period( /xbrli:xbrl/concept:a[@id eq 'd5'] ) ) )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq false()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <variation id="V-09">
+    <name>Returns start-equality of date and context dateTimes that are equal</name>
+    <documentation>
+      <xhtml:p>
+      </xhtml:p>
+    </documentation>
+
+    <inputs>
+      <schema xlink:type="simple" xlink:href="value-test-concepts.xsd"/>
+      <instance readMeFirst="true" id="V09" xlink:type="simple" xlink:href="value-test-instance.xml"/>
+      <cfcn:call file="V09">
+         xfi:start-equal( //concept:a[@id eq 'd6'],
+             xfi:period-instant( xfi:period( /xbrli:xbrl/concept:a[@id eq 'd1'] ) ) )
+      </cfcn:call>
+    </inputs>
+    <outputs>
+      <cfcn:test>
+         $result instance of xs:boolean and 
+         count( $result ) eq 1 and
+         $result eq true()
+      </cfcn:test>
+    </outputs>
+  </variation>
+
+  <revisions>
+    <reg:revision on="2008-02-19T00:00:00" by="herm">
+      <xhtml:p>
+        Created the test case.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</testcase>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xfie="http://www.xbrl.org/2008/function/instance/error" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2012-06-07T00:00:00" />
+
+  <owners>
+    <reg:owner id="wojciech">
+       <reg:name>Wojciech Diakowski</reg:name>
+       <reg:affiliation>Fingo</reg:affiliation>
+       <reg:email>wojtekd@fingo.pl</reg:email>
+       <reg:assumedOwnership moment="2012-06-07T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns a sequence of QNames of all typed dimensions that are reported in the segment or scenario of the item.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <signature name="xfi:fact-typed-dimensions">
+
+    <input name="item" type="schema-element(xbrli:item)">
+      <xhtml:p>
+        The item that the typed dimension QNames are required for.
+      </xhtml:p>
+    </input>
+	<output type="xs:QName*">
+      <xhtml:p>
+        Returns sequence of QNames of all typed dimensions that are reported in the segment or scenario of the item. 
+        Result is NOT in any specific order.
+        If item has no typed dimensions empty sequence is returned. 
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <conformanceTest xlink:type="simple" xlink:href="90312 xfi.fact-typed-dimensions testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2012-06-07T00:00:00" by="wojciech">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>

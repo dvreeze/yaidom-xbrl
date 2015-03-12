@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<xbrl 
+  xmlns="http://www.xbrl.org/2003/instance" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+  xmlns:test1="http://abc.com/test1"
+  xsi:schemaLocation=""
+>
+  <link:schemaRef xlink:href="dim-2.xsd" xlink:type="simple" 
+   xml:base="dim-1-current-yr/" />
+  <link:linkbaseRef xlink:href="dim-1-formula1.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"  />
+  <context id="c1m1">
+    <entity>
+      <identifier scheme="http://abc.com">01</identifier>
+      <!-- no segment due to dim1 m1 being default member, DTS is copied from standard input instance -->
+    </entity>
+    <period>
+      <instant>2002-12-31</instant>
+    </period>
+  </context>
+  <context id="c1m2">
+    <entity>
+      <identifier scheme="http://abc.com">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="test1:dim">test1:m2</xbrldi:explicitMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2002-12-31</instant>
+    </period>
+  </context>
+  <context id="c1m3">
+    <entity>
+      <identifier scheme="http://abc.com">01</identifier>
+      <segment>
+        <xbrldi:explicitMember dimension="test1:dim">test1:m3</xbrldi:explicitMember>
+      </segment>
+    </entity>
+    <period>
+      <instant>2002-12-31</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:EUR</measure>
+  </unit>
+
+  <!-- implicitly matched results for the 'present' dimensions -->
+  <test1:a    contextRef="c1m1" unitRef="u1" decimals="0">6003</test1:a> 
+  <test1:a    contextRef="c1m2" unitRef="u1" decimals="0">6006</test1:a> 
+  <test1:a    contextRef="c1m3" unitRef="u1" decimals="0">6010</test1:a> 
+
+  <!-- extra result for each of the defaults matched to each other default
+       inst1 1001 (default) + inst2 2002 (default) + inst 3 3004 (default) -->
+  <test1:a    contextRef="c1m1" unitRef="u1" decimals="0">6007</test1:a> 
+  <!-- extra result for each of the defaults matched to each other default
+       inst1 1001 (default) + inst2 2002 (inst-b:c1m1) + inst 3 3004 (default) -->
+  <test1:a    contextRef="c1m1" unitRef="u1" decimals="0">6008</test1:a> 
+  <!-- no extra result for each of the defaults matched to each other default
+       inst1 1003 (inst1:c1m3) + inst2 2002 (default) + inst 3 3004 (default) -->
+  <test1:a    contextRef="c1m3" unitRef="u1" decimals="0">6009</test1:a> 
+
+</xbrl>
+
+

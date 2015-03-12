@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2008 XBRL International. All Rights Reserved. -->
+<?xml-stylesheet type="text/xsl" href="../stylesheets/functionDefinition.xsl"?>
+<function
+  xmlns="http://xbrl.org/2008/function" 
+  xmlns:reg="http://xbrl.org/2008/registry" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xfi="http://www.xbrl.org/2008/function/instance" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="
+  http://xbrl.org/2008/registry ../schemas/registry.xsd
+  http://xbrl.org/2008/function ../schemas/function.xsd
+  ">
+
+  <lastUpdated moment="2010-09-09T00:00:00" />
+
+  <owners>
+    <reg:owner id="herm">
+       <reg:name>Herm Fischer</reg:name>
+      <reg:affiliation>UBMatrix / Mark V Systems</reg:affiliation>
+       <reg:email>fischer@markv.com</reg:email>
+       <reg:assumedOwnership moment="2008-09-01T00:00:00" />
+    </reg:owner>
+  </owners>
+
+  <summary>
+    Returns strings containing the footnotes that has the specified link role,
+    resource role, and language.
+  </summary>
+
+  <documentation>
+  </documentation>
+
+  <signature name="xfi:fact-footnotes">
+
+    <input name="fact" type="element()">
+      <xhtml:p>
+        The fact (item or tuple) whose footnotes are to be found.
+      </xhtml:p>
+    </input>
+
+    <input name="linkrole" type="xs:string?">
+      <xhtml:p>
+        The linkrole value that specifies the network of effective
+        relationships of arcs in which to find the footnotes.
+        If an empty sequence or empty string ("()" or "''") then the default link role is implied.
+      </xhtml:p>
+    </input>
+
+    <input name="arcrole" type="xs:string?">
+      <xhtml:p>
+        The footnote arc role value that specifies the network of effective
+        relationships of arcs in which to find the footnotes.  If an empty 
+        sequence or empty string ("()" or "''") then the default footnote arcrole is used.
+      </xhtml:p>
+    </input>
+
+    <input name="footnoterole" type="xs:string?">
+      <xhtml:p>
+        The footnote resource role value that is to be found.  
+        If omitted ("()" or "''") then the default footnote role is used.
+      </xhtml:p>
+    </input>
+
+    <input name="lang" type="xs:string">
+      <xhtml:p>
+        The language code of the footnote to be retrieved.
+        If a footnote with exact match is not found, a closest-sublanguage is returned, e.g.,
+        if the argument to $lang is en-UK and a footnote is present with en, it is returned.
+      </xhtml:p>
+    </input>
+
+    <!-- 2011-03-18: removed, because base spec 2.1 requires footnotes to be in fact's instance document
+    <input name="xbrlinstance" type="element(xbrli:xbrl)">
+      <xhtml:p>
+        This parameter is optional.  If absent the target XBRL instance is the subject instance.
+        If provided then the specified XBRL instance provides items and footnotes.
+      </xhtml:p>
+    </input>
+    -->
+
+    <output type="xs:string*">
+      <xhtml:p>
+        Returns footnotes (if found) or an empty sequence (if none found).
+      </xhtml:p>
+    </output>
+  </signature>
+
+  <conformanceTest xlink:type="simple" xlink:href="90506 xfi.fact-footnotes testcase.xml"/>
+
+  <revisions>
+    <reg:revision on="2008-12-12T00:00:00" by="herm">
+      <xhtml:p>
+        Created the function definition.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-09-09T00:00:00" by="herm">
+      <xhtml:p>
+        Changed role URIs to strings for cast-less coding and to be similar to fn:QName's $paramURI, an xs:string.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2010-10-16T00:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura, changed footnoterole and lang to string, and used same
+        wording as xfi:concept-label for these parameters.
+      </xhtml:p>
+    </reg:revision>
+
+    <reg:revision on="2011-03-18T09:00:00" by="herm">
+      <xhtml:p>
+        Incorporated feedback from Hitoshi Okumura, removed optional instance parameter because a footnote is constrained
+        by base spec to be in the same instance as the fact, and changed linkrole and arcrole parameters to allow either "()" or "''"
+        to indicate default link role.
+      </xhtml:p>
+    </reg:revision>
+  </revisions>
+
+</function>
