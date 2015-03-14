@@ -601,9 +601,14 @@ object Fact {
   private[xbrl] def apply(elem: DocawareBridgeElem, childElems: immutable.IndexedSeq[XbrliElem]): Fact =
     if (ItemFact.accepts(elem)) ItemFact(elem, childElems) else TupleFact(elem, childElems)
 
+  /**
+   * Returns true if the given Path is a fact Path. It checks that the Path is not the root Path, that
+   * it is not inside a context, unit, schemaRef etc., and that it cannot be a fraction numerator or denominator.
+   */
   def isFactPath(path: Path): Boolean = {
     !path.isRoot &&
-      !Set(Option(LinkNs), Option(XbrliNs)).contains(path.firstEntry.elementName.namespaceUriOption)
+      !Set(Option(LinkNs), Option(XbrliNs)).contains(path.firstEntry.elementName.namespaceUriOption) &&
+      !Set(Option(XbrliNs)).contains(path.lastEntry.elementName.namespaceUriOption)
   }
 }
 
