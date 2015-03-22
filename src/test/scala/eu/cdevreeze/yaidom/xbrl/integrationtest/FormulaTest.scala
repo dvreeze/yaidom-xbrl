@@ -29,6 +29,7 @@ import org.junit.runner.RunWith
 import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
 
+import eu.cdevreeze.xbrl.aspects.AspectQueryApi
 import eu.cdevreeze.yaidom.bridge.DefaultDocawareBridgeElem
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.docaware
@@ -63,6 +64,10 @@ class FormulaTest extends Suite {
     val xbrlInstanceDoc =
       getXbrlInstanceDoc(new File(classOf[FormulaTest].getResource("/conformance-formula/examples/0019 Value Assertion/instance.xml").toURI))
 
+    // Missing taxonomy model!
+    val aspectQueryApi = new AspectQueryApi(xbrlInstanceDoc.xbrlInstance, null)
+    import aspectQueryApi._
+
     val tns = "http://xbrl.org/formula/conformance/example"
     val netIncomesEName = EName(tns, "NetIncomes")
     val grossIncomesEName = EName(tns, "GrossIncomes")
@@ -71,7 +76,14 @@ class FormulaTest extends Suite {
       for {
         netIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(netIncomesEName, Vector())
         grossIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(grossIncomesEName, Vector())
-        if netIncomes.contextRef == grossIncomes.contextRef && netIncomes.unitRef == grossIncomes.unitRef
+        if matchOnLocation(netIncomes, grossIncomes) &&
+          matchOnEntityIdentifier(netIncomes, grossIncomes) &&
+          matchOnPeriod(netIncomes, grossIncomes) &&
+          matchOnNonXdtSegmentContent(netIncomes, grossIncomes) &&
+          matchOnNonXdtScenarioContent(netIncomes, grossIncomes) &&
+          matchOnSegmentExplicitDimensions(netIncomes, grossIncomes) &&
+          matchOnScenarioExplicitDimensions(netIncomes, grossIncomes) &&
+          matchOnUnit(netIncomes, grossIncomes)
       } yield {
         valueAssertionIteration(netIncomes, grossIncomes)
       }

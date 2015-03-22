@@ -16,9 +16,13 @@
 
 package eu.cdevreeze.yaidom.xbrl
 
+import java.net.URI
+
 import scala.BigDecimal
 import scala.collection.immutable
 import scala.reflect.classTag
+
+import eu.cdevreeze.yaidom.bridge.DocawareBridgeElem
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.core.Path
 import eu.cdevreeze.yaidom.core.QName
@@ -29,8 +33,7 @@ import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 import eu.cdevreeze.yaidom.queryapi.IsNavigable
 import eu.cdevreeze.yaidom.queryapi.ScopedElemLike
 import eu.cdevreeze.yaidom.queryapi.SubtypeAwareElemLike
-import eu.cdevreeze.yaidom.bridge.DocawareBridgeElem
-import java.net.URI
+import eu.cdevreeze.yaidom.resolved
 
 /**
  * XML element inside XBRL instance (or the entire XBRL instance itself). This API is immutable if the wrapped element is
@@ -308,8 +311,8 @@ final class XbrliUnit private[xbrl] (
     filterChildElems(XbrliMeasureEName) map (e => e.textAsResolvedQName)
   }
 
-  def divide: Divide = {
-    getChildElemOfType(classTag[Divide])(anyElem)
+  def divideOption: Option[Divide] = {
+    findChildElemOfType(classTag[Divide])(anyElem)
   }
 }
 
@@ -338,7 +341,7 @@ abstract class ItemFact private[xbrl] (
 
   require(attributeOption(ContextRefEName).isDefined, s"Expected attribute $ContextRefEName")
 
-  def contextRef: String = attribute(ContextRefEName)
+  final val contextRef: String = attribute(ContextRefEName)
 }
 
 /**
@@ -364,7 +367,7 @@ abstract class NumericItemFact private[xbrl] (
 
   require(attributeOption(UnitRefEName).isDefined, s"Expected attribute $UnitRefEName")
 
-  def unitRef: String = attribute(UnitRefEName)
+  final val unitRef: String = attribute(UnitRefEName)
 }
 
 /**
@@ -501,6 +504,9 @@ final class Period private[xbrl] (
   def isForever: Boolean = {
     findChildElem(XbrliForeverEName).isDefined
   }
+
+  val asResolvedElem: resolved.Elem =
+    resolved.Elem(bridgeElem.toElem).coalesceAndNormalizeAllText.removeAllInterElementWhitespace
 }
 
 /**
@@ -513,6 +519,22 @@ final class Scenario private[xbrl] (
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliScenarioEName, s"Expected EName $XbrliScenarioEName but found $resolvedName")
+
+  val asResolvedElem: resolved.Elem =
+    resolved.Elem(bridgeElem.toElem)
+
+  def nonXdtContent: immutable.IndexedSeq[XbrliElem] = {
+    childElems.filter(e => e.resolvedName.namespaceUriOption != Some(XbrldiNs))
+  }
+
+  val nonXdtResolvedElems: immutable.IndexedSeq[resolved.Elem] = {
+    nonXdtContent.map(e => resolved.Elem(e.bridgeElem.toElem))
+  }
+
+  def explicitDimensions: Map[EName, EName] = {
+    childElems.filter(withEName(XbrldiNs, "explicitMember")).
+      map(e => (e.attributeAsResolvedQName(EName("dimension")) -> e.textAsResolvedQName)).toMap
+  }
 }
 
 /**
@@ -525,6 +547,22 @@ final class Segment private[xbrl] (
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliSegmentEName, s"Expected EName $XbrliSegmentEName but found $resolvedName")
+
+  val asResolvedElem: resolved.Elem =
+    resolved.Elem(bridgeElem.toElem)
+
+  def nonXdtContent: immutable.IndexedSeq[XbrliElem] = {
+    childElems.filter(e => e.resolvedName.namespaceUriOption != Some(XbrldiNs))
+  }
+
+  val nonXdtResolvedElems: immutable.IndexedSeq[resolved.Elem] = {
+    nonXdtContent.map(e => resolved.Elem(e.bridgeElem.toElem))
+  }
+
+  def explicitDimensions: Map[EName, EName] = {
+    childElems.filter(withEName(XbrldiNs, "explicitMember")).
+      map(e => (e.attributeAsResolvedQName(EName("dimension")) -> e.textAsResolvedQName)).toMap
+  }
 }
 
 /**
@@ -537,6 +575,9 @@ final class Identifier private[xbrl] (
   childElems: immutable.IndexedSeq[XbrliElem]) extends XbrliElem(bridgeElem, childElems) {
 
   require(resolvedName == XbrliIdentifierEName, s"Expected EName $XbrliIdentifierEName but found $resolvedName")
+
+  val asResolvedElem: resolved.Elem =
+    resolved.Elem(bridgeElem.toElem)
 }
 
 /**

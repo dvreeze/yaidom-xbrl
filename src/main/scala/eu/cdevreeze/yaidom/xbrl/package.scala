@@ -29,6 +29,7 @@ package object xbrl {
   val LinkNs = "http://www.xbrl.org/2003/linkbase"
   val XmlNs = "http://www.w3.org/XML/1998/namespace"
   val XsiNs = "http://www.w3.org/2001/XMLSchema-instance"
+  val XbrldiNs = "http://xbrl.org/2006/xbrldi"
 
   val XbrliXbrlEName = EName(XbrliNs, "xbrl")
   val XbrliContextEName = EName(XbrliNs, "context")
