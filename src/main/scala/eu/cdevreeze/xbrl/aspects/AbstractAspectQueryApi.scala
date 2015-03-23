@@ -48,19 +48,23 @@ trait AbstractAspectQueryApi {
 
   def periodAspect(itemFact: ItemFact): Period
 
-  def completeSegmentAspectOption(itemFact: ItemFact): Option[Segment]
-
-  def completeScenarioAspectOption(itemFact: ItemFact): Option[Scenario]
-
   def nonXdtSegmentAspectOption(itemFact: ItemFact): immutable.IndexedSeq[XbrliElem]
 
   def nonXdtScenarioAspectOption(itemFact: ItemFact): immutable.IndexedSeq[XbrliElem]
 
-  def segmentExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName]
-
-  def scenarioExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName]
-
   def unitAspect(numericItemFact: NumericItemFact): XbrliUnit
+
+  def findExplicitDimensions(itemFact: ItemFact): Set[EName]
+
+  def findExplicitDimensions(itemFactEName: EName): Set[EName]
+
+  def explicitDimensionAspectOption(dimension: EName, itemFact: ItemFact): Option[EName]
+
+  // Aspects in non-dimensional aspect model
+
+  def completeSegmentAspectOption(itemFact: ItemFact): Option[Segment]
+
+  def completeScenarioAspectOption(itemFact: ItemFact): Option[Scenario]
 
   // Aspect matching
 
@@ -72,17 +76,17 @@ trait AbstractAspectQueryApi {
 
   def matchOnPeriod(fact1: Fact, fact2: Fact): Boolean
 
-  def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean
-
   def matchOnNonXdtSegmentContent(fact1: Fact, fact2: Fact): Boolean
 
   def matchOnNonXdtScenarioContent(fact1: Fact, fact2: Fact): Boolean
 
-  def matchOnSegmentExplicitDimensions(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnScenarioExplicitDimensions(fact1: Fact, fact2: Fact): Boolean
-
   def matchOnUnit(fact1: Fact, fact2: Fact): Boolean
+
+  def matchOnExplicitDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean
+
+  // Aspect matching in non-dimensional aspect model
+
+  def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean
+
+  def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean
 }

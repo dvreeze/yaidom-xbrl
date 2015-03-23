@@ -62,18 +62,6 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     context.period
   }
 
-  def completeSegmentAspectOption(itemFact: ItemFact): Option[Segment] = {
-    val context =
-      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
-    context.entity.segmentOption
-  }
-
-  def completeScenarioAspectOption(itemFact: ItemFact): Option[Scenario] = {
-    val context =
-      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
-    context.scenarioOption
-  }
-
   def nonXdtSegmentAspectOption(itemFact: ItemFact): immutable.IndexedSeq[XbrliElem] = {
     val context =
       xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
@@ -86,20 +74,41 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     context.scenarioOption.map(e => e.nonXdtContent).getOrElse(Vector())
   }
 
-  def segmentExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName] = {
-    val context =
-      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
-    context.entity.segmentOption.map(e => e.explicitDimensions).getOrElse(Map())
-  }
-
-  def scenarioExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName] = {
-    val context =
-      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
-    context.scenarioOption.map(e => e.explicitDimensions).getOrElse(Map())
-  }
-
   def unitAspect(numericItemFact: NumericItemFact): XbrliUnit = {
     xbrlInstance.allUnitsById.getOrElse(numericItemFact.unitRef, sys.error("Missing unit with ID ${numericItemFact.unitRef}"))
+  }
+
+  def findExplicitDimensions(itemFact: ItemFact): Set[EName] = {
+    val context =
+      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
+    val dims =
+      (context.entity.segmentOption.map(e => e.explicitDimensions).getOrElse(Map())) ++
+        (context.scenarioOption.map(e => e.explicitDimensions).getOrElse(Map()))
+    dims.keySet
+  }
+
+  def findExplicitDimensions(itemFactEName: EName): Set[EName] = {
+    xbrlInstance.findAllItems.flatMap(e => findExplicitDimensions(e)).toSet
+  }
+
+  def explicitDimensionAspectOption(dimension: EName, itemFact: ItemFact): Option[EName] = {
+    val context =
+      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
+    (segmentExplicitDimensionAspects(itemFact) ++ scenarioExplicitDimensionAspects(itemFact)).get(dimension)
+  }
+
+  // Aspects in non-dimensional aspect model
+
+  def completeSegmentAspectOption(itemFact: ItemFact): Option[Segment] = {
+    val context =
+      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
+    context.entity.segmentOption
+  }
+
+  def completeScenarioAspectOption(itemFact: ItemFact): Option[Scenario] = {
+    val context =
+      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
+    context.scenarioOption
   }
 
   // Aspect matching
@@ -132,28 +141,6 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     case _ => true
   }
 
-  def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      completeSegmentAspectOption(item1).map(_.asResolvedElem) ==
-        completeSegmentAspectOption(item2).map(_.asResolvedElem)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      completeScenarioAspectOption(item1).map(_.asResolvedElem) ==
-        completeScenarioAspectOption(item2).map(_.asResolvedElem)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
   def matchOnNonXdtSegmentContent(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
     case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
     case (item1: ItemFact, item2: ItemFact) =>
@@ -176,24 +163,6 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     case _ => true
   }
 
-  def matchOnSegmentExplicitDimensions(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      segmentExplicitDimensionAspects(item1) == segmentExplicitDimensionAspects(item2)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnScenarioExplicitDimensions(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      scenarioExplicitDimensionAspects(item1) == scenarioExplicitDimensionAspects(item2)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
   def matchOnUnit(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
     case (item1: NumericItemFact, item2: NumericItemFact) if (item1.unitRef == item2.unitRef) => true
     case (item1: NumericItemFact, item2: NumericItemFact) if unitAspect(item1).divideOption.isDefined && unitAspect(item2).divideOption.isDefined =>
@@ -205,5 +174,52 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     case (item1: NumericItemFact, _) => false
     case (_, item2: NumericItemFact) => false
     case _ => true
+  }
+
+  def matchOnExplicitDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      explicitDimensionAspectOption(dimension, item1) == explicitDimensionAspectOption(dimension, item2)
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  // Non-dimensional aspect model aspect matching
+
+  def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      completeSegmentAspectOption(item1).map(_.asResolvedElem) ==
+        completeSegmentAspectOption(item2).map(_.asResolvedElem)
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      completeScenarioAspectOption(item1).map(_.asResolvedElem) ==
+        completeScenarioAspectOption(item2).map(_.asResolvedElem)
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  // Private methods
+
+  private def segmentExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName] = {
+    val context =
+      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
+    context.entity.segmentOption.map(e => e.explicitDimensions).getOrElse(Map())
+  }
+
+  private def scenarioExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName] = {
+    val context =
+      xbrlInstance.allContextsById.getOrElse(itemFact.contextRef, sys.error(s"Missing context with ID ${itemFact.contextRef}"))
+    context.scenarioOption.map(e => e.explicitDimensions).getOrElse(Map())
   }
 }
