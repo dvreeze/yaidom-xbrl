@@ -72,13 +72,11 @@ class FormulaTest extends Suite {
     val netIncomesEName = EName(tns, "NetIncomes")
     val grossIncomesEName = EName(tns, "GrossIncomes")
 
-    val dimensions: Set[EName] =
-      findExplicitDimensions(netIncomesEName).union(findExplicitDimensions(grossIncomesEName))
-
     val results: immutable.IndexedSeq[Boolean] =
       for {
         netIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(netIncomesEName, Vector())
         grossIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(grossIncomesEName, Vector())
+        dimensions = findExplicitDimensions(netIncomes).union(findExplicitDimensions(grossIncomes))
         if matchOnLocation(netIncomes, grossIncomes) &&
           matchOnEntityIdentifier(netIncomes, grossIncomes) &&
           matchOnPeriod(netIncomes, grossIncomes) &&
