@@ -32,6 +32,7 @@ import org.scalatest.junit.JUnitRunner
 import eu.cdevreeze.xbrl.aspects.Aspect
 import eu.cdevreeze.xbrl.aspects.AspectQueryApi
 import eu.cdevreeze.xbrl.aspects.ConceptAspect
+import eu.cdevreeze.xbrl.aspects.PeriodAspect
 import eu.cdevreeze.yaidom.bridge.DefaultDocawareBridgeElem
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.docaware
@@ -98,6 +99,10 @@ class FormulaTest extends Suite {
     val xbrlInstanceDoc =
       getXbrlInstanceDoc(new File(classOf[FormulaTest].getResource("/conformance-formula/examples/0015 Movement Pattern/instance-value-assertion.xml").toURI))
 
+    // Missing taxonomy model!
+    val aspectQueryApi = new AspectQueryApi(xbrlInstanceDoc.xbrlInstance, null)
+    import aspectQueryApi._
+
     val tns = "http://xbrl.org/formula/conformance/example"
     val balanceEName = EName(tns, "balance")
     val changesEName = EName(tns, "changes")
@@ -137,6 +142,10 @@ class FormulaTest extends Suite {
         if matchOnPeriodStart(startBalance, changes)
         endBalance <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(balanceEName, Vector())
         if matchOnPeriodEnd(endBalance, changes)
+        dimensions = findExplicitDimensions(startBalance).union(findExplicitDimensions(changes)).union(findExplicitDimensions(endBalance))
+        uncoveredAspects = Aspect.allDimensionalModelAspects(dimensions) diff Set(ConceptAspect, PeriodAspect)
+        if matchOnAspects(uncoveredAspects, startBalance, changes) &&
+          matchOnAspects(uncoveredAspects, changes, endBalance)
       } yield {
         movementPatternIteration(startBalance, changes, endBalance)
       }
