@@ -75,8 +75,8 @@ class FormulaTest extends Suite {
         netIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(netIncomesEName, Vector())
         grossIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(grossIncomesEName, Vector())
         dimensions = findExplicitDimensions(netIncomes).union(findExplicitDimensions(grossIncomes))
-        aspects = Aspect.allDimensionalModelAspects(dimensions) diff Set(ConceptAspect)
-        if matchOnAspects(aspects, netIncomes, grossIncomes)
+        uncoveredAspects = Aspect.allDimensionalModelAspects(dimensions) diff Set(ConceptAspect)
+        if matchOnAspects(uncoveredAspects, netIncomes, grossIncomes)
       } yield {
         valueAssertionIteration(netIncomes, grossIncomes)
       }
