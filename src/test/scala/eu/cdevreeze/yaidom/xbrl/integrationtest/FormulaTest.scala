@@ -29,7 +29,9 @@ import org.junit.runner.RunWith
 import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
 
+import eu.cdevreeze.xbrl.aspects.Aspect
 import eu.cdevreeze.xbrl.aspects.AspectQueryApi
+import eu.cdevreeze.xbrl.aspects.ConceptAspect
 import eu.cdevreeze.yaidom.bridge.DefaultDocawareBridgeElem
 import eu.cdevreeze.yaidom.core.EName
 import eu.cdevreeze.yaidom.docaware
@@ -43,10 +45,6 @@ import eu.cdevreeze.yaidom.xbrl.XbrlInstanceDocument
  * Formula test, using the formula conformance suite test data. This test emulates the formulas in Scala code,
  * instead of processing the formulas themselves. The idea is that the formulas are represented (in an ad-hoc
  * manner, admittedly) in Scala code, with a much better signal-to-noise ratio.
- *
- * One of the shortcuts applied is that the Scala "formulas" do not apply any aspects, but match on contextRefs
- * and (if numeric) unitRefs. An interesting question is: what assumptions have to be made in order for this
- * simplified matching to be correct?
  *
  * @author Chris de Vreeze
  */
@@ -77,13 +75,8 @@ class FormulaTest extends Suite {
         netIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(netIncomesEName, Vector())
         grossIncomes <- xbrlInstanceDoc.xbrlInstance.allTopLevelNumericItemsByEName.getOrElse(grossIncomesEName, Vector())
         dimensions = findExplicitDimensions(netIncomes).union(findExplicitDimensions(grossIncomes))
-        if matchOnLocation(netIncomes, grossIncomes) &&
-          matchOnEntityIdentifier(netIncomes, grossIncomes) &&
-          matchOnPeriod(netIncomes, grossIncomes) &&
-          matchOnNonXdtSegmentContent(netIncomes, grossIncomes) &&
-          matchOnNonXdtScenarioContent(netIncomes, grossIncomes) &&
-          (dimensions.forall(dim => matchOnExplicitDimension(dim, netIncomes, grossIncomes))) &&
-          matchOnUnit(netIncomes, grossIncomes)
+        aspects = Aspect.allDimensionalModelAspects(dimensions) diff Set(ConceptAspect)
+        if matchOnAspects(aspects, netIncomes, grossIncomes)
       } yield {
         valueAssertionIteration(netIncomes, grossIncomes)
       }

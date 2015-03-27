@@ -82,11 +82,17 @@ trait AbstractAspectQueryApi {
 
   def matchOnUnit(fact1: Fact, fact2: Fact): Boolean
 
-  def matchOnExplicitDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean
+  def matchOnDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean
 
   // Aspect matching in non-dimensional aspect model
 
   def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean
 
   def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean
+
+  // Matching on one or more aspects
+
+  def matchOnAspect(aspect: Aspect, fact1: Fact, fact2: Fact): Boolean
+
+  def matchOnAspects(aspects: Set[Aspect], fact1: Fact, fact2: Fact): Boolean
 }

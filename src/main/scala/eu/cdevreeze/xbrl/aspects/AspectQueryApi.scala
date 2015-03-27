@@ -176,13 +176,16 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     case _ => true
   }
 
-  def matchOnExplicitDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      explicitDimensionAspectOption(dimension, item1) == explicitDimensionAspectOption(dimension, item2)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
+  def matchOnDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean = {
+    // TODO Typed dimension
+    (fact1, fact2) match {
+      case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+      case (item1: ItemFact, item2: ItemFact) =>
+        explicitDimensionAspectOption(dimension, item1) == explicitDimensionAspectOption(dimension, item2)
+      case (item1: ItemFact, _) => false
+      case (_, item2: ItemFact) => false
+      case _ => true
+    }
   }
 
   // Non-dimensional aspect model aspect matching
@@ -207,6 +210,31 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     case (item1: ItemFact, _) => false
     case (_, item2: ItemFact) => false
     case _ => true
+  }
+
+  // Matching on one or more aspects
+
+  def matchOnAspect(aspect: Aspect, fact1: Fact, fact2: Fact): Boolean = aspect match {
+    case ConceptAspect => matchOnConcept(fact1, fact2)
+    case LocationAspect => matchOnLocation(fact1, fact2)
+    case EntityIdentifierAspect => matchOnEntityIdentifier(fact1, fact2)
+    case PeriodAspect => matchOnPeriod(fact1, fact2)
+    case NonXdtSegmentAspect => matchOnNonXdtSegmentContent(fact1, fact2)
+    case NonXdtScenarioAspect => matchOnNonXdtScenarioContent(fact1, fact2)
+    case CompleteSegmentAspect => matchOnCompleteSegment(fact1, fact2)
+    case CompleteScenarioAspect => matchOnCompleteScenario(fact1, fact2)
+    case UnitAspect => matchOnUnit(fact1, fact2)
+    case dimAspect @ DimensionAspect(dim) => matchOnDimension(dim, fact1, fact2)
+  }
+
+  def matchOnAspects(aspects: Set[Aspect], fact1: Fact, fact2: Fact): Boolean = {
+    // TODO Sort aspects
+    val aspectSeq = aspects.toSeq
+
+    aspectSeq.foldLeft(true) {
+      case (acc, aspect) =>
+        acc && matchOnAspect(aspect, fact1, fact2)
+    }
   }
 
   // Private methods
