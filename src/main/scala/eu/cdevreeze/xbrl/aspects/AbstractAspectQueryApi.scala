@@ -68,30 +68,6 @@ trait AbstractAspectQueryApi {
 
   // Aspect matching
 
-  def matchOnLocation(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnConcept(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnEntityIdentifier(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnPeriod(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnNonXdtSegmentContent(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnNonXdtScenarioContent(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnUnit(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean
-
-  // Aspect matching in non-dimensional aspect model
-
-  def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean
-
-  def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean
-
-  // Matching on one or more aspects
-
   def matchOnAspect(aspect: Aspect, fact1: Fact, fact2: Fact): Boolean
 
   def matchOnAspects(aspects: Set[Aspect], fact1: Fact, fact2: Fact): Boolean

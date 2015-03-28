@@ -113,107 +113,6 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
 
   // Aspect matching
 
-  def matchOnLocation(fact1: Fact, fact2: Fact): Boolean = {
-    locationAspect(fact1) == locationAspect(fact2)
-  }
-
-  def matchOnConcept(fact1: Fact, fact2: Fact): Boolean = {
-    conceptAspect(fact1) == conceptAspect(fact2)
-  }
-
-  def matchOnEntityIdentifier(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      entityIdentifierAspect(item1).asResolvedElem == entityIdentifierAspect(item2).asResolvedElem
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnPeriod(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      periodAspect(item1).asResolvedElem == periodAspect(item2).asResolvedElem
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnNonXdtSegmentContent(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      nonXdtSegmentAspectOption(item1).map(e => resolved.Elem(e.bridgeElem.toElem)) ==
-        nonXdtSegmentAspectOption(item2).map(e => resolved.Elem(e.bridgeElem.toElem))
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnNonXdtScenarioContent(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      nonXdtScenarioAspectOption(item1).map(e => resolved.Elem(e.bridgeElem.toElem)) ==
-        nonXdtScenarioAspectOption(item2).map(e => resolved.Elem(e.bridgeElem.toElem))
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnUnit(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: NumericItemFact, item2: NumericItemFact) if (item1.unitRef == item2.unitRef) => true
-    case (item1: NumericItemFact, item2: NumericItemFact) if unitAspect(item1).divideOption.isDefined && unitAspect(item2).divideOption.isDefined =>
-      unitAspect(item1).divideOption.get.numerator.toSet == unitAspect(item2).divideOption.get.numerator.toSet &&
-        unitAspect(item1).divideOption.get.denominator.toSet == unitAspect(item2).divideOption.get.denominator.toSet
-    case (item1: NumericItemFact, item2: NumericItemFact) if unitAspect(item1).divideOption.isEmpty && unitAspect(item2).divideOption.isEmpty =>
-      unitAspect(item1).measures.toSet == unitAspect(item2).measures.toSet
-    case (item1: NumericItemFact, item2: NumericItemFact) => false
-    case (item1: NumericItemFact, _) => false
-    case (_, item2: NumericItemFact) => false
-    case _ => true
-  }
-
-  def matchOnDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean = {
-    // TODO Typed dimension
-    (fact1, fact2) match {
-      case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-      case (item1: ItemFact, item2: ItemFact) =>
-        explicitDimensionAspectOption(dimension, item1) == explicitDimensionAspectOption(dimension, item2)
-      case (item1: ItemFact, _) => false
-      case (_, item2: ItemFact) => false
-      case _ => true
-    }
-  }
-
-  // Non-dimensional aspect model aspect matching
-
-  def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      completeSegmentAspectOption(item1).map(_.asResolvedElem) ==
-        completeSegmentAspectOption(item2).map(_.asResolvedElem)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
-    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
-    case (item1: ItemFact, item2: ItemFact) =>
-      // Lacks type-safety
-      completeScenarioAspectOption(item1).map(_.asResolvedElem) ==
-        completeScenarioAspectOption(item2).map(_.asResolvedElem)
-    case (item1: ItemFact, _) => false
-    case (_, item2: ItemFact) => false
-    case _ => true
-  }
-
-  // Matching on one or more aspects
-
   def matchOnAspect(aspect: Aspect, fact1: Fact, fact2: Fact): Boolean = aspect match {
     case ConceptAspect => matchOnConcept(fact1, fact2)
     case LocationAspect => matchOnLocation(fact1, fact2)
@@ -224,7 +123,7 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
     case CompleteSegmentAspect => matchOnCompleteSegment(fact1, fact2)
     case CompleteScenarioAspect => matchOnCompleteScenario(fact1, fact2)
     case UnitAspect => matchOnUnit(fact1, fact2)
-    case dimAspect @ DimensionAspect(dim) => matchOnDimension(dim, fact1, fact2)
+    case DimensionAspect(dim) => matchOnDimension(dim, fact1, fact2)
   }
 
   def matchOnAspects(aspects: Set[Aspect], fact1: Fact, fact2: Fact): Boolean = {
@@ -238,6 +137,109 @@ final class AspectQueryApi(val xbrlInstance: XbrlInstance, val taxoModel: Taxono
   }
 
   // Private methods
+
+  // Dimensional aspect model aspect matching
+
+  private def matchOnLocation(fact1: Fact, fact2: Fact): Boolean = {
+    locationAspect(fact1) == locationAspect(fact2)
+  }
+
+  private def matchOnConcept(fact1: Fact, fact2: Fact): Boolean = {
+    conceptAspect(fact1) == conceptAspect(fact2)
+  }
+
+  private def matchOnEntityIdentifier(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      entityIdentifierAspect(item1).asResolvedElem == entityIdentifierAspect(item2).asResolvedElem
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  private def matchOnPeriod(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      periodAspect(item1).asResolvedElem == periodAspect(item2).asResolvedElem
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  private def matchOnNonXdtSegmentContent(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      nonXdtSegmentAspectOption(item1).map(e => resolved.Elem(e.bridgeElem.toElem)) ==
+        nonXdtSegmentAspectOption(item2).map(e => resolved.Elem(e.bridgeElem.toElem))
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  private def matchOnNonXdtScenarioContent(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      nonXdtScenarioAspectOption(item1).map(e => resolved.Elem(e.bridgeElem.toElem)) ==
+        nonXdtScenarioAspectOption(item2).map(e => resolved.Elem(e.bridgeElem.toElem))
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  private def matchOnUnit(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: NumericItemFact, item2: NumericItemFact) if (item1.unitRef == item2.unitRef) => true
+    case (item1: NumericItemFact, item2: NumericItemFact) if unitAspect(item1).divideOption.isDefined && unitAspect(item2).divideOption.isDefined =>
+      unitAspect(item1).divideOption.get.numerator.toSet == unitAspect(item2).divideOption.get.numerator.toSet &&
+        unitAspect(item1).divideOption.get.denominator.toSet == unitAspect(item2).divideOption.get.denominator.toSet
+    case (item1: NumericItemFact, item2: NumericItemFact) if unitAspect(item1).divideOption.isEmpty && unitAspect(item2).divideOption.isEmpty =>
+      unitAspect(item1).measures.toSet == unitAspect(item2).measures.toSet
+    case (item1: NumericItemFact, item2: NumericItemFact) => false
+    case (item1: NumericItemFact, _) => false
+    case (_, item2: NumericItemFact) => false
+    case _ => true
+  }
+
+  private def matchOnDimension(dimension: EName, fact1: Fact, fact2: Fact): Boolean = {
+    // TODO Typed dimension
+    (fact1, fact2) match {
+      case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+      case (item1: ItemFact, item2: ItemFact) =>
+        explicitDimensionAspectOption(dimension, item1) == explicitDimensionAspectOption(dimension, item2)
+      case (item1: ItemFact, _) => false
+      case (_, item2: ItemFact) => false
+      case _ => true
+    }
+  }
+
+  // Non-dimensional aspect model aspect matching
+
+  private def matchOnCompleteSegment(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      completeSegmentAspectOption(item1).map(_.asResolvedElem) ==
+        completeSegmentAspectOption(item2).map(_.asResolvedElem)
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  private def matchOnCompleteScenario(fact1: Fact, fact2: Fact): Boolean = (fact1, fact2) match {
+    case (item1: ItemFact, item2: ItemFact) if (item1.contextRef == item2.contextRef) => true
+    case (item1: ItemFact, item2: ItemFact) =>
+      // Lacks type-safety
+      completeScenarioAspectOption(item1).map(_.asResolvedElem) ==
+        completeScenarioAspectOption(item2).map(_.asResolvedElem)
+    case (item1: ItemFact, _) => false
+    case (_, item2: ItemFact) => false
+    case _ => true
+  }
+
+  // Other private methods
 
   private def segmentExplicitDimensionAspects(itemFact: ItemFact): Map[EName, EName] = {
     val context =
