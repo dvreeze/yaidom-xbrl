@@ -1,8 +1,0 @@
-<xsd:schema targetNamespace="http://xbrl.org/formula/conformance/example" 
-  xmlns:ex="http://xbrl.org/formula/conformance/example" 
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  elementFormDefault="qualified" >
-  <xsd:import namespace="http://www.xbrl.org/2003/instance" 
-     schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
-
-</xsd:schema>

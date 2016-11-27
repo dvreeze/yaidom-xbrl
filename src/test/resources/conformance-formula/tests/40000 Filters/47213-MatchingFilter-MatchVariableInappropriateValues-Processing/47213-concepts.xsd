@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/test" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:tst="http://example.com/test" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <xsd:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
-   <xsd:element id="tst_FactA" name="FactA" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="instant"/>
-   <xsd:element id="tst_FactB" name="FactB" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="instant"/>
-</xsd:schema>

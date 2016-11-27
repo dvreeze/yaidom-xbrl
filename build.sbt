@@ -9,25 +9,27 @@ organization := "eu.cdevreeze.yaidom"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.8"
 
-crossScalaVersions := Seq("2.11.5")
+crossScalaVersions := Seq("2.11.8", "2.12.0")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
-libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "1.3.6"
+libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom" % "1.6.0"
 
-libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom-xlink" % "1.3.6"
+libraryDependencies += "eu.cdevreeze.yaidom" %% "yaidom-xlink" % "1.6.0"
 
-libraryDependencies += "net.sf.saxon" % "Saxon-HE" % "9.5.1-8"
+libraryDependencies += ("joda-time" % "joda-time" % "2.9.5" % "test").intransitive()
 
-libraryDependencies += ("joda-time" % "joda-time" % "2.3").intransitive()
+libraryDependencies += ("org.joda" % "joda-convert" % "1.8.1" % "test").intransitive()
 
-libraryDependencies += ("org.joda" % "joda-convert" % "1.2").intransitive()
+libraryDependencies += "com.google.guava" % "guava" % "20.0" % "test"
 
-libraryDependencies += "junit" % "junit" % "4.11" % "test"
+libraryDependencies += "junit" % "junit" % "4.12" % "test"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.3" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+
+libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
 
 // resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 
