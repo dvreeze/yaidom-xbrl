@@ -130,7 +130,7 @@ final case class PresentationRelationship(
   }
 
   def isParentChildRelationship: Boolean = {
-    arcRole == "http://www.xbrl.org/2003/arcrole/parent-child"
+    arcRole == PresentationRelationship.ParentChildArcRole
   }
 }
 
@@ -172,4 +172,197 @@ final case class ConceptReferenceRelationship(
   def baseSetKey: BaseSetKey = {
     BaseSetKey(LinkReferenceLinkEName, extendedLinkRole, LinkReferenceArcEName, arcRole)
   }
+}
+
+object Relationship {
+
+  /**
+   * Builder of relationships of the given type. The builder holds an extended link role and arc role, and passes
+   * those each time a relationship is created from the builder.
+   */
+  trait Builder {
+
+    type RelationshipType
+
+    type SourceType
+
+    type TargetType
+
+    def extendedLinkRole: String
+
+    def arcRole: String
+
+    def build(source: SourceType, target: TargetType, attributes: RelationshipAttributes): RelationshipType
+  }
+
+  val DefaultLinkRole = "http://www.xbrl.org/2003/role/link"
+}
+
+object DefinitionRelationship {
+
+  final case class Builder(val extendedLinkRole: String, val arcRole: String) extends Relationship.Builder {
+
+    type RelationshipType = DefinitionRelationship
+
+    type SourceType = EName
+
+    type TargetType = EName
+
+    def build(source: EName, target: EName, attributes: RelationshipAttributes): DefinitionRelationship = {
+      DefinitionRelationship(extendedLinkRole, arcRole, source, target, attributes)
+    }
+  }
+
+  def generalSpecialRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, GeneralSpecialArcRole)
+  }
+
+  def essenceAliasRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, EssenceAliasArcRole)
+  }
+
+  def similarTuplesRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, SimilarTuplesArcRole)
+  }
+
+  def requiresElementRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, RequiresElementArcRole)
+  }
+
+  // Builders for dimensional arcroles. See the arc roles below.
+
+  def allHasHypercubeRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, AllHasHypercubeArcRole)
+  }
+
+  def notAllHasHypercubeRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, NotAllHasHypercubeArcRole)
+  }
+
+  def hypercubeDimensionRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, HypercubeDimensionArcRole)
+  }
+
+  def dimensionDomainRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, DimensionDomainArcRole)
+  }
+
+  def domainMemberRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, DomainMemberArcRole)
+  }
+
+  def dimensionDefaultRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, DimensionDefaultArcRole)
+  }
+
+  val GeneralSpecialArcRole = "http://www.xbrl.org/2003/arcrole/general-special"
+  val EssenceAliasArcRole = "http://www.xbrl.org/2003/arcrole/essence-alias"
+  val SimilarTuplesArcRole = "http://www.xbrl.org/2003/arcrole/similar-tuples"
+  val RequiresElementArcRole = "http://www.xbrl.org/2003/arcrole/requires-element"
+
+  // Dimensional arcroles. We mention them here, although in this package they are just other definition relationship
+  // arc roles.
+
+  val AllHasHypercubeArcRole = "http://xbrl.org/int/dim/arcrole/all"
+  val NotAllHasHypercubeArcRole = "http://xbrl.org/int/dim/arcrole/notAll"
+  val HypercubeDimensionArcRole = "http://xbrl.org/int/dim/arcrole/hypercube-dimension"
+  val DimensionDomainArcRole = "http://xbrl.org/int/dim/arcrole/dimension-domain"
+  val DomainMemberArcRole = "http://xbrl.org/int/dim/arcrole/domain-member"
+  val DimensionDefaultArcRole = "http://xbrl.org/int/dim/arcrole/dimension-default"
+}
+
+object PresentationRelationship {
+
+  final case class Builder(val extendedLinkRole: String, val arcRole: String) extends Relationship.Builder {
+
+    type RelationshipType = PresentationRelationship
+
+    type SourceType = EName
+
+    type TargetType = EName
+
+    def build(source: EName, target: EName, attributes: RelationshipAttributes): PresentationRelationship = {
+      PresentationRelationship(extendedLinkRole, arcRole, source, target, attributes)
+    }
+  }
+
+  def parentChildRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, ParentChildArcRole)
+  }
+
+  val ParentChildArcRole = "http://www.xbrl.org/2003/arcrole/parent-child"
+}
+
+object CalculationRelationship {
+
+  final case class Builder(val extendedLinkRole: String, val arcRole: String) extends Relationship.Builder {
+
+    type RelationshipType = CalculationRelationship
+
+    type SourceType = EName
+
+    type TargetType = EName
+
+    def build(source: EName, target: EName, attributes: RelationshipAttributes): CalculationRelationship = {
+      CalculationRelationship(extendedLinkRole, arcRole, source, target, attributes)
+    }
+  }
+
+  def summationItemRelationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, SummationItemArcRole)
+  }
+
+  val SummationItemArcRole = "http://www.xbrl.org/2003/arcrole/summation-item"
+}
+
+object ConceptLabelRelationship {
+
+  final case class Builder(val extendedLinkRole: String, val arcRole: String) extends Relationship.Builder {
+
+    type RelationshipType = ConceptLabelRelationship
+
+    type SourceType = EName
+
+    type TargetType = StandardLabel
+
+    def build(source: EName, target: StandardLabel, attributes: RelationshipAttributes): ConceptLabelRelationship = {
+      ConceptLabelRelationship(extendedLinkRole, arcRole, source, target, attributes)
+    }
+  }
+
+  def relationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, DefaultArcRole)
+  }
+
+  def defaultRelationshipBuilder: Builder = {
+    relationshipBuilder(Relationship.DefaultLinkRole)
+  }
+
+  val DefaultArcRole = "http://www.xbrl.org/2003/arcrole/concept-label"
+}
+
+object ConceptReferenceRelationship {
+
+  final case class Builder(val extendedLinkRole: String, val arcRole: String) extends Relationship.Builder {
+
+    type RelationshipType = ConceptReferenceRelationship
+
+    type SourceType = EName
+
+    type TargetType = StandardReference
+
+    def build(source: EName, target: StandardReference, attributes: RelationshipAttributes): ConceptReferenceRelationship = {
+      ConceptReferenceRelationship(extendedLinkRole, arcRole, source, target, attributes)
+    }
+  }
+
+  def relationshipBuilder(extendedLinkRole: String): Builder = {
+    Builder(extendedLinkRole, DefaultArcRole)
+  }
+
+  def defaultRelationshipBuilder: Builder = {
+    relationshipBuilder(Relationship.DefaultLinkRole)
+  }
+
+  val DefaultArcRole = "http://www.xbrl.org/2003/arcrole/concept-reference"
 }

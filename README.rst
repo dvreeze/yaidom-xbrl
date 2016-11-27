@@ -16,7 +16,7 @@ This experiment hopefully leads to the following, for example:
 
 * Easy to create taxonomy and instance (test) data
 * Easy to read and understand taxonomy and instance data
-* Mathematical precision in the model, for example when resolving prohibition and overriding
+* Mathematical precision in the model, for example when resolving prohibition and overriding, or when detecting cycles
 * Easy to develop taxonomies, without the pain of cross-references among files
 * Faster taxonomy processing with a low memory footprint
 * Especially much faster XBRL instance validation (core and dimensional)

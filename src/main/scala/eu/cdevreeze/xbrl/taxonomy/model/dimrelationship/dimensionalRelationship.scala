@@ -43,7 +43,7 @@ sealed abstract class DimensionalRelationship(
   // TODO Effective target role
   // TODO Consecutive relationships
 
-  final def toDefinitionRelationship: DefinitionRelationship = {
+  final def underlyingRelationship: DefinitionRelationship = {
     DefinitionRelationship(extendedLinkRole, arcRole, source, target, attributes)
   }
 

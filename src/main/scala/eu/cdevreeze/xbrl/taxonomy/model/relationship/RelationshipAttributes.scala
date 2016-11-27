@@ -57,6 +57,18 @@ final case class RelationshipAttributes private (val attrMap: Map[EName, Attribu
   def nonExemptAttributes: RelationshipAttributes = {
     RelationshipAttributes(attrMap.filterKeys(attrName => attrName != UseEName && attrName != PriorityEName))
   }
+
+  def withOrder(order: BigDecimal): RelationshipAttributes = {
+    RelationshipAttributes(this.attrMap + (OrderEName -> NumberAttributeValue(order)))
+  }
+
+  def withUse(use: RelationshipAttributes.Use): RelationshipAttributes = {
+    RelationshipAttributes(this.attrMap + (UseEName -> StringAttributeValue(use.toString)))
+  }
+
+  def withPriority(priority: Int): RelationshipAttributes = {
+    RelationshipAttributes(this.attrMap + (PriorityEName -> NumberAttributeValue(priority)))
+  }
 }
 
 object RelationshipAttributes {
@@ -67,6 +79,8 @@ object RelationshipAttributes {
         updated(UseEName, attrMap.getOrElse(UseEName, StringAttributeValue(UseOptional.toString))).
         updated(PriorityEName, attrMap.getOrElse(PriorityEName, NumberAttributeValue(BigDecimal(0)))))
   }
+
+  val Empty: RelationshipAttributes = RelationshipAttributes.from(Map())
 
   sealed trait Use
   object UseOptional extends Use { override def toString: String = "optional" }
