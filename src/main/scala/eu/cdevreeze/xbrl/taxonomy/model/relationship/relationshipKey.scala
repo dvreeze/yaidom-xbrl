@@ -31,7 +31,7 @@ sealed trait RelationshipKey {
 
   def baseSetKey: BaseSetKey
 
-  def nonExemptAttributes: RelationshipAttributes
+  def nonExemptAttributes: Map[EName, AttributeValue]
 
   def sourceKey: SourceKey
 
@@ -42,7 +42,7 @@ sealed trait StandardRelationshipKey extends RelationshipKey
 
 final case class NonStandardRelationshipKey(
   val baseSetKey: BaseSetKey,
-  val nonExemptAttributes: RelationshipAttributes,
+  val nonExemptAttributes: Map[EName, AttributeValue],
   val sourceKey: AnyRef,
   val targetKey: AnyRef) extends RelationshipKey {
 
@@ -53,7 +53,7 @@ final case class NonStandardRelationshipKey(
 
 final case class InterConceptRelationshipKey(
   val baseSetKey: BaseSetKey,
-  val nonExemptAttributes: RelationshipAttributes,
+  val nonExemptAttributes: Map[EName, AttributeValue],
   val sourceKey: EName,
   val targetKey: EName) extends StandardRelationshipKey {
 
@@ -64,11 +64,11 @@ final case class InterConceptRelationshipKey(
 
 final case class ConceptResourceRelationshipKey(
   val baseSetKey: BaseSetKey,
-  val nonExemptAttributes: RelationshipAttributes,
+  val nonExemptAttributes: Map[EName, AttributeValue],
   val sourceKey: EName,
-  val targetKey: String) extends StandardRelationshipKey {
+  val targetKey: StandardResource) extends StandardRelationshipKey {
 
   type SourceKey = EName
 
-  type TargetKey = String
+  type TargetKey = StandardResource
 }

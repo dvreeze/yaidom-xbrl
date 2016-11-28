@@ -128,43 +128,36 @@ class CreateRelationshipTest extends FunSuite {
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:ConsolidatedBalanceSheetTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_ConsolidatedBalanceSheetTitle_terseLabel_nl",
           "Geconsolideerde balans"),
         RelationshipAttributes.Empty),
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:ConsolidatedFinancialStatementTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_ConsolidatedFinancialStatementTitle_terseLabel_nl",
           "Geconsolideerde jaarrekening"),
         RelationshipAttributes.Empty),
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:ConsolidatedGeneralNotesTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_ConsolidatedGeneralNotesTitle_terseLabel_nl",
           "Algemene toelichting"),
         RelationshipAttributes.Empty),
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:ConsolidatedIncomeStatementTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_ConsolidatedIncomeStatementTitle_terseLabel_nl",
           "Geconsolideerde winst- en verliesrekening"),
         RelationshipAttributes.Empty),
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:ConsolidatedNotesTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_ConsolidatedNotesTitle_terseLabel_nl",
           "Geconsolideerde toelichting"),
         RelationshipAttributes.Empty),
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:FinancialStatementTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_FinancialStatementTitle_terseLabel_nl",
           "Jaarrekening"),
         RelationshipAttributes.Empty),
       conceptLabelRelationshipBuilder.build(
         QName("kvk-abstr:GeneralNotesTitle").res,
         conceptLabelBuilder.build(
-          "kvk-abstr_GeneralNotesTitle_terseLabel_nl",
           "Algemene toelichting"),
         RelationshipAttributes.Empty))
 
@@ -190,11 +183,10 @@ class CreateRelationshipTest extends FunSuite {
         ConceptLabelRelationship.DefaultArcRole,
         QName("kvk-abstr:FinancialStatementTitle").res,
         StandardLabel(
-          "kvk-abstr_FinancialStatementTitle_terseLabel_nl",
           StandardLabel.ResourceRoleTerseLabel,
           "nl",
           "Jaarrekening",
-          Map()),
+          ResourceAttributes.Empty),
         RelationshipAttributes.Empty)
 
     assertResult(Set(expectedRelationship)) {

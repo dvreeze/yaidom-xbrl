@@ -98,7 +98,7 @@ sealed abstract class ConceptResourceRelationship(
   def target: TargetType
 
   final def relationshipKey: ConceptResourceRelationshipKey = {
-    ConceptResourceRelationshipKey(baseSetKey, attributes.nonExemptAttributes, source, target.localKey)
+    ConceptResourceRelationshipKey(baseSetKey, attributes.nonExemptAttributes, source, target)
   }
 }
 
@@ -178,7 +178,8 @@ object Relationship {
 
   /**
    * Builder of relationships of the given type. The builder holds an extended link role and arc role, and passes
-   * those each time a relationship is created from the builder.
+   * those each time a relationship is created from the builder. In other words, the builder creates relationships
+   * within one base set.
    */
   trait Builder {
 

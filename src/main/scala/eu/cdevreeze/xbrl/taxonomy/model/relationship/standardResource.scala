@@ -28,41 +28,37 @@ sealed trait StandardResource {
   def resourceRole: String
 
   /**
-   * Key of the resource in the parent link, like an XLink label.
+   * The xml:lang attribute.
    */
-  def localKey: String
-
   def languageCode: String
 
   def resourceText: String
 
-  def otherAttributes: Map[EName, AttributeValue]
+  def attributes: ResourceAttributes
 }
 
 final case class StandardLabel(
-  val localKey: String,
   val resourceRole: String,
   val languageCode: String,
   val resourceText: String,
-  val otherAttributes: Map[EName, AttributeValue]) extends StandardResource
+  val attributes: ResourceAttributes) extends StandardResource
 
 final case class StandardReference(
-  val localKey: String,
   val resourceRole: String,
   val languageCode: String,
   val resourceText: String,
-  val otherAttributes: Map[EName, AttributeValue]) extends StandardResource
+  val attributes: ResourceAttributes) extends StandardResource
 
 object StandardLabel {
 
   final case class Builder(val resourceRole: String, val languageCode: String) {
 
-    def build(localKey: String, resourceText: String, otherAttributes: Map[EName, AttributeValue]): StandardLabel = {
-      StandardLabel(localKey, resourceRole, languageCode, resourceText, otherAttributes)
+    def build(resourceText: String, attributes: ResourceAttributes): StandardLabel = {
+      StandardLabel(resourceRole, languageCode, resourceText, attributes)
     }
 
-    def build(localKey: String, resourceText: String): StandardLabel = {
-      build(localKey, resourceText, Map())
+    def build(resourceText: String): StandardLabel = {
+      build(resourceText, ResourceAttributes.Empty)
     }
   }
 
@@ -87,12 +83,12 @@ object StandardReference {
 
   final case class Builder(val resourceRole: String, val languageCode: String) {
 
-    def build(localKey: String, resourceText: String, otherAttributes: Map[EName, AttributeValue]): StandardReference = {
-      StandardReference(localKey, resourceRole, languageCode, resourceText, otherAttributes)
+    def build(resourceText: String, attributes: ResourceAttributes): StandardReference = {
+      StandardReference(resourceRole, languageCode, resourceText, attributes)
     }
 
-    def build(localKey: String, resourceText: String): StandardReference = {
-      build(localKey, resourceText, Map())
+    def build(resourceText: String): StandardReference = {
+      build(resourceText, ResourceAttributes.Empty)
     }
   }
 

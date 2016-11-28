@@ -25,6 +25,11 @@ import eu.cdevreeze.xbrl.ENames._
  * mind default and fixed attributes in the schema; they must explicitly be added. Also mind the correct
  * type of the attribute values.
  *
+ * Relationship attributes do not include extendedLinkRole or arcRole. They always do include order, use and priority
+ * attributes, however.
+ *
+ * This class is carefully designed for equality.
+ *
  * @author Chris de Vreeze
  */
 final case class RelationshipAttributes private (val attrMap: Map[EName, AttributeValue]) {
@@ -54,8 +59,8 @@ final case class RelationshipAttributes private (val attrMap: Map[EName, Attribu
    * Returns the non-exempt attributes. Note that the order attribute is always present.
    * Also note that the (limited) type-awareness helps in equality comparisons for non-exempt attributes.
    */
-  def nonExemptAttributes: RelationshipAttributes = {
-    RelationshipAttributes(attrMap.filterKeys(attrName => attrName != UseEName && attrName != PriorityEName))
+  def nonExemptAttributes: Map[EName, AttributeValue] = {
+    attrMap.filterKeys(attrName => attrName != UseEName && attrName != PriorityEName)
   }
 
   def withOrder(order: BigDecimal): RelationshipAttributes = {
@@ -68,6 +73,10 @@ final case class RelationshipAttributes private (val attrMap: Map[EName, Attribu
 
   def withPriority(priority: Int): RelationshipAttributes = {
     RelationshipAttributes(this.attrMap + (PriorityEName -> NumberAttributeValue(priority)))
+  }
+
+  def plusAttribute(attrName: EName, attrValue: AttributeValue): RelationshipAttributes = {
+    RelationshipAttributes(this.attrMap + (attrName -> attrValue))
   }
 }
 

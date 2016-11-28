@@ -38,6 +38,9 @@ trait AnyRelationship {
 
   def target: TargetType
 
+  /**
+   * The relationship attributes. They include order, use and priority.
+   */
   def attributes: RelationshipAttributes
 
   def order: BigDecimal
