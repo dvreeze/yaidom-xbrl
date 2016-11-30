@@ -16,12 +16,19 @@
 
 package eu.cdevreeze.xbrl.taxonomy.model.relationship
 
+import scala.BigDecimal
+import scala.annotation.elidable
+import scala.annotation.elidable.ASSERTION
+import scala.math.BigDecimal.int2bigDecimal
+
+import eu.cdevreeze.xbrl.ENames.OrderEName
+import eu.cdevreeze.xbrl.ENames.PriorityEName
+import eu.cdevreeze.xbrl.ENames.UseEName
 import eu.cdevreeze.yaidom.core.EName
-import eu.cdevreeze.xbrl.Namespaces._
-import eu.cdevreeze.xbrl.ENames._
+import eu.cdevreeze.yaidom.xlink.XLink
 
 /**
- * Attributes of a relationship. XLink attributes are not allowed. When creating an instance of this class,
+ * Attributes of a relationship. Most XLink attributes are not allowed. When creating an instance of this class,
  * mind default and fixed attributes in the schema; they must explicitly be added. Also mind the correct
  * type of the attribute values.
  *
@@ -34,8 +41,8 @@ import eu.cdevreeze.xbrl.ENames._
  */
 final case class RelationshipAttributes private (val attrMap: Map[EName, AttributeValue]) {
   require(
-    attrMap.keySet.forall(_.namespaceUriOption.getOrElse("") != XLinkNamespace),
-    s"XLink attributes not allowed, but got attributes $attrMap")
+    attrMap.keySet.forall(a => (a != XLink.XLinkTypeEName) && (a != XLink.XLinkArcroleEName) && (a != XLink.XLinkFromEName) && (a != XLink.XLinkToEName)),
+    s"Most XLink attributes not allowed, but got attributes $attrMap")
 
   assert(attrMap.contains(OrderEName), s"No order attribute in attributes $attrMap")
   assert(
@@ -60,7 +67,7 @@ final case class RelationshipAttributes private (val attrMap: Map[EName, Attribu
    * Also note that the (limited) type-awareness helps in equality comparisons for non-exempt attributes.
    */
   def nonExemptAttributes: Map[EName, AttributeValue] = {
-    attrMap.filterKeys(attrName => attrName != UseEName && attrName != PriorityEName)
+    attrMap.filterKeys(attrName => (attrName != UseEName) && (attrName != PriorityEName) && (attrName.namespaceUriOption != Some(XLink.XLinkNamespace)))
   }
 
   def withOrder(order: BigDecimal): RelationshipAttributes = {

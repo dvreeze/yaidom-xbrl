@@ -323,4 +323,12 @@ object ENames {
   val BoundaryEName = EName("boundary")
   val LocationEName = EName("location")
   val MinimumEName = EName("minimum")
+
+  // "Own" ENames
+
+  val LnkLinkbase = EName(LnkNamespace, "linkbase")
+  val LnkConcept = EName(LnkNamespace, "concept")
+  val LnkQname = EName(LnkNamespace, "qname")
+  val LnkPresentationLink = EName(LnkNamespace, "presentationLink")
+  val LnkPresentationArc = EName(LnkNamespace, "presentationArc")
 }

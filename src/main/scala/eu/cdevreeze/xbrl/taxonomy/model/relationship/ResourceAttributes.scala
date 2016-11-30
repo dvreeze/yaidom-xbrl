@@ -16,16 +16,18 @@
 
 package eu.cdevreeze.xbrl.taxonomy.model.relationship
 
+import scala.annotation.elidable
+import scala.annotation.elidable.ASSERTION
+
+import eu.cdevreeze.xbrl.ENames.XmlLangEName
+import eu.cdevreeze.xbrl.Namespaces.XLinkNamespace
 import eu.cdevreeze.yaidom.core.EName
-import eu.cdevreeze.xbrl.Namespaces._
-import eu.cdevreeze.xbrl.ENames._
+import eu.cdevreeze.yaidom.xlink.XLink
 
 /**
- * Attributes of a resource (label/reference). XLink attributes are not allowed. When creating an instance of this class,
- * mind default and fixed attributes in the schema; they must explicitly be added. Also mind the correct
- * type of the attribute values.
- *
- * Resource attributes do not include resourceRole, nor do they include the xml:lang attribute.
+ * Attributes of a resource (label/reference). Most XLink attributes are not allowed. The xml:lang attribute is not allowed either.
+ * When creating an instance of this class, mind default and fixed attributes in the schema; they must explicitly be added. Also mind
+ * the correct type of the attribute values.
  *
  * This class is carefully designed for equality.
  *
@@ -33,8 +35,8 @@ import eu.cdevreeze.xbrl.ENames._
  */
 final case class ResourceAttributes private (val attrMap: Map[EName, AttributeValue]) {
   require(
-    attrMap.keySet.forall(_.namespaceUriOption.getOrElse("") != XLinkNamespace),
-    s"XLink attributes not allowed, but got attributes $attrMap")
+    attrMap.keySet.forall(a => (a != XLink.XLinkTypeEName) && (a != XLink.XLinkRoleEName) && (a != XLink.XLinkLabelEName)),
+    s"Most XLink attributes not allowed, but got attributes $attrMap")
 
   assert(!attrMap.contains(XmlLangEName), s"No xml:lang attribute allowed in attributes $attrMap")
 

@@ -2,8 +2,8 @@
 Yaidom-XBRL
 ===========
 
-This is an attempt at representing XBRL (taxonomies and instances) at a somewhat higher level of abstraction.
-That is, syntactic cruft like XLink and URI references disappears, but the data content is still the same in that
+This is an attempt at representing XBRL (taxonomies and instances) at a slightly higher level of abstraction.
+That is, syntactic cruft like XLink locators and URI references disappear, but the data content is still the same in that
 for example prohibition and override still work. Mathematical precision is strived for.
 
 Taxonomies and instances are mostly represented by Scala case classes. For taxonomy schema content, this is a challenge.

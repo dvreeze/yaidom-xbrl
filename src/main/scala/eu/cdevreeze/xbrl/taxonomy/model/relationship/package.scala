@@ -34,26 +34,10 @@ package eu.cdevreeze.xbrl.taxonomy.model
  * Relationships do not keep any reference to the linkbase file from which they potentially originate. They also
  * do not know in which DTS they reside.
  *
- * Relationships do not contain any XLink attributes. Given that extended link roles and arc roles (and resource
- * roles in resources) are kept anyway, other XLink attributes such as the XLink type and href are not relevant for
- * relationships. They are relevant at the syntactic level, where we have arcs, locators and resources, where the
- * locators are "unresolved" and may point to elements in other files.
- *
  * TODO What about the different equalities defined in XBRL?
  *
- * TODO What about an XML representation for relationships?
- *
- * To come up with syntactic linkbases from a collection of relationships, mind the following:
- * <ul>
- * <li>We need a mapping from relationships to file path names.</li>
- * <li>We also need an "invertible Scope" to generate QNames from ENames.</li>
- * <li>We know the element name (implicitly) and extended link role (explicitly) of the parent extended link element.</li>
- * <li>The arc role and other attributes of the underlying arc are known. Locators and resources can also be constructed
- * and the corresponding XLink attributes can be created (using heuristics to generate XLink labels).</li>
- * <li>Given heuristics to make absolute URIs relative, we can create the locators with their XLink href attributes.</li>
- * <li>How do we prevent duplicate labels and references in label and reference linkbases?</li>
- * <li>Mind DTS discovery. A post-processing step may be needed to make DTS discovery work.</li>
- * </ul>
+ * The XML representation of these relationship linkbases uses XLink, but no XLink locators, replacing them with
+ * XLink resources that contain the concept names as QNames.
  *
  * @author Chris de Vreeze
  */

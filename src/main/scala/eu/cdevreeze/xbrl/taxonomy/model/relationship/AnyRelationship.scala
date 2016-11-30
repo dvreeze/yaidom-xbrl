@@ -39,7 +39,7 @@ trait AnyRelationship {
   def target: TargetType
 
   /**
-   * The relationship attributes. They include order, use and priority.
+   * The relationship attributes. They include order, use and priority. They do not contain XLink type, arcrole, from and to.
    */
   def attributes: RelationshipAttributes
 
