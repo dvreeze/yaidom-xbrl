@@ -2,15 +2,20 @@
 Yaidom-XBRL
 ===========
 
-This is an attempt at representing XBRL (taxonomies and instances) at a slightly higher level of abstraction.
-That is, syntactic cruft like XLink locators and URI references disappear, but the data content is still the same in that
-for example prohibition and override still work. Mathematical precision is strived for.
+Yaidom-XBRL is an attempt at representing XBRL taxonomies and instances at a somewhat higher level of abstraction.
+It tries to do so in a mathematically sound manner, retaining important semantics such as networks of relationships and cycle detection.
+This should be realized not only in code, but also in higher level XML formats for linkbases, etc.
+The hope is that much XBRL processing can thus at least become more light-weight than it currently is.
 
-Taxonomies and instances are mostly represented by Scala case classes. For taxonomy schema content, this is a challenge.
+Of course the lower level syntactic taxonomy and instance XML formats cannot be totally ignored, but the idea is
+to make them less important and move them more to the "periphery", for instance when publishing taxonomies.
 
-DTSes are described by summing up content instead of discovery. Files are unknown in the taxonomy model, so generating
-files from taxonomies in this model requires the use of some heuristics. Note that in original taxonomy files, each one
-plays 2 roles: carrying semantics, and supporting DTS discovery. This mix makes taxonomy development hard.
+XBRL instances should be modeled after the XBRL OIM, based on aspects rather than lower level syntax. The higher level
+taxonomy model is described in one of the following sections.
+
+
+Goals
+=====
 
 This experiment hopefully leads to the following, for example:
 
@@ -32,3 +37,50 @@ Not all XBRL corner cases need to be supported. For example, the following may n
 * Embedded linkbases within schema data.
 * Schema includes. Schema imports (without the schemaLocation) are supported, however.
 * Default and fixed attributes in schemas.
+
+
+CTM
+===
+
+The higher level XBRL taxonomy model is called CTM (concise taxonomy model). It tries to do away with URIs
+(not URIs as in namespace URIs or role type URIs, but hrefs and schemaLocations), replacing them with "business keys"
+such as concept expanded names and role types.
+
+This should solve or at least evade the following issues:
+
+* Tight coupling between linkbases and files referenced from locators in those locators. This also makes it hard to understand relationships in isolation.
+* Tight coupling between taxonomy files because of their role in DTS discovery. That's unfortunate: taxonomy files not only carry semantics, but also contribute to DTS discovery.
+
+It is this mix of roles that makes the tight coupling among taxonomy files even worse than it otherwise would have been.
+DTSes can instead be descibed by summing up the files, or by "smart joins" of CTM content.
+
+How can we get rid of URI locations in taxonomy files? The first attempt used generic linkbases, in which XLink locators
+were replaced by XLink resources containing "business keys". The advantage would be that XBRL tools would understand
+them to be XBRL generic linkbases. Alas, this attemp was not good enough. Generic linkbases require XLink simple links for
+custom role types and arcrole types, which defeats the purpose of getting rid of URI locations.
+
+A more drastic solution was needed. It seemed necessary to "redesign XLink" itself.
+
+
+CXLink
+======
+
+CXLink (concise XLink) is the concise "XLink" underlying CTM. Despite the name it is not (a subset of) XLink.
+
+CXLink must meet the following requirements:
+
+* It must replace XLink locators with hrefs by CXLink resources with "business keys" such as concept expanded names.
+* It must be more concise than XLink.
+* It must be offer its notions of extended links, arcs and resources, and support the semantic role and arcrole attributes.
+* It must support a CTM in which networks of relationships and cycles can be expressed. Prohibition/overriding resolution must be possible on CTM taxonomies.
+* It should be more consistent with references in schema documents (based on expanded names) than XLink locators.
+
+CXLink meets these requirements as follows:
+
+* CXLink offers extended links, arcs and resources, through its type attribute. It also offers "imports", as alternative to simple links without hrefs.
+* CXLink also offers the semantics role and arcrole attributes.
+* Arcs contain source and target as child nodes, with CXLink attribute position (values "from" or "to") pointing to source or target resource of the arc.
+* Hence, arcs can be understood in isolation, except for the (element name and) role of the parent extended link element.
+* Arc source and target child elements must be in a "resource substitution group". CTM builds on that with elements such as "clink:concept", with "clink:qname" attributes.
+* Alternatively to arc child elements, source and/or target can be elsewhere in the extended link, using from/to and label attributes, like for XLink.
+* In any case, for each arc the source and target can and must be specified precisely once.
