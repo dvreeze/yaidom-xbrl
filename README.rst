@@ -69,18 +69,19 @@ CXLink (concise XLink) is the concise "XLink" underlying CTM. Despite the name i
 
 CXLink must meet the following requirements:
 
-* It must replace XLink locators with hrefs by CXLink resources with "business keys" such as concept expanded names.
-* It must be more concise than XLink.
-* It must be offer its notions of extended links, arcs and resources, and support the semantic role and arcrole attributes.
+* It must replace XLink locators containing hrefs by CXLink resources containing "business keys" such as concept expanded names.
+* It must be more concise than XLink, and easier to understand in isolation.
+* It must offer its notions of extended links, arcs and resources, and support the (semantic) role and arcrole attributes.
 * It must support a CTM in which networks of relationships and cycles can be expressed. Prohibition/overriding resolution must be possible on CTM taxonomies.
-* It should be more consistent with references in schema documents (based on expanded names) than XLink locators.
+* It should be more consistent with references in schema documents (based on expanded names) than XLink locators are.
 
 CXLink meets these requirements as follows:
 
 * CXLink offers extended links, arcs and resources, through its type attribute. It also offers "imports", as alternative to simple links without hrefs.
-* CXLink also offers the semantics role and arcrole attributes.
+* CXLink also offers the (semantic) role and arcrole attributes.
 * Arcs contain source and target as child nodes, with CXLink attribute position (values "from" or "to") pointing to source or target resource of the arc.
 * Hence, arcs can be understood in isolation, except for the (element name and) role of the parent extended link element.
-* Arc source and target child elements must be in a "resource substitution group". CTM builds on that with elements such as "clink:concept", with "clink:qname" attributes.
+* Arc source and target child elements must be in a "CXLink resource substitution group". CTM builds on that with elements such as "clink:concept" containing "clink:qname" attributes.
 * Alternatively to arc child elements, source and/or target can be elsewhere in the extended link, using from/to and label attributes, like for XLink.
+* This should not alter the semantics of the extended link in any way.
 * In any case, for each arc the source and target can and must be specified precisely once.
