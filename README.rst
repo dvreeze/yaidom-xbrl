@@ -82,6 +82,6 @@ CXLink meets these requirements as follows:
 * Arcs contain source and target as child nodes, with CXLink attribute position (values "from" or "to") pointing to source or target resource of the arc.
 * Hence, arcs can be understood in isolation, except for the (element name and) role of the parent extended link element.
 * Arc source and target child elements must be in a "CXLink resource substitution group". CTM builds on that with elements such as "clink:concept" containing "clink:qname" attributes.
-* Alternatively to arc child elements, source and/or target can be elsewhere in the extended link, using from/to and label attributes, like for XLink.
+* Alternatively to arc child elements, source and/or target can be elsewhere in the extended link, using from/to and label attributes, like for XLink (but not allowing reuse of the same label attribute).
 * This should not alter the semantics of the extended link in any way.
 * In any case, for each arc the source and target can and must be specified precisely once.
