@@ -48,7 +48,7 @@ such as concept expanded names and role types.
 
 This should solve or at least evade the following issues:
 
-* Tight coupling between linkbases and files referenced from locators in those locators. This also makes it hard to understand relationships in isolation.
+* Tight coupling between linkbases and files referenced from locators in those linkbases. This also makes it hard to understand relationships in isolation.
 * Tight coupling between taxonomy files because of their role in DTS discovery. That's unfortunate: taxonomy files not only carry semantics, but also contribute to DTS discovery.
 
 It is this mix of roles that makes the tight coupling among taxonomy files even worse than it otherwise would have been.
