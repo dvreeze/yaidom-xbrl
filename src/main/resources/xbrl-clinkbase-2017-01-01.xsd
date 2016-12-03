@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:cxlink="http://www.ebpi.nl/2017/cxlink" 
+  xmlns:cxl="http://www.ebpi.nl/2017/cxl" 
+  xmlns:clink="http://www.ebpi.nl/2017/linkbase" 
+  targetNamespace="http://www.ebpi.nl/2017/linkbase"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:import namespace="http://www.ebpi.nl/2017/cxl" schemaLocation="cxl-2017-01-01.xsd" />
+  <xs:import namespace="http://www.ebpi.nl/2017/cxlink" schemaLocation="cxlink-2017-01-01.xsd" />
+
+  <xs:element name="documentation" type="cxl:documentationType" substitutionGroup="cxl:documentation">
+    <xs:annotation>
+      <xs:documentation>Concrete element to use for documentation of extended links and linkbases</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>Inter-concept arcs</xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="interConceptArcType">
+    <xs:annotation>
+      <xs:documentation>Inter-concept arc type.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="cxl:arcType">
+        <xs:sequence>
+          <xs:element ref="cxl:title" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="clink:concept"/>
+          <xs:element ref="clink:concept"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="cxl:arcAttributes" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="interConceptArc" type="clink:interConceptArcType" substitutionGroup="cxl:arc" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Any inter-concept type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="definitionArc" type="clink:interConceptArcType" substitutionGroup="clink:interConceptArc">
+    <xs:annotation>
+      <xs:documentation>Concrete arc for use in definition extended links</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="presentationArc" substitutionGroup="clink:interConceptArc">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation>Extension of the extended link arc type for presentation arcs. Adds a preferredLabel attribute that documents the role attribute value of preferred labels (as they occur in label extended links).</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="clink:interConceptArcType">
+          <xs:attribute name="preferredLabel" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:anyURI">
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="calculationArc" substitutionGroup="clink:interConceptArc">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation>Extension of the extended link arc type for calculation arcs. Adds a weight attribute to track weights on contributions to summations.</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="clink:interConceptArcType">
+          <xs:attribute name="weight" type="xs:decimal" use="required"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>Concept-resource arcs</xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="conceptResourceArcType">
+    <xs:annotation>
+      <xs:documentation>Concept-resource arc type.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="cxl:arcType">
+        <xs:sequence>
+          <xs:element ref="cxl:title" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="clink:concept"/>
+          <xs:element ref="clink:resourceOrResourceRef"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="cxl:arcAttributes" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="conceptResourceArc" type="clink:conceptResourceArcType" substitutionGroup="cxl:arc" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Any concept-resource type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="labelArc" type="clink:conceptResourceArcType" substitutionGroup="clink:conceptResourceArc">
+    <xs:annotation>
+      <xs:documentation>Concrete arc for use in label extended links</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="referenceArc" type="clink:conceptResourceArcType" substitutionGroup="clink:conceptResourceArc">
+    <xs:annotation>
+      <xs:documentation>Concrete arc for use in reference extended links</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <!-- No footnote arcs -->
+  
+  <xs:element name="resourceOrResourceRef" substitutionGroup="cxl:resource" abstract="true">
+  </xs:element>
+  
+  <xs:element name="labelOrLabelRef" substitutionGroup="clink:resourceOrResourceRef" abstract="true">
+  </xs:element>
+  
+  <xs:element name="labelRef" substitutionGroup="clink:labelOrLabelRef">
+    <xs:annotation>
+      <xs:documentation>Reference to a label resource element in the same extended link.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:resourceType">
+          <xs:attribute ref="cxlink:type" use="required" fixed="resource"/>
+          <xs:attribute ref="cxlink:ref" use="required"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="label" substitutionGroup="clink:labelOrLabelRef">
+    <xs:annotation>
+      <xs:documentation>Definition of the label resource element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent mixed="true">
+        <xs:extension base="cxl:resourceType">
+          <xs:sequence>
+            <xs:any namespace="http://www.w3.org/1999/xhtml" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="part" type="xs:anySimpleType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Definition of the reference part element - for use in reference resources.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="referenceOrReferenceRef" substitutionGroup="clink:resourceOrResourceRef">
+  </xs:element>
+
+  <xs:element name="referenceRef" substitutionGroup="clink:referenceOrReferenceRef">
+    <xs:annotation>
+      <xs:documentation>Reference to a reference resource element in the same extended link.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:resourceType">
+          <xs:attribute ref="cxlink:type" use="required" fixed="resource"/>
+          <xs:attribute ref="cxlink:ref" use="required"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reference" substitutionGroup="clink:referenceOrReferenceRef">
+    <xs:annotation>
+      <xs:documentation>Definition of the reference resource element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent mixed="true">
+        <xs:extension base="cxl:resourceType">
+          <xs:sequence>
+            <xs:element ref="clink:part" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- No footnote -->
+
+  <xs:element name="presentationLink" substitutionGroup="cxl:extended">
+    <xs:annotation>
+      <xs:documentation>Presentation extended link element definition.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:extendedType">
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="cxl:title"/>
+            <xs:element ref="clink:documentation"/>
+            <xs:element ref="clink:presentationArc"/>
+          </xs:choice>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="definitionLink" substitutionGroup="cxl:extended">
+    <xs:annotation>
+      <xs:documentation>Definition extended link element definition.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:extendedType">
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="cxl:title"/>
+            <xs:element ref="clink:documentation"/>
+            <xs:element ref="clink:definitionArc"/>
+          </xs:choice>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="calculationLink" substitutionGroup="cxl:extended">
+    <xs:annotation>
+      <xs:documentation>Calculation extended link element definition.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:extendedType">
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="cxl:title"/>
+            <xs:element ref="clink:documentation"/>
+            <xs:element ref="clink:calculationArc"/>
+          </xs:choice>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="labelLink" substitutionGroup="cxl:extended">
+    <xs:annotation>
+      <xs:documentation>Label extended link element definition.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:extendedType">
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="cxl:title"/>
+            <xs:element ref="clink:documentation"/>
+            <xs:element ref="clink:labelArc"/>
+            <xs:element ref="clink:label"/>
+            <xs:element ref="clink:labelRef"/>
+          </xs:choice>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="referenceLink" substitutionGroup="cxl:extended">
+    <xs:annotation>
+      <xs:documentation>Reference extended link element definition.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:extendedType">
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="cxl:title"/>
+            <xs:element ref="clink:documentation"/>
+            <xs:element ref="clink:referenceArc"/>
+            <xs:element ref="clink:reference"/>
+            <xs:element ref="clink:referenceRef"/>
+          </xs:choice>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- No footnote link -->
+
+  <xs:element name="linkbase">
+    <xs:annotation>
+      <xs:documentation>Definition of the linkbase element. Used to contain a set of zero or more extended link elements.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="clink:documentation"/>
+        <xs:element ref="clink:roleRef"/>
+        <xs:element ref="clink:arcroleRef"/>
+        <xs:element ref="cxl:extended"/>
+      </xs:choice>
+      <xs:attribute name="id" type="xs:ID" use="optional"/>
+      <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="linkbaseRef" substitutionGroup="cxl:import">
+    <xs:annotation>
+      <xs:documentation>Definition of the linkbaseRef element - used to link to XBRL taxonomy extended links from taxonomy schema documents and from XBRL instances.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="cxl:importType">
+          <xs:attribute ref="cxlink:arcrole" use="required">
+            <xs:annotation>
+              <xs:documentation>This attribute must have the value: http://www.w3.org/1999/xlink/properties/linkbase</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="schemaRef" type="cxl:importType" substitutionGroup="cxl:import">
+    <xs:annotation>
+      <xs:documentation>Definition of the schemaRef element - used to link to XBRL taxonomy schemas from XBRL instances.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="roleRef" substitutionGroup="cxl:import">
+    <xs:annotation>
+      <xs:documentation>Definition of the roleRef element - used to link to resolve xlink:role attribute values to the roleType element declaration.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="cxl:importType">
+          <xs:attribute name="roleURI" type="cxl:nonEmptyURI" use="required">
+            <xs:annotation>
+              <xs:documentation>This attribute contains the role name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="arcroleRef" substitutionGroup="cxl:import">
+    <xs:annotation>
+      <xs:documentation>Definition of the arcroleRef element - used to link to resolve xlink:role attribute values to the arcroleType element declaration.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="cxl:importType">
+          <xs:attribute name="arcroleURI" type="cxl:nonEmptyURI" use="required">
+            <xs:annotation>
+              <xs:documentation>This attribute contains the arc role name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="definition" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>The element to use for human-readable definition of custom roles and arc roles.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="usedOn" type="xs:QName">
+    <xs:annotation>
+      <xs:documentation>Definition of the usedOn element - used to identify what elements may use a taxonomy defined role or arc role value.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="roleType">
+    <xs:annotation>
+      <xs:documentation>The roleType element definition - used to define custom role values in XBRL extended links.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="clink:definition" minOccurs="0"/>
+        <xs:element ref="clink:usedOn" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="croleURI" type="cxl:nonEmptyURI" use="required"/>
+      <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="arcroleType">
+    <xs:annotation>
+      <xs:documentation>The arcroleType element definition - used to define custom arc role values in XBRL extended links.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="clink:definition" minOccurs="0"/>
+        <xs:element ref="clink:usedOn" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="arcroleURI" type="cxl:nonEmptyURI" use="required"/>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="cyclesAllowed" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="any"/>
+            <xs:enumeration value="undirected"/>
+            <xs:enumeration value="none"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="concept" substitutionGroup="cxl:resource">
+    <xs:annotation>
+      <xs:documentation>Resource element referring to a concept by its expanded name.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="cxl:resourceType">
+          <xs:attribute name="qname" type="xs:QName" use="required">
+            <xs:annotation>
+              <xs:documentation>This attribute contains the name of the concept.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

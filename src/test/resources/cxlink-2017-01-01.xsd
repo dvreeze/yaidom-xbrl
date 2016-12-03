@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:cxlink="http://www.ebpi.nl/2017/cxlink" 
+  targetNamespace="http://www.ebpi.nl/2017/cxlink"
+  elementFormDefault="qualified" attributeFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>CXLink attribute specification</xs:documentation>
+  </xs:annotation>
+  
+  <!-- No locator type. No simple type, but type import instead. -->
+  
+  <xs:attribute name="type">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:documentation>Enumeration of values for the type attribute</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="import" />
+        <xs:enumeration value="extended" />
+        <xs:enumeration value="arc" />
+        <xs:enumeration value="resource" />
+        <xs:enumeration value="title" />
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <xs:attribute name="role">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:documentation>A URI with a minimum length of 1 character</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:anyURI">
+        <xs:minLength value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <xs:attribute name="arcrole">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:documentation>A URI with a minimum length of 1 character</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:anyURI">
+        <xs:minLength value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  
+  <xs:attribute name="title" type="xs:string" />
+  
+  <!-- No show and actuate attributes -->
+
+  <xs:attribute name="label" type="xs:NCName" />
+  
+  <!-- No from and to attributes, but attribute ref instead -->
+
+  <xs:attribute name="ref" type="xs:NCName">
+    <xs:annotation>
+      <xs:documentation>Reference to a labeled resource in the same extended link</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+
+</xs:schema>

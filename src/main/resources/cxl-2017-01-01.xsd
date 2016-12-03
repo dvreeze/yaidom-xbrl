@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:cxlink="http://www.ebpi.nl/2017/cxlink" 
+  xmlns:cxl="http://www.ebpi.nl/2017/cxl" 
+  targetNamespace="http://www.ebpi.nl/2017/cxl"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:import namespace="http://www.ebpi.nl/2017/cxlink" schemaLocation="cxlink-2017-01-01.xsd" />
+
+  <xs:annotation>
+    <xs:documentation>CXLink as used in CTM. Substitution groups for CTM arcs, resources, extended links, etc.</xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="nonEmptyURI">
+    <xs:annotation>
+      <xs:documentation>A URI type with a minimum length of 1 character. Used on role and arcrole elements.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="documentationType">
+    <xs:annotation>
+      <xs:documentation>Element type to use for documentation of extended links and linkbases</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:element name="documentation" type="cxl:documentationType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract element to use for documentation of extended links and linkbases</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>CTM import and extended link schema constructs</xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="titleType">
+    <xs:annotation>
+      <xs:documentation>Type for the abstract title element - used as a title element template</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:attribute ref="cxlink:type" use="required" fixed="title" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="title" type="cxl:titleType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Generic title element for use in extended link documentation. Used on extended links, arcs.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:simpleType name="useEnum">
+    <xs:annotation>
+      <xs:documentation>Enumerated values for the use attribute on extended link arcs</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="optional"/>
+      <xs:enumeration value="prohibited"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:attributeGroup name="arcAttributes">
+    <xs:attribute ref="cxlink:type" use="required" fixed="arc"/>
+    <xs:attribute ref="cxlink:arcrole" use="required"/>
+    <xs:attribute ref="cxlink:title" use="optional"/>
+    <xs:attribute name="order" type="xs:decimal" use="optional" form="unqualified"/>
+    <xs:attribute name="use" type="cxl:useEnum" use="optional" form="unqualified"/>
+    <xs:attribute name="priority" type="xs:integer" use="optional" form="unqualified"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="arcType">
+    <xs:annotation>
+      <xs:documentation>Basic extended link arc type containing source and target resource. Adds use, priority and order attributes.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element ref="cxl:title" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="cxl:resource"/>
+          <xs:element ref="cxl:resource"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="cxl:arcAttributes" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="arc" type="cxl:arcType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract element to use as head of arc element substitution group</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="resourceType">
+    <xs:annotation>
+      <xs:documentation>Generic type for the resource type element</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="true">
+      <xs:restriction base="xs:anyType">
+        <xs:attribute ref="cxlink:type" use="required" fixed="resource"/>
+        <xs:attribute ref="cxlink:label" use="optional"/>
+        <xs:attribute ref="cxlink:ref" use="optional"/>
+        <xs:attribute ref="cxlink:role" use="optional"/>
+        <xs:attribute ref="cxlink:title" use="optional"/>
+        <xs:attribute name="id" type="xs:ID" use="optional"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="resource" type="cxl:resourceType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract element to use as head of resource element substitution group</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="extendedType">
+    <xs:annotation>
+      <xs:documentation>Generic extended link type</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="cxl:title"/>
+          <xs:element ref="cxl:documentation"/>
+          <xs:element ref="cxl:arc"/>
+          <xs:element ref="cxl:resource"/>
+        </xs:choice>
+        <xs:attribute ref="cxlink:type" use="required" fixed="extended"/>
+        <xs:attribute ref="cxlink:role" use="required"/>
+        <xs:attribute ref="cxlink:title" use="optional"/>
+        <xs:attribute name="id" type="xs:ID" use="optional"/>
+        <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="extended" type="cxl:extendedType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract extended link element at head of extended link substitution group</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="importType">
+    <xs:annotation>
+      <xs:documentation>Type for the import links defined in CTM</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:attribute ref="cxlink:type" use="required" fixed="import"/>
+        <xs:attribute ref="cxlink:arcrole" use="optional"/>
+        <xs:attribute ref="cxlink:role" use="optional"/>
+        <xs:attribute ref="cxlink:title" use="optional"/>
+        <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="import" type="cxl:importType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>The abstract element at the head of the import link substitution group</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>

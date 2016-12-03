@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+This file originates from the kvk-data-terse-lab-en.xml linkbase in the KvK taxonomy, which is intellectual property of the Dutch government.
+
+See sampleLabelLinkbase.xml, but this time the labls are external to the arcs.
+-->
+<clink:linkbase xmlns:clink="http://www.ebpi.nl/2017/linkbase" xmlns:cxlink="http://www.ebpi.nl/2017/cxlink"
+	xmlns:kvk-i="http://www.nltaxonomie.nl/nt11/kvk/20161214/dictionary/kvk-data"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ebpi.nl/2017/cxlink
+	  cxlink-2017-01-01.xsd
+	  http://www.ebpi.nl/2017/linkbase
+	  xbrl-clinkbase-2017-01-01.xsd">
+  <clink:labelLink cxlink:role="http://www.xbrl.org/2003/role/link" cxlink:type="extended">
+    <clink:label cxlink:label="kvk-i_IncomeStatementClassificationType_terseLabel_en" cxlink:role="http://www.xbrl.org/2003/role/terseLabel" cxlink:type="resource" xml:lang="en">Type of profit and loss account</clink:label>
+    <clink:label cxlink:label="kvk-i_OrganisationName_terseLabel_en" cxlink:role="http://www.xbrl.org/2003/role/terseLabel" cxlink:type="resource" xml:lang="en">Name of the organisation</clink:label>
+
+    <clink:labelArc cxlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" cxlink:type="arc">
+      <clink:concept qname="kvk-i:IncomeStatementClassificationType" cxlink:type="resource"/>
+      <clink:labelRef cxlink:ref="kvk-i_IncomeStatementClassificationType_terseLabel_en" cxlink:type="resource" />
+    </clink:labelArc>
+    <clink:labelArc cxlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" cxlink:type="arc">
+      <clink:concept qname="kvk-i:OrganisationName" cxlink:type="resource"/>
+      <clink:labelRef cxlink:ref="kvk-i_OrganisationName_terseLabel_en" cxlink:type="resource" />
+    </clink:labelArc>
+  </clink:labelLink>
+</clink:linkbase>

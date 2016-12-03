@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+This file originates from the kvk-balance-sheet-vertical-fiscal_k-def.xml linkbase in the KvK taxonomy, which is intellectual property of the Dutch government.
+
+See sampleParentChildLinkbase.xml for clarifying comments.
+-->
+<clink:linkbase xmlns:clink="http://www.ebpi.nl/2017/linkbase" xmlns:cxlink="http://www.ebpi.nl/2017/cxlink"
+    xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+    xmlns:sbr-dim="http://www.nltaxonomie.nl/2013/xbrl/sbr-dimensional-concepts"
+    xmlns:venj-bw2-dim="http://www.nltaxonomie.nl/nt11/venj/20161214/dictionary/venj-bw2-axes"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ebpi.nl/2017/cxlink
+	  cxlink-2017-01-01.xsd
+	  http://www.ebpi.nl/2017/linkbase
+	  xbrl-clinkbase-2017-01-01.xsd">
+  <clink:roleRef roleURI="urn:kvk:linkrole:balance-sheet-vertical-fiscal" cxlink:type="import" />
+  <clink:roleRef roleURI="urn:kvk:linkrole:basis-of-preparation-fiscal" cxlink:type="import" />
+  <clink:roleRef roleURI="urn:kvk:linkrole:financial-statement-separate" cxlink:type="import" />
+  <clink:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" cxlink:type="import" />
+  <clink:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" cxlink:type="import" />
+  <clink:definitionLink cxlink:role="urn:kvk:linkrole:balance-sheet-vertical-fiscal" cxlink:type="extended">
+    <clink:definitionArc xbrldt:targetRole="urn:kvk:linkrole:basis-of-preparation-fiscal" cxlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" cxlink:type="arc">
+      <clink:concept qname="sbr-dim:ValidationTable" cxlink:type="resource"/>
+      <clink:concept qname="venj-bw2-dim:BasisOfPreparationAxis" cxlink:type="resource"/>
+    </clink:definitionArc>
+    <clink:definitionArc xbrldt:targetRole="urn:kvk:linkrole:financial-statement-separate" cxlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" cxlink:type="arc">
+      <clink:concept qname="sbr-dim:ValidationTable" cxlink:type="resource"/>
+      <clink:concept qname="venj-bw2-dim:FinancialStatementsTypeAxis" cxlink:type="resource"/>
+    </clink:definitionArc>
+    <clink:definitionArc xbrldt:closed="true" xbrldt:contextElement="scenario" cxlink:arcrole="http://xbrl.org/int/dim/arcrole/all" cxlink:type="arc">
+      <clink:concept qname="sbr-dim:ValidationLineItems" cxlink:type="resource"/>
+      <clink:concept qname="sbr-dim:ValidationTable" cxlink:type="resource"/>
+    </clink:definitionArc>
+  </clink:definitionLink>
+</clink:linkbase>
