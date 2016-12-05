@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+This file originates from the kvk-data-ref.xml linkbase in the KvK taxonomy, which is intellectual property of the Dutch government.
+
+See sampleParentChildLinkbase.xml for clarifying comments.
+-->
+<clink:linkbase
+    xmlns:cref="http://www.ebpi.nl/2017/ref"
+    xmlns:clink="http://www.ebpi.nl/2017/linkbase"
+    xmlns:cxlink="http://www.ebpi.nl/2017/cxlink"
+	xmlns:kvk-i="http://www.nltaxonomie.nl/nt11/kvk/20161214/dictionary/kvk-data"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ebpi.nl/2017/ref
+	  ref-2017-01-01.xsd
+	  http://www.ebpi.nl/2017/linkbase
+	  xbrl-clinkbase-2017-01-01.xsd">
+  <clink:referenceLink cxlink:role="http://www.xbrl.org/2003/role/link" cxlink:type="extended">
+    <clink:referenceArc cxlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" cxlink:type="arc">
+      <clink:concept qname="kvk-i:LegalSizeCriteriaClassification" cxlink:type="resource"/>
+      <clink:reference id="kvk-i_BW2_396_1_ref" cxlink:role="http://www.xbrl.org/2003/role/reference" cxlink:type="resource">
+        <cref:Article>396</cref:Article>
+        <cref:IssueDate>2015-01-01</cref:IssueDate>
+        <cref:Name>Burgerlijk wetboek boek 2</cref:Name>
+        <cref:Paragraph>1</cref:Paragraph>
+      </clink:reference>
+    </clink:referenceArc>
+    <clink:referenceArc cxlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" cxlink:type="arc">
+      <clink:concept qname="kvk-i:LegalSizeCriteriaClassification" cxlink:type="resource"/>
+      <clink:reference id="kvk-i_BW2_397_1_ref" cxlink:role="http://www.xbrl.org/2003/role/reference" cxlink:type="resource">
+        <cref:Article>397</cref:Article>
+        <cref:IssueDate>2015-01-01</cref:IssueDate>
+        <cref:Name>Burgerlijk wetboek boek 2</cref:Name>
+        <cref:Paragraph>1</cref:Paragraph>
+      </clink:reference>
+    </clink:referenceArc>
+  </clink:referenceLink>
+</clink:linkbase>

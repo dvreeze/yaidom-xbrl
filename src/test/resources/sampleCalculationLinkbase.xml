@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+See sampleParentChildLinkbase.xml for clarifying comments. Here prohibition/overriding resolution is needed.
+Prohibition results in both arcs being excluded from the network.
+-->
+<clink:linkbase xmlns:clink="http://www.ebpi.nl/2017/linkbase" xmlns:cxlink="http://www.ebpi.nl/2017/cxlink"
+    xmlns:t="http://mycompany.com/xbrl/taxonomy"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ebpi.nl/2017/cxlink
+	  cxlink-2017-01-01.xsd
+	  http://www.ebpi.nl/2017/linkbase
+	  xbrl-clinkbase-2017-01-01.xsd">
+  <clink:calculationLink cxlink:role="http://www.xbrl.org/2003/role/link" cxlink:type="extended">
+    <clink:calculationArc weight="1" order="2" priority="0" use="optional" cxlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" cxlink:type="arc">
+      <clink:concept qname="t:fixedAssets" cxlink:type="resource"/>
+      <clink:concept qname="t:changeInRetainedEarnings" cxlink:type="resource"/>
+    </clink:calculationArc>
+    <clink:calculationArc weight="1" order="2" priority="1" use="prohibited" cxlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" cxlink:type="arc">
+      <clink:concept qname="t:fixedAssets" cxlink:type="resource"/>
+      <clink:concept qname="t:changeInRetainedEarnings" cxlink:type="resource"/>
+    </clink:calculationArc>
+  </clink:calculationLink>
+</clink:linkbase>

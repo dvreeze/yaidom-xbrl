@@ -120,12 +120,8 @@
   
   <!-- No footnote arcs -->
   
-  <xs:element name="resourceOrResourceRef" substitutionGroup="cxl:resource" abstract="true">
-  </xs:element>
-  
-  <xs:element name="labelOrLabelRef" substitutionGroup="clink:resourceOrResourceRef" abstract="true">
-  </xs:element>
-  
+  <!-- Order of the following concrete and abstract resource element declarations matters? -->
+
   <xs:element name="labelRef" substitutionGroup="clink:labelOrLabelRef">
     <xs:annotation>
       <xs:documentation>Reference to a label resource element in the same extended link.</xs:documentation>
@@ -155,14 +151,14 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+
+  <xs:element name="labelOrLabelRef" type="cxl:resourceType" substitutionGroup="clink:resourceOrResourceRef" abstract="true">
+  </xs:element>
   
   <xs:element name="part" type="xs:anySimpleType" abstract="true">
     <xs:annotation>
       <xs:documentation>Definition of the reference part element - for use in reference resources.</xs:documentation>
     </xs:annotation>
-  </xs:element>
-  
-  <xs:element name="referenceOrReferenceRef" substitutionGroup="clink:resourceOrResourceRef">
   </xs:element>
 
   <xs:element name="referenceRef" substitutionGroup="clink:referenceOrReferenceRef">
@@ -183,7 +179,7 @@
     <xs:annotation>
       <xs:documentation>Definition of the reference resource element.</xs:documentation>
     </xs:annotation>
-    <xs:complexType mixed="true">
+    <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="cxl:resourceType">
           <xs:sequence>
@@ -192,6 +188,12 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
+  </xs:element>
+
+  <xs:element name="referenceOrReferenceRef" type="cxl:resourceType" substitutionGroup="clink:resourceOrResourceRef" abstract="true">
+  </xs:element>
+
+  <xs:element name="resourceOrResourceRef" type="cxl:resourceType" substitutionGroup="cxl:resource" abstract="true">
   </xs:element>
 
   <!-- No footnote -->
@@ -262,7 +264,6 @@
             <xs:element ref="clink:documentation"/>
             <xs:element ref="clink:labelArc"/>
             <xs:element ref="clink:label"/>
-            <xs:element ref="clink:labelRef"/>
           </xs:choice>
           <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
         </xs:restriction>
@@ -282,7 +283,6 @@
             <xs:element ref="clink:documentation"/>
             <xs:element ref="clink:referenceArc"/>
             <xs:element ref="clink:reference"/>
-            <xs:element ref="clink:referenceRef"/>
           </xs:choice>
           <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
         </xs:restriction>
